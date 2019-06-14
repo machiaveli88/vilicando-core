@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "license": "ISC",
   "private": false,
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "up": "yarn upgrade-interactive --latest"
