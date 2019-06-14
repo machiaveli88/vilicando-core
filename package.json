@@ -1,0 +1,63 @@
+{
+  "name": "vilicando-core",
+  "version": "0.1.0",
+  "license": "ISC",
+  "private": false,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "up": "yarn upgrade-interactive --latest"
+  },
+  "dependencies": {
+    "antd": "^3.19.2",
+    "debe": "^1.2.10",
+    "debe-delta": "^1.2.10",
+    "debe-idb": "^1.2.10",
+    "debe-react": "^1.2.10",
+    "debe-socket": "^1.2.10",
+    "debe-sync": "^1.2.10",
+    "fela": "^10.5.0",
+    "fela-plugin-embedded": "^10.5.0",
+    "fela-plugin-named-keys": "^10.5.0",
+    "fela-plugin-prefixer": "^10.5.0",
+    "fela-plugin-unit": "^10.5.0",
+    "fela-plugin-validator": "^10.5.0",
+    "lodash": "^4.17.11",
+    "node-polyglot": "^2.3.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-fela": "^10.5.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/antd": "^1.0.0",
+    "@types/lodash": "^4.14.134",
+    "@types/node": "^12.0.7",
+    "@types/node-polyglot": "^0.4.33",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.3",
+    "less": "3.9.0",
+    "npm": "^6.9.0",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
