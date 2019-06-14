@@ -4,6 +4,9 @@
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "tsc",
     "up": "yarn upgrade-interactive --latest"
@@ -43,19 +46,12 @@
     "ts-node": "^8.2.0",
     "typescript": "^3.5.1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/machiaveli88/vilicando-core.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "bugs": {
+    "url": "https://github.com/machiaveli88/vilicando-core/issues"
+  },
+  "homepage": "https://github.com/machiaveli88/vilicando-core#readme"
 }
