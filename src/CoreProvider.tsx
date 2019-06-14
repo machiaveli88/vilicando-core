@@ -8,7 +8,7 @@ import ThemeProvider from './ThemeProvider';
 import Loader from './Loader';
 import createRenderer from './renderer';
 import defaultTheme from './theme';
-import './style.less';
+import '../assets/style.less';
 
 const defaultRenderer = createRenderer({});
 
