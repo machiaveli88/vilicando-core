@@ -15,9 +15,7 @@
     "antd": "^3.19.2",
     "debe": "^1.2.10",
     "debe-delta": "^1.2.10",
-    "debe-idb": "^1.2.10",
     "debe-react": "^1.2.10",
-    "debe-socket": "^1.2.10",
     "debe-sync": "^1.2.10",
     "fela": "^10.5.0",
     "fela-plugin-embedded": "^10.5.0",
@@ -30,8 +28,7 @@
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-fela": "^10.5.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.0.1"
+    "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
     "@types/antd": "^1.0.0",
