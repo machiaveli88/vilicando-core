@@ -48,6 +48,8 @@ function UtilsLanguageProvider({
     if (phrases) polyglot.replace(phrases);
   }, [phrases]);
 
+  console.log(phrases);
+
   return (
     <LanguageCtx.Provider value={polyglot.t.bind(polyglot)}>
       <LocaleProvider locale={deDE}>

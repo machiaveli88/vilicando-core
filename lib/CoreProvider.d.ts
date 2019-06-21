@@ -8,6 +8,8 @@ export interface ICoreProvider {
     renderer?: IRenderer;
     loader?: () => React.ReactNode;
     db?: Debe | (() => Debe);
+    phrases?: object;
+    locale?: string;
 }
-declare function CoreProvider({ children, db, theme, renderer, loader }: ICoreProvider): JSX.Element;
+declare function CoreProvider({ children, db, theme, renderer, loader, phrases, locale }: ICoreProvider): JSX.Element;
 export default CoreProvider;

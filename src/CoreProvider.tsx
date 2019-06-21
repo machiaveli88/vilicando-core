@@ -18,6 +18,8 @@ export interface ICoreProvider {
   renderer?: IRenderer;
   loader?: () => React.ReactNode;
   db?: Debe | (() => Debe);
+  phrases?: object;
+  locale?: string;
 }
 
 function CoreProvider({
@@ -25,11 +27,13 @@ function CoreProvider({
   db,
   theme = defaultTheme,
   renderer = defaultRenderer,
-  loader = () => <Loader />
+  loader = () => <Loader />,
+  phrases,
+  locale
 }: ICoreProvider) {
   return (
     <RendererProvider renderer={renderer}>
-      <LanguageProvider>
+      <LanguageProvider phrases={phrases} locale={locale}>
         <ThemeProvider value={theme}>
           {!!db && (
             <DebeProvider loading={loader} value={db}>
