@@ -48,7 +48,7 @@ function UtilsLanguageProvider({
     if (phrases) polyglot.replace(phrases);
   }, [phrases]);
 
-  console.log(phrases);
+  console.log('mooh', phrases);
 
   return (
     <LanguageCtx.Provider value={polyglot.t.bind(polyglot)}>

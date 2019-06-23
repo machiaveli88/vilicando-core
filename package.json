@@ -8,6 +8,7 @@
     "lib"
   ],
   "scripts": {
+    "dev": "tsc -w",
     "build": "tsc",
     "up": "yarn upgrade-interactive --latest"
   },
@@ -23,6 +24,7 @@
     "fela-plugin-prefixer": "^10.5.0",
     "fela-plugin-unit": "^10.5.0",
     "fela-plugin-validator": "^10.5.0",
+    "fuse-box": "^3.7.1",
     "lodash": "^4.17.11",
     "node-polyglot": "^2.3.0",
     "react": "16.8.6",

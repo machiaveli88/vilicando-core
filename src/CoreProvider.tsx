@@ -31,6 +31,7 @@ function CoreProvider({
   phrases,
   locale
 }: ICoreProvider) {
+  return <div>...ksa{children}</div>;
   return (
     <RendererProvider renderer={renderer}>
       <LanguageProvider phrases={phrases} locale={locale}>

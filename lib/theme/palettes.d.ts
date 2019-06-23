@@ -1,0 +1,38 @@
+export declare const openColor: {
+    white: string;
+    black: string;
+    gray: string[];
+    red: string[];
+    pink: string[];
+    grape: string[];
+    violet: string[];
+    indigo: string[];
+    blue: string[];
+    cyan: string[];
+    teal: string[];
+    green: string[];
+    lime: string[];
+    yellow: string[];
+    orange: string[];
+};
+export declare const material: {
+    amber: string[];
+    blue: string[];
+    bluegrey: string[];
+    brown: string[];
+    cyan: string[];
+    deeporange: string[];
+    deeppurple: string[];
+    green: string[];
+    grey: string[];
+    indigo: string[];
+    lightblue: string[];
+    lightgreen: string[];
+    lime: string[];
+    orange: string[];
+    pink: string[];
+    purple: string[];
+    red: string[];
+    teal: string[];
+    yellow: string[];
+};
