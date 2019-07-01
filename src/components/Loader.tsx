@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RendererProvider } from 'react-fela';
 import { createRenderer, TRuleProps } from 'fela';
-import { useFela } from './ThemeProvider';
+import { useFela } from '../theme';
 
 const renderer = createRenderer();
 

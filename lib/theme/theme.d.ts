@@ -1,6 +1,6 @@
 /// <reference types="react" />
-export declare type ITheme = typeof Theme;
-export declare const Theme: {
+export declare type ITheme = typeof theme;
+export declare const theme: {
     colors: {
         blue: string[];
         green: string[];
@@ -27,4 +27,4 @@ export declare const Theme: {
     easeOut: string;
     easeInOut: string;
 };
-export default Theme;
+export default theme;

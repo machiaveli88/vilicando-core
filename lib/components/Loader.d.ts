@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface IComponentLoader {
     logo?: string;
     size?: number;

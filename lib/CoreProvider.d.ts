@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Debe } from 'debe';
 import { IRenderer } from 'fela';
-import '../assets/style.less';
 export interface ICoreProvider {
     children?: React.ReactNode;
     theme?: object;

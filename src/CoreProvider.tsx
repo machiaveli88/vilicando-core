@@ -4,11 +4,9 @@ import { DebeProvider } from 'debe-react';
 import { IRenderer } from 'fela';
 import { RendererProvider } from 'react-fela';
 import LanguageProvider from './LanguageProvider';
-import ThemeProvider from './ThemeProvider';
-import Loader from './Loader';
-import createRenderer from './renderer';
-import defaultTheme from './theme';
-import '../assets/style.less';
+import { Loader } from './components';
+import { ThemeProvider, theme as defaultTheme, createRenderer } from './theme';
+// import '../assets/style.less';
 
 const defaultRenderer = createRenderer({});
 
@@ -31,7 +29,7 @@ function CoreProvider({
   phrases,
   locale
 }: ICoreProvider) {
-  return <div>...ksa{children}</div>;
+  return <div>...ks{children}</div>;
   return (
     <RendererProvider renderer={renderer}>
       <LanguageProvider phrases={phrases} locale={locale}>
