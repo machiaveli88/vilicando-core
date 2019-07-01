@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -11,7 +11,7 @@
     "dev": "tsc -w",
     "build": "tsc",
     "up": "yarn upgrade-interactive --latest",
-    "publish": "yarn publish:patch",
+    "publish": "yarn run publish:patch",
     "publish:patch": "npm version patch -f & npm publish",
     "publish:minor": "npm version minor -f & npm publish",
     "publish:major": "npm version major -f & npm publish"
