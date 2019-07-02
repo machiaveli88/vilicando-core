@@ -42,6 +42,7 @@ export default ({ plugins = [], css = '' }: IRenderer) => {
     ]
   });
 
+  // mobile => gummiband-effekt deaktivieren
   renderer.renderStatic(`
     ${normalize}
 
@@ -53,7 +54,8 @@ export default ({ plugins = [], css = '' }: IRenderer) => {
       user-select: none
     }
 
-    div#app {
+    div#__next {
+      background-color: ${theme.colors.grey[0]};
       display: flex;
       flex-direction: column;
       width: 100vw;
