@@ -29,15 +29,16 @@ function CoreProvider({
   phrases,
   locale
 }: ICoreProvider) {
-  return <div>...ks{children}</div>;
   return (
     <RendererProvider renderer={renderer}>
       <LanguageProvider phrases={phrases} locale={locale}>
         <ThemeProvider value={theme}>
-          {!!db && (
+          {!!db ? (
             <DebeProvider loading={loader} value={db}>
               {children}
             </DebeProvider>
+          ) : (
+            children
           )}
         </ThemeProvider>
       </LanguageProvider>

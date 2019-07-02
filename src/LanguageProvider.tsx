@@ -7,7 +7,6 @@ import 'moment/locale/de';
 
 moment.locale('de');
 
-// @ts-ignore
 const polyglot = new Polyglot({
   locale: 'de',
   phrases: {
@@ -47,8 +46,6 @@ function UtilsLanguageProvider({
   React.useEffect(() => {
     if (phrases) polyglot.replace(phrases);
   }, [phrases]);
-
-  console.log('mooh', phrases);
 
   return (
     <LanguageCtx.Provider value={polyglot.t.bind(polyglot)}>
