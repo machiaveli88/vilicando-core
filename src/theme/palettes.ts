@@ -1,7 +1,8 @@
 export const openColor = {
   white: '#ffffff',
   black: '#000000',
-  gray: [
+  grey: [
+    // gray
     '#f8f9fa',
     '#f1f3f5',
     '#e9ecef',
@@ -37,19 +38,21 @@ export const openColor = {
     '#c2255c',
     '#a61e4d'
   ],
-  grape: [
-    '#f8f0fc',
-    '#f3d9fa',
-    '#eebefa',
-    '#e599f7',
-    '#da77f2',
-    '#cc5de8',
-    '#be4bdb',
-    '#ae3ec9',
-    '#9c36b5',
-    '#862e9c'
+  magenta: [
+    // pink alias
+    '#fff0f6',
+    '#ffdeeb',
+    '#fcc2d7',
+    '#faa2c1',
+    '#f783ac',
+    '#f06595',
+    '#e64980',
+    '#d6336c',
+    '#c2255c',
+    '#a61e4d'
   ],
-  violet: [
+  purple: [
+    // violet
     '#f3f0ff',
     '#e5dbff',
     '#d0bfff',
@@ -61,7 +64,8 @@ export const openColor = {
     '#6741d9',
     '#5f3dc4'
   ],
-  indigo: [
+  geekblue: [
+    // indigo
     '#edf2ff',
     '#dbe4ff',
     '#bac8ff',
@@ -96,18 +100,6 @@ export const openColor = {
     '#1098ad',
     '#0c8599',
     '#0b7285'
-  ],
-  teal: [
-    '#e6fcf5',
-    '#c3fae8',
-    '#96f2d7',
-    '#63e6be',
-    '#38d9a9',
-    '#20c997',
-    '#12b886',
-    '#0ca678',
-    '#099268',
-    '#087f5b'
   ],
   green: [
     '#ebfbee',
@@ -156,22 +148,39 @@ export const openColor = {
     '#f76707',
     '#e8590c',
     '#d9480f'
+  ],
+  // --------------------------
+  // non-antd-color-names below
+  // --------------------------
+  grape: [
+    '#f8f0fc',
+    '#f3d9fa',
+    '#eebefa',
+    '#e599f7',
+    '#da77f2',
+    '#cc5de8',
+    '#be4bdb',
+    '#ae3ec9',
+    '#9c36b5',
+    '#862e9c'
+  ],
+  teal: [
+    '#e6fcf5',
+    '#c3fae8',
+    '#96f2d7',
+    '#63e6be',
+    '#38d9a9',
+    '#20c997',
+    '#12b886',
+    '#0ca678',
+    '#099268',
+    '#087f5b'
   ]
 };
 
 export const material = {
-  amber: [
-    '#fff8e1',
-    '#ffecb3',
-    '#ffe082',
-    '#ffd54f',
-    '#ffca28',
-    '#ffc107',
-    '#ffb300',
-    '#ffa000',
-    '#ff8f00',
-    '#ff6f00'
-  ],
+  white: '#ffffff',
+  black: '#000000',
   blue: [
     '#e3f2fd',
     '#bbdefb',
@@ -183,30 +192,6 @@ export const material = {
     '#1976d2',
     '#1565c0',
     '#0d47a1'
-  ],
-  bluegrey: [
-    '#eceff1',
-    '#cfd8dc',
-    '#b0bec5',
-    '#90a4ae',
-    '#78909c',
-    '#607d8b',
-    '#546e7a',
-    '#455a64',
-    '#37474f',
-    '#263238'
-  ],
-  brown: [
-    '#efebe9',
-    '#d7ccc8',
-    '#bcaaa4',
-    '#a1887f',
-    '#8d6e63',
-    '#795548',
-    '#6d4c41',
-    '#5d4037',
-    '#4e342e',
-    '#3e2723'
   ],
   cyan: [
     '#e0f7fa',
@@ -220,29 +205,31 @@ export const material = {
     '#00838f',
     '#006064'
   ],
-  deeporange: [
-    '#fbe9e7',
-    '#ffccbc',
-    '#ffab91',
-    '#ff8a65',
-    '#ff7043',
-    '#ff5722',
-    '#f4511e',
-    '#e64a19',
-    '#d84315',
-    '#bf360c'
+  geekblue: [
+    // indigo
+    '#e8eaf6',
+    '#c5cae9',
+    '#9fa8da',
+    '#7986cb',
+    '#5c6bc0',
+    '#3f51b5',
+    '#3949ab',
+    '#303f9f',
+    '#283593',
+    '#1a237e'
   ],
-  deeppurple: [
-    '#ede7f6',
-    '#d1c4e9',
-    '#b39ddb',
-    '#9575cd',
-    '#7e57c2',
-    '#673ab7',
-    '#5e35b1',
-    '#512da8',
-    '#4527a0',
-    '#311b92'
+  gold: [
+    // amber
+    '#fff8e1',
+    '#ffecb3',
+    '#ffe082',
+    '#ffd54f',
+    '#ffca28',
+    '#ffc107',
+    '#ffb300',
+    '#ffa000',
+    '#ff8f00',
+    '#ff6f00'
   ],
   green: [
     '#e8f5e9',
@@ -268,41 +255,18 @@ export const material = {
     '#424242',
     '#212121'
   ],
-  indigo: [
-    '#e8eaf6',
-    '#c5cae9',
-    '#9fa8da',
-    '#7986cb',
-    '#5c6bc0',
-    '#3f51b5',
-    '#3949ab',
-    '#303f9f',
-    '#283593',
-    '#1a237e'
-  ],
-  lightblue: [
-    '#e1f5fe',
-    '#b3e5fc',
-    '#81d4fa',
-    '#4fc3f7',
-    '#29b6f6',
-    '#03a9f4',
-    '#039be5',
-    '#0288d1',
-    '#0277bd',
-    '#01579b'
-  ],
-  lightgreen: [
-    '#f1f8e9',
-    '#dcedc8',
-    '#c5e1a5',
-    '#aed581',
-    '#9ccc65',
-    '#8bc34a',
-    '#7cb342',
-    '#689f38',
-    '#558b2f',
-    '#33691e'
+  magenta: [
+    // pink alias
+    '#fce4ec',
+    '#f8bbd0',
+    '#f48fb1',
+    '#f06292',
+    '#ec407a',
+    '#e91e63',
+    '#d81b60',
+    '#c2185b',
+    '#ad1457',
+    '#880e4f'
   ],
   lime: [
     '#f9fbe7',
@@ -329,6 +293,7 @@ export const material = {
     '#e65100'
   ],
   pink: [
+    // magenta alias
     '#fce4ec',
     '#f8bbd0',
     '#f48fb1',
@@ -364,17 +329,18 @@ export const material = {
     '#c62828',
     '#b71c1c'
   ],
-  teal: [
-    '#e0f2f1',
-    '#b2dfdb',
-    '#80cbc4',
-    '#4db6ac',
-    '#26a69a',
-    '#009688',
-    '#00897b',
-    '#00796b',
-    '#00695c',
-    '#004d40'
+  volcano: [
+    // deeporange
+    '#fbe9e7',
+    '#ffccbc',
+    '#ffab91',
+    '#ff8a65',
+    '#ff7043',
+    '#ff5722',
+    '#f4511e',
+    '#e64a19',
+    '#d84315',
+    '#bf360c'
   ],
   yellow: [
     '#fffde7',
@@ -387,5 +353,80 @@ export const material = {
     '#fbc02d',
     '#f9a825',
     '#f57f17'
+  ],
+  // --------------------------
+  // non-antd-color-names below
+  // --------------------------
+  bluegrey: [
+    '#eceff1',
+    '#cfd8dc',
+    '#b0bec5',
+    '#90a4ae',
+    '#78909c',
+    '#607d8b',
+    '#546e7a',
+    '#455a64',
+    '#37474f',
+    '#263238'
+  ],
+  brown: [
+    '#efebe9',
+    '#d7ccc8',
+    '#bcaaa4',
+    '#a1887f',
+    '#8d6e63',
+    '#795548',
+    '#6d4c41',
+    '#5d4037',
+    '#4e342e',
+    '#3e2723'
+  ],
+  deeppurple: [
+    '#ede7f6',
+    '#d1c4e9',
+    '#b39ddb',
+    '#9575cd',
+    '#7e57c2',
+    '#673ab7',
+    '#5e35b1',
+    '#512da8',
+    '#4527a0',
+    '#311b92'
+  ],
+  lightblue: [
+    '#e1f5fe',
+    '#b3e5fc',
+    '#81d4fa',
+    '#4fc3f7',
+    '#29b6f6',
+    '#03a9f4',
+    '#039be5',
+    '#0288d1',
+    '#0277bd',
+    '#01579b'
+  ],
+  lightgreen: [
+    '#f1f8e9',
+    '#dcedc8',
+    '#c5e1a5',
+    '#aed581',
+    '#9ccc65',
+    '#8bc34a',
+    '#7cb342',
+    '#689f38',
+    '#558b2f',
+    '#33691e'
+  ],
+  teal: [
+    '#e0f2f1',
+    '#b2dfdb',
+    '#80cbc4',
+    '#4db6ac',
+    '#26a69a',
+    '#009688',
+    '#00897b',
+    '#00796b',
+    '#00695c',
+    '#004d40'
   ]
 };
