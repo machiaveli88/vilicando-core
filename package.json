@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -32,6 +32,7 @@
     "fela-plugin-prefixer": "10.5.0",
     "fela-plugin-unit": "10.5.0",
     "fela-plugin-validator": "10.5.0",
+    "fela-preset-web": "^10.5.0",
     "less": "3.9.0",
     "lodash": "4.17.11",
     "next": "8.1.1-canary.60",

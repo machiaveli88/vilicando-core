@@ -5,6 +5,7 @@ import fallbackValue from 'fela-plugin-fallback-value';
 import unit from 'fela-plugin-unit';
 import validator from 'fela-plugin-validator';
 import namedKeys from 'fela-plugin-named-keys';
+import webPreset from 'fela-preset-web';
 import normalize from './normalize';
 
 interface IRenderer {
@@ -37,6 +38,7 @@ export default ({ plugins = [], css = '' }: IRenderer) => {
         ifMini: '@media (max-width: 479px)'
       }),
       validator(),
+      ...webPreset,
       ...plugins
     ]
   });
@@ -45,8 +47,9 @@ export default ({ plugins = [], css = '' }: IRenderer) => {
   renderer.renderStatic(`
     ${normalize}
 
-    html, body {
-      background-color: ${'blue' /* theme.colors.primary[0] */};
+    ${
+      /* html, body {
+      background-color: ${theme.colors.primary[0]};
       height: 100%;
       position: fixed;
       overflow: hidden;
@@ -54,7 +57,7 @@ export default ({ plugins = [], css = '' }: IRenderer) => {
     }
 
     div#__next {
-      background-color: ${'white' /* theme.colors.grey[0] */};
+      background-color: ${theme.colors.grey[0]};
       display: flex;
       flex-direction: column;
       width: 100vw;
@@ -62,6 +65,7 @@ export default ({ plugins = [], css = '' }: IRenderer) => {
       min-height: 100%;
       overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
+    } */ ''
     }
 
     ${css}
