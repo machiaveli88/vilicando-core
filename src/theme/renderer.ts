@@ -6,7 +6,6 @@ import unit from 'fela-plugin-unit';
 import validator from 'fela-plugin-validator';
 import namedKeys from 'fela-plugin-named-keys';
 import normalize from './normalize';
-import theme from './theme';
 
 interface IRenderer {
   plugins?: Array<TPlugin>;
@@ -47,7 +46,7 @@ export default ({ plugins = [], css = '' }: IRenderer) => {
     ${normalize}
 
     html, body {
-      background-color: ${theme.colors.primary[0]};
+      background-color: ${'blue' /* theme.colors.primary[0] */};
       height: 100%;
       position: fixed;
       overflow: hidden;
@@ -55,7 +54,7 @@ export default ({ plugins = [], css = '' }: IRenderer) => {
     }
 
     div#__next {
-      background-color: ${theme.colors.grey[0]};
+      background-color: ${'white' /* theme.colors.grey[0] */};
       display: flex;
       flex-direction: column;
       width: 100vw;

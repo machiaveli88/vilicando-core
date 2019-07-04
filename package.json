@@ -8,10 +8,11 @@
     "lib"
   ],
   "scripts": {
-    "dev": "tsc -w",
+    "link-react": "npm link ../../IbeA/node_modules/react & npm link ../../IbeA/node_modules/react-dom",
     "build": "tsc",
+    "build-watch": "tsc -w",
     "up": "yarn upgrade-interactive --latest",
-    "pub": "yarn pub:patch",
+    "pub": "npm pub:patch",
     "pub:patch": "npm version patch -f & npm publish",
     "pub:minor": "npm version minor -f & npm publish",
     "pub:major": "npm version major -f & npm publish"

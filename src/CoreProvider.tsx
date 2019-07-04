@@ -1,48 +1,43 @@
 import * as React from 'react';
 import { Debe } from 'debe';
-import { DebeProvider } from 'debe-react';
+// import { DebeProvider } from 'debe-react';
 import { IRenderer } from 'fela';
-import { RendererProvider } from 'react-fela';
-import LanguageProvider from './LanguageProvider';
-import { Loader } from './components';
-import { ThemeProvider, theme as defaultTheme, createRenderer } from './theme';
-// import '../assets/style.less';
-
-const defaultRenderer = createRenderer({});
+import LanguageProvider from './language';
+// import { Loader } from './components';
+import { FelaProvider } from './theme';
 
 export interface ICoreProvider {
   children?: React.ReactNode;
   theme?: object;
   renderer?: IRenderer;
   loader?: () => React.ReactNode;
+  loading?: boolean;
   db?: Debe | (() => Debe);
-  phrases?: object;
   locale?: string;
 }
 
 function CoreProvider({
   children,
-  db,
-  theme = defaultTheme,
-  renderer = defaultRenderer,
-  loader = () => <Loader />,
-  phrases,
+  // db,
+  theme,
+  renderer,
+  /* loader = () => <Loader />,
+  loading = false, */
   locale
 }: ICoreProvider) {
   return (
-    <RendererProvider renderer={renderer}>
-      <LanguageProvider phrases={phrases} locale={locale}>
-        <ThemeProvider value={theme}>
-          {!!db ? (
-            <DebeProvider loading={loader} value={db}>
-              {children}
-            </DebeProvider>
-          ) : (
-            children
-          )}
-        </ThemeProvider>
+    <FelaProvider renderer={renderer} theme={theme}>
+      <LanguageProvider translation={{}} locale={locale}>
+        {/* loading ? loader() : null */}
+        {
+          /* !!db ? (
+          <DebeProvider loading={loader} value={db}>
+            {children}
+          </DebeProvider>
+        ) : */ children
+        }
       </LanguageProvider>
-    </RendererProvider>
+    </FelaProvider>
   );
 }
 

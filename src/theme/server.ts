@@ -1,10 +1,14 @@
 const withLess = require('@zeit/next-less');
+const theme = require('./theme');
 
 export default (modifyVars: object) =>
   withLess({
     lessLoaderOptions: {
       javascriptEnabled: true,
-      modifyVars
+      modifyVars: {
+        ...theme,
+        ...modifyVars
+      }
     },
     webpack: (config: any, { isServer }: { isServer: boolean }) => {
       if (isServer) {
@@ -27,6 +31,7 @@ export default (modifyVars: object) =>
           use: 'null-loader'
         });
       }
+
       return config;
     }
   });
