@@ -12,7 +12,7 @@ moment.locale('de');
 >(() => ''); */
 
 export function useLanguage() {
-  return (a: string) => a;
+  return (a: string, options: any) => a;
   // return React.useContext(LanguageCtx);
 }
 
