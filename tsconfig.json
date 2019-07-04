@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es5",
     "allowSyntheticDefaultImports": true,
     "lib": ["dom", "es2017"],
     "module": "commonjs",
@@ -22,6 +22,7 @@
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
     "types": ["node"],
+    "esModuleInterop": true,
     "skipLibCheck": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
