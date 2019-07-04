@@ -1,16 +1,21 @@
 const withLess = require('@zeit/next-less');
 const theme = require('./theme');
 
-export default (modifyVars: object) =>
-  withLess({
+export default (modifyVars: object, nextConfig: any = {}) => {
+  const { lessLoaderOptions, webpack, ...rest } = nextConfig;
+
+  return withLess({
     lessLoaderOptions: {
       javascriptEnabled: true,
       modifyVars: {
         ...theme,
         ...modifyVars
-      }
+      },
+      ...lessLoaderOptions
     },
-    webpack: (config: any, { isServer }: { isServer: boolean }) => {
+    webpack: (config: any, options: any) => {
+      const { isServer } = options;
+
       if (isServer) {
         const antStyles = /antd\/.*?\/style.*?/;
         const origExternals = [...config.externals];
@@ -32,6 +37,12 @@ export default (modifyVars: object) =>
         });
       }
 
+      if (typeof webpack === 'function') {
+        return webpack(config, options);
+      }
+
       return config;
-    }
+    },
+    ...rest
   });
+};
