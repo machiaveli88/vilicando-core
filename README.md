@@ -1,5 +1,7 @@
 # vilicando-core
 
+\* [Theme](#theme)
+
 ## Theme
 
 Vilicando verwendet [fela](http://fela.js.org) für das theming und [antd](https://ant.design/) für die Standard-UI-Komponenten. Die Standard-Theming-Variablen richten sich daher auch nach den Antd-Variablen, welche [hier](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less) zu finden sind.
