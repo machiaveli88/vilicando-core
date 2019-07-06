@@ -60,8 +60,6 @@ function colorPalette(color: string, index: number) {
     return Math.round(saturation);
   };
 
-  console.log(color, index);
-
   const getValue = (
     hsv: { h: number; s: number; v: number },
     i: number,
