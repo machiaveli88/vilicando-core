@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -39,7 +39,8 @@
     "node-polyglot": "2.3.1",
     "null-loader": "3.0.0",
     "react-fela": "10.5.0",
-    "react-router-dom": "5.0.1"
+    "react-router-dom": "5.0.1",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "@types/antd": "1.0.0",
@@ -49,6 +50,7 @@
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "4.3.4",
+    "@types/tinycolor2": "^1.4.2",
     "typescript": "3.5.2"
   },
   "peerDependencies": {
