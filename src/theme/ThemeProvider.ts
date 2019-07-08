@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useFela as useFelaBase } from 'react-fela';
-import { camelCase } from 'lodash';
 import tinycolor from 'tinycolor2';
 
 function colorPalette(color: string, index: number) {
@@ -146,9 +145,6 @@ const parseTheme = (theme: object): object => {
 
     // ceil()
     theme[key] = theme[key].replace('ceil', 'calc');
-
-    // camelCase
-    theme[camelCase(key)] = theme[key];
   });
 
   return theme;
