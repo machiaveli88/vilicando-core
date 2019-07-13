@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -33,7 +33,7 @@
     "fela-plugin-unit": "10.5.0",
     "fela-plugin-validator": "10.5.0",
     "fela-preset-web": "^10.5.0",
-    "immutable": "4.0.0-rc.12",
+    "immutable": "3.8.2",
     "next": "9.0.1",
     "node-polyglot": "2.3.1",
     "null-loader": "3.0.0",
