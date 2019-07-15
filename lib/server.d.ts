@@ -1,1 +1,1 @@
-export { default as withTheme } from './theme/server';
+export declare const withCore: (theme: object, nextConfig?: any) => any;
