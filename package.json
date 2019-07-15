@@ -1,13 +1,13 @@
 {
   "name": "vilicando-core",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
   "files": [
     "lib",
     ".babelrc",
-    "tsconfig.json",
+    "tsconfig.client.json",
     "tsconfig.server.json",
     "server.*"
   ],

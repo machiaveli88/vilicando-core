@@ -1,40 +1,30 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react",
     "lib": ["dom", "es2017"],
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "noEmit": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
+    "noLib": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "outDir": "",
-    "paths": {
-      "@assets": ["assets"],
-      "@components": ["components"],
-      "@data": ["data"],
-      "@forms": ["forms"],
-      "@pages": ["pages"],
-      "@utils": ["utils"]
-    },
+    "outDir": "lib",
     "preserveConstEnums": true,
     "removeComments": false,
     "resolveJsonModule": true,
+    "rootDir": "src",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "esnext",
-    "types": ["node"],
-    "esModuleInterop": true
+    "target": "es5",
+    "types": ["node"]
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules", "lib"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
