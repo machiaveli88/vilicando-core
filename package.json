@@ -1,11 +1,12 @@
 {
   "name": "vilicando-core",
-  "version": "0.0.35",
+  "version": "0.0.36",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
   "files": [
     "lib",
+    ".babelrc",
     "tsconfig.json",
     "tsconfig.server.json",
     "server.*"
@@ -22,9 +23,7 @@
     "pub:major": "npm version major -f & npm publish"
   },
   "dependencies": {
-    "@zeit/next-less": "1.0.1",
     "antd": "3.20.2",
-    "babel-plugin-import": "1.12.0",
     "debe": "1.3.28",
     "debe-delta": "1.3.28",
     "debe-react": "1.3.28",
@@ -37,10 +36,8 @@
     "fela-plugin-validator": "10.5.0",
     "fela-preset-web": "10.5.0",
     "immutable": "3.8.2",
-    "less": "^2.7.3",
     "next": "9.0.1",
     "node-polyglot": "2.3.1",
-    "null-loader": "3.0.0",
     "react-fela": "10.5.0",
     "tinycolor2": "1.4.1"
   },
@@ -53,7 +50,11 @@
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
     "@types/tinycolor2": "1.4.2",
+    "@zeit/next-less": "1.0.1",
+    "babel-plugin-import": "1.12.0",
     "babel-plugin-inline-react-svg": "1.1.0",
+    "less": "^2.7.3",
+    "null-loader": "3.0.0",
     "typescript": "3.5.3"
   },
   "peerDependencies": {
