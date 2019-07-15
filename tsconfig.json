@@ -3,12 +3,11 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["dom", "es2017"],
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
     "noImplicitAny": true,
@@ -20,6 +19,7 @@
       "@assets": ["assets"],
       "@components": ["components"],
       "@data": ["data"],
+      "@forms": ["forms"],
       "@pages": ["pages"],
       "@utils": ["utils"]
     },
@@ -32,7 +32,8 @@
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
     "target": "esnext",
-    "types": ["node"]
+    "types": ["node"],
+    "esModuleInterop": true
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

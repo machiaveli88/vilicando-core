@@ -2,7 +2,11 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "isolatedModules": false,
+    "jsx": "preserve",
     "lib": ["dom", "es2017"],
     "module": "commonjs",
     "moduleResolution": "node",
@@ -20,9 +24,8 @@
     "strict": true,
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "esnext",
+    "target": "es2017",
     "types": ["node"]
   },
-  "exclude": ["node_modules"],
   "include": ["server/**/*.ts"]
 }
