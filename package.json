@@ -33,7 +33,7 @@
     "fela-plugin-prefixer": "10.5.0",
     "fela-plugin-unit": "10.5.0",
     "fela-plugin-validator": "10.5.0",
-    "fela-preset-web": "^10.5.0",
+    "fela-preset-web": "10.5.0",
     "immutable": "3.8.2",
     "less": "^2.7.3",
     "next": "9.0.1",
@@ -51,6 +51,7 @@
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
     "@types/tinycolor2": "1.4.2",
+    "babel-plugin-inline-react-svg": "1.1.0",
     "typescript": "3.5.3"
   },
   "peerDependencies": {

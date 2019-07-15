@@ -1,3 +1,1 @@
-const server = require('./lib/server');
-
-module.exports = server;
+module.exports = require('./lib/server');
