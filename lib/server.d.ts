@@ -1,1 +1,2 @@
-export declare const withCore: (theme: object, nextConfig?: any) => any;
+declare const path: any;
+declare const withTheme: any;

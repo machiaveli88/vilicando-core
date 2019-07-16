@@ -1,7 +1,7 @@
 const withLess = require('@zeit/next-less');
 const theme = require('./theme');
 
-export default (modifyVars: object, nextConfig: any = {}) => {
+module.exports = (modifyVars: object, nextConfig: any = {}) => {
   const { lessLoaderOptions, webpack, ...rest } = nextConfig;
 
   return withLess({

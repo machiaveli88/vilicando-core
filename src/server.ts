@@ -1,7 +1,7 @@
-import path from 'path';
-import withTheme from './theme/server';
+const path = require('path');
+const withTheme = require('./theme/server');
 
-export const withCore = (theme: object, nextConfig: any = {}) => {
+module.exports = (theme: object, nextConfig: any = {}) => {
   const { webpack, dir, ...rest } = nextConfig;
 
   return withTheme(theme, {

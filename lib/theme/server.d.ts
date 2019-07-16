@@ -1,2 +1,2 @@
-declare const _default: (modifyVars: object, nextConfig?: any) => any;
-export default _default;
+declare const withLess: any;
+declare const theme: any;
