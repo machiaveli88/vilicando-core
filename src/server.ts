@@ -4,8 +4,6 @@ import withTheme from './theme/server';
 export const withCore = (theme: object, nextConfig: any = {}) => {
   const { webpack, dir, ...rest } = nextConfig;
 
-  console.log(dir);
-
   return withTheme(theme, {
     webpack(config: any, options: any) {
       const dirname = dir || __dirname;
