@@ -1,7 +1,5 @@
 import * as React from 'react';
 import CoreProvider from '../CoreProvider';
-import NProgress from 'nprogress';
-import Router from 'next/router';
 import { Container } from 'next/app';
 import { IRenderer } from 'fela';
 
@@ -14,14 +12,10 @@ import { IRenderer } from 'fela';
   - Inject additional data into pages (for example by processing GraphQL queries)
 */
 
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
-
 export interface IContainer {
   children: React.ReactElement;
+  renderer: IRenderer;
   theme?: any;
-  renderer?: IRenderer;
 }
 
 export default ({ children, theme, renderer }: IContainer) => (

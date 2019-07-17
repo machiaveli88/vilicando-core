@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { RendererProvider } from 'react-fela';
 import { createRenderer, TRuleProps } from 'fela';
+import { RendererProvider } from 'react-fela';
 import { useFela } from '../theme';
 
 const renderer = createRenderer();
@@ -31,9 +31,10 @@ renderer.renderKeyframe(pulseDot, {});
 export interface IComponentLoader {
   logo?: string;
   size?: number;
+  text?: string;
 }
 
-function ComponentLoader({ size = 250, logo }: IComponentLoader) {
+function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
   const [css, theme] = useFela();
 
   return (
@@ -47,8 +48,8 @@ function ComponentLoader({ size = 250, logo }: IComponentLoader) {
           pointerEvents: 'none',
           right: 0,
           top: 0,
-          background: `linear-gradient(135deg, ${theme.colors.primary[7]} 0%,${
-            theme.colors.primary[9]
+          background: `linear-gradient(135deg, ${theme['primary-7']} 0%,${
+            theme['primary-9']
           } 100%)`,
           zIndex: 2000
         })}
@@ -64,58 +65,62 @@ function ComponentLoader({ size = 250, logo }: IComponentLoader) {
             marginLeft: -size * 1.5,
             marginTop: -size * 1.5,
             borderRadius: size * 1.5,
-            backgroundColor: theme.colors.primary[7],
-            animation: `k1 1.25s ${theme.easeOut} infinite`
+            backgroundColor: theme['primary-7'],
+            animation: `k1 1.25s ${theme['ease-out']} infinite`
           })}
         />
-        <div
-          className={css({
-            position: 'absolute',
-            left: '50%',
-            top: '50%',
-            height: size,
-            width: size,
-            display: 'block',
-            marginLeft: -size * 0.5,
-            marginTop: -size * 0.5,
-            backgroundColor: theme.colors.grey[0],
-            borderRadius: size * 0.5,
-            boxShadow: theme.boxShadow[1],
-            animation: `k2 1.25s ${theme.easeInOut} -.4s infinite`
-          })}
-        >
+        {!!logo && (
           <div
             className={css({
               position: 'absolute',
               left: '50%',
               top: '50%',
-              transform: 'translateX(-50%) translateY(-50%)',
+              height: size,
+              width: size,
               display: 'block',
-              '> img': {
-                width: size,
-                height: size
-              }
+              marginLeft: -size * 0.5,
+              marginTop: -size * 0.5,
+              backgroundColor: theme['white'],
+              borderRadius: size * 0.5,
+              boxShadow: theme['box-shadow-2'],
+              animation: `k2 1.25s ${theme['ease-in-out']} -.4s infinite`
             })}
           >
-            {!!logo && <img src={logo} className="App-logo" alt="logo" />}
+            <div
+              className={css({
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                transform: 'translateX(-50%) translateY(-50%)',
+                display: 'block',
+                '> img': {
+                  width: size,
+                  height: size
+                }
+              })}
+            >
+              <img src={logo} className="App-logo" alt="logo" />
+            </div>
           </div>
-        </div>
-        <div
-          className={css({
-            position: 'absolute',
-            left: 0,
-            bottom: 0,
-            width: '100%',
-            textAlign: 'center',
-            display: 'block',
-            color: 'white',
-            fontFamily: theme.fontFamily[0],
-            fontSize: theme.fontSize[3],
-            padding: theme.space[5]
-          })}
-        >
-          <b>Tipp:</b> Trask ist einfach genial!
-        </div>
+        )}
+        {!!text && (
+          <div
+            className={css({
+              position: 'absolute',
+              left: 0,
+              bottom: 0,
+              width: '100%',
+              textAlign: 'center',
+              display: 'block',
+              color: 'white',
+              fontFamily: theme['font-family'],
+              fontSize: theme['font-size-lg'],
+              padding: theme['padding-lg']
+            })}
+          >
+            {text}
+          </div>
+        )}
       </div>
     </RendererProvider>
   );
