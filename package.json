@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
-    "dev": "cd examples/basic && yarn link vilicando-core && yarn dev",
+    "dev": "cd examples/basic && yarn dev",
+    "pub": "cd core && npm publish",
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "workspaces": [
