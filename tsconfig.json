@@ -12,11 +12,11 @@
     "noLib": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "outDir": "lib",
+    "outDir": "core/lib",
     "preserveConstEnums": true,
     "removeComments": false,
     "resolveJsonModule": true,
-    "rootDir": "src",
+    "rootDir": "core/src",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
@@ -25,6 +25,6 @@
     "target": "es5",
     "types": ["node"]
   },
-  "exclude": ["node_modules", "lib", "examples"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "exclude": ["node_modules", "example"],
+  "include": ["core/src/**/*.ts", "core/src/**/*.tsx"]
 }

@@ -13,7 +13,7 @@
   "dependencies": {
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "vilicando-core": "^0.0.42"
+    "vilicando-core": "^0.0.43"
   },
   "devDependencies": {
     "@types/node": "12.6.6",
