@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "exclude": ["node_modules"],
+  "extends": "vilicando-core/tsconfig.client.json",
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+}
