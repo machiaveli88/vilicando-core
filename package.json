@@ -12,6 +12,6 @@
   },
   "workspaces": [
     "core",
-    "examples/basic"
+    "examples/*"
   ]
 }
