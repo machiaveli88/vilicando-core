@@ -4,13 +4,13 @@
   "version": "0.0.1",
   "license": "ISC",
   "scripts": {
-    "up": "yarn upgrade-interactive --latest",
     "build": "tsc",
     "build:watch": "tsc -w",
-    "dev": "cd examples/basic && yarn link vilicando-core && yarn dev"
+    "dev": "cd examples/basic && yarn link vilicando-core && yarn dev",
+    "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "workspaces": [
     "core",
-    "examples"
+    "examples/basic"
   ]
 }

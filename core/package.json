@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -9,18 +9,8 @@
     ".babelrc",
     "tsconfig.client.json",
     "tsconfig.server.json",
-    "next.*",
-    "server.*",
-    "theme.*"
+    "server.*"
   ],
-  "scripts": {
-    "up": "yarn upgrade-interactive && yarn check",
-    "up:latest": "yarn upgrade-interactive --latest && yarn check",
-    "pub": "npm pub:patch",
-    "pub:patch": "npm version patch -f & npm publish",
-    "pub:minor": "npm version minor -f & npm publish",
-    "pub:major": "npm version major -f & npm publish"
-  },
   "dependencies": {
     "@zeit/next-less": "1.0.1",
     "antd": "3.20.3",
