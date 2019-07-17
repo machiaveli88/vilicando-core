@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useFela as useFelaBase } from 'react-fela';
 import tinycolor from 'tinycolor2';
+import { IRenderer } from 'fela';
+import { useFela as useFelaBase } from 'react-fela';
 
 function colorPalette(color: string, index: number) {
   const hueStep = 2;
@@ -154,16 +155,16 @@ export const ThemeContext = React.createContext({});
 
 export const useTheme = () => React.useContext(ThemeContext);
 
-export const useFela = (): [(css: object) => string, any] => {
+export const useFela = (): [(css: object) => string, any, IRenderer] => {
   const theme = React.useContext(ThemeContext);
-  const { css } = useFelaBase();
+  const { css, renderer } = useFelaBase();
 
   // replacing @-vars & functions with values
   const parsedTheme = React.useMemo(() => parseTheme(replaceLessVars(theme)), [
     theme
   ]);
 
-  return [css, parsedTheme];
+  return [css, parsedTheme, renderer];
 };
 
 export default ThemeContext.Provider;
