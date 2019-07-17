@@ -155,7 +155,11 @@ export const ThemeContext = React.createContext({});
 
 export const useTheme = () => React.useContext(ThemeContext);
 
-export const useFela = (): [(css: object) => string, any, IRenderer] => {
+export const useFela = (): {
+  css: (css: object) => string;
+  theme: any;
+  renderer: IRenderer;
+} => {
   const theme = React.useContext(ThemeContext);
   const { css, renderer } = useFelaBase();
 
@@ -164,7 +168,7 @@ export const useFela = (): [(css: object) => string, any, IRenderer] => {
     theme
   ]);
 
-  return [css, parsedTheme, renderer];
+  return { css, theme: parsedTheme, renderer };
 };
 
 export default ThemeContext.Provider;

@@ -35,7 +35,7 @@ export interface IComponentLoader {
 }
 
 function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
-  const [css, theme] = useFela();
+  const { css, theme } = useFela();
 
   return (
     <RendererProvider renderer={renderer}>

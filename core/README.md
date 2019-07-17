@@ -58,7 +58,7 @@ import * as React from 'react';
 import { useFela } from 'vilicando-core/theme';
 
 function Content() {
-  const [css, theme] = useFela();
+  const { css, theme } = useFela();
 
   return <div className={css({ color: theme['red-6'] })}>red text</div>;
 }
@@ -74,7 +74,7 @@ import { ThemeProvider, useFela } from 'vilicando-core/theme';
 import DeeperComponentsWithGreenColorAndBlueBorders from './deeper-components';
 
 function Component() {
-  const [css, theme] = useFela();
+  const { css, theme } = useFela();
   const theme = {
     color: theme['green-6'],
     borderColor: 'blue'

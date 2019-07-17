@@ -10,7 +10,7 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 function Progress({ children }: any) {
-  const [css, theme, renderer] = useFela();
+  const { theme, renderer } = useFela();
   const color = theme['primary-color'];
 
   renderer.renderStatic(`

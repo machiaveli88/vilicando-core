@@ -16,7 +16,7 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 function StartPage() {
-  const [css, theme] = useFela();
+  const { css, theme } = useFela();
   const translate = useLanguage();
 
   return (

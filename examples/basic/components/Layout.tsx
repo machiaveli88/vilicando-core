@@ -7,7 +7,7 @@ interface ILayout {
 }
 
 function Layout({ children }: ILayout) {
-  const [css, theme] = useFela();
+  const { css, theme } = useFela();
 
   return (
     <div
