@@ -11,6 +11,10 @@
     "tsconfig.server.json",
     "server.*"
   ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w"
+  },
   "dependencies": {
     "@zeit/next-less": "1.0.1",
     "antd": "3.20.3",

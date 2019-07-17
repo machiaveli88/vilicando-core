@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "license": "ISC",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc -w",
+    "build": "cd core && yarn build",
+    "build:watch": "cd core && yarn build:watch",
     "dev": "cd examples/basic && yarn dev",
     "pub": "cd core && npm publish",
     "up": "yarn upgrade-interactive --latest && yarn check"
