@@ -1,9 +1,10 @@
-import * as React from 'react';
-/* import * as Polyglot from 'node-polyglot';
-import LocaleProvider from 'antd/lib/locale-provider';
-import deDE from 'antd/lib/locale-provider/de_DE'; */
 import * as moment from 'moment';
+import * as React from 'react';
+import deDE from 'antd/lib/locale-provider/de_DE';
+import LocaleProvider from 'antd/lib/locale-provider';
 import 'moment/locale/de';
+/* import * as Polyglot from 'node-polyglot';
+ */
 
 moment.locale('de');
 
@@ -51,7 +52,7 @@ function LanguageProvider({
     if (phrases) polyglot.extend(phrases);
   }, [phrases]); */
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 
   /* return (
     <LanguageCtx.Provider value={polyglot.t.bind(polyglot)}>
