@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Document, {
   DocumentContext,
-  DocumentProps,
   Head,
   Html,
   Main,

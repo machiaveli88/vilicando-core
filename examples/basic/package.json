@@ -14,7 +14,7 @@
     "next": "canary",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "vilicando-core": "0.0.44"
+    "vilicando-core": "*"
   },
   "devDependencies": {
     "@types/node": "12.6.6",
