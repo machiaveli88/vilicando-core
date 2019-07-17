@@ -8,7 +8,7 @@ import {
   Slider,
   Switch
   } from 'antd';
-import { useFela } from 'vilicando-core/theme';
+import { useFela } from 'vilicando-core';
 import { useLanguage } from 'vilicando-core';
 // import Logo from '@assets/virtual-reality.svg'; todo: @asset geht aber @asset/... nicht!
 

@@ -1,3 +1,3 @@
-import { createRenderer } from 'vilicando-core/theme';
+import { createRenderer } from 'vilicando-core';
 
 export default createRenderer({});
