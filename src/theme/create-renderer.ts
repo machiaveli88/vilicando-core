@@ -46,6 +46,10 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
   renderer.renderStatic(`
     ${normalize}
 
+    #__next {
+      height: 100%;
+    }
+
     ${css}
   `);
 
