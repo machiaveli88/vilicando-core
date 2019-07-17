@@ -10,7 +10,8 @@
     "tsconfig.client.json",
     "tsconfig.server.json",
     "next.*",
-    "server.*"
+    "server.*",
+    "theme.*"
   ],
   "scripts": {
     "link:react": "npm link ../../IbeA/node_modules/react & npm link ../../IbeA/node_modules/react-dom",
