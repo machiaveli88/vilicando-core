@@ -1,19 +1,19 @@
-import { createRenderer, TPlugin } from 'fela';
 import embedded from 'fela-plugin-embedded';
-import prefixer from 'fela-plugin-prefixer';
 import fallbackValue from 'fela-plugin-fallback-value';
+import namedKeys from 'fela-plugin-named-keys';
+import normalize from './normalize';
+import prefixer from 'fela-plugin-prefixer';
 import unit from 'fela-plugin-unit';
 import validator from 'fela-plugin-validator';
-import namedKeys from 'fela-plugin-named-keys';
 import webPreset from 'fela-preset-web';
-import normalize from './normalize';
+import { createRenderer, TPlugin } from 'fela';
 
-interface IRenderer {
+export interface ICreateRenderer {
   plugins?: Array<TPlugin>;
   css?: string;
 }
 
-export default ({ plugins = [], css = '' }: IRenderer) => {
+export default ({ plugins = [], css = '' }: ICreateRenderer) => {
   const renderer = createRenderer({
     plugins: [
       embedded(),
@@ -43,30 +43,8 @@ export default ({ plugins = [], css = '' }: IRenderer) => {
     ]
   });
 
-  // mobile => gummiband-effekt deaktivieren
   renderer.renderStatic(`
     ${normalize}
-
-    ${
-      /* html, body {
-      background-color: ${theme.colors.primary[0]};
-      height: 100%;
-      position: fixed;
-      overflow: hidden;
-      user-select: none
-    }
-
-    div#__next {
-      background-color: ${theme.colors.grey[0]};
-      display: flex;
-      flex-direction: column;
-      width: 100vw;
-      height: 100vh;
-      min-height: 100%;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
-    } */ ''
-    }
 
     ${css}
   `);

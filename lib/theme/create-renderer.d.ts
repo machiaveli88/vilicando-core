@@ -1,5 +1,5 @@
 import { TPlugin } from 'fela';
-interface ICreateRenderer {
+export interface ICreateRenderer {
     plugins?: Array<TPlugin>;
     css?: string;
 }
