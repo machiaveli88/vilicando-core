@@ -1,8 +1,8 @@
 import * as React from 'react';
-import App from 'next/app';
+import App, { Container } from 'next/app';
 import renderer from '../renderer';
 import theme from '../theme.json';
-import { Container } from 'vilicando-core/next';
+import { CoreProvider } from 'vilicando-core';
 import { Layout } from '@components';
 
 export default class CustomApp extends App {
@@ -10,10 +10,12 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <Container theme={theme} renderer={renderer}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+      <Container>
+        <CoreProvider theme={theme} renderer={renderer}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </CoreProvider>
       </Container>
     );
   }
