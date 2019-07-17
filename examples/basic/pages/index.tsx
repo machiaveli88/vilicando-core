@@ -8,7 +8,8 @@ import {
   Slider,
   Switch
   } from 'antd';
-import { useFela, useLanguage } from 'vilicando-core';
+import { useFela } from 'vilicando-core/theme';
+import { useLanguage } from 'vilicando-core';
 // import Logo from '@assets/virtual-reality.svg'; todo: @asset geht aber @asset/... nicht!
 
 const FormItem = Form.Item;
