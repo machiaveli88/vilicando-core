@@ -1,4 +1,4 @@
-export { default as CoreProvider } from './CoreProvider';
-export { default as LanguageProvider, useLanguage } from './language';
-export * from './components';
-export * from './theme';
+export { useLanguage } from './language';
+export { Loader } from './components';
+export { ThemeProvider, useFela, createRenderer } from './theme';
+export * from './next';

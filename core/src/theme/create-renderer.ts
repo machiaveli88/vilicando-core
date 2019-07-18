@@ -8,7 +8,7 @@ import validator from 'fela-plugin-validator';
 import webPreset from 'fela-preset-web';
 import { createRenderer, TPlugin } from 'fela';
 
-export interface ICreateRenderer {
+interface ICreateRenderer {
   plugins?: Array<TPlugin>;
   css?: string;
 }

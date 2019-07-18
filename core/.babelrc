@@ -1,5 +1,17 @@
 {
-  "presets": ["next/babel"],
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "modules": false,
+          "targets": {
+            "node": "current"
+          }
+        }
+      }
+    ]
+  ],
   "plugins": [
     "inline-react-svg",
     [

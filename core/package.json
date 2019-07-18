@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.0.46",
+  "version": "0.1.0",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -43,7 +43,7 @@
     "@types/antd": "1.0.0",
     "@types/lodash": "4.14.136",
     "@types/next": "8.0.6",
-    "@types/node": "12.6.6",
+    "@types/node": "12.6.8",
     "@types/node-polyglot": "0.4.33",
     "@types/nprogress": "^0.2.0",
     "@types/react": "16.8.23",
