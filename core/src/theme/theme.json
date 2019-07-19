@@ -149,7 +149,7 @@
   "primary-3": "color(~`colorPalette('@{primary-6}', 3) `)",
   "primary-4": "color(~`colorPalette('@{primary-6}', 4) `)",
   "primary-5": "color(~`colorPalette('@{primary-6}', 5) `)",
-  "primary-6": "@blue-6",
+  "primary-6": "@primary-color",
   "primary-7": "color(~`colorPalette('@{primary-6}', 7) `)",
   "primary-8": "color(~`colorPalette('@{primary-6}', 8) `)",
   "primary-9": "color(~`colorPalette('@{primary-6}', 9) `)",
@@ -158,7 +158,7 @@
   "ant-prefix": "ant",
   "html-selector": "html",
 
-  "primary-color": "@primary-6",
+  "primary-color": "@blue-6",
   "info-color": "@blue-6",
   "success-color": "@green-6",
   "processing-color": "@blue-6",
