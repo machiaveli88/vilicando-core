@@ -1,4 +1,28 @@
 {
+  "grey-1": "color(~`colorPalette('@{grey-6}', 1) `)",
+  "grey-2": "color(~`colorPalette('@{grey-6}', 2) `)",
+  "grey-3": "color(~`colorPalette('@{grey-6}', 3) `)",
+  "grey-4": "color(~`colorPalette('@{grey-6}', 4) `)",
+  "grey-5": "color(~`colorPalette('@{grey-6}', 5) `)",
+  "grey-6": "#90a4ae",
+  "grey-7": "color(~`colorPalette('@{grey-6}', 7) `)",
+  "grey-8": "color(~`colorPalette('@{grey-6}', 8) `)",
+  "grey-9": "color(~`colorPalette('@{grey-6}', 9) `)",
+  "grey-10": "color(~`colorPalette('@{grey-6}', 10) `)",
+
+  "secondary-1": "color(~`colorPalette('@{secondary-6}', 1) `)",
+  "secondary-2": "color(~`colorPalette('@{secondary-6}', 2) `)",
+  "secondary-3": "color(~`colorPalette('@{secondary-6}', 3) `)",
+  "secondary-4": "color(~`colorPalette('@{secondary-6}', 4) `)",
+  "secondary-5": "color(~`colorPalette('@{secondary-6}', 5) `)",
+  "secondary-6": "@secondary-color",
+  "secondary-7": "color(~`colorPalette('@{secondary-6}', 7) `)",
+  "secondary-8": "color(~`colorPalette('@{secondary-6}', 8) `)",
+  "secondary-9": "color(~`colorPalette('@{secondary-6}', 9) `)",
+  "secondary-10": "color(~`colorPalette('@{secondary-6}', 10) `)",
+
+  "secondary-color": "@volcano-6",
+
   "blue-1": "color(~`colorPalette('@{blue-6}', 1) `)",
   "blue-2": "color(~`colorPalette('@{blue-6}', 2) `)",
   "blue-3": "color(~`colorPalette('@{blue-6}', 3) `)",
@@ -158,7 +182,7 @@
   "ant-prefix": "ant",
   "html-selector": "html",
 
-  "primary-color": "@blue-6",
+  "primary-color": "@cyan-6",
   "info-color": "@blue-6",
   "success-color": "@green-6",
   "processing-color": "@blue-6",

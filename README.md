@@ -40,4 +40,7 @@
 
 ## Theming
 
-Vilicando uses [fela](http://fela.js.org) for theming and [antd](https://ant.design/) for the standard UI components. The standard theme variables therefore also depend on the Antd variables, which can be found [here](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less).
+Vilicando uses [fela](http://fela.js.org) for theming and [antd](https://ant.design/) for the standard UI components. The standard theme variables therefore also depend on the Antd variables, which can be found [here](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less), plus:
+
+- secondary-color (secondary-1 ... secondary-10)
+- grey-color (grey-1 ... grey-10)

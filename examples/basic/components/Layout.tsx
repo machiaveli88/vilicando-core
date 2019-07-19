@@ -17,32 +17,74 @@ function Layout({ children }: ILayout) {
         minHeight: '100%'
       })}
     >
-      <div className={css({ display: 'flex' })}>
+      <div
+        className={css({
+          display: 'flex',
+          borderBottom: `1px solid ${theme['primary-color']}`
+        })}
+      >
         <div
           className={css({
-            width: '25%',
-            height: 20,
-            backgroundColor: theme['primary-1']
+            width: '10%',
+            backgroundColor: theme['primary-1'],
+            padding: theme['padding-md']
+          })}
+        >
+          <h2 className={css({ color: theme['secondary-color'], margin: 0 })}>
+            Theme
+          </h2>
+        </div>
+        <div
+          className={css({
+            width: '10%',
+            backgroundColor: theme['primary-2']
           })}
         />
         <div
           className={css({
-            width: '25%',
-            height: 20,
+            width: '10%',
+            backgroundColor: theme['primary-3']
+          })}
+        />
+        <div
+          className={css({
+            width: '10%',
             backgroundColor: theme['primary-4']
           })}
         />
         <div
           className={css({
-            width: '25%',
-            height: 20,
+            width: '10%',
+            backgroundColor: theme['primary-5']
+          })}
+        />
+        <div
+          className={css({
+            width: '10%',
+            backgroundColor: theme['primary-6']
+          })}
+        />
+        <div
+          className={css({
+            width: '10%',
             backgroundColor: theme['primary-7']
           })}
         />
         <div
           className={css({
-            width: '25%',
-            height: 20,
+            width: '10%',
+            backgroundColor: theme['primary-8']
+          })}
+        />
+        <div
+          className={css({
+            width: '10%',
+            backgroundColor: theme['primary-9']
+          })}
+        />
+        <div
+          className={css({
+            width: '10%',
             backgroundColor: theme['primary-10']
           })}
         />
@@ -68,6 +110,9 @@ function Layout({ children }: ILayout) {
             padding: theme['padding-md']
           })}
         >
+          <h1 className={css({ color: theme['secondary-color'] })}>
+            Example App
+          </h1>
           {children}
         </div>
       </div>
