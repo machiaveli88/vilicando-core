@@ -7,3 +7,4 @@ export {
   materialColors
 } from './theme';
 export * from './next';
+export * from './utils';
