@@ -48,8 +48,8 @@ function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
           pointerEvents: 'none',
           right: 0,
           top: 0,
-          background: `linear-gradient(135deg, ${theme['primary-7']} 0%,${
-            theme['primary-9']
+          background: `linear-gradient(135deg, ${theme.primary7} 0%,${
+            theme.primary9
           } 100%)`,
           zIndex: 2000
         })}
@@ -65,8 +65,8 @@ function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
             marginLeft: -size * 1.5,
             marginTop: -size * 1.5,
             borderRadius: size * 1.5,
-            backgroundColor: theme['primary-7'],
-            animation: `k1 1.25s ${theme['ease-out']} infinite`
+            backgroundColor: theme.primary7,
+            animation: `k1 1.25s ${theme.easeOut} infinite`
           })}
         />
         {!!logo && (
@@ -80,10 +80,10 @@ function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
               display: 'block',
               marginLeft: -size * 0.5,
               marginTop: -size * 0.5,
-              backgroundColor: theme['white'],
+              backgroundColor: theme.white,
               borderRadius: size * 0.5,
-              boxShadow: theme['box-shadow-2'],
-              animation: `k2 1.25s ${theme['ease-in-out']} -.4s infinite`
+              boxShadow: theme.boxShadow2,
+              animation: `k2 1.25s ${theme.easeInOut} -.4s infinite`
             })}
           >
             <div
@@ -113,9 +113,9 @@ function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
               textAlign: 'center',
               display: 'block',
               color: 'white',
-              fontFamily: theme['font-family'],
-              fontSize: theme['font-size-lg'],
-              padding: theme['padding-lg']
+              fontFamily: theme.fontFamily,
+              fontSize: theme.fontSizeLg,
+              padding: theme.paddingLg
             })}
           >
             {text}

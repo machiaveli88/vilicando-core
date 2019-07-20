@@ -219,10 +219,10 @@
   "heading-3-size": "ceil(@font-size-base * 1.71)",
   "heading-4-size": "ceil(@font-size-base * 1.42)",
 
-  "line-height-base": "1.5",
+  "line-height-base": 1.5,
 
-  "border-radius-base": "0",
-  "border-radius-sm": "0",
+  "border-radius-base": 0,
+  "border-radius-sm": 0,
 
   "padding-lg": "24px",
   "padding-md": "16px",
@@ -263,7 +263,7 @@
   "border-color-inverse": "@white",
   "border-width-base": "1px",
   "border-style-base": "solid",
-  "outline-blur-size": "0",
+  "outline-blur-size": 0,
   "outline-width": "2px",
   "outline-color": "@primary-color",
 
@@ -282,7 +282,7 @@
   "shadow-1-right": "0 0 8px @shadow-color",
   "shadow-2": "0 0 12px @shadow-color",
 
-  "btn-font-weight": "400",
+  "btn-font-weight": 400,
   "btn-border-radius-base": "@border-radius-base",
   "btn-border-radius-sm": "@border-radius-base",
   "btn-border-width": "@border-width-base",
@@ -349,8 +349,8 @@
   "screen-lg-max": "(@screen-xl-min - 1px)",
   "screen-xl-max": "(@screen-xxl-min - 1px)",
 
-  "grid-columns": "24",
-  "grid-gutter-width": "0",
+  "grid-columns": 24,
+  "grid-gutter-width": 0,
 
   "layout-body-background": "#f0f2f5",
   "layout-header-background": "#001529",
@@ -369,19 +369,19 @@
   "layout-trigger-color-light": "@text-color",
 
   "zindex-table-fixed": "auto",
-  "zindex-affix": "10",
-  "zindex-back-top": "10",
-  "zindex-badge": "10",
-  "zindex-picker-panel": "10",
-  "zindex-popup-close": "10",
-  "zindex-modal": "1000",
-  "zindex-modal-mask": "1000",
-  "zindex-message": "1010",
-  "zindex-notification": "1010",
-  "zindex-popover": "1030",
-  "zindex-dropdown": "1050",
-  "zindex-picker": "1050",
-  "zindex-tooltip": "1060",
+  "zindex-affix": 10,
+  "zindex-back-top": 10,
+  "zindex-badge": 10,
+  "zindex-picker-panel": 10,
+  "zindex-popup-close": 10,
+  "zindex-modal": 1000,
+  "zindex-modal-mask": 1000,
+  "zindex-message": 1010,
+  "zindex-notification": 1010,
+  "zindex-popover": 1030,
+  "zindex-dropdown": 1050,
+  "zindex-picker": 1050,
+  "zindex-tooltip": 1060,
 
   "animation-duration-slow": "0.3s",
   "animation-duration-base": "0.2s",
@@ -399,7 +399,7 @@
   "form-item-margin-bottom": "24px",
   "form-item-trailing-colon": "true",
   "form-vertical-label-padding": "0 0 8px",
-  "form-vertical-label-margin": "0",
+  "form-vertical-label-margin": 0,
   "form-error-input-bg": "@input-bg",
 
   "input-height-base": "32px",
@@ -423,7 +423,7 @@
   "input-outline-offset": "0 0",
 
   "select-border-color": "@border-color-base",
-  "select-item-selected-font-weight": "600",
+  "select-item-selected-font-weight": 600,
 
   "tooltip-max-width": "250px",
   "tooltip-color": "#fff",
@@ -569,7 +569,7 @@
   "pagination-item-size": "32px",
   "pagination-item-size-sm": "24px",
   "pagination-font-family": "Arial",
-  "pagination-font-weight-active": "500",
+  "pagination-font-weight-active": 500,
   "pagination-item-bg-active": "@component-background",
 
   "page-header-padding-horizontal": "24px",

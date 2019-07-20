@@ -11,7 +11,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function Progress({ children }: any) {
   const { theme, renderer } = useFela();
-  const color = theme['primary-color'];
+  const color = theme.primaryColor;
 
   renderer.renderStatic(`
     /* Make clicks pass-through */

@@ -20,72 +20,72 @@ function Layout({ children }: ILayout) {
       <div
         className={css({
           display: 'flex',
-          borderBottom: `1px solid ${theme['primary-color']}`
+          borderBottom: `1px solid ${theme.primaryColor}`
         })}
       >
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-1'],
-            padding: theme['padding-md']
+            backgroundColor: theme.primary1,
+            padding: theme.paddingMd
           })}
         >
-          <h2 className={css({ color: theme['secondary-color'], margin: 0 })}>
+          <h2 className={css({ color: theme.secondaryColor, margin: 0 })}>
             Theme
           </h2>
         </div>
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-2']
+            backgroundColor: theme.primary2
           })}
         />
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-3']
+            backgroundColor: theme.primary3
           })}
         />
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-4']
+            backgroundColor: theme.primary4
           })}
         />
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-5']
+            backgroundColor: theme.primary5
           })}
         />
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-6']
+            backgroundColor: theme.primary6
           })}
         />
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-7']
+            backgroundColor: theme.primary7
           })}
         />
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-8']
+            backgroundColor: theme.primary8
           })}
         />
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-9']
+            backgroundColor: theme.primary9
           })}
         />
         <div
           className={css({
             width: '10%',
-            backgroundColor: theme['primary-10']
+            backgroundColor: theme.primary10
           })}
         />
       </div>
@@ -93,8 +93,8 @@ function Layout({ children }: ILayout) {
         <div
           className={css({
             width: '25%',
-            backgroundColor: theme['primary-1'],
-            padding: theme['padding-md']
+            backgroundColor: theme.primary1,
+            padding: theme.paddingMd
           })}
         >
           <Link href="/">
@@ -107,12 +107,10 @@ function Layout({ children }: ILayout) {
         <div
           className={css({
             width: '75%',
-            padding: theme['padding-md']
+            padding: theme.paddingMd
           })}
         >
-          <h1 className={css({ color: theme['secondary-color'] })}>
-            Example App
-          </h1>
+          <h1 className={css({ color: theme.secondaryColor })}>Example App</h1>
           {children}
         </div>
       </div>

@@ -33,7 +33,7 @@ function StartPage() {
           style={{ width: 100 }}
           defaultValue={3}
           name="inputNumber"
-          className={css({ color: theme['primary-color'] })}
+          className={css({ color: theme.primaryColor })}
         />
         <a href="#">Link</a>
       </FormItem>
