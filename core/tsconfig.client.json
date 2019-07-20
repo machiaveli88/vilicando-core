@@ -18,12 +18,19 @@
     "outDir": "",
     "paths": {
       "@assets": ["assets"],
+      "@assets/*": ["assets/*"],
       "@components": ["components"],
+      "@components/*": ["components/*"],
       "@data": ["data"],
+      "@data/*": ["data/*"],
       "@forms": ["forms"],
+      "@forms/*": ["forms/*"],
       "@language": ["language"],
+      "@language/*": ["language/*"],
       "@pages": ["pages"],
-      "@utils": ["utils"]
+      "@pages/*": ["pages/*"],
+      "@utils": ["utils"],
+      "@utils/*": ["utils/*"]
     },
     "preserveConstEnums": true,
     "removeComments": false,

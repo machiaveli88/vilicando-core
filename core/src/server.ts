@@ -8,13 +8,13 @@ module.exports = (theme: object, nextConfig: any = {}) => {
     webpack(config: any, options: any) {
       const dirname = dir || __dirname;
 
-      config.resolve.alias['@assets'] = path.join(dirname, 'assets');
-      config.resolve.alias['@components'] = path.join(dirname, 'components');
-      config.resolve.alias['@data'] = path.join(dirname, 'data');
-      config.resolve.alias['@forms'] = path.join(dirname, 'forms');
-      config.resolve.alias['@language'] = path.join(dirname, 'language');
-      config.resolve.alias['@pages'] = path.join(dirname, 'pages');
-      config.resolve.alias['@utils'] = path.join(dirname, 'utils');
+      config.resolve.alias['@assets'] = path.join(dirname, 'assets/');
+      config.resolve.alias['@components'] = path.join(dirname, 'components/');
+      config.resolve.alias['@data'] = path.join(dirname, 'data/');
+      config.resolve.alias['@forms'] = path.join(dirname, 'forms/');
+      config.resolve.alias['@language'] = path.join(dirname, 'language/');
+      config.resolve.alias['@pages'] = path.join(dirname, 'pages/');
+      config.resolve.alias['@utils'] = path.join(dirname, 'utils/');
 
       // waiting for PR https://github.com/zeit/next.js/pull/7550
       config.stats = {};
