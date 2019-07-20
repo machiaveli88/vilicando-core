@@ -3,12 +3,12 @@ import { TRuleProps } from 'fela';
 import { useFela } from '../theme';
 
 export interface IComponentLoader {
-  logo?: string;
+  children?: React.ReactNode;
   size?: number;
   text?: string;
 }
 
-function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
+function ComponentLoader({ size = 250, children, text }: IComponentLoader) {
   const { css, theme, renderer } = useFela();
 
   const pulseRing = (): TRuleProps => ({
@@ -65,7 +65,7 @@ function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
           animation: `k1 1.25s ${theme.easeOut} infinite`
         })}
       />
-      {!!logo && (
+      {!!children && (
         <div
           className={css({
             position: 'absolute',
@@ -95,7 +95,7 @@ function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
               }
             })}
           >
-            <img src={logo} className="App-logo" alt="logo" />
+            {children}
           </div>
         </div>
       )}
