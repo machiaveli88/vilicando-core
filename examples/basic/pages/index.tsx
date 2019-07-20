@@ -7,10 +7,9 @@ import {
   Select,
   Slider,
   Switch
-  } from 'antd';
+} from 'antd';
 import { useFela } from 'vilicando-core';
 import { useLanguage } from 'vilicando-core';
-// import Logo from '@assets/virtual-reality.svg'; todo: @asset geht aber @asset/... nicht!
 
 const FormItem = Form.Item;
 const Option = Select.Option;
