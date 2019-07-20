@@ -82,7 +82,7 @@ function ComponentLoader({ size = 250, logo, text }: IComponentLoader) {
               marginTop: -size * 0.5,
               backgroundColor: theme.white,
               borderRadius: size * 0.5,
-              boxShadow: theme.boxShadow2,
+              boxShadow: theme.shadow2,
               animation: `k2 1.25s ${theme.easeInOut} -.4s infinite`
             })}
           >
