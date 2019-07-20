@@ -33,6 +33,7 @@
     "fela-preset-web": "10.5.0",
     "immutable": "3.8.2",
     "less": "^2.7.3",
+    "lodash": "^4.17.15",
     "node-polyglot": "2.3.1",
     "nprogress": "^0.2.0",
     "null-loader": "3.0.0",
@@ -41,7 +42,7 @@
   },
   "devDependencies": {
     "@types/antd": "1.0.0",
-    "@types/lodash": "4.14.136",
+    "@types/lodash": "^4.14.136",
     "@types/next": "8.0.6",
     "@types/node": "12.6.8",
     "@types/node-polyglot": "0.4.33",
