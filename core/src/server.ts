@@ -12,6 +12,7 @@ module.exports = (theme: object, nextConfig: any = {}) => {
       config.resolve.alias['@components'] = path.join(dirname, 'components');
       config.resolve.alias['@data'] = path.join(dirname, 'data');
       config.resolve.alias['@forms'] = path.join(dirname, 'forms');
+      config.resolve.alias['@language'] = path.join(dirname, 'language');
       config.resolve.alias['@pages'] = path.join(dirname, 'pages');
       config.resolve.alias['@utils'] = path.join(dirname, 'utils');
 

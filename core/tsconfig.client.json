@@ -21,6 +21,7 @@
       "@components": ["components"],
       "@data": ["data"],
       "@forms": ["forms"],
+      "@language": ["language"],
       "@pages": ["pages"],
       "@utils": ["utils"]
     },
