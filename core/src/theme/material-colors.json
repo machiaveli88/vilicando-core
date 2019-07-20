@@ -1,4 +1,6 @@
 {
+  "primary-color": "#f44336",
+
   "primary-1": "#ffebee",
   "primary-2": "#ffcdd2",
   "primary-3": "#ef9a9a",
@@ -9,6 +11,30 @@
   "primary-8": "#d32f2f",
   "primary-9": "#c62828",
   "primary-10": "#b71c1c",
+
+  "secondary-color": "#ff5722",
+
+  "secondary-1": "#fbe9e7",
+  "secondary-2": "#ffccbc",
+  "secondary-3": "#ffab91",
+  "secondary-4": "#ff8a65",
+  "secondary-5": "#ff7043",
+  "secondary-6": "#ff5722",
+  "secondary-7": "#f4511e",
+  "secondary-8": "#e64a19",
+  "secondary-9": "#d84315",
+  "secondary-10": "#bf360c",
+
+  "grey-1": "#f8f9fa",
+  "grey-2": "#f1f3f5",
+  "grey-3": "#e9ecef",
+  "grey-4": "#dee2e6",
+  "grey-5": "#ced4da",
+  "grey-6": "#adb5bd",
+  "grey-7": "#868e96",
+  "grey-8": "#495057",
+  "grey-9": "#343a40",
+  "grey-10": "#212529",
 
   "blue-1": "#e3f2fd",
   "blue-2": "#bbdefb",
