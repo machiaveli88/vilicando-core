@@ -5,7 +5,7 @@ import { useFela } from '../theme';
 export interface IComponentLoader {
   children?: React.ReactNode;
   size?: number;
-  text?: string;
+  text?: string | React.ReactNode;
 }
 
 function ComponentLoader({ size = 250, children, text }: IComponentLoader) {
@@ -89,7 +89,7 @@ function ComponentLoader({ size = 250, children, text }: IComponentLoader) {
               top: '50%',
               transform: 'translateX(-50%) translateY(-50%)',
               display: 'block',
-              '> img': {
+              '> *': {
                 width: size,
                 height: size
               }

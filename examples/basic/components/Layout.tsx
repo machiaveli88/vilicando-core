@@ -100,8 +100,11 @@ function Layout({ children }: ILayout) {
           <Link href="/">
             <a className={css({ display: 'block' })}>Start</a>
           </Link>
-          <Link href="/about">
-            <a className={css({ display: 'block' })}>About</a>
+          <Link href="/with-lazy-loading">
+            <a className={css({ display: 'block' })}>With lazy-loading</a>
+          </Link>
+          <Link href="/without-ssr">
+            <a className={css({ display: 'block' })}>Without SSR</a>
           </Link>
         </div>
         <div

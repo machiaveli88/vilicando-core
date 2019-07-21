@@ -6,6 +6,10 @@ import { IRenderer } from 'fela';
 import { Loader, Progress } from './components';
 // import { DebeProvider } from 'debe-react';
 
+export const CoreContext = React.createContext({});
+
+export const useCore = () => React.useContext(CoreContext);
+
 export interface ICoreProvider {
   children?: React.ReactNode;
   theme?: object;
@@ -26,12 +30,14 @@ function CoreProvider({
   locale
 }: ICoreProvider) {
   return (
-    <FelaProvider renderer={renderer} theme={theme}>
-      <LanguageProvider translation={{}} locale={locale}>
-        {loading ? showLoader() : null}
-        <Progress>{children}</Progress>
-      </LanguageProvider>
-    </FelaProvider>
+    <CoreContext.Provider value={{ showLoader }}>
+      <FelaProvider renderer={renderer} theme={theme}>
+        <LanguageProvider translation={{}} locale={locale}>
+          {loading ? showLoader() : null}
+          <Progress>{children}</Progress>
+        </LanguageProvider>
+      </FelaProvider>
+    </CoreContext.Provider>
   );
 }
 
