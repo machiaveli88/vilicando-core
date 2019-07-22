@@ -9,7 +9,11 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-function Progress({ children }: any) {
+interface IProgress {
+  children: React.ReactNode;
+}
+
+function Progress({ children }: IProgress) {
   const { theme, renderer } = useFela();
   const color = theme.primaryColor;
 
