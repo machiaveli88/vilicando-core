@@ -1,0 +1,20 @@
+{
+  "de": {
+    "DATEPICKER": "Datum",
+    "ENGLISH": "Englisch",
+    "GERMAN": "Deutsch",
+    "INPUT_NUMBER": "Zahl",
+    "SELECT": "Auswahl",
+    "SLIDER": "Wert",
+    "SWITCH": "Ein/Aus"
+  },
+  "en": {
+    "DATEPICKER": "Date",
+    "ENGLISH": "English",
+    "GERMAN": "German",
+    "INPUT_NUMBER": "Number",
+    "SELECT": "Select",
+    "SLIDER": "Value",
+    "SWITCH": "On/Off"
+  }
+}

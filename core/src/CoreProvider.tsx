@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LanguageProvider from './language';
+import LanguageProvider from './LanguageProvider';
 import { Debe } from 'debe';
 import { IRenderer } from 'fela';
 import { RendererProvider } from 'react-fela';
@@ -40,13 +40,11 @@ function CoreProvider({
   locale = defaultLocale,
   translations = {}
 }: ICoreProvider) {
-  const phrases = translations ? translations[locale] || {} : {};
-
   return (
     <RendererProvider renderer={renderer}>
       <ThemeProvider value={{ ...defaultTheme, ...theme }}>
         {loading ? showLoader() : null}
-        <LanguageProvider phrases={phrases} locale={locale}>
+        <LanguageProvider translations={translations} locale={locale}>
           <Progress>{children}</Progress>
         </LanguageProvider>
       </ThemeProvider>

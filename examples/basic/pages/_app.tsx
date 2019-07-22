@@ -4,6 +4,7 @@ import theme from '../theme.json';
 import { App, Container, Loader } from 'vilicando-core';
 import { Layout } from '@components';
 import { Logo } from '@assets';
+import translations from '../translations.json';
 
 export default class CustomApp extends App {
   render() {
@@ -13,6 +14,7 @@ export default class CustomApp extends App {
       <Container
         theme={theme}
         renderer={renderer}
+        translations={translations}
         showLoader={() => (
           <Loader text="Example app">
             <Logo />

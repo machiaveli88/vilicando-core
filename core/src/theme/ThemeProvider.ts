@@ -738,8 +738,6 @@ const parseTheme = (theme: object): ITheme => {
 
 export const ThemeContext = React.createContext({});
 
-export const useTheme = () => React.useContext(ThemeContext);
-
 export const useFela = (): {
   css: (css: object) => string;
   theme: ITheme;

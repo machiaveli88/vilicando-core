@@ -16,12 +16,12 @@ const Option = Select.Option;
 
 function Form() {
   const { css, theme } = useFela();
-  const translate = useLanguage();
+  const { translate, locale, setLocale } = useLanguage();
 
   return (
     <AntdForm layout="horizontal">
       <FormItem
-        label="Input Number"
+        label={translate('INPUT_NUMBER')}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 8 }}
       >
@@ -34,22 +34,29 @@ function Form() {
           name="inputNumber"
           className={css({ color: theme.primaryColor })}
         />
-        <a href="#">Link</a>
       </FormItem>
 
       <FormItem
-        label={translate('DUPLICATE')}
+        label={translate('SWITCH')}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 8 }}
       >
         <Switch defaultChecked />
       </FormItem>
 
-      <FormItem label="Slider" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+      <FormItem
+        label={translate('SLIDER')}
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 8 }}
+      >
         <Slider defaultValue={70} />
       </FormItem>
 
-      <FormItem label="Select" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+      <FormItem
+        label={translate('SELECT')}
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 8 }}
+      >
         <Select size="large" defaultValue="lucy" style={{ width: 192 }}>
           <Option value="jack">jack</Option>
           <Option value="lucy">lucy</Option>
@@ -61,18 +68,28 @@ function Form() {
       </FormItem>
 
       <FormItem
-        label="DatePicker"
+        label={translate('DATEPICKER')}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 8 }}
       >
         <DatePicker name="startDate" />
       </FormItem>
       <FormItem style={{ marginTop: 48 }} wrapperCol={{ span: 8, offset: 8 }}>
-        <Button size="large" type="primary" htmlType="submit">
-          OK
+        <Button
+          size="large"
+          type={locale === 'en' ? 'primary' : 'default'}
+          onClick={() => setLocale('en')}
+          style={{ marginLeft: 8 }}
+        >
+          {translate('ENGLISH')}
         </Button>
-        <Button size="large" style={{ marginLeft: 8 }}>
-          Cancel
+        <Button
+          size="large"
+          type={locale === 'de' ? 'primary' : 'default'}
+          onClick={() => setLocale('de')}
+          style={{ marginLeft: 8 }}
+        >
+          {translate('GERMAN')}
         </Button>
       </FormItem>
     </AntdForm>

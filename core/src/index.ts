@@ -1,4 +1,4 @@
-export { useLanguage } from './language';
+export { useLanguage } from './LanguageProvider';
 export { Loader } from './components';
 export {
   ThemeProvider,

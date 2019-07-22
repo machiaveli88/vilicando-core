@@ -14,7 +14,7 @@
 
 #### 0.2
 
-- [ ] Language
+- [x] Language
 
 #### 0.3
 
