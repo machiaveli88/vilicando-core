@@ -8,7 +8,7 @@ const Form = dynamic(() => import('@components/Form'), {
       <Logo />
     </Loader>
   ),
-  onSSR: <div>No SSR for this content supported!</div>
+  onSSR: () => <div>No SSR for this content supported!</div>
 });
 
 function StartPage() {
