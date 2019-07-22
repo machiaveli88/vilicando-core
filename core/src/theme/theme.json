@@ -224,10 +224,11 @@
   "border-radius-base": 0,
   "border-radius-sm": 0,
 
-  "padding-lg": "24px",
-  "padding-md": "16px",
-  "padding-sm": "12px",
-  "padding-xs": "8px",
+  "padding-xl": "24px",
+  "padding-lg": "16px",
+  "padding-md": "12px",
+  "padding-sm": "8px",
+  "padding-xs": "4px",
 
   "control-padding-horizontal": "@padding-sm",
   "control-padding-horizontal-sm": "@padding-xs",

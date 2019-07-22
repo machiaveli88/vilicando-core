@@ -341,6 +341,7 @@ export interface ITheme {
   outlineBlurSize: number | string;
   outlineColor: string;
   outlineWidth: string;
+  paddingXl: string;
   paddingLg: string;
   paddingMd: string;
   paddingSm: string;
