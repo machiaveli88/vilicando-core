@@ -1,23 +1,33 @@
 import * as React from 'react';
 import LanguageProvider from './language';
 import { Debe } from 'debe';
-import { FelaProvider } from './theme';
 import { IRenderer } from 'fela';
+import { RendererProvider } from 'react-fela';
 import { Loader, Progress } from './components';
+import { ThemeProvider } from './theme';
+import defaultTheme from './theme/theme.json';
 // import { DebeProvider } from 'debe-react';
 
-export const CoreContext = React.createContext({});
-
-export const useCore = () => React.useContext(CoreContext);
+const _navigator = {
+  ...(typeof window === 'undefined' ? {} : navigator)
+} as any;
+const defaultLocale =
+  _navigator.languages && _navigator.languages.length
+    ? _navigator.languages[0]
+    : _navigator.userLanguage ||
+      _navigator.language ||
+      _navigator.browserLanguage ||
+      'de';
 
 export interface ICoreProvider {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   theme?: object;
   renderer?: IRenderer;
   showLoader?: () => React.ReactNode;
   loading?: boolean;
   db?: Debe | (() => Debe);
   locale?: string;
+  translations?: object;
 }
 
 function CoreProvider({
@@ -27,17 +37,20 @@ function CoreProvider({
   renderer,
   showLoader = () => <Loader />,
   loading = false,
-  locale
+  locale = defaultLocale,
+  translations = {}
 }: ICoreProvider) {
+  const phrases = translations ? translations[locale] || {} : {};
+
   return (
-    <CoreContext.Provider value={{ showLoader }}>
-      <FelaProvider renderer={renderer} theme={theme}>
-        <LanguageProvider translation={{}} locale={locale}>
-          {loading ? showLoader() : null}
+    <RendererProvider renderer={renderer}>
+      <ThemeProvider value={{ ...defaultTheme, ...theme }}>
+        {loading ? showLoader() : null}
+        <LanguageProvider phrases={phrases} locale={locale}>
           <Progress>{children}</Progress>
         </LanguageProvider>
-      </FelaProvider>
-    </CoreContext.Provider>
+      </ThemeProvider>
+    </RendererProvider>
   );
 }
 
