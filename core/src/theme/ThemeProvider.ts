@@ -52,6 +52,7 @@ export interface ITheme {
   blue8: string;
   blue9: string;
   blue10: string;
+  blueColor: string;
   bodyBackground: string;
   borderColorBase: string;
   borderColorInverse: string;
@@ -144,6 +145,7 @@ export interface ITheme {
   cyan8: string;
   cyan9: string;
   cyan10: string;
+  cyanColor: string;
   disabledBg: string;
   disabledColor: string;
   disabledColorDark: string;
@@ -191,6 +193,7 @@ export interface ITheme {
   geekblue8: string;
   geekblue9: string;
   geekblue10: string;
+  geekblueColoe: string;
   gold1: string;
   gold2: string;
   gold3: string;
@@ -201,6 +204,7 @@ export interface ITheme {
   gold8: string;
   gold9: string;
   gold10: string;
+  goldColor: string;
   green1: string;
   green2: string;
   green3: string;
@@ -211,6 +215,7 @@ export interface ITheme {
   green8: string;
   green9: string;
   green10: string;
+  greenColor: string;
   grey1: string;
   grey2: string;
   grey3: string;
@@ -221,6 +226,7 @@ export interface ITheme {
   grey8: string;
   grey9: string;
   grey10: string;
+  greyColor: string;
   gridColumns: number | string;
   gridGutterWidth: number | string;
   heading1Size: string;
@@ -283,6 +289,7 @@ export interface ITheme {
   lime8: string;
   lime9: string;
   lime10: string;
+  limeColor: string;
   lineHeightBase: number | string;
   linkActiveColor: string;
   linkColor: string;
@@ -306,6 +313,7 @@ export interface ITheme {
   magenta8: string;
   magenta9: string;
   magenta10: string;
+  magentaColor: string;
   menuBg: string;
   menuCollapsedWidth: string;
   menuDarkArrowColor: string;
@@ -337,7 +345,7 @@ export interface ITheme {
   orange7: string;
   orange8: string;
   orange9: string;
-  orange10: string;
+  orangeColor: string;
   outlineBlurSize: number | string;
   outlineColor: string;
   outlineWidth: string;
@@ -363,6 +371,7 @@ export interface ITheme {
   pink8: string;
   pink9: string;
   pink10: string;
+  pinkColor: string;
   popoverArrowColor: string;
   popoverArrowOuterColor: string;
   popoverArrowWidth: string;
@@ -396,6 +405,7 @@ export interface ITheme {
   purple8: string;
   purple9: string;
   purple10: string;
+  purpleColor: string;
   radioButtonActiveColor: string;
   radioButtonBg: string;
   radioButtonCheckedBg: string;
@@ -415,6 +425,7 @@ export interface ITheme {
   red8: string;
   red9: string;
   red10: string;
+  redColor: string;
   screenLg: string;
   screenLgMax: string;
   screenLgMin: string;
@@ -547,6 +558,7 @@ export interface ITheme {
   volcano8: string;
   volcano9: string;
   volcano10: string;
+  volcanoColor: string;
   warningColor: string;
   waveAnimationWidth: string;
   white: string;
@@ -560,6 +572,7 @@ export interface ITheme {
   yellow8: string;
   yellow9: string;
   yellow10: string;
+  yellowColor: string;
   zindexAffix: number | string;
   zindexBackTop: number | string;
   zindexBadge: number | string;

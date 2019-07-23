@@ -43,13 +43,13 @@
 Vilicando uses [fela](http://fela.js.org) for theming and [antd](https://ant.design/) for the standard UI components. The standard theme variables therefore also depend on the Antd variables, which can be found [here](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less), plus:
 
 - padding-xl
-- secondary-color
 - secondary-1
   ...
 - secondary-10
 - grey-1
   ...
 - grey-10
+- XY-color (for each color)
 
 ## Language
 
