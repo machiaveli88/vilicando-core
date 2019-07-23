@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -16,6 +16,8 @@
     "build:watch": "tsc -w"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.136",
+    "@types/node": "12.6.8",
     "@zeit/next-less": "1.0.1",
     "antd": "3.20.5",
     "babel-plugin-import": "1.12.0",
@@ -38,22 +40,20 @@
     "nprogress": "^0.2.0",
     "null-loader": "3.0.0",
     "react-fela": "10.5.0",
-    "tinycolor2": "1.4.1"
+    "tinycolor2": "1.4.1",
+    "typescript": "3.5.3"
   },
   "devDependencies": {
     "@types/antd": "1.0.0",
-    "@types/lodash": "^4.14.136",
     "@types/next": "8.0.6",
-    "@types/node": "12.6.8",
     "@types/node-polyglot": "0.4.33",
     "@types/nprogress": "^0.2.0",
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
-    "@types/tinycolor2": "1.4.2",
-    "typescript": "3.5.3"
+    "@types/tinycolor2": "1.4.2"
   },
   "peerDependencies": {
-    "next": "9.0.2",
+    "next": "canary",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },

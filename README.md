@@ -50,3 +50,7 @@ Vilicando uses [fela](http://fela.js.org) for theming and [antd](https://ant.des
 - grey-1
   ...
 - grey-10
+
+## Language
+
+Based on [polyglot](https://github.com/airbnb/polyglot.js#options-overview).
