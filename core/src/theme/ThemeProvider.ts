@@ -193,7 +193,7 @@ export interface ITheme {
   geekblue8: string;
   geekblue9: string;
   geekblue10: string;
-  geekblueColoe: string;
+  geekblueColor: string;
   gold1: string;
   gold2: string;
   gold3: string;
