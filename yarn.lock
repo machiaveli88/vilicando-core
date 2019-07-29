@@ -2831,6 +2831,14 @@ fela-dom@^10.5.0:
     fast-loops "^1.0.1"
     fela-utils "^10.5.0"
 
+fela-plugin-custom-property@^10.6.0:
+  version "10.6.0"
+  resolved "https://registry.yarnpkg.com/fela-plugin-custom-property/-/fela-plugin-custom-property-10.6.0.tgz#1053a6a328368e3b451e633468751b0a7b7bac8e"
+  integrity sha512-v+kACWrEJH5MB6wRdW67Ji1HxU5/PyZWTOPuzwmT9jpUeejF3OCCT2ah5hxw2cZqQjMmaSkYxuvmTE8xJbZ4Lw==
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    isobject "^3.0.1"
+
 fela-plugin-embedded@10.5.0, fela-plugin-embedded@^10.5.0:
   version "10.5.0"
   resolved "https://registry.yarnpkg.com/fela-plugin-embedded/-/fela-plugin-embedded-10.5.0.tgz#b97b9e200479dd5907ef208f7ace3896ccc0c8e7"
@@ -2853,6 +2861,13 @@ fela-plugin-fallback-value@^10.5.0:
   integrity sha512-CgirjSPtTvoRxoS3JfTAIKtvlrqe2PzXyELUIQ2V1o2lWVozBJc9lmRC493FPPtyPpgP8Zn311JLxaUC2hOGVQ==
   dependencies:
     css-in-js-utils "^3.0.0"
+    isobject "^3.0.1"
+
+fela-plugin-friendly-pseudo-class@^10.6.0:
+  version "10.6.0"
+  resolved "https://registry.yarnpkg.com/fela-plugin-friendly-pseudo-class/-/fela-plugin-friendly-pseudo-class-10.6.0.tgz#edb8e51e5d90db2b4847369d49336f33193353c8"
+  integrity sha512-3Qonf+r0ulm52Y2CUzutYgq8wNrCOOAlDUjmh4zDVN7iiJ+kthNimkpEAbUKdLx6Ghkh850goFwWonAa3MYOWA==
+  dependencies:
     isobject "^3.0.1"
 
 fela-plugin-named-keys@10.5.0:
