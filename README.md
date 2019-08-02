@@ -18,7 +18,7 @@
 
 #### 0.3
 
-- [ ] Database
+- [x] Database
 - [ ] Example app with DB
 
 #### 0.4

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import LanguageProvider from './LanguageProvider';
-import { Debe } from 'debe';
 import { IRenderer } from 'fela';
 import { RendererProvider } from 'react-fela';
 import { Loader, Progress } from './components';
 import { ThemeProvider } from './theme';
 import defaultTheme from './theme/theme.json';
-// import { DebeProvider } from 'debe-react';
+import DebeProvider, { IDebeProvider } from './DebeProvider';
 
 const _navigator = {
   ...(typeof window === 'undefined' ? {} : navigator)
@@ -19,20 +18,18 @@ const defaultLocale =
       _navigator.browserLanguage ||
       'de';
 
-export interface ICoreProvider {
+export interface ICoreProvider extends IDebeProvider {
   children: React.ReactNode;
   theme?: object;
   renderer?: IRenderer;
-  showLoader?: () => React.ReactNode;
   loading?: boolean;
-  db?: Debe | (() => Debe);
   locale?: string;
   translations?: object;
 }
 
 function CoreProvider({
   children,
-  // db,
+  db,
   theme,
   renderer,
   showLoader = () => <Loader />,
@@ -44,18 +41,14 @@ function CoreProvider({
     <RendererProvider renderer={renderer}>
       <ThemeProvider value={{ ...defaultTheme, ...theme }}>
         {loading ? showLoader() : null}
-        <LanguageProvider translations={translations} locale={locale}>
-          <Progress>{children}</Progress>
-        </LanguageProvider>
+        <DebeProvider showLoader={showLoader} db={db}>
+          <LanguageProvider translations={translations} locale={locale}>
+            <Progress>{children}</Progress>
+          </LanguageProvider>
+        </DebeProvider>
       </ThemeProvider>
     </RendererProvider>
   );
 }
-
-/* !!db ? (
-<DebeProvider loading={showLoader} value={db}>
-  {children}
-</DebeProvider>
-) : */
 
 export default CoreProvider;

@@ -1,7 +1,15 @@
+require('dotenv').config();
+
 const path = require('path');
 const withTheme = require('./theme/server');
+const Dotenv = require('dotenv-webpack');
 
-module.exports = (theme: object, nextConfig: any = {}) => {
+interface IWithCore {
+  theme: object;
+  env: string;
+}
+
+module.exports = ({ theme, env }: IWithCore, nextConfig: any = {}) => {
   const { webpack, dir, ...rest } = nextConfig;
 
   return withTheme(theme, {
@@ -16,7 +24,7 @@ module.exports = (theme: object, nextConfig: any = {}) => {
       config.resolve.alias['@pages'] = path.join(dirname, 'pages/');
       config.resolve.alias['@utils'] = path.join(dirname, 'utils/');
 
-      // waiting for PR https://github.com/zeit/next.js/pull/7550
+      // waiting for PR https://github.com/zeit/next.js/pull/7550 & https://github.com/zeit/next-plugins/issues/496
       config.stats = {};
       config.stats.warnings = false;
       config.stats.warningsFilter = (warning: string) => {
@@ -28,6 +36,17 @@ module.exports = (theme: object, nextConfig: any = {}) => {
         console.log('it works?!');
         return /Conflicting order between/gm.test(warning);
       };
+
+      if (env)
+        config.plugins = [
+          ...(config.plugins || []),
+
+          // Read the .env file
+          new Dotenv({
+            path: env,
+            systemvars: true
+          })
+        ];
 
       if (typeof webpack === 'function') {
         return webpack(config, options);
