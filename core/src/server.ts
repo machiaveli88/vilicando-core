@@ -24,19 +24,6 @@ module.exports = ({ theme, env }: IWithCore, nextConfig: any = {}) => {
       config.resolve.alias['@pages'] = path.join(dirname, 'pages/');
       config.resolve.alias['@utils'] = path.join(dirname, 'utils/');
 
-      // waiting for PR https://github.com/zeit/next.js/pull/7550 & https://github.com/zeit/next-plugins/issues/496
-      config.stats = {};
-      config.stats.warnings = false;
-      config.stats.warningsFilter = (warning: string) => {
-        console.log('it works?!');
-        console.log('it works?!');
-        console.log('it works?!');
-        console.log('it works?!');
-        console.log('it works?!');
-        console.log('it works?!');
-        return /Conflicting order between/gm.test(warning);
-      };
-
       if (env)
         config.plugins = [
           ...(config.plugins || []),
