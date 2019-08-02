@@ -27,7 +27,8 @@ function Layout({ children }: ILayout) {
           className={css({
             width: '10%',
             backgroundColor: theme.primary1,
-            padding: theme.paddingMd
+            paddingX: theme.paddingMd,
+            paddingY: theme.paddingXs
           })}
         >
           <h2 className={css({ color: theme.secondaryColor, margin: 0 })}>

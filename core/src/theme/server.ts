@@ -5,7 +5,7 @@ module.exports = (modifyVars: object, nextConfig: any = {}) => {
   const { lessLoaderOptions, webpack, ...rest } = nextConfig;
 
   return withLess({
-    extractCssChunksOptions: { orderWarning: false }, // todo: waiting for PR https://github.com/zeit/next-plugins/pull/510
+    // extractCssChunksOptions: { orderWarning: false }, // todo: waiting for PR https://github.com/zeit/next-plugins/pull/510
     lessLoaderOptions: {
       javascriptEnabled: true,
       modifyVars: {

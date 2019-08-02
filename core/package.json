@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",

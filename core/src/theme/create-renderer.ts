@@ -39,7 +39,7 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
         ifSmall: '@media (max-width: 767px, min-width: 480)',
         ifMini: '@media (max-width: 479px)'
       }),
-      /* customProperty({
+      customProperty({
         size: size => ({
           width: size,
           height: size
@@ -119,8 +119,8 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
           minWidth: width,
           width
         })
-      }), */
-      // friendlyPseudoClass(),
+      }),
+      friendlyPseudoClass(),
       validator(),
       ...webPreset,
       ...plugins
