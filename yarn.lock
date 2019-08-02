@@ -2205,6 +2205,14 @@ create-react-context@0.2.2:
     fbjs "^0.8.0"
     gud "^1.0.0"
 
+cross-fetch@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.4.tgz#7bef7020207e684a7638ef5f2f698e24d9eb283c"
+  integrity sha512-MSHgpjQqgbT/94D4CyADeNoYh52zMkCX4pcJvPP5WqPsLFMKjr2TCMg381ox5qI0ii2dPwaLx/00477knXqXVw==
+  dependencies:
+    node-fetch "2.6.0"
+    whatwg-fetch "3.0.0"
+
 cryptiles@2.x.x:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
@@ -2349,6 +2357,15 @@ debe-delta@1.4.4:
     automerge "^0.11.0"
     debe "1.4.4"
     debe-adapter "1.4.4"
+    tslib "^1.9.3"
+
+debe-http@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/debe-http/-/debe-http-1.4.4.tgz#cda60c7236099b8019620d3c757a55cfda69963d"
+  integrity sha512-9OAKxGMJ06PMHJwkHh8KqtvbGuYxypA+cYz0cbG4La/70chgkZ3rEYEVgS/G0XtUZntrValoco03UE41fayvjQ==
+  dependencies:
+    cross-fetch "^3.0.4"
+    debe "1.4.4"
     tslib "^1.9.3"
 
 debe-react@1.4.4:
@@ -6775,7 +6792,7 @@ webpack@4.38.0:
     watchpack "^1.5.0"
     webpack-sources "^1.3.0"
 
-whatwg-fetch@>=0.10.0:
+whatwg-fetch@3.0.0, whatwg-fetch@>=0.10.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.0.0.tgz#fc804e458cc460009b1a2b966bc8817d2578aefb"
   integrity sha512-9GSJUgz1D4MfyKU7KRqwOjXCXTqWdFNvEr7eUBYchQiVc744mqK/MzXPNR2WsPkmkOa4ywfg8C2n8h+13Bey1Q==

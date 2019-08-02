@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -24,6 +24,7 @@
     "babel-plugin-inline-react-svg": "1.1.0",
     "debe": "1.4.4",
     "debe-delta": "1.4.4",
+    "debe-http": "^1.4.4",
     "debe-react": "1.4.4",
     "debe-sync": "1.4.4",
     "dotenv-webpack": "^1.7.0",
