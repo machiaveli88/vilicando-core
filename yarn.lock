@@ -2340,70 +2340,70 @@ date-now@^0.1.4:
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
 
-debe-adapter@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/debe-adapter/-/debe-adapter-1.4.4.tgz#5293ffb96af9a49a28425abbed066a44da9a4131"
-  integrity sha512-1gGgDT25eNcHuc+cC6k4juVJDPxmulaNTvcpkg9oNt7OCA3pLwKSaGD4rJVzWbMZex6JZQk8QcDcHjS4B+IDow==
+debe-adapter@1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/debe-adapter/-/debe-adapter-1.4.5.tgz#c72e663abba79bf696417846d2b986fb08fa715a"
+  integrity sha512-SOCpLxRvU2wWCZ7xiXs8Aup59NCHd8AdpqsVXZZafu1GgUok9CqRRACaNtqtvV4DYZxwLI4th/djnb3Rq58B5Q==
   dependencies:
-    debe "1.4.4"
+    debe "1.4.5"
     nanoid "^2.0.3"
     tslib "^1.9.3"
 
-debe-delta@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/debe-delta/-/debe-delta-1.4.4.tgz#3ed58082565022af5369100bd4a3e02f5f7a61c6"
-  integrity sha512-UkaEXweY5+m1Xj1vfgkC0/S+1Hie0hHrMh/iLJunxQ0Y6DUnn5pZwcDL+ORGq1xyhI52fM9jtUfYvLzJf3vj3g==
+debe-delta@1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/debe-delta/-/debe-delta-1.4.5.tgz#40f12398a8adbf442a018db5f58f75e8ea45e77f"
+  integrity sha512-7eC0Ao8Mit1GP9H9jod/eURkxaeUBkmvo9OAz7WJh8zIfr4W3hO+x1k3peS6xM7s917FN09NE9sWd9SjJ3zzLQ==
   dependencies:
     automerge "^0.11.0"
-    debe "1.4.4"
-    debe-adapter "1.4.4"
+    debe "1.4.5"
+    debe-adapter "1.4.5"
     tslib "^1.9.3"
 
-debe-http@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/debe-http/-/debe-http-1.4.4.tgz#cda60c7236099b8019620d3c757a55cfda69963d"
-  integrity sha512-9OAKxGMJ06PMHJwkHh8KqtvbGuYxypA+cYz0cbG4La/70chgkZ3rEYEVgS/G0XtUZntrValoco03UE41fayvjQ==
+debe-http@^1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/debe-http/-/debe-http-1.4.5.tgz#eaf924e117d3a0ebdffdf6917072f316d331ced5"
+  integrity sha512-ptNpmTiQTlsTMt6L5PwcVL5VovgFR/geNb/C/RKJMSpbiYLktzBwTLERSlcPNx2BrWPNmEq20aj4/ufEgGVQMA==
   dependencies:
     cross-fetch "^3.0.4"
-    debe "1.4.4"
+    debe "1.4.5"
     tslib "^1.9.3"
 
-debe-react@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/debe-react/-/debe-react-1.4.4.tgz#743656189887abecce7695537d3f79b61b5b209b"
-  integrity sha512-2z7B9lIfTbhXFMtupLLdW94qFQErAfUayO0O68Jus4oZCFGPJ3Ij6LbegG8WS5wxoeouk1tvB9CypaGRNxXJvA==
+debe-react@1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/debe-react/-/debe-react-1.4.5.tgz#12f0c35454e0be8aa91f23a0f254174a18d42f12"
+  integrity sha512-W+/IyRz29sLGw2hD1/iRkoRzM8vG/PRJQuaywWmuypvSmOrJNb0NCtuvcCTo60qtQzWe2ZwFtcHBBb62bBqVUw==
   dependencies:
     "@types/redux" "^3.6.0"
-    debe "1.4.4"
-    debe-socket "1.4.4"
-    debe-sync "1.4.4"
+    debe "1.4.5"
+    debe-socket "1.4.5"
+    debe-sync "1.4.5"
     react-redux "^7.1.0"
     redux "^4.0.4"
     tslib "^1.9.3"
 
-debe-socket@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/debe-socket/-/debe-socket-1.4.4.tgz#b3bbb7713847c3abf2bd381612c5c927c82aafd5"
-  integrity sha512-0leV6LJws7NMCab7fV2RBa5Ns1x6EyyZ7zP9h4vRYtSqMuvoICeSlk1pM/Lk2A7Bdz0iEET2CQHAuymgAzSRdg==
+debe-socket@1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/debe-socket/-/debe-socket-1.4.5.tgz#89dd8515eca3fabe2c546cab071bc989d976f00f"
+  integrity sha512-kA0vDOl95j05xKouujDIS3D2ZqnCuBq6b5p8bVcYZIAmtboCESMK3CkxCdo95SgoiGhU630qFIJW7aBg7+fqxA==
   dependencies:
     asyngular-client "^6.1.0"
-    debe "1.4.4"
+    debe "1.4.5"
     tslib "^1.9.3"
 
-debe-sync@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/debe-sync/-/debe-sync-1.4.4.tgz#3cf1e15b5d55d545a9b4e92cbd7477afa8bd7b9a"
-  integrity sha512-Gywj5Q3I3CPd4kGO0LcqUIH4OXVzxQeIS8j7+nbgycDgu8L0W6XNpBApkrFUuxqAcldRF5YzVwqn6Etus4MJcg==
+debe-sync@1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/debe-sync/-/debe-sync-1.4.5.tgz#2adf8721e57efbffc602bbe525bd7f4e239d7a52"
+  integrity sha512-AM1QQfxIOkuD71BgHZKRPMPymHTniJex89Bfx5C7hhZbakILsw0gvMcstqunGSnISQhPn8AjrYjarv5ZcSkISw==
   dependencies:
     asyngular-client "^6.1.0"
-    debe "1.4.4"
-    debe-socket "1.4.4"
+    debe "1.4.5"
+    debe-socket "1.4.5"
     tslib "^1.9.3"
 
-debe@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/debe/-/debe-1.4.4.tgz#25bf0a552b056d5e77906883f6052c367b7b196f"
-  integrity sha512-5RX0EiDeOANZyJmdBfwzHg13mgFdO0dia+QBFA/SAgPfFLjWszuXZ9wiZxh8ZNlVqgvhBhFbhz2FzaDns2QtZg==
+debe@1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/debe/-/debe-1.4.5.tgz#ae56253fb6f83a616c4e56ce0d372ecceca0a894"
+  integrity sha512-W0S9WxAEsxsaIDA2sH34n89pTVCMqRNIVmtr4LXBhrLWt+czHcTldrc/NsYy7oXmrDY7I3Y/rrHY9N5NIcE4qg==
   dependencies:
     tslib "^1.9.3"
 
