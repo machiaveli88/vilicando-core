@@ -130,8 +130,19 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
   renderer.renderStatic(`
     ${normalize}
 
-    #__next {
+    html, body {
       height: 100%;
+      width: 100%;
+      position: fixed;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    #__next {
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     ${css}
