@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.136",
-    "@types/node": "12.6.9",
+    "@types/node": "12.7.1",
     "@zeit/next-less": "1.0.1",
-    "antd": "3.20.7",
+    "antd": "4.0.0-alpha.0",
     "babel-plugin-import": "1.12.0",
     "babel-plugin-inline-react-svg": "1.1.0",
     "debe": "1.4.5",
@@ -37,8 +37,8 @@
     "fela-plugin-unit": "10.6.1",
     "fela-plugin-validator": "10.6.1",
     "fela-preset-web": "10.6.1",
-    "immutable": "3.8.2",
-    "less": "^2.7.3",
+    "immutable": "4.0.0-rc.12",
+    "less": "^3.9.0",
     "lodash": "^4.17.15",
     "next-offline": "^4.0.3",
     "node-polyglot": "2.3.1",
@@ -53,14 +53,14 @@
     "@types/next": "8.0.6",
     "@types/node-polyglot": "0.4.33",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "16.8.24",
+    "@types/react": "16.9.1",
     "@types/react-dom": "16.8.5",
     "@types/tinycolor2": "1.4.2"
   },
   "peerDependencies": {
     "next": "canary",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
   },
   "repository": {
     "type": "git",

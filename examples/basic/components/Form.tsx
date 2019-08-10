@@ -75,22 +75,24 @@ function Form() {
         <DatePicker name="startDate" />
       </FormItem>
       <FormItem style={{ marginTop: 48 }} wrapperCol={{ span: 8, offset: 8 }}>
-        <Button
-          size="large"
-          type={locale === 'en' ? 'primary' : 'default'}
-          onClick={() => setLocale('en')}
-          style={{ marginLeft: 8 }}
-        >
-          {translate('ENGLISH')}
-        </Button>
-        <Button
-          size="large"
-          type={locale === 'de' ? 'primary' : 'default'}
-          onClick={() => setLocale('de')}
-          style={{ marginLeft: 8 }}
-        >
-          {translate('GERMAN')}
-        </Button>
+        <div>
+          <Button
+            size="large"
+            type={locale === 'en' ? 'primary' : 'default'}
+            onClick={() => setLocale('en')}
+            style={{ marginLeft: 8 }}
+          >
+            {translate('ENGLISH')}
+          </Button>
+          <Button
+            size="large"
+            type={locale === 'de' ? 'primary' : 'default'}
+            onClick={() => setLocale('de')}
+            style={{ marginLeft: 8 }}
+          >
+            {translate('GERMAN')}
+          </Button>
+        </div>
       </FormItem>
     </AntdForm>
   );
