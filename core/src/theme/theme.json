@@ -287,7 +287,7 @@
   "disabled-bg": "@background-color-base",
   "disabled-color-dark": "fade(#fff, 35%)",
 
-  "shadow-color": "rgba(0, 0, 0, 0.12)",
+  "shadow-color": "rgba(0, 0, 0, 0.18)",
   "shadow-color-inverse": "@component-background",
   "box-shadow-base": "@shadow-1-down",
   "shadow-1-up": "0 0 8px @shadow-color",
