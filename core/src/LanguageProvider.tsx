@@ -2,7 +2,8 @@ import * as moment from 'moment';
 import * as React from 'react';
 import deDE from 'antd/lib/locale-provider/de_DE';
 import enUS from 'antd/lib/locale-provider/en_US';
-import { ConfigProvider } from 'antd';
+// import { ConfigProvider } from 'antd';
+import ConfigProvider from 'antd/lib/config-provider';
 import 'moment/locale/de';
 import Polyglot from 'node-polyglot';
 
