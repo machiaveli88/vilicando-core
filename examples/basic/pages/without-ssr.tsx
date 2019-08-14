@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Loader, dynamic } from 'vilicando-core';
-import { Logo } from '@assets';
+import Logo from '../assets/logo.svg';
 
 const Form = dynamic(() => import('@components/Form'), {
   loading: () => (

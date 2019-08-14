@@ -3,6 +3,6 @@ const theme = require('./theme');
 const path = require('path');
 
 module.exports = withCore(
-  { theme, env: path.join(__dirname, 'test.env') },
+  { theme, env: path.join(__dirname, '.env') },
   { dir: __dirname }
 );

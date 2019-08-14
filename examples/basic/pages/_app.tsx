@@ -3,7 +3,7 @@ import renderer from '../renderer';
 import theme from '../theme.json';
 import { App, Container, Loader } from 'vilicando-core';
 import { Layout } from '@components';
-import { Logo } from '@assets';
+import Logo from '../assets/logo.svg';
 import translations from '../translations.json';
 
 export default class CustomApp extends App {

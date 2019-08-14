@@ -5,9 +5,9 @@
   "license": "ISC",
   "scripts": {
     "up": "yarn upgrade-interactive --latest && yarn check",
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
+    "dev": "nodemon",
+    "build": "next build && tsc --project tsconfig.server.json",
+    "start": "cross-env NODE_ENV=production node .next/index.js",
     "type-check": "tsc",
     "watch": "tsc -watch"
   },
