@@ -5,7 +5,6 @@ import { RendererProvider } from 'react-fela';
 import { Loader, Progress } from './components';
 import { ThemeProvider } from './theme';
 import defaultTheme from './theme/theme.json';
-import DebeProvider, { IDebeProvider } from './DebeProvider';
 
 const _navigator = {
   ...(typeof window === 'undefined' ? {} : navigator)
@@ -18,10 +17,11 @@ const defaultLocale =
       _navigator.browserLanguage ||
       'de';
 
-export interface ICoreProvider extends IDebeProvider {
+export interface ICoreProvider {
   children: React.ReactNode;
   theme?: object;
   renderer?: IRenderer;
+  showLoader?: () => React.ReactNode;
   loading?: boolean;
   locale?: string;
   translations?: object;
@@ -29,7 +29,7 @@ export interface ICoreProvider extends IDebeProvider {
 
 function CoreProvider({
   children,
-  db,
+  // db,
   theme,
   renderer,
   showLoader = () => <Loader />,
@@ -41,11 +41,11 @@ function CoreProvider({
     <RendererProvider renderer={renderer}>
       <ThemeProvider value={{ ...defaultTheme, ...theme }}>
         {loading ? showLoader() : null}
-        <DebeProvider showLoader={showLoader} db={db}>
-          <LanguageProvider translations={translations} locale={locale}>
-            <Progress>{children}</Progress>
-          </LanguageProvider>
-        </DebeProvider>
+        {/* <DebeProvider showLoader={showLoader} db={db}> */}
+        <LanguageProvider translations={translations} locale={locale}>
+          <Progress>{children}</Progress>
+        </LanguageProvider>
+        {/* </DebeProvider> */}
       </ThemeProvider>
     </RendererProvider>
   );

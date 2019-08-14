@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -16,17 +16,13 @@
     "build:watch": "tsc -w"
   },
   "dependencies": {
+    "@ant-design/icons": "^2.1.1",
     "@types/lodash": "^4.14.136",
     "@types/node": "12.7.1",
     "@zeit/next-less": "1.0.1",
     "antd": "4.0.0-alpha.2",
     "babel-plugin-import": "1.12.0",
     "babel-plugin-inline-react-svg": "1.1.0",
-    "debe": "1.4.5",
-    "debe-delta": "1.4.5",
-    "debe-http": "^1.4.5",
-    "debe-react": "1.4.5",
-    "debe-sync": "1.4.5",
     "dotenv-webpack": "^1.7.0",
     "fela": "10.6.1",
     "fela-plugin-custom-property": "^10.6.1",
@@ -37,7 +33,7 @@
     "fela-plugin-unit": "10.6.1",
     "fela-plugin-validator": "10.6.1",
     "fela-preset-web": "10.6.1",
-    "immutable": "3.7.6",
+    "indexof": "^0.0.1",
     "less": "2.7.3",
     "lodash": "^4.17.15",
     "next-offline": "^4.0.3",
@@ -56,9 +52,8 @@
     "@types/react": "16.9.1",
     "@types/react-dom": "16.8.5",
     "@types/tinycolor2": "1.4.2",
-    "buffer": "5.2.1",
     "cacache": "10.0.4",
-    "indexof": "^0.0.1"
+    "punycode": "^2.1.1"
   },
   "peerDependencies": {
     "next": "canary",
