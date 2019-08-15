@@ -20,7 +20,6 @@
     "@types/lodash": "^4.14.136",
     "@types/node": "12.7.1",
     "@zeit/next-less": "1.0.1",
-    "antd": "4.0.0-alpha.2",
     "babel-plugin-import": "1.12.0",
     "babel-plugin-inline-react-svg": "1.1.0",
     "cross-env": "^5.2.0",
@@ -60,7 +59,8 @@
     "punycode": "^2.1.1"
   },
   "peerDependencies": {
-    "next": "canary",
+    "antd": ">= 3.21.2",
+    "next": ">= 9.0.3",
     "react": "16.9.0",
     "react-dom": "16.9.0"
   },
