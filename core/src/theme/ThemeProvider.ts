@@ -765,7 +765,7 @@ export const useFela = (): {
   ]);
 
   renderer.renderStatic(`
-    html {
+    html, body {
       background-color: ${parsedTheme.primaryColor};
     }
     #__next {

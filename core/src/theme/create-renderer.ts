@@ -139,9 +139,12 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
     }
 
     #__next {
+      display: flex;
+      flex-direction: column;
       width: 100vw;
       height: 100vh;
-      overflow: auto;
+      min-height: 100%;
+      overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
     }
 

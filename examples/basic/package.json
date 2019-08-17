@@ -12,7 +12,7 @@
     "watch": "tsc -watch"
   },
   "dependencies": {
-    "next": "canary",
+    "next": "9.0.3",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "vilicando-core": "*"
