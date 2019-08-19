@@ -3,7 +3,7 @@ require('dotenv').config();
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
 const withOffline = require('next-offline');
-const withTheme = require('./theme/server');
+const withTheme = require('../theme/server');
 
 interface IWithCore {
   theme: object;

@@ -4,15 +4,12 @@
   "version": "0.0.1",
   "license": "ISC",
   "scripts": {
-    "up": "yarn upgrade-interactive --latest && yarn check",
-    "dev": "nodemon",
-    "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node .next/index.js",
-    "type-check": "tsc",
-    "watch": "tsc -watch"
+    "up": "vilicando-core up",
+    "dev": "vilicando-core",
+    "build": "vilicando-core build",
+    "start": "cross-env NODE_ENV=production node .next/index.js"
   },
   "dependencies": {
-    "next": "9.0.3",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "vilicando-core": "*"

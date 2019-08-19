@@ -24,5 +24,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "target": "es2017",
     "types": ["node"]
-  }
+  },
+  "include": ["src/server/**/*.ts", "src/server/**/*.tsx"]
 }
