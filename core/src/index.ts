@@ -1,3 +1,4 @@
+export { default as CoreProvider, ICoreProvider } from './CoreProvider';
 export { useLanguage } from './LanguageProvider';
 export { Loader } from './components';
 export {
