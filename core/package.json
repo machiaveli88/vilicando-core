@@ -7,9 +7,7 @@
   "bin": "lib/bin/index.js",
   "files": [
     "lib",
-    ".babelrc",
-    "tsconfig.client.json",
-    "tsconfig.server.json"
+    ".babelrc"
   ],
   "scripts": {
     "build": "tsc",
@@ -20,6 +18,7 @@
     "@zeit/next-less": "1.0.1",
     "babel-plugin-import": "1.12.0",
     "babel-plugin-inline-react-svg": "1.1.0",
+    "dotenv": "^8.1.0",
     "dotenv-webpack": "^1.7.0",
     "fela": "10.6.1",
     "fela-plugin-custom-property": "^10.6.1",
@@ -39,11 +38,11 @@
     "null-loader": "3.0.0",
     "react-fela": "10.6.1",
     "tinycolor2": "1.4.1",
+    "ts-node": "^8.3.0",
     "typescript": "3.5.3"
   },
   "devDependencies": {
     "@types/antd": "1.0.0",
-    "@types/dotenv": "^6.1.1",
     "@types/lodash": "^4.14.137",
     "@types/next": "8.0.6",
     "@types/node": "^12.7.2",

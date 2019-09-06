@@ -2,14 +2,23 @@
 import { execSync } from 'child_process';
 import { join } from 'path';
 
-const build = () => {
-  const config = join(__dirname, '../../tsconfig.server.json');
-  const buildNextCli = 'next build';
-  const buildCustomServerCli = `tsc --project ${config} --baseUrl ${process.cwd()} --outDir .next`;
+const dir = join(__dirname, '../..');
+const config = join(dir, 'tsconfig.server.json');
+const buildCustomServerCli = `tsc --project ${config} --baseUrl ${process.cwd()} --outDir .next`;
 
-  return execSync(/* buildNextCli + ' && ' + */ buildCustomServerCli, {
+const build = () =>
+  execSync('next build && ' + buildCustomServerCli, {
     stdio: 'inherit'
   });
+
+const dev = () => {
+  console.log(`ts-node --project ${config} ${dir}/server.ts`);
+  return execSync(
+    `ts-node --project ${config} ${dir}/server.ts`,
+    /* `${buildCustomServerCli} && ${process.cwd()}/.next/server.js` */ {
+      stdio: 'inherit'
+    }
+  );
 };
 
 const up = ({ '--latest': latest = true }: any) =>
@@ -18,4 +27,4 @@ const up = ({ '--latest': latest = true }: any) =>
     { stdio: 'inherit' }
   );
 
-export { build, up };
+export { build, dev, up };

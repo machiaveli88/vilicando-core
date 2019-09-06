@@ -1,16 +1,20 @@
 require('dotenv').config();
 
-const Dotenv = require('dotenv-webpack');
-const path = require('path');
-const withOffline = require('next-offline');
-const withTheme = require('../theme/server');
+// @ts-ignore
+import Dotenv from 'dotenv-webpack';
+import path from 'path';
+// @ts-ignore
+import withOffline from 'next-offline';
+import withTheme from '../theme/server';
+
+// todo: dotenv-webpack entfernen und env in Objekt zurückgeben https://github.com/zeit/next.js/blob/canary/examples/with-env-from-next-config-js/next.config.js
 
 interface IWithCore {
   theme: object;
   env: string;
 }
 
-module.exports = ({ theme, env }: IWithCore, nextConfig: any = {}) => {
+export default ({ theme, env }: IWithCore, nextConfig: any = {}) => {
   const { webpack, dir, ...rest } = nextConfig;
 
   return withTheme(

@@ -27,7 +27,7 @@ const scripts: {
   [command: string]: () => Promise<(argv?: object) => void>;
 } = {
   build: async () => await import('./scripts').then(({ build }) => build),
-  dev: async () => await import('./dev').then(({ default: dev }) => dev),
+  dev: async () => await import('./scripts').then(({ dev }) => dev),
   up: async () => await import('./scripts').then(({ up }) => up)
 };
 const command = commands[0] || devCommand;
@@ -52,7 +52,9 @@ if (!foundCommand && !args['--help']) {
   console.log('No help found!');
   process.exit(0);
 }
-scripts[command]().then(exec => exec(args));
+scripts[command]()
+  .then(exec => exec(args))
+  .catch(err => console.error(err));
 
 // watch config in dev-mode
 if (command === devCommand) {

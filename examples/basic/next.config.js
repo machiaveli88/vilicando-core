@@ -1,4 +1,4 @@
-const withCore = require('vilicando-core/server');
+const { withCore } = require('vilicando-core');
 const theme = require('./theme');
 const path = require('path');
 
