@@ -1,7 +1,7 @@
 import * as React from 'react';
 import renderer from '../renderer';
 import theme from '../theme.json';
-import { App, Container, Loader } from 'vilicando-core';
+import { App, CoreProvider, Loader } from 'vilicando-core';
 import { Layout } from '@components';
 import Logo from '../assets/logo.svg';
 import translations from '../translations.json';
@@ -11,7 +11,7 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <Container
+      <CoreProvider
         theme={theme}
         renderer={renderer}
         translations={translations}
@@ -24,7 +24,7 @@ export default class CustomApp extends App {
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </Container>
+      </CoreProvider>
     );
   }
 }

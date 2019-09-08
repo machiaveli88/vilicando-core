@@ -28,6 +28,7 @@ const scripts: {
 } = {
   build: async () => await import('./scripts').then(({ build }) => build),
   dev: async () => await import('./scripts').then(({ dev }) => dev),
+  start: async () => await import('./scripts').then(({ start }) => start),
   up: async () => await import('./scripts').then(({ up }) => up)
 };
 const command = commands[0] || devCommand;

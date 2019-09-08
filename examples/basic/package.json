@@ -7,9 +7,11 @@
     "up": "vilicando-core up",
     "dev": "vilicando-core",
     "build": "vilicando-core build",
-    "start": "cross-env NODE_ENV=production node .next/index.js"
+    "start": "vilicando-core start"
   },
   "dependencies": {
+    "@ant-design/icons": "4.0.0-alpha.8",
+    "antd": "4.0.0-alpha.3",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "vilicando-core": "*"

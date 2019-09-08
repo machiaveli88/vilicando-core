@@ -11,15 +11,16 @@ const build = () =>
     stdio: 'inherit'
   });
 
-const dev = () => {
-  console.log(`ts-node --project ${config} ${dir}/server.ts`);
-  return execSync(
-    `ts-node --project ${config} ${dir}/server.ts`,
-    /* `${buildCustomServerCli} && ${process.cwd()}/.next/server.js` */ {
-      stdio: 'inherit'
-    }
-  );
-};
+const dev = () =>
+  execSync(`ts-node --project ${config} ${dir}/server.ts`, {
+    stdio: 'inherit'
+  });
+
+const start = () =>
+  execSync(`node .next/server.js`, {
+    // execSync(`cross-env NODE_ENV=production node .next/server.js`, {
+    stdio: 'inherit'
+  });
 
 const up = ({ '--latest': latest = true }: any) =>
   execSync(
@@ -27,4 +28,4 @@ const up = ({ '--latest': latest = true }: any) =>
     { stdio: 'inherit' }
   );
 
-export { build, dev, up };
+export { build, dev, start, up };
