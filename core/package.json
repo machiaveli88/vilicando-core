@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.16",
+  "version": "0.3.17",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -15,6 +15,7 @@
     "build:watch": "tsc -w"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.138",
     "@zeit/next-less": "1.0.1",
     "babel-plugin-import": "1.12.1",
     "babel-plugin-inline-react-svg": "1.1.0",
@@ -42,7 +43,6 @@
   },
   "devDependencies": {
     "@types/antd": "1.0.0",
-    "@types/lodash": "^4.14.138",
     "@types/next": "8.0.6",
     "@types/node": "^12.7.4",
     "@types/node-polyglot": "0.4.34",
