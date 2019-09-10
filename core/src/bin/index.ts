@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-// https://github.com/zeit/next.js/blob/canary/packages/next/bin/next.ts
 import arg from 'arg';
 import { CONFIG_FILE } from 'next-server/constants';
 import { watchFile } from 'fs';

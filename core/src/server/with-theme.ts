@@ -1,13 +1,11 @@
-// todo
-// @ts-ignore
-import withLess from '@zeit/next-less';
-import theme from './theme.json';
+const withLess = require('@zeit/next-less');
+const theme = require('../theme/theme.json');
 
-export default (modifyVars: object, nextConfig: any = {}) => {
+module.exports = (modifyVars: object, nextConfig: any = {}) => {
   const { lessLoaderOptions, webpack, ...rest } = nextConfig;
 
   return withLess({
-    // extractCssChunksOptions: { orderWarning: false }, // todo: waiting for PR https://github.com/zeit/next-plugins/pull/510
+    // todo: extractCssChunksOptions: { orderWarning: false }, // todo: waiting for PR https://github.com/zeit/next-plugins/pull/510
     lessLoaderOptions: {
       javascriptEnabled: true,
       modifyVars: {

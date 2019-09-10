@@ -1,12 +1,13 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
   "bin": "lib/bin/index.js",
   "files": [
     "lib",
+    "server.js",
     ".babelrc"
   ],
   "scripts": {
@@ -17,8 +18,8 @@
     "@zeit/next-less": "1.0.1",
     "babel-plugin-import": "1.12.1",
     "babel-plugin-inline-react-svg": "1.1.0",
+    "cross-env": "^5.2.0",
     "dotenv": "^8.1.0",
-    "dotenv-webpack": "^1.7.0",
     "fela": "10.6.1",
     "fela-plugin-custom-property": "^10.6.1",
     "fela-plugin-embedded": "10.6.1",
@@ -37,7 +38,6 @@
     "null-loader": "3.0.0",
     "react-fela": "10.6.1",
     "tinycolor2": "1.4.1",
-    "ts-node": "^8.3.0",
     "typescript": "3.6.2"
   },
   "devDependencies": {

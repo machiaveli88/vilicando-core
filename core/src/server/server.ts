@@ -1,8 +1,7 @@
-#!/usr/bin/env node
-import next from 'next';
-import { createServer } from 'http';
-import { join } from 'path';
-import { parse } from 'url';
+const next = require('next');
+const { join } = require('path');
+const { createServer } = require('http');
+const { parse } = require('url');
 
 const port = parseInt(process.env.PORT || '3000', 10);
 const dev = process.env.NODE_ENV !== 'production';
@@ -11,13 +10,13 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  createServer((req, res) => {
+  createServer((req: any, res?: any) => {
     const parsedUrl = parse(req.url!, true);
     const { pathname } = parsedUrl;
 
     // handle GET request to /service-worker.js
     if (pathname === '/service-worker.js') {
-      app.serveStatic(req, res, join(__dirname, '../.next', pathname));
+      app.serveStatic(req, res, join(process.cwd(), '.next', pathname));
     } else {
       handle(req, res, parsedUrl);
     }

@@ -1,24 +1,32 @@
 #!/usr/bin/env node
 import { execSync } from 'child_process';
 import { join } from 'path';
+import fs from 'fs';
 
-const dir = join(__dirname, '../..');
-const config = join(dir, 'tsconfig.server.json');
-const buildCustomServerCli = `tsc --project ${config} --baseUrl ${process.cwd()} --outDir .next`;
+const buildDir = join(process.cwd(), '.next');
+const serverSrc = join(__dirname, '../server/server.js');
+const serverDist = join(buildDir, 'server.js');
 
 const build = () =>
-  execSync('next build && ' + buildCustomServerCli, {
-    stdio: 'inherit'
+  fs.mkdir(buildDir, { recursive: true }, err => {
+    if (err) throw err;
+
+    return fs.copyFile(serverSrc, serverDist, err => {
+      if (err) throw err;
+
+      return execSync(`next build`, {
+        stdio: 'inherit'
+      });
+    });
   });
 
 const dev = () =>
-  execSync(`ts-node --project ${config} ${dir}/server.ts`, {
+  execSync(`node ${serverSrc}`, {
     stdio: 'inherit'
   });
 
 const start = () =>
-  execSync(`node .next/server.js`, {
-    // execSync(`cross-env NODE_ENV=production node .next/server.js`, {
+  execSync(`cross-env NODE_ENV=production node ${serverDist}`, {
     stdio: 'inherit'
   });
 
