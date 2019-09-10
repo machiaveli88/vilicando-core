@@ -1,7 +1,8 @@
 const withOffline = require('next-offline');
 const withTheme = require('./with-theme');
 const fs = require('fs');
-const path = require('path');
+const { config } = require('dotenv');
+const { join } = require('path');
 const { EnvironmentPlugin } = require('webpack');
 
 interface IWithCore {
@@ -14,13 +15,13 @@ module.exports = ({ theme, env }: IWithCore, nextConfig: any = {}) => {
 
   // use env-file, default is ./.env && ../.env
   const parsed = env
-    ? require('dotenv').config({ path: env }).parsed
+    ? config({ path: env }).parsed
     : {
-        ...require('dotenv').config({
-          path: path.join(process.cwd(), '.env')
+        ...config({
+          path: join(process.cwd(), '.env')
         }).parsed,
-        ...require('dotenv').config({
-          path: path.join(process.cwd(), '../.env')
+        ...config({
+          path: join(process.cwd(), '../.env')
         }).parsed
       };
 
@@ -30,13 +31,13 @@ module.exports = ({ theme, env }: IWithCore, nextConfig: any = {}) => {
       webpack(config: any, options: any) {
         const dirname = dir || process.cwd();
 
-        config.resolve.alias['@assets'] = path.join(dirname, 'assets/');
-        config.resolve.alias['@components'] = path.join(dirname, 'components/');
-        config.resolve.alias['@data'] = path.join(dirname, 'data/');
-        config.resolve.alias['@forms'] = path.join(dirname, 'forms/');
-        config.resolve.alias['@language'] = path.join(dirname, 'language/');
-        config.resolve.alias['@pages'] = path.join(dirname, 'pages/');
-        config.resolve.alias['@utils'] = path.join(dirname, 'utils/');
+        config.resolve.alias['@assets'] = join(dirname, 'assets/');
+        config.resolve.alias['@components'] = join(dirname, 'components/');
+        config.resolve.alias['@data'] = join(dirname, 'data/');
+        config.resolve.alias['@forms'] = join(dirname, 'forms/');
+        config.resolve.alias['@language'] = join(dirname, 'language/');
+        config.resolve.alias['@pages'] = join(dirname, 'pages/');
+        config.resolve.alias['@utils'] = join(dirname, 'utils/');
 
         config.plugins.push(new EnvironmentPlugin(parsed));
 

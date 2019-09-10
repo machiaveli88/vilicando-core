@@ -20,15 +20,25 @@ const build = () =>
     });
   });
 
-const dev = () =>
-  execSync(`node ${serverSrc}`, {
-    stdio: 'inherit'
-  });
+const dev = ({ '--dev': dev = true, '--port': port = 3000 }) =>
+  execSync(
+    `cross-env NODE_ENV=${
+      dev ? 'development' : 'production'
+    } PORT=${port} node ${serverSrc}`,
+    {
+      stdio: 'inherit'
+    }
+  );
 
-const start = () =>
-  execSync(`cross-env NODE_ENV=production node ${serverDist}`, {
-    stdio: 'inherit'
-  });
+const start = ({ '--dev': dev = false, '--port': port = 3000 }) =>
+  execSync(
+    `cross-env NODE_ENV=${
+      dev ? 'development' : 'production'
+    } PORT=${port} node ${serverDist}`,
+    {
+      stdio: 'inherit'
+    }
+  );
 
 const up = ({ '--latest': latest = true }: any) =>
   execSync(
