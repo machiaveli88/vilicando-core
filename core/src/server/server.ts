@@ -1,7 +1,11 @@
 const next = require('next');
 const path = require('path');
+const dotenv = require('dotenv');
 const { createServer } = require('http');
 const { parse } = require('url');
+
+dotenv.config({ path: path.join(process.cwd(), '.env') });
+dotenv.config({ path: path.join(process.cwd(), '../.env') });
 
 const port = parseInt(process.env.PORT || '3000', 10);
 const dev = process.env.NODE_ENV !== 'production';

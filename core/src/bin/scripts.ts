@@ -22,9 +22,13 @@ const build = () =>
 
 const dev = ({ '--dev': dev = true, '--port': port = 3000 }) =>
   execSync(
-    `cross-env NODE_ENV=${
-      dev ? 'development' : 'production'
-    } PORT=${port} node ${serverSrc}`,
+    port
+      ? `cross-env NODE_ENV=${
+          dev ? 'development' : 'production'
+        } PORT=${port} node ${serverSrc}`
+      : `cross-env NODE_ENV=${
+          dev ? 'development' : 'production'
+        } node ${serverSrc}`,
     {
       stdio: 'inherit'
     }
@@ -32,9 +36,13 @@ const dev = ({ '--dev': dev = true, '--port': port = 3000 }) =>
 
 const start = ({ '--dev': dev = false, '--port': port = 3000 }) =>
   execSync(
-    `cross-env NODE_ENV=${
-      dev ? 'development' : 'production'
-    } PORT=${port} node ${serverDist}`,
+    port
+      ? `cross-env NODE_ENV=${
+          dev ? 'development' : 'production'
+        } PORT=${port} node ${serverDist}`
+      : `cross-env NODE_ENV=${
+          dev ? 'development' : 'production'
+        } node ${serverDist}`,
     {
       stdio: 'inherit'
     }
