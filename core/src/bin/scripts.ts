@@ -25,10 +25,10 @@ const dev = ({ '--dev': dev = true, '--port': port = 3000 }) =>
     port
       ? `cross-env NODE_ENV=${
           dev ? 'development' : 'production'
-        } PORT=${port} node ${serverSrc}`
+        } PORT=${port} node '${serverSrc}'`
       : `cross-env NODE_ENV=${
           dev ? 'development' : 'production'
-        } node ${serverSrc}`,
+        } node '${serverSrc}'`,
     {
       stdio: 'inherit'
     }
@@ -39,10 +39,10 @@ const start = ({ '--dev': dev = false, '--port': port = 3000 }) =>
     port
       ? `cross-env NODE_ENV=${
           dev ? 'development' : 'production'
-        } PORT=${port} node ${serverDist}`
+        } PORT=${port} node '${serverDist}'`
       : `cross-env NODE_ENV=${
           dev ? 'development' : 'production'
-        } node ${serverDist}`,
+        } node '${serverDist}'`,
     {
       stdio: 'inherit'
     }
