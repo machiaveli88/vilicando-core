@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.22",
+  "version": "0.3.23",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -15,12 +15,12 @@
     "build:watch": "tsc -w"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.138",
+    "@types/lodash": "^4.14.140",
     "@zeit/next-less": "1.0.1",
     "arg": "^4.1.1",
-    "babel-plugin-import": "1.12.1",
+    "babel-plugin-import": "1.12.2",
     "babel-plugin-inline-react-svg": "1.1.0",
-    "cross-env": "^5.2.0",
+    "cross-env": "^6.0.0",
     "dotenv": "^8.1.0",
     "fela": "10.6.1",
     "fela-plugin-custom-property": "^10.6.1",
@@ -35,21 +35,21 @@
     "lodash": "^4.17.15",
     "next": "9.0.5",
     "next-offline": "^5.0.0-beta.3",
-    "node-polyglot": "2.3.1",
+    "node-polyglot": "2.4.0",
     "nprogress": "^0.2.0",
     "null-loader": "3.0.0",
     "react-fela": "10.6.1",
     "tinycolor2": "1.4.1",
-    "typescript": "3.6.2"
+    "typescript": "3.6.3"
   },
   "devDependencies": {
     "@types/antd": "1.0.0",
     "@types/next": "8.0.6",
-    "@types/node": "^12.7.4",
+    "@types/node": "^12.7.8",
     "@types/node-polyglot": "0.4.34",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "16.9.2",
-    "@types/react-dom": "16.9.0",
+    "@types/react": "16.9.3",
+    "@types/react-dom": "16.9.1",
     "@types/tinycolor2": "1.4.2"
   },
   "peerDependencies": {
