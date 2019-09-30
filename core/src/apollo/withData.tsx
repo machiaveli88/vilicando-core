@@ -48,10 +48,14 @@ export default function withData<T>(apolloConfig: any) {
       apolloState,
       ...pageProps
     }: T & {
-      apolloClient: any;
-      apolloState: any;
+      apolloClient?: any;
+      apolloState?: any;
     }) => {
       console.log(apolloClient, apolloState);
+
+      if (!apolloClient && !apolloState)
+        return <PageComponent {...pageProps}></PageComponent>;
+
       const client = useMemo(
         () => apolloClient || initApolloClient(apolloConfig, apolloState),
         []
