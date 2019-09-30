@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Link from 'next/link';
 import { useFela } from 'vilicando-core';
+import { Row, Col } from 'antd';
 
 interface ILayout {
   children: React.ReactElement;
@@ -19,105 +19,23 @@ function Layout({ children }: ILayout) {
     >
       <div
         className={css({
-          display: 'flex',
-          borderBottom: `1px solid ${theme.primaryColor}`
+          backgroundColor: theme.primaryColor,
+          padding: theme.paddingMd
         })}
       >
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary1,
-            paddingX: theme.paddingMd,
-            paddingY: theme.paddingXs
-          })}
-        >
-          <h2 className={css({ color: theme.secondaryColor, margin: 0 })}>
-            Theme
-          </h2>
-        </div>
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary2
-          })}
-        />
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary3
-          })}
-        />
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary4
-          })}
-        />
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary5
-          })}
-        />
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary6
-          })}
-        />
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary7
-          })}
-        />
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary8
-          })}
-        />
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary9
-          })}
-        />
-        <div
-          className={css({
-            width: '10%',
-            backgroundColor: theme.primary10
-          })}
-        />
+        <h2 className={css({ color: theme.white, margin: 0 })}>Example App</h2>
       </div>
-      <div className={css({ display: 'flex', flexGrow: 1 })}>
-        <div
+
+      <Row type="flex" justify="center">
+        <Col
+          span={8}
           className={css({
-            width: '25%',
-            backgroundColor: theme.primary1,
             padding: theme.paddingMd
           })}
         >
-          <Link href="/">
-            <a className={css({ display: 'block' })}>Start</a>
-          </Link>
-          <Link href="/with-lazy-loading">
-            <a className={css({ display: 'block' })}>With lazy-loading</a>
-          </Link>
-          <Link href="/without-ssr">
-            <a className={css({ display: 'block' })}>Without SSR</a>
-          </Link>
-        </div>
-        <div
-          className={css({
-            width: '75%',
-            padding: theme.paddingMd
-          })}
-        >
-          <h1 className={css({ color: theme.secondaryColor })}>Example App</h1>
           {children}
-        </div>
-      </div>
+        </Col>
+      </Row>
     </div>
   );
 }
