@@ -1,5 +1,4 @@
-// @ts-ignore
-import { withData } from 'next-apollo';
+import withData from './withData';
 import { HttpLink } from 'apollo-link-http';
 import {
   InMemoryCache

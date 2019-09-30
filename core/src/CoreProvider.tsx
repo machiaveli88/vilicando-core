@@ -6,7 +6,6 @@ import { Loader, Progress } from './components';
 import { ThemeProvider } from './theme';
 import defaultTheme from './theme/theme.json';
 import { createRenderer } from './theme';
-// @ts-ignore
 import { withApollo } from './apollo';
 
 const _navigator = {

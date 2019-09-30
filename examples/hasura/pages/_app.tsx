@@ -7,7 +7,7 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <CoreProvider>
+      <CoreProvider apolloClient={undefined} apolloState={null}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
