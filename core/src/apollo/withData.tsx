@@ -41,17 +41,15 @@ function createApolloClient(
   return new ApolloClient(config);
 }
 
-export default (apolloConfig: any) => {
+export default function withData<T>(apolloConfig: any) {
   return (PageComponent: any, { ssr = true } = {}) => {
     const WithApollo = ({
       apolloClient,
       apolloState,
-      children,
       ...pageProps
-    }: {
+    }: T & {
       apolloClient: any;
       apolloState: any;
-      children: any;
     }) => {
       console.log(apolloClient, apolloState);
       const client = useMemo(
@@ -60,7 +58,7 @@ export default (apolloConfig: any) => {
       );
       return (
         <ApolloProvider client={client}>
-          <PageComponent {...pageProps}>{children}</PageComponent>
+          <PageComponent {...pageProps}></PageComponent>
         </ApolloProvider>
       );
     };
@@ -128,4 +126,4 @@ export default (apolloConfig: any) => {
 
     return WithApollo;
   };
-};
+}

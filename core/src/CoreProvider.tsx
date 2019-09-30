@@ -53,4 +53,4 @@ function CoreProvider({
   );
 }
 
-export default withApollo(CoreProvider);
+export default withApollo<ICoreProvider>(CoreProvider);
