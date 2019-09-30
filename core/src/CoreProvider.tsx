@@ -5,6 +5,9 @@ import { RendererProvider } from 'react-fela';
 import { Loader, Progress } from './components';
 import { ThemeProvider } from './theme';
 import defaultTheme from './theme/theme.json';
+import { createRenderer } from './theme';
+// @ts-ignore
+import { withApollo } from './apollo';
 
 const _navigator = {
   ...(typeof window === 'undefined' ? {} : navigator)
@@ -29,7 +32,6 @@ export interface ICoreProvider {
 
 function CoreProvider({
   children,
-  // db,
   theme,
   renderer,
   showLoader = () => <Loader />,
@@ -37,18 +39,19 @@ function CoreProvider({
   locale = defaultLocale,
   translations = {}
 }: ICoreProvider) {
+  if (theme && !renderer)
+    console.warn('renderer must be defined if theme is set');
+
   return (
-    <RendererProvider renderer={renderer}>
+    <RendererProvider renderer={renderer || createRenderer({})}>
       <ThemeProvider value={{ ...defaultTheme, ...theme }}>
         {loading ? showLoader() : null}
-        {/* <DebeProvider showLoader={showLoader} db={db}> */}
         <LanguageProvider translations={translations} locale={locale}>
           <Progress>{children}</Progress>
         </LanguageProvider>
-        {/* </DebeProvider> */}
       </ThemeProvider>
     </RendererProvider>
   );
 }
 
-export default CoreProvider;
+export default withApollo(CoreProvider);

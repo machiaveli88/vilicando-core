@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.23",
+  "version": "0.3.30",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -15,8 +15,11 @@
     "build:watch": "tsc -w"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.140",
+    "@apollo/react-hooks": "^3.1.1",
+    "@apollo/react-ssr": "^3.1.1",
+    "@types/lodash": "^4.14.141",
     "@zeit/next-less": "1.0.1",
+    "apollo-boost": "^0.4.4",
     "arg": "^4.1.1",
     "babel-plugin-import": "1.12.2",
     "babel-plugin-inline-react-svg": "1.1.0",
@@ -31,9 +34,11 @@
     "fela-plugin-unit": "10.6.1",
     "fela-plugin-validator": "10.6.1",
     "fela-preset-web": "10.6.1",
+    "graphql": "^14.5.8",
     "less": "2.7.3",
     "lodash": "^4.17.15",
-    "next": "9.0.5",
+    "next": "^9.0.7",
+    "next-apollo": "^3.1.5",
     "next-offline": "^5.0.0-beta.3",
     "node-polyglot": "2.4.0",
     "nprogress": "^0.2.0",

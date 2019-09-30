@@ -1,0 +1,26 @@
+version: "3.6"
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  graphql-engine:
+    image: hasura/graphql-engine:v1.0.0-beta.6
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "postgres"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres@postgres:5432/postgres
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ADMIN_SECRET: vilicando_secure
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: guest
+      HASURA_GRAPHQL_JWT_SECRET: >-
+        {"type": "RS512", "key": "-----BEGIN CERTIFICATE-----\nMIIDBzCCAe+gAwIBAgIJLCVdg/cAA4v7MA0GCSqGSIb3DQEBCwUAMCExHzAdBgNV\nBAMTFnZpbGljYW5kby5ldS5hdXRoMC5jb20wHhcNMTkwOTI3MTEyNzM3WhcNMzMw\nNjA1MTEyNzM3WjAhMR8wHQYDVQQDExZ2aWxpY2FuZG8uZXUuYXV0aDAuY29tMIIB\nIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7t8PJNOyi892zJvWFzaxyKnC\nA9g/ckQ6hz8NbUcxfHGYxuBmkkWbBSOkh6jLTdG7B61qCe4l4BwfOicV/aUemcwK\n23FUOoIB3oG3HVaAUKj8WtqTk2GKdpJD3qicUscGp/gwIJ+8OQRdj3XYRnqSgaLr\nNa4zFStPrP7sCg6Ar/D8CcX+/nuoAdu1H/Nku7z5XW2THSG+n9nCP2r8WaBkwdOJ\nSrftOYFPVmlgFc/pRkYfBC77k5oKY7Lkms3kCIHZvv0FJ8Rrvb6GMjLh2vKdXwWp\nqpdbtI19W2YBIQhMh6u5cLmPsNrYPRFkOs9jPtDmp2JlAp5EM9fgPKUlbfpa8wID\nAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR6Rexza9lG1Oo90SWp\n8JJJYZNZDDAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEBAMR9Jdlc\nqYFI+o7HuIMshvk5NDGjUhq7TOwb2GXOr79Ctj0NvyxG8WBgu6oH+2VQopOoCr+o\n7y/m4+NE5k2O+H7mxaUuznV2kQzcJ9SkMTU5MBGnhd1HeaC/yc3RSXLAVpj3/eqP\nT1OGHE5UPDihyr/4/0w+svXv93N+vaUabN7uj1zh8AlZjtTU4UTr1xBwN5dqr0+O\nAwV57f7EJW56MYO5TABmOsEQrKeVSFPD1VjD8+emxB2ahve1KL3PtHcHgFP5bYnq\nbzOcfESKh7t6gPusxr8azYHOOXOpbMsFjpd3tMKVwsxvyg2XD2q+dPGEEL7tnedA\n6c7o+6ICcl8uDyI=\n-----END CERTIFICATE-----\n"}
+volumes:
+  db_data:

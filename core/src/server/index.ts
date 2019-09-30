@@ -6,11 +6,12 @@ const { join } = require('path');
 const { EnvironmentPlugin } = require('webpack');
 
 interface IWithCore {
-  theme: object;
+  theme?: object;
   env?: string;
 }
 
-module.exports = ({ theme, env }: IWithCore, nextConfig: any = {}) => {
+module.exports = (props: IWithCore, nextConfig: any = {}) => {
+  const { theme, env } = props || {};
   const { webpack, dir, ...rest } = nextConfig;
 
   // use env-file, default is ./.env && ../.env
@@ -26,7 +27,7 @@ module.exports = ({ theme, env }: IWithCore, nextConfig: any = {}) => {
       };
 
   return withTheme(
-    theme,
+    theme || {},
     withOffline({
       webpack(config: any, options: any) {
         const dirname = dir || process.cwd();

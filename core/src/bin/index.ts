@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import arg from 'arg';
-import { CONFIG_FILE } from 'next-server/constants';
+import { CONFIG_FILE } from 'next/dist/next-server/lib/constants';
 import { watchFile } from 'fs';
 
 const devCommand = 'dev';
