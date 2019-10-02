@@ -2,14 +2,14 @@ const withLess = require('@zeit/next-less');
 const theme = require('../theme/theme.json');
 
 function HACK_removeMinimizeOptionFromCssLoaders(config: any) {
-  console.warn(
-    'HACK: Removing `minimize` option from `css-loader` entries in Webpack config'
-  );
-
   config.module.rules.forEach((rule: any) => {
     if (Array.isArray(rule.use)) {
+      console.log('here i can remove that shitty css-warning!', rule);
       rule.use.forEach((u: any) => {
         if (u.loader === 'css-loader' && u.options) {
+          console.warn(
+            'HACK: Removing `minimize` option from `css-loader` entries in Webpack config'
+          );
           delete u.options.minimize;
         }
       });

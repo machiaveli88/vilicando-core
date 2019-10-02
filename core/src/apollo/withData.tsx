@@ -2,59 +2,60 @@ import React, { useMemo } from 'react';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ApolloClient, InMemoryCache } from 'apollo-boost';
-import { NextPageContext } from 'next';
+import { NextPageContext, NextPage } from 'next';
 import fetch from 'isomorphic-unfetch';
 
 declare type _ApolloClient = ApolloClient<any> & { createCache: any };
 
 let apolloClient: _ApolloClient = null;
+const browser = typeof window !== 'undefined';
 
-function initApolloClient(
+// Make sure to create a new client for every server-side request so that data isn't shared between connections (which would be bad)
+// Reuse client on the client-side
+function initApolloClient<TCacheShape>(
   apolloConfig: _ApolloClient,
   initialState = {}
-): ApolloClient<any> {
-  // Make sure to create a new client for every server-side request so that data isn't shared between connections (which would be bad)
-  // Reuse client on the client-side
-  if (typeof window === 'undefined' || !apolloClient) {
-    return createApolloClient(apolloConfig, initialState);
-  }
-
-  return apolloClient;
+): ApolloClient<TCacheShape> {
+  return !browser || !apolloClient
+    ? createApolloClient(apolloConfig, initialState)
+    : apolloClient;
 }
 
-function createApolloClient(
-  apolloConfig: _ApolloClient,
+function createApolloClient<TCacheShape>(
+  _apolloConfig: _ApolloClient,
   initialState = {}
-): ApolloClient<any> {
-  const createCache = apolloConfig.createCache || (() => new InMemoryCache());
-  const browser = typeof window !== 'undefined';
+): ApolloClient<TCacheShape> {
+  const { createCache, ...apolloConfig } = _apolloConfig;
+  const _createCache = createCache || (() => new InMemoryCache());
 
-  const config = {
+  return new ApolloClient<TCacheShape>({
     connectToDevTools: browser,
     ssrMode: !browser, // Disables forceFetch on the server (so queries are only run once)
-    cache: createCache().restore(initialState || {}),
+    cache: _createCache().restore(initialState || {}),
     ...apolloConfig
-  };
+  });
+}
 
-  delete config.createCache;
-
-  return new ApolloClient(config);
+export interface IWithData {
+  apolloClient?: any;
+  apolloState?: object;
 }
 
 export default function withData<T>(apolloConfig: any) {
-  return (PageComponent: any, { ssr = true } = {}) => {
+  return (PageComponent: NextPage<any>, test = {}) => {
+    // @ts-ignore
+    const { ssr = true } = test;
+    console.log('whats this?', test);
+
     const WithApollo = ({
       apolloClient,
-      apolloState,
+      apolloState = {},
       ...pageProps
-    }: T & {
-      apolloClient?: any;
-      apolloState?: any;
-    }) => {
+    }: T & IWithData) => {
       console.log(apolloClient, apolloState);
 
-      if (!apolloClient && !apolloState)
-        return <PageComponent {...pageProps}></PageComponent>;
+      if (!apolloClient || !fetch) console.log('no config');
+      // return <PageComponent {...pageProps}></PageComponent>;
 
       const client = useMemo(
         () => apolloClient || initApolloClient(apolloConfig, apolloState),
@@ -66,8 +67,6 @@ export default function withData<T>(apolloConfig: any) {
         </ApolloProvider>
       );
     };
-
-    console.log(fetch); // muss hier stehen, damit fetch geladen wird => ansonsten Fehler!
 
     // Set the correct displayName in development
     if (process.env.NODE_ENV !== 'production') {
@@ -97,6 +96,7 @@ export default function withData<T>(apolloConfig: any) {
           const apolloClient = initApolloClient(apolloConfig, null);
 
           try {
+            console.log('dsfdsgfsdgsdf');
             // Run all GraphQL queries
             await require('@apollo/react-ssr').getDataFromTree(
               <AppTree
