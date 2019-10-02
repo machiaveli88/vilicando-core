@@ -1,10 +1,9 @@
 const withLess = require('@zeit/next-less');
 const theme = require('../theme/theme.json');
 
-function HACK_removeMinimizeOptionFromCssLoaders(config: any) {
+function modifyLoaderOptions(config: any) {
   config.module.rules.forEach((rule: any) => {
-    if (Array.isArray(rule.use)) {
-      console.log('here i can remove that shitty css-warning!', rule);
+    if (Array.isArray(rule.use))
       rule.use.forEach((u: any) => {
         if (u.loader === 'css-loader' && u.options) {
           console.warn(
@@ -13,7 +12,6 @@ function HACK_removeMinimizeOptionFromCssLoaders(config: any) {
           delete u.options.minimize;
         }
       });
-    }
   });
 }
 
@@ -33,7 +31,7 @@ module.exports = (modifyVars: object, nextConfig: any = {}) => {
     webpack: (config: any, options: any) => {
       const { isServer } = options;
 
-      HACK_removeMinimizeOptionFromCssLoaders(config);
+      modifyLoaderOptions(config);
 
       if (isServer) {
         const antStyles = /antd\/.*?\/style.*?/;
