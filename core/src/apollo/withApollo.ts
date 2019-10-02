@@ -1,32 +1,16 @@
-import withData from './withData';
-import { HttpLink } from 'apollo-link-http';
-/* import {
-  InMemoryCache
-  IntrospectionFragmentMatcher
-} from 'apollo-cache-inmemory'; */
-// import introspectionQueryResultData from './fragmentTypes';
+import withApollo from 'next-with-apollo';
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
 
-/* const createCache = () => {
-  const fragmentMatcher = new IntrospectionFragmentMatcher({
-    introspectionQueryResultData
-  });
+const GRAPHQL_URL = 'http://localhost:8080/v1/graphql';
+const GRAPHQL_SECRET = 'vilicando_secure';
 
-  return new InMemoryCache({ fragmentMatcher });
-}; */
-
-// todo: uri und headers variable machen
-// todo: fragmentMatcher mit Hilfe von https://graphql-code-generator.com
-export default function withApollo<T>(
-  Component: any /* (props: T) => JSX.Element */
-) {
-  return withData<T>({
-    link: new HttpLink({
-      uri: 'http://localhost:8080/v1/graphql',
+export default withApollo(
+  ({ initialState }) =>
+    new ApolloClient({
+      uri: GRAPHQL_URL,
       headers: {
-        'x-hasura-admin-secret': 'vilicando_secure'
-        // Authorization: `Bearer ${authToken}`
-      }
+        'x-hasura-admin-secret': GRAPHQL_SECRET
+      },
+      cache: new InMemoryCache().restore(initialState || {})
     })
-    // createCache
-  })(Component);
-}
+);

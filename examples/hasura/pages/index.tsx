@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Input, Divider, List, Popconfirm } from 'antd';
-import { useQuery, useMutation, withApollo } from 'vilicando-core';
+import { useQuery, useMutation } from 'vilicando-core';
 
 interface IUser {
   id: string;
@@ -98,4 +98,4 @@ function StartPage() {
   );
 }
 
-export default withApollo(StartPage);
+export default StartPage;

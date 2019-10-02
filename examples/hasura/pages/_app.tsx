@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { App, CoreProvider } from 'vilicando-core';
+import { App, CoreProvider, withApollo } from 'vilicando-core';
 import { Layout } from '@components';
 
-export default class CustomApp extends App {
+class CustomApp extends App {
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, apollo } = this.props;
+    console.log('Port:', process.env.PORT);
 
     return (
-      <CoreProvider>
+      <CoreProvider apollo={apollo}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
@@ -15,3 +16,5 @@ export default class CustomApp extends App {
     );
   }
 }
+
+export default withApollo(CustomApp);

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ApolloProvider } from '@apollo/react-hooks';
 import LanguageProvider from './LanguageProvider';
 import { IRenderer } from 'fela';
 import { RendererProvider } from 'react-fela';
@@ -6,6 +7,7 @@ import { Loader, Progress } from './components';
 import { ThemeProvider } from './theme';
 import defaultTheme from './theme/theme.json';
 import { defaultRenderer } from './theme';
+import { ApolloClient } from 'apollo-boost';
 
 const _navigator = {
   ...(typeof window === 'undefined' ? {} : navigator)
@@ -18,8 +20,9 @@ const defaultLocale =
       _navigator.browserLanguage ||
       'de';
 
-export interface ICoreProvider {
+export interface ICoreProvider<TCacheShape = any> {
   children: React.ReactNode;
+  apollo?: ApolloClient<TCacheShape>;
   theme?: object;
   renderer?: IRenderer;
   showLoader?: () => React.ReactNode;
@@ -30,6 +33,7 @@ export interface ICoreProvider {
 
 function CoreProvider({
   children,
+  apollo,
   theme,
   renderer = defaultRenderer,
   showLoader = () => <Loader />,
@@ -37,15 +41,18 @@ function CoreProvider({
   locale = defaultLocale,
   translations = {}
 }: ICoreProvider) {
-  if (theme && !renderer)
-    console.warn('renderer must be defined if theme is set');
+  const content = apollo ? (
+    <ApolloProvider client={apollo}>{children}</ApolloProvider>
+  ) : (
+    children
+  );
 
   return (
     <RendererProvider renderer={renderer}>
       <ThemeProvider value={{ ...defaultTheme, ...theme }}>
         {loading ? showLoader() : null}
         <LanguageProvider translations={translations} locale={locale}>
-          <Progress>{children}</Progress>
+          <Progress>{content}</Progress>
         </LanguageProvider>
       </ThemeProvider>
     </RendererProvider>

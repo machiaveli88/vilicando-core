@@ -15,8 +15,6 @@
     "build:watch": "tsc -w"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.2",
-    "@apollo/react-ssr": "^3.1.2",
     "@types/lodash": "^4.14.141",
     "@zeit/next-less": "1.0.1",
     "apollo-boost": "^0.4.4",
@@ -38,8 +36,8 @@
     "less": "2.7.3",
     "lodash": "^4.17.15",
     "next": "^9.0.7",
-    "next-apollo": "^3.1.5",
     "next-offline": "^5.0.0-beta.3",
+    "next-with-apollo": "^4.3.0",
     "node-polyglot": "2.4.0",
     "nprogress": "^0.2.0",
     "null-loader": "3.0.0",
