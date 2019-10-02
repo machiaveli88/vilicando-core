@@ -7,6 +7,7 @@ export {
   ThemeProvider,
   useFela,
   createRenderer,
+  defaultRenderer,
   materialColors
 } from './theme';
 export * from './utils';

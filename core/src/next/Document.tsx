@@ -1,16 +1,20 @@
 import * as React from 'react';
-import NextDocument, { DocumentContext as NextDocumentContext, DocumentInitialProps } from 'next/document';
+import NextDocument, {
+  DocumentContext as NextDocumentContext,
+  DocumentInitialProps
+} from 'next/document';
 import { IRenderer } from 'fela';
 import { renderToSheetList } from 'fela-dom';
+import { defaultRenderer } from '../theme';
 
 export interface DocumentContext extends NextDocumentContext {
-  renderer: IRenderer;
+  renderer?: IRenderer;
 }
 
 export default abstract class Document extends NextDocument {
   static async getInitialProps({
     renderPage,
-    renderer,
+    renderer = defaultRenderer,
     ...rest
   }: DocumentContext): Promise<DocumentInitialProps> {
     const initialProps = await NextDocument.getInitialProps({

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import renderer from '../renderer';
 import theme from '../theme.json';
 import { App, CoreProvider, Loader } from 'vilicando-core';
 import { Layout } from '@components';
@@ -13,7 +12,6 @@ export default class CustomApp extends App {
     return (
       <CoreProvider
         theme={theme}
-        renderer={renderer}
         translations={translations}
         showLoader={() => (
           <Loader text="Example app">
