@@ -42,18 +42,12 @@ export interface IWithData {
 }
 
 export default function withData<T>(apolloConfig: any) {
-  return (PageComponent: NextPage<any>, test = {}) => {
-    // @ts-ignore
-    const { ssr = true } = test;
-    console.log('whats this?', test);
-
+  return (PageComponent: NextPage<any>, { ssr = true } = {}) => {
     const WithApollo = ({
       apolloClient,
       apolloState = {},
       ...pageProps
     }: T & IWithData) => {
-      console.log(apolloClient, apolloState);
-
       if (!apolloClient || !fetch) console.log('no config');
       // return <PageComponent {...pageProps}></PageComponent>;
 
@@ -96,7 +90,6 @@ export default function withData<T>(apolloConfig: any) {
           const apolloClient = initApolloClient(apolloConfig, null);
 
           try {
-            console.log('dsfdsgfsdgsdf');
             // Run all GraphQL queries
             await require('@apollo/react-ssr').getDataFromTree(
               <AppTree

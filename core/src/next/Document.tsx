@@ -6,6 +6,7 @@ import NextDocument, {
 import { IRenderer } from 'fela';
 import { renderToSheetList } from 'fela-dom';
 import { defaultRenderer } from '../theme';
+// import { withApollo } from '../apollo';
 
 export interface DocumentContext extends NextDocumentContext {
   renderer?: IRenderer;
@@ -24,6 +25,7 @@ export default abstract class Document extends NextDocument {
             // @ts-ignore
             <App {...props} renderer={renderer} />
           )
+          // enhanceComponent: Component => withApollo(Component)
         }),
       ...rest
     });

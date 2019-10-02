@@ -47,14 +47,12 @@ function LanguageProvider({
 
   /* React.useEffect(() => {
     if (polyglot && locale) {
-      console.log('loc', locale);
       polyglot.locale(locale);
     }
   }, [locale]);
 
   React.useEffect(() => {
     if (polyglot && phrases) {
-      console.log('phr', phrases);
       polyglot.extend(phrases);
     }
   }, [phrases]); */
