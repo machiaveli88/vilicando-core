@@ -19,7 +19,7 @@
 #### 0.3
 
 - [x] Database
-- [ ] Example app with DB
+- [x] Example app with DB
 
 #### 0.4
 
