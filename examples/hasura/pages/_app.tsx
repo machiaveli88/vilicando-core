@@ -5,7 +5,6 @@ import { Layout } from '@components';
 class CustomApp extends App {
   render() {
     const { Component, pageProps, apollo } = this.props;
-    console.log('Port:', process.env.PORT);
 
     return (
       <CoreProvider apollo={apollo}>
@@ -17,4 +16,9 @@ class CustomApp extends App {
   }
 }
 
-export default withApollo(CustomApp);
+export default withApollo({
+  uri: process.env.GRAPHQL_URL,
+  headers: {
+    'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
+  }
+})(CustomApp);
