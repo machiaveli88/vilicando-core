@@ -7,5 +7,8 @@ export default (config: PresetConfig) =>
       new ApolloClient({
         cache: new InMemoryCache().restore(initialState || {}),
         ...config
-      })
+      }),
+    {
+      getDataFromTree: 'ssr' // todo: eigentlich sollte im Client loading erst true sein, dann false (Ladeanimation wird gezeigt) und im Server die Daten direkt gezeigt werden => warum auch immer geht das gerade nicht! :(
+    }
   );
