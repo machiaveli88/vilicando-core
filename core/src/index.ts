@@ -1,4 +1,10 @@
-export { useMutation, useQuery, withApollo } from './apollo';
+export {
+  useLazyQuery,
+  useMutation,
+  useQuery,
+  useSubscription,
+  withApollo
+} from './apollo';
 export { Loader } from './components';
 export { default as CoreProvider, ICoreProvider } from './CoreProvider';
 export { useLanguage } from './LanguageProvider';

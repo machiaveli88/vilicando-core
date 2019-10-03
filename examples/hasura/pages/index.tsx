@@ -20,6 +20,20 @@ function StartPage() {
   }
 `
   );
+  /* 
+  const { data: { user = [] } = {}, loading } = useSubscription<{
+    user: IUser;
+  }>(
+    `
+    subscription {
+      user {
+        id
+        name
+      }
+    }
+`
+  ); */
+
   const [updateUser] = useMutation<IUser>(
     `
     mutation($id: uuid!, $name: String) {
