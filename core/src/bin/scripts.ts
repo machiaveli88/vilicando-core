@@ -108,9 +108,17 @@ const codegenGenerate = async ({
           console.log('  ✔ Delete typings/globalTypes.ts');
           if (err) return console.error(err);
         });
-      else
+      else {
+        fs.rename(
+          join(process.cwd(), 'typings', `${fileName}.ts`),
+          join(process.cwd(), 'typings', `${fileName}.d.ts`),
+          err => {
+            if (err) return console.log(err);
+          }
+        );
         output += `
 export * from './${fileName}'`;
+      }
   });
 
   await outputFile(join(process.cwd(), 'typings/index.ts'), output, err => {
