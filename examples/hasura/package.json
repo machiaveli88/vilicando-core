@@ -5,7 +5,7 @@
   "license": "ISC",
   "scripts": {
     "build": "vilicando-core build",
-    "codegen": "vilicando-core codegen:download && vilicando-core codegen:generate",
+    "codegen": "vilicando-core codegen",
     "dev": "vilicando-core",
     "start": "vilicando-core start",
     "up": "vilicando-core up"

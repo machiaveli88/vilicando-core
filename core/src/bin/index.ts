@@ -27,14 +27,35 @@ const { _: commands, ...args } = arg(
 const scripts: {
   [command: string]: () => Promise<(argv?: object) => void>;
 } = {
-  build: async () => await import('./scripts').then(({ build }) => build),
-  dev: async () => await import('./scripts').then(({ dev }) => dev),
+  build: async () =>
+    await import('./scripts').then(
+      ({ codegenDownload, codegenGenerate, build }) => async args => {
+        await codegenDownload(args);
+        await codegenGenerate(args);
+        await build();
+      }
+    ),
+  dev: async () =>
+    await import('./scripts').then(
+      ({ codegenDownload, codegenGenerate, dev }) => async args => {
+        await codegenDownload(args);
+        await codegenGenerate(args);
+        await dev(args);
+      }
+    ),
   start: async () => await import('./scripts').then(({ start }) => start),
   up: async () => await import('./scripts').then(({ up }) => up),
   'codegen:download': async () =>
     await import('./scripts').then(({ codegenDownload }) => codegenDownload),
   'codegen:generate': async () =>
-    await import('./scripts').then(({ codegenGenerate }) => codegenGenerate)
+    await import('./scripts').then(({ codegenGenerate }) => codegenGenerate),
+  codegen: async () =>
+    await import('./scripts').then(
+      ({ codegenDownload, codegenGenerate }) => async args => {
+        await codegenDownload(args);
+        await codegenGenerate(args);
+      }
+    )
 };
 const command = commands[0] || devCommand;
 const foundCommand = Boolean(scripts[command]);
@@ -57,14 +78,6 @@ if (!foundCommand && !args['--help']) {
 } else if (args['--help']) {
   console.log('No help found!');
   process.exit(0);
-}
-if (command === 'dev' || command === 'build') {
-  scripts['codegen:download']()
-    .then(exec => exec(args))
-    .catch(err => console.error(err));
-  scripts['codegen:generate']()
-    .then(exec => exec(args))
-    .catch(err => console.error(err));
 }
 scripts[command]()
   .then(exec => exec(args))

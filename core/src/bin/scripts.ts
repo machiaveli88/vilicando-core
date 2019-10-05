@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 import { execSync } from 'child_process';
-import { join, resolve } from 'path';
-import fs from 'fs';
+import { join } from 'path';
+import { renameSync, readdirSync, mkdirSync, copyFileSync } from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
-import glob from 'glob';
-import { outputFile, remove } from 'fs-extra';
+import { outputFileSync, removeSync } from 'fs-extra';
 
 dotenv.config({ path: path.join(process.cwd(), '.env') });
 dotenv.config({ path: path.join(process.cwd(), '../.env') });
@@ -16,18 +15,13 @@ const buildDir = join(process.cwd(), '.next');
 const serverSrc = join(__dirname, '../server/server.js');
 const serverDist = join(buildDir, 'server.js');
 
-const build = () =>
-  fs.mkdir(buildDir, { recursive: true }, err => {
-    if (err) throw err;
-
-    return fs.copyFile(serverSrc, serverDist, err => {
-      if (err) throw err;
-
-      return execSync(`next build`, {
-        stdio: 'inherit'
-      });
-    });
-  });
+const build = () => {
+  mkdirSync(buildDir, { recursive: true });
+  console.log('  ✔ Folder created');
+  copyFileSync(serverSrc, serverDist);
+  console.log('  ✔ Files copied');
+  execSync(`next build`, { stdio: 'inherit' });
+};
 
 const dev = ({ '--dev': dev = true, '--port': port = PORT || 3000 }) =>
   execSync(
@@ -81,49 +75,42 @@ const codegenDownload = ({
       )
     : undefined;
 
-const codegenGenerate = async ({
+const codegenGenerate = ({
   '--url': url = GRAPHQL_HTTP,
   '--secret': secret = GRAPHQL_SECRET
 }: {
   '--url'?: string;
   '--secret'?: string;
 }) => {
-  const cmd = (await url)
-    ? execSync(
-        url
-          ? `apollo codegen:generate typings --endpoint=${url} --header="X-Hasura-Admin-Secret: ${secret}" --target=typescript --includes=**/*.{ts,tsx} --excludes=node_modules --tagName=gql --outputFlat`
-          : `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=**/*.{ts,tsx} --excludes=node_modules --tagName=gql --outputFlat`,
-        { stdio: 'inherit' }
-      )
-    : undefined;
+  if (!url) return null;
+
+  const cmd = execSync(
+    url
+      ? `apollo codegen:generate typings --endpoint=${url} --header="X-Hasura-Admin-Secret: ${secret}" --target=typescript --includes=**/*.{ts,tsx} --excludes=node_modules --tagName=gql --outputFlat`
+      : `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=**/*.{ts,tsx} --excludes=node_modules --tagName=gql --outputFlat`, // --watch https://stackoverflow.com/questions/13695046/watch-a-folder-for-changes-using-node-js-and-print-file-paths-when-they-are-cha
+    { stdio: 'inherit' }
+  );
 
   let output = '';
-  await glob.sync(resolve(process.cwd(), 'typings/*.ts')).forEach(file => {
+  const files = readdirSync(join(process.cwd(), 'typings'));
+  files.forEach(file => {
     const [dir, extension] = file.split('.');
     const [fileName] = dir.split('/').reverse();
 
     if (fileName !== 'index' && extension === 'ts')
-      if (fileName === 'globalTypes')
-        remove(join(process.cwd(), 'typings/globalTypes.ts'), err => {
-          console.log('  ✔ Delete typings/globalTypes.ts');
-          if (err) return console.error(err);
-        });
-      else {
-        fs.rename(
+      if (fileName === 'globalTypes') {
+        removeSync(join(process.cwd(), 'typings/globalTypes.ts'));
+        console.log('  ✔ Delete typings/globalTypes.ts');
+      } else {
+        renameSync(
           join(process.cwd(), 'typings', `${fileName}.ts`),
-          join(process.cwd(), 'typings', `${fileName}.d.ts`),
-          err => {
-            if (err) return console.log(err);
-          }
+          join(process.cwd(), 'typings', `${fileName}.d.ts`)
         );
         output += `
 export * from './${fileName}'`;
       }
   });
-
-  await outputFile(join(process.cwd(), 'typings/index.ts'), output, err => {
-    if (err) return console.log(err);
-  });
+  outputFileSync(join(process.cwd(), 'typings/index.ts'), output);
 
   return cmd;
 };
