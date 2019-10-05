@@ -4,16 +4,17 @@
   "version": "0.0.1",
   "license": "ISC",
   "scripts": {
-    "up": "vilicando-core up",
-    "dev": "vilicando-core",
     "build": "vilicando-core build",
-    "start": "vilicando-core start"
+    "codegen": "vilicando-core codegen:download && vilicando-core codegen:generate",
+    "dev": "vilicando-core",
+    "start": "vilicando-core start",
+    "up": "vilicando-core up"
   },
   "dependencies": {
     "@ant-design/icons": "4.0.0-alpha.9",
     "antd": "4.0.0-alpha.6",
-    "react": "16.10.1",
-    "react-dom": "16.10.1",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
     "vilicando-core": "*"
   }
 }

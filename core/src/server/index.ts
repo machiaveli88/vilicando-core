@@ -38,6 +38,7 @@ module.exports = (props: IWithCore, nextConfig: any = {}) => {
         config.resolve.alias['@forms'] = join(dirname, 'forms/');
         config.resolve.alias['@language'] = join(dirname, 'language/');
         config.resolve.alias['@pages'] = join(dirname, 'pages/');
+        config.resolve.alias['@typings'] = join(dirname, 'typings/');
         config.resolve.alias['@utils'] = join(dirname, 'utils/');
 
         config.plugins.push(new EnvironmentPlugin(parsed));

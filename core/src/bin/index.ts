@@ -11,6 +11,8 @@ const { _: commands, ...args } = arg(
     '--port': Number,
     '--dev': Boolean,
     '--latest': Boolean,
+    '--url': String,
+    '--secret': String,
 
     // Aliases
     '-h': '--help',
@@ -28,7 +30,11 @@ const scripts: {
   build: async () => await import('./scripts').then(({ build }) => build),
   dev: async () => await import('./scripts').then(({ dev }) => dev),
   start: async () => await import('./scripts').then(({ start }) => start),
-  up: async () => await import('./scripts').then(({ up }) => up)
+  up: async () => await import('./scripts').then(({ up }) => up),
+  'codegen:download': async () =>
+    await import('./scripts').then(({ codegenDownload }) => codegenDownload),
+  'codegen:generate': async () =>
+    await import('./scripts').then(({ codegenGenerate }) => codegenGenerate)
 };
 const command = commands[0] || devCommand;
 const foundCommand = Boolean(scripts[command]);
@@ -40,7 +46,7 @@ const foundCommand = Boolean(scripts[command]);
     require.resolve(dependency);
   } catch (err) {
     console.warn(
-      `The module '${dependency}' was not found. Vilicando-core requires that you include it in 'dependencies' of your 'package.json'. To add it, run 'yarn add ${dependency}'`
+      `The module '${dependency}' was not found. Vilicando-core requires it as dependency of your 'package.json'. To add it, run 'yarn add ${dependency}'`
     );
   }
 });
@@ -51,6 +57,14 @@ if (!foundCommand && !args['--help']) {
 } else if (args['--help']) {
   console.log('No help found!');
   process.exit(0);
+}
+if (command === 'dev' || command === 'build') {
+  scripts['codegen:download']()
+    .then(exec => exec(args))
+    .catch(err => console.error(err));
+  scripts['codegen:generate']()
+    .then(exec => exec(args))
+    .catch(err => console.error(err));
 }
 scripts[command]()
   .then(exec => exec(args))

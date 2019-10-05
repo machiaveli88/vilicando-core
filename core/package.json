@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.141",
-    "@types/node": "^12.7.9",
+    "@types/node": "^12.7.11",
     "@zeit/next-less": "1.0.1",
-    "apollo-boost": "^0.4.4",
+    "apollo": "^2.18.3",
     "arg": "^4.1.1",
     "babel-plugin-import": "1.12.2",
     "babel-plugin-inline-react-svg": "1.1.0",
@@ -48,10 +48,12 @@
   },
   "devDependencies": {
     "@types/antd": "1.0.0",
+    "@types/dotenv": "^6.1.1",
+    "@types/glob": "^7.1.1",
     "@types/next": "8.0.6",
     "@types/node-polyglot": "0.4.34",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "16.9.4",
+    "@types/react": "16.9.5",
     "@types/react-dom": "16.9.1",
     "@types/tinycolor2": "1.4.2"
   },
