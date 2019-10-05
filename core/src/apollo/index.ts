@@ -1,5 +1,12 @@
-export { default as useMutation } from './useMutation';
-export { default as useLazyQuery } from './useLazyQuery';
-export { default as useSubscription } from './useSubscription';
-export { default as useQuery } from './useQuery';
+export {
+  useApolloClient,
+  useLazyQuery,
+  useMutation,
+  useQuery,
+  useSubscription
+} from '@apollo/react-hooks';
 export { default as withApollo } from './withApollo';
+
+import { default as query } from './queryHasura';
+import { default as mutate } from './mutateHasura';
+export const hasura = { query, mutate };

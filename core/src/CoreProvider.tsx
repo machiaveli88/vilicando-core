@@ -7,7 +7,7 @@ import { Loader, Progress } from './components';
 import { ThemeProvider } from './theme';
 import defaultTheme from './theme/theme.json';
 import { defaultRenderer } from './theme';
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
 
 const _navigator = {
   ...(typeof window === 'undefined' ? {} : navigator)

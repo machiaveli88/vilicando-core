@@ -25,11 +25,6 @@
 
 - [ ] Auth
 
-#### 0.5
-
-- [ ] API, Custom server, ...
-- [ ] Example app with custom server
-
 ## Core
 
 -
@@ -54,3 +49,12 @@ Vilicando uses [fela](http://fela.js.org) for theming and [antd](https://ant.des
 ## Language
 
 Based on [polyglot](https://github.com/airbnb/polyglot.js#options-overview).
+
+## Database
+
+Based on [hasura](https://hasura.io).
+See example for more usage.
+Please set the following .env-vars to enable full hasura/graphql support:
+`GRAPHQL_HTTP:` url for graphql
+`GRAPHQL_WS:` url for websocket
+`GRAPHQL_SECRET:` hasura admin secret

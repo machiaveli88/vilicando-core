@@ -1,4 +1,6 @@
 export {
+  hasura,
+  useApolloClient,
   useLazyQuery,
   useMutation,
   useQuery,

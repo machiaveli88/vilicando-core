@@ -1,83 +1,89 @@
 import * as React from 'react';
 import { Input, Divider, List, Popconfirm } from 'antd';
-import { useQuery, useMutation } from 'vilicando-core';
+import { hasura } from 'vilicando-core';
+import gql from 'graphql-tag';
+import {
+  users,
+  users_user,
+  updateUser,
+  updateUserVariables,
+  deleteUser,
+  deleteUserVariables,
+  insertUser,
+  insertUserVariables,
+  updateAllUser,
+  updateAllUserVariables
+} from '@typings';
 
-interface IUser {
-  id: string;
-  name: string;
-}
-
-function StartPage() {
-  const { data: { user = [] } = {}, loading } = useQuery<{
-    user: IUser;
-  }>(
-    `
+const QUERY_USER = gql`
   query users {
     user {
       id
       name
     }
   }
-`
-  );
-  /* 
-  const { data: { user = [] } = {}, loading } = useSubscription<{
-    user: IUser;
-  }>(
-    `
-    subscription {
-      user {
+`;
+const UPDATE_USER = gql`
+  mutation updateUser($id: uuid!, $name: String) {
+    update_user(_set: { name: $name }, where: { id: { _eq: $id } }) {
+      returning {
         id
         name
       }
     }
-`
-  ); */
+  }
+`;
+const UPDATE_ALL_USER = gql`
+  mutation updateAllUser($name: String) {
+    update_user(_set: { name: $name }, where: {}) {
+      returning {
+        id
+        name
+      }
+    }
+  }
+`;
+const INSERT_USER = gql`
+  mutation insertUser($name: String!) {
+    insert_user(objects: { name: $name }) {
+      returning {
+        id
+        name
+      }
+    }
+  }
+`;
+const DELETE_USER = gql`
+  mutation deleteUser($id: uuid!) {
+    delete_user(where: { id: { _eq: $id } }) {
+      returning {
+        id
+        name
+      }
+    }
+  }
+`;
 
-  const [updateUser] = useMutation<IUser>(
-    `
-    mutation($id: uuid!, $name: String) {
-      update_user(_set: {name: $name}, where: {id: {_eq: $id}}) {
-        returning {
-          id
-          name
-        }
-      }
-    }
-`
+function StartPage() {
+  const [user, { loading }] = hasura.query<users>(QUERY_USER);
+  const [updateUser] = hasura.mutate<updateUser, updateUserVariables>(
+    UPDATE_USER
   );
-  const [insertUser] = useMutation<IUser>(
-    `
-    mutation($name: String!) {
-      insert_user(objects: {name: $name}) {
-        returning {
-          id
-          name
-        }
-      }
-    }
-`,
-    { refetchQueries: ['users'] }
+  const [deleteUser] = hasura.mutate<deleteUser, deleteUserVariables>(
+    DELETE_USER
   );
-  const [deleteUser] = useMutation<IUser>(
-    `
-    mutation($id: uuid!) {
-      delete_user(where: {id: {_eq: $id}}) {
-        returning {
-          id
-          name
-        }
-      }
-    }
-`,
-    { refetchQueries: ['users'] }
+  const [insertUser] = hasura.mutate<insertUser, insertUserVariables>(
+    INSERT_USER
+  );
+  const [updateAllUser] = hasura.mutate<updateAllUser, updateAllUserVariables>(
+    UPDATE_ALL_USER
   );
 
   return (
     <>
       <h2>Our employees:</h2>
 
-      <List<IUser>
+      <List<users_user>
         itemLayout="vertical"
         size="large"
         loading={loading}
@@ -107,6 +113,13 @@ function StartPage() {
       <Input
         placeholder="New employee"
         onPressEnter={e => insertUser({ name: e.currentTarget.value })}
+      />
+
+      <Divider />
+
+      <Input
+        placeholder="Update all"
+        onChange={e => updateAllUser({ name: e.currentTarget.value })}
       />
     </>
   );

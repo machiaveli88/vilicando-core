@@ -1,5 +1,5 @@
 import NextApp from 'next/app';
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
 
 interface IApp<TCacheShape> {
   apollo?: ApolloClient<TCacheShape>;

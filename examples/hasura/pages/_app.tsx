@@ -16,9 +16,22 @@ class CustomApp extends App {
   }
 }
 
+const headers = {
+  'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
+};
+
 export default withApollo({
-  uri: process.env.GRAPHQL_URL,
-  headers: {
-    'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
+  http: {
+    uri: process.env.GRAPHQL_HTTP,
+    headers
+  },
+  ws: {
+    uri: process.env.GRAPHQL_WS,
+    options: {
+      reconnect: true,
+      connectionParams: {
+        headers
+      }
+    }
   }
 })(CustomApp);
