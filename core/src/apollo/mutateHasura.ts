@@ -24,7 +24,7 @@ export default function deleteHasura<TData, TVariables = OperationVariables>(
       "hasura.delete won't work correctly with more than one mutation, please use useMutation instead!"
     );
 
-  // todo: unbedingt noch refetchQueries und optimisticResponse umsetzen!
+  // todo: unbedingt noch refetchQueries und optimisticResponse umsetzen! => besser update-Funktion, damit sind beide Punkte abgedeckt!
 
   return [
     (

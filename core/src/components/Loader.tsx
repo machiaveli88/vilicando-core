@@ -11,7 +11,7 @@ export interface IComponentLoader {
 function ComponentLoader({ size = 250, children, text }: IComponentLoader) {
   const { css, theme, renderer } = useFela();
 
-  // todo: fixing animation (I think it depends on changes in renderer => https://github.com/machiaveli88/vilicando-core/commit/fdd93d65c25632633e3375b863465d687711a282)
+  // todo: fixing animation (I think it depends on changes in renderer => https://github.com/machiaveli88/vilicando-core/commit/fdd93d65c25632633e3375b863465d687711a282 => scheint doch nicht so!)
 
   const pulseRing = (): TRuleProps => ({
     '0%': {

@@ -43,7 +43,7 @@ function CoreProvider({
     children
   );
 
-  // todo: Add Splash Screen: https://github.com/zeit/next.js/issues/5736
+  // todo: Add Splash Screen: https://github.com/zeit/next.js/issues/5736, https://github.com/nguyenbathanh/react-loading-screen/blob/master/public/index.html
 
   return (
     <RendererProvider renderer={renderer}>

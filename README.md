@@ -25,6 +25,11 @@
 
 - [ ] Auth
 
+#### 0.5
+
+- [ ] Splash-Screen
+- [ ] ...
+
 ## Core
 
 -
