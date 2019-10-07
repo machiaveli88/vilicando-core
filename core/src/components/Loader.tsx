@@ -11,6 +11,8 @@ export interface IComponentLoader {
 function ComponentLoader({ size = 250, children, text }: IComponentLoader) {
   const { css, theme, renderer } = useFela();
 
+  // todo: fixing animation (I think it depends on changes in renderer => https://github.com/machiaveli88/vilicando-core/commit/fdd93d65c25632633e3375b863465d687711a282)
+
   const pulseRing = (): TRuleProps => ({
     '0%': {
       transform: 'scale(.33)'
@@ -44,9 +46,7 @@ function ComponentLoader({ size = 250, children, text }: IComponentLoader) {
         pointerEvents: 'none',
         right: 0,
         top: 0,
-        background: `linear-gradient(135deg, ${theme.primary7} 0%,${
-          theme.primary9
-        } 100%)`,
+        background: `linear-gradient(135deg, ${theme.primary7} 0%,${theme.primary9} 100%)`,
         zIndex: 2000
       })}
     >

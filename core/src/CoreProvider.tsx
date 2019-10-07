@@ -43,6 +43,8 @@ function CoreProvider({
     children
   );
 
+  // todo: Add Splash Screen: https://github.com/zeit/next.js/issues/5736
+
   return (
     <RendererProvider renderer={renderer}>
       <ThemeProvider value={{ ...defaultTheme, ...theme }}>
