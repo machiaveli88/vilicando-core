@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import {
   users,
   users_user,
+  groups,
   updateUser,
   updateUserVariables,
   deleteUser,
@@ -18,6 +19,14 @@ import {
 const QUERY_USER = gql`
   query users {
     user {
+      id
+      name
+    }
+  }
+`;
+const QUERY_GROUP = gql`
+  query groups {
+    group {
       id
       name
     }
@@ -66,6 +75,7 @@ const DELETE_USER = gql`
 
 function StartPage() {
   const [user, { loading }] = hasura.query<users>(QUERY_USER);
+  const [groups] = hasura.query<groups>(QUERY_GROUP);
   const [updateUser] = hasura.mutate<updateUser, updateUserVariables>(
     UPDATE_USER
   );

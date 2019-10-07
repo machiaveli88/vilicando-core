@@ -2,16 +2,17 @@ import * as React from 'react';
 import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
 import { DocumentNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
+import { handleGlobalLoadingState } from './ApolloProvider';
 
 export default function queryHasura<TData, TVariables = OperationVariables>(
   document: DocumentNode,
   options?: QueryHookOptions<TData, TVariables>
 ): [TData[keyof TData], QueryResult<TData, TVariables>] {
   const { skip, variables, onError } = options || {};
-  const { data, subscribeToMore, ...rest } = useQuery<TData, TVariables>(
-    document,
-    options
-  );
+  const { data, subscribeToMore, loading, ...rest } = useQuery<
+    TData,
+    TVariables
+  >(document, options);
 
   const dataObject = data || {};
   const key = Object.keys(dataObject)[0];
@@ -24,6 +25,8 @@ export default function queryHasura<TData, TVariables = OperationVariables>(
     console.warn(
       "hasura.query won't work correctly with more than one query, please use useQuery instead!"
     );
+
+  handleGlobalLoadingState(document, loading);
 
   React.useEffect(() => {
     if (skip) return undefined;
@@ -50,5 +53,5 @@ export default function queryHasura<TData, TVariables = OperationVariables>(
     });
   }, [skip]);
 
-  return [result, { data, subscribeToMore, ...rest }];
+  return [result, { data, subscribeToMore, loading, ...rest }];
 }
