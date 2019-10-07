@@ -100,7 +100,7 @@ const codegenGenerate = ({
     if (fileName !== 'index' && extension === 'ts')
       if (fileName === 'globalTypes') {
         removeSync(join(process.cwd(), 'typings/globalTypes.ts'));
-        console.log('  ✔ Delete typings/globalTypes.ts');
+        console.log('  ✔ Deleting typings/globalTypes.ts');
       } else {
         renameSync(
           join(process.cwd(), 'typings', `${fileName}.ts`),
