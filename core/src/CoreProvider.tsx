@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ApolloProvider, IApolloProvider } from './apollo';
+import { ApolloProvider } from '@apollo/react-hooks';
 import LanguageProvider from './LanguageProvider';
 import { IRenderer } from 'fela';
 import { RendererProvider } from 'react-fela';
@@ -7,6 +7,7 @@ import { Progress } from './components';
 import { ThemeProvider } from './theme';
 import defaultTheme from './theme/theme.json';
 import { defaultRenderer } from './theme';
+import { ApolloClient } from 'apollo-client';
 
 const _navigator = {
   ...(typeof window === 'undefined' ? {} : navigator)
@@ -19,8 +20,9 @@ const defaultLocale =
       _navigator.browserLanguage ||
       'de';
 
-export interface ICoreProvider<TCacheShape = any>
-  extends IApolloProvider<TCacheShape> {
+export interface ICoreProvider<TCacheShape = any> {
+  children: React.ReactNode;
+  apollo?: ApolloClient<TCacheShape>;
   theme?: object;
   renderer?: IRenderer;
   locale?: string;
@@ -32,15 +34,11 @@ function CoreProvider({
   apollo,
   theme,
   renderer = defaultRenderer,
-  showLoader,
-  loading,
   locale = defaultLocale,
   translations = {}
 }: ICoreProvider) {
   const content = apollo ? (
-    <ApolloProvider apollo={apollo} showLoader={showLoader} loading={loading}>
-      {children}
-    </ApolloProvider>
+    <ApolloProvider client={apollo}>{children}</ApolloProvider>
   ) : (
     children
   );

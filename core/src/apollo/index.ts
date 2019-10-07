@@ -5,7 +5,6 @@ export {
   useQuery,
   useSubscription
 } from '@apollo/react-hooks';
-export { default as ApolloProvider, IApolloProvider } from './ApolloProvider';
 export { default as withApollo } from './withApollo';
 
 import { default as query } from './queryHasura';
