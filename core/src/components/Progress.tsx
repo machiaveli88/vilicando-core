@@ -5,9 +5,9 @@ import { RendererProvider } from 'react-fela';
 import { TRuleProps } from 'fela';
 import { useFela } from '../theme';
 
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
+Router.events.on('routeChangeStart', NProgress.start);
+Router.events.on('routeChangeComplete', NProgress.done);
+Router.events.on('routeChangeError', NProgress.done);
 
 interface IProgress {
   children: React.ReactNode;
