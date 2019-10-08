@@ -16,7 +16,7 @@ import {
   updateAllUserVariables
 } from '@typings';
 
-const QUERY_USER = gql`
+const QUERY_USERS = gql`
   query users {
     user {
       id
@@ -24,7 +24,7 @@ const QUERY_USER = gql`
     }
   }
 `;
-const QUERY_GROUP = gql`
+const QUERY_GROUPS = gql`
   query groups {
     group {
       id
@@ -74,8 +74,8 @@ const DELETE_USER = gql`
 `;
 
 function StartPage() {
-  const [user, { loading }] = hasura.query<users>(QUERY_USER);
-  const [groups] = hasura.query<groups>(QUERY_GROUP);
+  const [user, { loading }] = hasura.query<users>(QUERY_USERS);
+  const [groups] = hasura.query<groups>(QUERY_GROUPS);
   const [updateUser] = hasura.mutate<updateUser, updateUserVariables>(
     UPDATE_USER
   );
