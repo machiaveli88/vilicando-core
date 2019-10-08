@@ -34,7 +34,7 @@ const scripts: {
     await import('./scripts').then(
       ({ codegenDownload, codegenGenerate, dev }) => async ({
         '--codegen': codegen,
-        args
+        ...args
       }: any) => {
         if (codegen) {
           await codegenDownload(args);
