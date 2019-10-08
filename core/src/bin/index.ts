@@ -13,12 +13,14 @@ const { _: commands, ...args } = arg(
     '--latest': Boolean,
     '--url': String,
     '--secret': String,
+    '--codegen': Boolean,
 
     // Aliases
     '-h': '--help',
     '-p': '--port',
     '-d': '--dev',
-    '-l': '--latest'
+    '-l': '--latest',
+    '-c': '--codegen'
   },
   {
     permissive: true
@@ -27,19 +29,17 @@ const { _: commands, ...args } = arg(
 const scripts: {
   [command: string]: () => Promise<(argv?: object) => void>;
 } = {
-  build: async () =>
-    await import('./scripts').then(
-      ({ codegenDownload, codegenGenerate, build }) => async args => {
-        await codegenDownload(args);
-        await codegenGenerate(args);
-        await build();
-      }
-    ),
+  build: async () => await import('./scripts').then(({ build }) => build),
   dev: async () =>
     await import('./scripts').then(
-      ({ codegenDownload, codegenGenerate, dev }) => async args => {
-        await codegenDownload(args);
-        await codegenGenerate(args);
+      ({ codegenDownload, codegenGenerate, dev }) => async ({
+        '--codegen': codegen,
+        args
+      }: any) => {
+        if (codegen) {
+          await codegenDownload(args);
+          await codegenGenerate(args);
+        }
         await dev(args);
       }
     ),
