@@ -96,14 +96,9 @@ const codegenGenerate = ({
     const [dir, extension] = file.split('.');
     const [fileName] = dir.split('/').reverse();
 
-    if (fileName !== 'index' && extension === 'ts') {
-      renameSync(
-        join(process.cwd(), 'graphql/typings', `${fileName}.ts`),
-        join(process.cwd(), 'graphql/typings', `${fileName}.d.ts`)
-      );
-      output += `
-export * from './${fileName}'`;
-    }
+    if (fileName !== 'index' && extension === 'ts')
+      output += `export * from './${fileName}'
+`;
   });
   outputFileSync(join(process.cwd(), 'graphql/typings/index.ts'), output);
 
