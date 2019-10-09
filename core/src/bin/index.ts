@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import arg from 'arg';
 import { CONFIG_FILE } from 'next/dist/next-server/lib/constants';
-import { watchFile } from 'fs';
+import { watchFile, existsSync } from 'fs';
+import { join } from 'path';
 
 const devCommand = 'dev';
 const { _: commands, ...args } = arg(
@@ -13,14 +14,13 @@ const { _: commands, ...args } = arg(
     '--latest': Boolean,
     '--url': String,
     '--secret': String,
-    '--codegen': Boolean,
+    '--no-codegen': Boolean,
 
     // Aliases
     '-h': '--help',
     '-p': '--port',
     '-d': '--dev',
-    '-l': '--latest',
-    '-c': '--codegen'
+    '-l': '--latest'
   },
   {
     permissive: true
@@ -33,10 +33,10 @@ const scripts: {
   dev: async () =>
     await import('./scripts').then(
       ({ codegenDownload, codegenGenerate, dev }) => async ({
-        '--codegen': codegen,
+        '--no-codegen': noCodegen, // todo: statt arg checken ob graphql-Ordner existiert!
         ...args
       }: any) => {
-        if (codegen) {
+        if (existsSync(join(process.cwd(), 'graphql')) && !noCodegen) {
           await codegenDownload(args);
           await codegenGenerate(args);
         }

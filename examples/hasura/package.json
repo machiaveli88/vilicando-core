@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vilicando-core build",
     "codegen": "vilicando-core codegen",
-    "dev": "vilicando-core --codegen",
+    "dev": "vilicando-core",
     "start": "vilicando-core start",
     "up": "vilicando-core up"
   },

@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { Input, Divider, List, Popconfirm } from 'antd';
 import { hasura } from 'vilicando-core';
-import gql from 'graphql-tag';
 import {
+  QUERY_USERS,
+  UPDATE_USER,
+  UPDATE_ALL_USER,
+  INSERT_USER,
+  DELETE_USER,
   users,
   users_user,
-  groups,
   updateUser,
   updateUserVariables,
   deleteUser,
@@ -14,68 +17,10 @@ import {
   insertUserVariables,
   updateAllUser,
   updateAllUserVariables
-} from '@typings';
-
-const QUERY_USERS = gql`
-  query users {
-    user {
-      id
-      name
-    }
-  }
-`;
-const QUERY_GROUPS = gql`
-  query groups {
-    group {
-      id
-      name
-    }
-  }
-`;
-const UPDATE_USER = gql`
-  mutation updateUser($id: uuid!, $name: String) {
-    update_user(_set: { name: $name }, where: { id: { _eq: $id } }) {
-      returning {
-        id
-        name
-      }
-    }
-  }
-`;
-const UPDATE_ALL_USER = gql`
-  mutation updateAllUser($name: String) {
-    update_user(_set: { name: $name }, where: {}) {
-      returning {
-        id
-        name
-      }
-    }
-  }
-`;
-const INSERT_USER = gql`
-  mutation insertUser($name: String!) {
-    insert_user(objects: { name: $name }) {
-      returning {
-        id
-        name
-      }
-    }
-  }
-`;
-const DELETE_USER = gql`
-  mutation deleteUser($id: uuid!) {
-    delete_user(where: { id: { _eq: $id } }) {
-      returning {
-        id
-        name
-      }
-    }
-  }
-`;
+} from '@graphql';
 
 function StartPage() {
   const [user, { loading }] = hasura.query<users>(QUERY_USERS);
-  const [groups] = hasura.query<groups>(QUERY_GROUPS);
   const [updateUser] = hasura.mutate<updateUser, updateUserVariables>(
     UPDATE_USER
   );

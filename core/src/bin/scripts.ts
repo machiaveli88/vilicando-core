@@ -2,12 +2,11 @@
 import { execSync } from 'child_process';
 import { join } from 'path';
 import { renameSync, readdirSync, mkdirSync, copyFileSync } from 'fs';
-import path from 'path';
 import dotenv from 'dotenv';
 import { outputFileSync, removeSync } from 'fs-extra';
 
-dotenv.config({ path: path.join(process.cwd(), '.env') });
-dotenv.config({ path: path.join(process.cwd(), '../.env') });
+dotenv.config({ path: join(process.cwd(), '.env') });
+dotenv.config({ path: join(process.cwd(), '../.env') });
 
 const { PORT, GRAPHQL_HTTP, GRAPHQL_SECRET } = process.env;
 
@@ -85,32 +84,31 @@ const codegenGenerate = ({
   if (!url) return null;
 
   const cmd = execSync(
-    url
-      ? `apollo codegen:generate typings --endpoint=${url} --header="X-Hasura-Admin-Secret: ${secret}" --target=typescript --includes=**/*.{ts,tsx} --excludes=node_modules --tagName=gql --outputFlat`
-      : `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=**/*.{ts,tsx} --excludes=node_modules --tagName=gql --outputFlat --no-addTypename`, // --watch https://stackoverflow.com/questions/13695046/watch-a-folder-for-changes-using-node-js-and-print-file-paths-when-they-are-cha
+    secret
+      ? `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=graphql/*.ts --tagName=gql --no-addTypename --header="X-Hasura-Admin-Secret: ${secret}"`
+      : `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=graphql/*.ts --tagName=gql --no-addTypename`, // --watch https://stackoverflow.com/questions/13695046/watch-a-folder-for-changes-using-node-js-and-print-file-paths-when-they-are-cha
     { stdio: 'inherit' }
   );
 
   let output = '';
-  const files = readdirSync(join(process.cwd(), 'typings'));
+  const files = readdirSync(join(process.cwd(), 'graphql/typings'));
   files.forEach(file => {
     const [dir, extension] = file.split('.');
     const [fileName] = dir.split('/').reverse();
 
-    if (fileName !== 'index' && extension === 'ts')
-      if (fileName === 'globalTypes') {
-        removeSync(join(process.cwd(), 'typings/globalTypes.ts'));
-        console.log('  ✔ Deleting typings/globalTypes.ts');
-      } else {
-        renameSync(
-          join(process.cwd(), 'typings', `${fileName}.ts`),
-          join(process.cwd(), 'typings', `${fileName}.d.ts`)
-        );
-        output += `
+    if (fileName !== 'index' && extension === 'ts') {
+      renameSync(
+        join(process.cwd(), 'graphql/typings', `${fileName}.ts`),
+        join(process.cwd(), 'graphql/typings', `${fileName}.d.ts`)
+      );
+      output += `
 export * from './${fileName}'`;
-      }
+    }
   });
-  outputFileSync(join(process.cwd(), 'typings/index.ts'), output);
+  outputFileSync(join(process.cwd(), 'graphql/typings/index.ts'), output);
+
+  removeSync(join(process.cwd(), 'typings'));
+  console.log('  ✔ Deleting typings/globalTypes.ts');
 
   return cmd;
 };
