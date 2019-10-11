@@ -1,4 +1,4 @@
-
+export * from './UserFragment'
 export * from './deleteUser'
 export * from './insertUser'
 export * from './updateAllUser'
