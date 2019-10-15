@@ -85,8 +85,8 @@ const codegenGenerate = ({
 
   const cmd = execSync(
     secret
-      ? `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=graphql/*.ts --tagName=gql --no-addTypename --header="X-Hasura-Admin-Secret: ${secret}"`
-      : `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=graphql/*.ts --tagName=gql --no-addTypename`, // --watch https://stackoverflow.com/questions/13695046/watch-a-folder-for-changes-using-node-js-and-print-file-paths-when-they-are-cha
+      ? `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=graphql/*.ts --tagName=gql --addTypename --header="X-Hasura-Admin-Secret: ${secret}"`
+      : `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=graphql/*.ts --tagName=gql --addTypename`, // todo: --watch https://stackoverflow.com/questions/13695046/watch-a-folder-for-changes-using-node-js-and-print-file-paths-when-they-are-cha
     { stdio: 'inherit' }
   );
 
