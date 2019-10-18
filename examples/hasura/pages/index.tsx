@@ -46,15 +46,11 @@ function StartPage() {
         size="large"
         loading={loading}
         dataSource={user}
-        renderItem={({ id, name, __optimistic }) => (
+        renderItem={({ id, name }) => (
           <List.Item key={id}>
             <Input
               value={name}
-              suffix={
-                __optimistic && (
-                  <Loading style={{ color: 'rgba(0, 0, 0, .33)' }} />
-                )
-              }
+              suffix={<Loading style={{ color: 'rgba(0, 0, 0, .33)' }} />}
               addonAfter={
                 <Popconfirm
                   title="Are you sure delete this employee?"
