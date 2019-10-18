@@ -15,9 +15,7 @@ export default function queryHasura<TData, TVariables = OperationVariables>(
 
   const dataObject = data || {};
   const key = Object.keys(dataObject)[0];
-  const result = (dataObject[key] || []).map(
-    ({ __typename, ...rest }: TData & { __typename: string }) => rest
-  );
+  const result = dataObject[key] || [];
 
   const _document = JSON.parse(JSON.stringify(document));
   if (_document.definitions[0].selectionSet.selections.length > 1)
