@@ -7,11 +7,13 @@
 // ====================================================
 
 export interface updateUser_update_user_returning {
+  __typename: "user";
   id: any;
   name: string;
 }
 
 export interface updateUser_update_user {
+  __typename: "user_mutation_response";
   /**
    * data of the affected rows by the mutation
    */

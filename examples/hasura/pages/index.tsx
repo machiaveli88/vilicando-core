@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Input, Divider, List, Popconfirm } from 'antd';
+import { Loading } from '@ant-design/icons';
 import { hasura } from 'vilicando-core';
 import {
   QUERY_USERS,
@@ -34,6 +35,8 @@ function StartPage() {
     UPDATE_ALL_USER
   );
 
+  console.log(user);
+
   return (
     <>
       <h2>Our employees:</h2>
@@ -43,10 +46,15 @@ function StartPage() {
         size="large"
         loading={loading}
         dataSource={user}
-        renderItem={({ id, name }) => (
+        renderItem={({ id, name, __optimistic }) => (
           <List.Item key={id}>
             <Input
               value={name}
+              suffix={
+                __optimistic && (
+                  <Loading style={{ color: 'rgba(0, 0, 0, .33)' }} />
+                )
+              }
               addonAfter={
                 <Popconfirm
                   title="Are you sure delete this employee?"

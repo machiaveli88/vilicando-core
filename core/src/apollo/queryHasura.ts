@@ -3,10 +3,14 @@ import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
 import { DocumentNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
 
+type Test<T> = {
+  [K in keyof T[keyof T]]: T[keyof T][K];
+};
+
 export default function queryHasura<TData, TVariables = OperationVariables>(
   document: DocumentNode,
   options?: QueryHookOptions<TData, TVariables>
-): [TData[keyof TData], QueryResult<TData, TVariables>] {
+): [Test<TData>[], QueryResult<TData, TVariables>] {
   const { skip, variables, onError } = options || {};
   const { data, subscribeToMore, ...rest } = useQuery<TData, TVariables>(
     document,
