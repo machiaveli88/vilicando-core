@@ -3,22 +3,37 @@ import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
 import { DocumentNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
 
-export default function queryHasura<TData, TVariables = OperationVariables>(
+type TOptimisticItem<TItem> = TItem & {
+  __optimistic?: boolean;
+  id: any;
+};
+
+export type TQueryData<TItem> = {
+  [x: string]: Array<TOptimisticItem<TItem>>;
+};
+
+export default function queryHasura<TItem, TVariables = OperationVariables>(
   document: DocumentNode,
-  options?: QueryHookOptions<TData, TVariables>
-): [TData[keyof TData], QueryResult<TData, TVariables>] {
+  options?: QueryHookOptions<TQueryData<TItem>, TVariables>
+): [Array<TOptimisticItem<TItem>>, QueryResult<TQueryData<TItem>, TVariables>] {
   const { skip, variables, onError } = options || {};
-  const { data, subscribeToMore, ...rest } = useQuery<TData, TVariables>(
-    document,
-    options
-  );
+  const { data, subscribeToMore, ...rest } = useQuery<
+    TQueryData<TItem>,
+    TVariables
+  >(document, options);
 
   const dataObject = data || {};
   const key = Object.keys(dataObject)[0];
-  const result = dataObject[key] || [];
+  const result = (dataObject[key] || []).map(item => ({
+    __optimistic: false,
+    ...item
+  }));
 
   const _document = JSON.parse(JSON.stringify(document));
-  if (_document.definitions[0].selectionSet.selections.length > 1)
+  const definitionIndex = _document.definitions.findIndex(
+    ({ kind }: { kind: string }) => kind === 'OperationDefinition'
+  );
+  if (_document.definitions[definitionIndex].selectionSet.selections.length > 1)
     console.warn(
       "hasura.query won't work correctly with more than one query, please use useQuery instead!"
     );
@@ -26,10 +41,12 @@ export default function queryHasura<TData, TVariables = OperationVariables>(
   React.useEffect(() => {
     if (skip) return undefined;
 
-    _document.definitions[0].operation = 'subscription';
-    _document.definitions[0].name.value = `sub_${_document.definitions[0].name.value}`;
+    _document.definitions[definitionIndex].operation = 'subscription';
+    _document.definitions[
+      definitionIndex
+    ].name.value = `sub_${_document.definitions[definitionIndex].name.value}`;
 
-    return subscribeToMore<TData, TVariables>({
+    return subscribeToMore<TQueryData<TItem>, TVariables>({
       document: _document,
       variables,
       onError: ({ name, message, stack }: Error) =>
