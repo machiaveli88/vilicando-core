@@ -5,28 +5,17 @@ import { hasura } from 'vilicando-core';
 import {
   QUERY_USERS,
   UPDATE_USER,
-  UPDATE_ALL_USER,
-  INSERT_USER,
-  DELETE_USER,
-  users,
-  users_user,
-  updateUser,
-  updateUserVariables,
-  deleteUser,
-  deleteUserVariables,
-  insertUser,
-  insertUserVariables,
-  updateAllUser,
-  updateAllUserVariables,
-  updateUser_update_user_returning
+  IUser,
+  IUpdateUser,
+  IUpdateUserVariables
 } from '@graphql';
 
 function StartPage() {
-  const [users, { loading }] = hasura.query<users_user>(QUERY_USERS);
-  const [updateUser] = hasura.mutate<
-    updateUser_update_user_returning,
-    updateUserVariables
-  >(UPDATE_USER, QUERY_USERS);
+  const [users, { loading }] = hasura.query<IUser>(QUERY_USERS);
+  const [updateUser] = hasura.mutate<IUpdateUser, IUpdateUserVariables>(
+    UPDATE_USER,
+    QUERY_USERS
+  );
   /* const [deleteUser] = hasura.mutate<deleteUser, deleteUserVariables>(
     DELETE_USER
   );
