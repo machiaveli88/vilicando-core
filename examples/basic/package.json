@@ -12,8 +12,8 @@
   "dependencies": {
     "@ant-design/icons": "4.0.0-alpha.9",
     "antd": "4.0.0-alpha.7",
-    "react": "16.10.2",
-    "react-dom": "16.10.2",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
     "vilicando-core": "*"
   }
 }
