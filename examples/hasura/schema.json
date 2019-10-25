@@ -39,7 +39,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -130,7 +130,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -240,7 +240,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -331,7 +331,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -441,7 +441,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -532,7 +532,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -1408,7 +1408,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -1499,7 +1499,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -1815,7 +1815,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -1906,7 +1906,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -3171,6 +3171,16 @@
               }
             },
             "defaultValue": null
+          },
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "group_bool_exp",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -3334,6 +3344,16 @@
               }
             },
             "defaultValue": null
+          },
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "user_bool_exp",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -3419,6 +3439,16 @@
                   }
                 }
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "group_users_bool_exp",
+              "ofType": null
             },
             "defaultValue": null
           }
@@ -3605,7 +3635,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -3696,7 +3726,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -3806,7 +3836,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -3897,7 +3927,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -4007,7 +4037,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -4098,7 +4128,7 @@
               },
               {
                 "name": "limit",
-                "description": "limit the nuber of rows returned",
+                "description": "limit the number of rows returned",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -5004,29 +5034,6 @@
         "inputFields": null,
         "interfaces": null,
         "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "conflict_action",
-        "description": "conflict action",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "ignore",
-            "description": "ignore the insert on this row",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "update",
-            "description": "update the row with the given values",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
         "possibleTypes": null
       },
       {
