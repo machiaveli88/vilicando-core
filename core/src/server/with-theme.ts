@@ -6,7 +6,7 @@ function modifyLoaderOptions(config: any) {
     if (Array.isArray(rule.use))
       rule.use.forEach((u: any) => {
         if (u.loader === 'css-loader' && u.options) {
-          console.warn(
+          console.info(
             'HACK: Removing `minimize` option from `css-loader` entries in Webpack config'
           );
           delete u.options.minimize;

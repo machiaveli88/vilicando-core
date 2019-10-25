@@ -26,7 +26,7 @@ app.prepare().then(() => {
     }
   }).listen(port);
 
-  console.log(
+  console.info(
     `> Server listening at http://localhost:${port} as ${
       dev ? 'development' : process.env.NODE_ENV
     }`

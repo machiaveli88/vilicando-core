@@ -73,10 +73,10 @@ const foundCommand = Boolean(scripts[command]);
 });
 
 if (!foundCommand && !args['--help']) {
-  console.log('Command not found, run `vilicando-core --help` for help!');
+  console.warn('Command not found, run `vilicando-core --help` for help!');
   process.exit(0);
 } else if (args['--help']) {
-  console.log('No help found!');
+  console.warn('No help found!');
   process.exit(0);
 }
 scripts[command]()
@@ -87,7 +87,7 @@ scripts[command]()
 if (command === devCommand) {
   watchFile(`${process.cwd()}/${CONFIG_FILE}`, (cur: any, prev: any) => {
     if (cur.size > 0 || prev.size > 0) {
-      console.log(
+      console.warn(
         `\n> Found a change in ${CONFIG_FILE}. Restart the server to see the changes in effect.`
       );
     }

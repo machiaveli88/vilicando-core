@@ -16,9 +16,9 @@ const serverDist = join(buildDir, 'server.js');
 
 const build = () => {
   mkdirSync(buildDir, { recursive: true });
-  console.log('  ✔ Folder created');
+  console.info('  ✔ Folder created');
   copyFileSync(serverSrc, serverDist);
-  console.log('  ✔ Files copied');
+  console.info('  ✔ Files copied');
   execSync(`next build`, { stdio: 'inherit' });
 };
 
@@ -103,7 +103,7 @@ const codegenGenerate = ({
   outputFileSync(join(process.cwd(), 'graphql/typings/index.ts'), output);
 
   removeSync(join(process.cwd(), 'typings'));
-  console.log('  ✔ Deleting typings/globalTypes.ts');
+  console.info('  ✔ Deleting typings/globalTypes.ts');
 
   return cmd;
 };
