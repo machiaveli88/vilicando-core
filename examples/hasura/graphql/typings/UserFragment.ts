@@ -7,7 +7,6 @@
 // ====================================================
 
 export interface UserFragment {
-  __typename: "user";
   id: any;
   name: string | null;
 }
