@@ -1,16 +1,8 @@
 import * as React from 'react';
 import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
-import { DocumentNode } from 'graphql';
+import { DocumentNode, DefinitionNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
-
-type TOptimisticItem<TItem> = TItem & {
-  __optimistic?: boolean;
-  id: any;
-};
-
-export type TQueryData<TItem> = {
-  [x: string]: Array<TOptimisticItem<TItem>>;
-};
+import { TQueryData, TOptimisticItem } from './types';
 
 export default function queryHasura<TItem, TVariables = OperationVariables>(
   document: DocumentNode,
@@ -31,7 +23,7 @@ export default function queryHasura<TItem, TVariables = OperationVariables>(
 
   const _document = JSON.parse(JSON.stringify(document));
   const definitionIndex = _document.definitions.findIndex(
-    ({ kind }: { kind: string }) => kind === 'OperationDefinition'
+    ({ kind }: DefinitionNode) => kind === 'OperationDefinition'
   );
   if (_document.definitions[definitionIndex].selectionSet.selections.length > 1)
     console.warn(
