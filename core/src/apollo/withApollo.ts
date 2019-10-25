@@ -48,7 +48,7 @@ export default ({ http, ws }: IWithApollo) => {
     ({ initialState = {} }) =>
       new ApolloClient({
         link,
-        ssrMode,
+        ssrMode, // todo: enable automatic static optimization https://github.com/zeit/next.js/blob/canary/examples/with-apollo/pages/client-only.js
         cache: new InMemoryCache().restore(initialState)
       }),
     {
