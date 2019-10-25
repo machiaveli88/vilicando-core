@@ -10,8 +10,6 @@ export interface updateAllUser_update_user_returning {
   __typename: "user";
   id: any;
   name: string | null;
-  created_at: any;
-  updated_at: any;
 }
 
 export interface updateAllUser_update_user {

@@ -4,8 +4,6 @@ const FRAGMENT_USER = gql`
   fragment UserFragment on user {
     id
     name
-    created_at
-    updated_at
   }
 `;
 

@@ -10,8 +10,6 @@ export interface users_user {
   __typename: "user";
   id: any;
   name: string | null;
-  created_at: any;
-  updated_at: any;
 }
 
 export interface users {
