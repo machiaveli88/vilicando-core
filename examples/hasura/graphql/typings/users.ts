@@ -9,7 +9,7 @@
 export interface users_user {
   __typename: "user";
   id: any;
-  name: string;
+  name: string | null;
 }
 
 export interface users {

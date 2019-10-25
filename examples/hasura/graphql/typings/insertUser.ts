@@ -9,7 +9,7 @@
 export interface insertUser_insert_user_returning {
   __typename: "user";
   id: any;
-  name: string;
+  name: string | null;
 }
 
 export interface insertUser_insert_user {
