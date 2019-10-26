@@ -5,6 +5,8 @@ const FRAGMENT_USER = gql`
     __typename
     id
     name
+    created_at
+    updated_at
   }
 `;
 

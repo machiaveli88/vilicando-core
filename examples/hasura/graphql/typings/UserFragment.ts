@@ -10,4 +10,6 @@ export interface UserFragment {
   __typename: "user";
   id: any;
   name: string | null;
+  created_at: any;
+  updated_at: any;
 }

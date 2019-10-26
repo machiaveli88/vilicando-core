@@ -10,6 +10,8 @@ export interface deleteUser_delete_user_returning {
   __typename: "user";
   id: any;
   name: string | null;
+  created_at: any;
+  updated_at: any;
 }
 
 export interface deleteUser_delete_user {
