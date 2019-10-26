@@ -1,13 +1,22 @@
 import * as React from 'react';
 import { Input, Divider, List, Popconfirm } from 'antd';
-import { Loading } from '@ant-design/icons';
+import { Loading, Delete } from '@ant-design/icons';
 import { hasura } from 'vilicando-core';
 import {
   QUERY_USERS,
-  UPDATE_USER,
   IUser,
+  UPDATE_USER,
   IUpdateUser,
-  IUpdateUserVariables
+  IUpdateUserVariables,
+  INSERT_USER,
+  IInsertUser,
+  IInsertUserVariables,
+  DELETE_USER,
+  IDeleteUser,
+  IDeleteUserVariables,
+  UPDATE_ALL_USER,
+  IUpdateAllUser,
+  IUpdateAllUserVariables
 } from '@graphql';
 
 function StartPage() {
@@ -16,15 +25,18 @@ function StartPage() {
     UPDATE_USER,
     QUERY_USERS
   );
-  /* const [deleteUser] = hasura.mutate<deleteUser, deleteUserVariables>(
-    DELETE_USER
+  const [deleteUser] = hasura.mutate<IDeleteUser, IDeleteUserVariables>(
+    DELETE_USER,
+    QUERY_USERS
   );
-  const [insertUser] = hasura.mutate<insertUser, insertUserVariables>(
-    INSERT_USER
+  const [insertUser] = hasura.mutate<IInsertUser, IInsertUserVariables>(
+    INSERT_USER,
+    QUERY_USERS
   );
-  const [updateAllUser] = hasura.mutate<updateAllUser, updateAllUserVariables>(
-    UPDATE_ALL_USER
-  ); */
+  const [updateAllUser] = hasura.mutate<
+    IUpdateAllUser,
+    IUpdateAllUserVariables
+  >(UPDATE_ALL_USER, QUERY_USERS);
 
   return (
     <>
@@ -39,20 +51,28 @@ function StartPage() {
           <List.Item key={item.id}>
             <Input
               value={item.name}
-              suffix={
-                item.__optimistic && (
-                  <Loading style={{ color: 'rgba(0, 0, 0, .33)' }} />
-                )
-              }
+              suffix={item.__optimistic && <Loading />}
               addonAfter={
                 <Popconfirm
                   title="Are you sure delete this employee?"
-                  // onConfirm={() => deleteUser({ id })}
+                  onConfirm={() => deleteUser(item)}
                   okText="Yes"
                   cancelText="No"
                 >
-                  <a>delete</a>
+                  <Delete />
                 </Popconfirm>
+              }
+              addonBefore={
+                <div
+                  style={{
+                    maxWidth: 150,
+                    whiteSpace: 'nowrap',
+                    overflowX: 'hidden',
+                    textOverflow: 'ellipsis'
+                  }}
+                >
+                  <b>id:</b> {item.id}
+                </div>
               }
               onChange={e =>
                 updateUser({ ...item, name: e.currentTarget.value })
@@ -62,18 +82,21 @@ function StartPage() {
         )}
       />
 
-      <Divider />
+      <Divider>Submit on press enter</Divider>
 
       <Input
         placeholder="New employee"
-        // onPressEnter={e => insertUser({ name: e.currentTarget.value })}
+        onPressEnter={e => insertUser({ name: e.currentTarget.value })}
+        style={{ marginBottom: 6 }}
       />
-
-      <Divider />
 
       <Input
         placeholder="Update all"
-        // onChange={e => updateAllUser({ name: e.currentTarget.value })}
+        onPressEnter={e =>
+          updateAllUser(
+            users.map(user => ({ ...user, name: e.currentTarget.value }))
+          )
+        }
       />
     </>
   );

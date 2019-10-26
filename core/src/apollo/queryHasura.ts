@@ -2,22 +2,22 @@ import * as React from 'react';
 import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
 import { DocumentNode, DefinitionNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
-import { TQueryData, TOptimisticItem } from './types';
+import { IQueryData, TOptimisticItem } from './typings';
 
-export default function queryHasura<TItem, TVariables = OperationVariables>(
+export default function queryHasura<IItem, IVariables = OperationVariables>(
   document: DocumentNode,
-  options?: QueryHookOptions<TQueryData<TItem>, TVariables>
-): [Array<TOptimisticItem<TItem>>, QueryResult<TQueryData<TItem>, TVariables>] {
+  options?: QueryHookOptions<IQueryData<IItem>, IVariables>
+): [Array<TOptimisticItem<IItem>>, QueryResult<IQueryData<IItem>, IVariables>] {
   const { skip, variables, onError } = options || {};
   const { data, subscribeToMore, ...rest } = useQuery<
-    TQueryData<TItem>,
-    TVariables
+    IQueryData<IItem>,
+    IVariables
   >(document, options);
 
   const dataObject = data || {};
   const key = Object.keys(dataObject)[0];
   const result = (dataObject[key] || []).map(item => ({
-    __optimistic: false,
+    __optimistic: false, // todo: __optimistic von optimisticResponse kommt nicht durch... hier sind alle items OHNE __optimistic :(
     ...item
   }));
 
@@ -38,7 +38,7 @@ export default function queryHasura<TItem, TVariables = OperationVariables>(
       definitionIndex
     ].name.value = `sub_${_document.definitions[definitionIndex].name.value}`;
 
-    return subscribeToMore<TQueryData<TItem>, TVariables>({
+    return subscribeToMore<IQueryData<IItem>, IVariables>({
       document: _document,
       variables,
       onError: ({ name, message, stack }: Error) =>
