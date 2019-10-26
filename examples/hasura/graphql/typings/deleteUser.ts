@@ -7,11 +7,13 @@
 // ====================================================
 
 export interface deleteUser_delete_user_returning {
+  __typename: "user";
   id: any;
   name: string | null;
 }
 
 export interface deleteUser_delete_user {
+  __typename: "user_mutation_response";
   /**
    * data of the affected rows by the mutation
    */
