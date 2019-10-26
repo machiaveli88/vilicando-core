@@ -2,6 +2,7 @@ import gql from 'graphql-tag';
 
 const FRAGMENT_USER = gql`
   fragment UserFragment on user {
+    __typename
     id
     name
   }
