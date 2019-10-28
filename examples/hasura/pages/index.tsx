@@ -51,7 +51,7 @@ function StartPage() {
           <List.Item key={item.id}>
             <Input
               value={item.name}
-              suffix={item.__optimistic && <Loading />}
+              suffix={item.__optimistic ? <Loading /> : <span />}
               addonAfter={
                 <Popconfirm
                   title="Are you sure delete this employee?"

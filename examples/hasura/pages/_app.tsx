@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { App, CoreProvider, withApollo } from 'vilicando-core';
 import { Layout } from '@components';
+import schema from '../schema.json';
 
 class CustomApp extends App {
   render() {
@@ -33,5 +34,6 @@ export default withApollo({
         headers
       }
     }
-  }
+  },
+  schema
 })(CustomApp);

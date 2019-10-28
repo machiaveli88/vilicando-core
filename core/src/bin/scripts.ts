@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import { execSync } from 'child_process';
 import { join } from 'path';
-import { renameSync, readdirSync, mkdirSync, copyFileSync } from 'fs';
+import { readFileSync, readdirSync, mkdirSync, copyFileSync } from 'fs';
 import dotenv from 'dotenv';
 import { outputFileSync, removeSync } from 'fs-extra';
+import { ISchema } from '../apollo/typings';
 
 dotenv.config({ path: join(process.cwd(), '.env') });
 dotenv.config({ path: join(process.cwd(), '../.env') });
@@ -72,7 +73,40 @@ const codegenDownload = ({
           stdio: 'inherit'
         }
       )
-    : undefined;
+    : null;
+
+const codegenOptimistic = () => {
+  const schema = join(process.cwd(), 'schema.json');
+
+  if (schema) {
+    const { __schema } = JSON.parse(readFileSync(schema).toString()) as ISchema;
+    const { types } = __schema || {};
+    const fields = types.filter(({ kind }) => kind === 'OBJECT');
+
+    let output = `/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL extendings for __optimistic-field
+// ====================================================
+
+import gql from 'graphql-tag';
+`;
+    fields.forEach(({ name }) => {
+      output += `
+gql\`
+  extend type ${name} {
+    __optimistic: Boolean
+  }
+\`
+    `;
+    });
+    outputFileSync(join(process.cwd(), 'graphql/optimistic.ts'), output);
+
+    console.info('  ✔ Creating extendings for __optimistic-field');
+  }
+};
 
 const codegenGenerate = ({
   '--url': url = GRAPHQL_HTTP,
@@ -83,6 +117,9 @@ const codegenGenerate = ({
 }) => {
   if (!url) return null;
 
+  // generate extends for __optimistic-field
+  codegenOptimistic();
+
   const cmd = execSync(
     secret
       ? `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=graphql/*.ts --tagName=gql --addTypename --header="X-Hasura-Admin-Secret: ${secret}"`
@@ -90,7 +127,15 @@ const codegenGenerate = ({
     { stdio: 'inherit' }
   );
 
-  let output = '';
+  let output = `/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL type exports
+// ====================================================
+
+`;
   const files = readdirSync(join(process.cwd(), 'graphql/typings'));
   files.forEach(file => {
     const [dir, extension] = file.split('.');

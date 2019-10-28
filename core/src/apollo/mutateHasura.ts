@@ -78,8 +78,6 @@ export default function mutateHasura<
       );
       variables = { ..._variables, ...variables };
 
-      // todo: 1. query versuchen zu verinhdern, 2. checkcen warum ente geht! ;)
-
       return update({
         variables,
         optimisticResponse: (vars: {} | IVariables) => ({
