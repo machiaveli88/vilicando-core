@@ -65,7 +65,7 @@ export default ({ http, ws, schema: { __schema } }: IWithApollo) => {
         resolvers
       }),
     {
-      getDataFromTree: 'ssr' // todo: eigentlich sollte im Client loading erst true sein, dann false (Ladeanimation wird gezeigt) und im Server die Daten direkt gezeigt werden => warum auch immer geht das gerade nicht! :(
+      getDataFromTree: 'ssr' // todo: eigentlich sollte im Client loading erst true sein, dann false (Ladeanimation wird gezeigt) und im Server die Daten direkt gezeigt werden => warum auch immer geht das gerade nicht, vllt wegen "opted-out of Automatic Static Optimization" ! :(
       // => wenn Splash-Screen hier wieder auf "always" (default) umstellen!
     }
   );

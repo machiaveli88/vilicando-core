@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Input, Divider, List, Popconfirm } from 'antd';
-import { Loading, Delete } from '@ant-design/icons';
+import { Loading, Delete, Check } from '@ant-design/icons';
 import { hasura } from 'vilicando-core';
 import {
   QUERY_USERS,
@@ -16,7 +16,8 @@ import {
   IDeleteUserVariables,
   UPDATE_ALL_USER,
   IUpdateAllUser,
-  IUpdateAllUserVariables
+  IUpdateAllUserVariables,
+  QUERY_USER
 } from '@graphql';
 
 function StartPage() {
@@ -38,6 +39,12 @@ function StartPage() {
     IUpdateAllUserVariables
   >(UPDATE_ALL_USER, QUERY_USERS);
 
+  const [id, setId] = React.useState();
+  const [[user], { loading: loadingUser }] = hasura.query<IUser>(QUERY_USER, {
+    variables: { id },
+    skip: !id
+  });
+
   return (
     <>
       <h2>Our employees:</h2>
@@ -53,14 +60,10 @@ function StartPage() {
               value={item.name}
               suffix={item.__optimistic ? <Loading /> : <span />}
               addonAfter={
-                <Popconfirm
-                  title="Are you sure delete this employee?"
-                  onConfirm={() => deleteUser(item)}
-                  okText="Yes"
-                  cancelText="No"
-                >
-                  <Delete />
-                </Popconfirm>
+                <Check
+                  style={{ color: id === item.id && 'orange' }}
+                  onClick={() => setId(item.id)}
+                />
               }
               addonBefore={
                 <div
@@ -98,6 +101,30 @@ function StartPage() {
           )
         }
       />
+
+      {(!!user || !!loadingUser) && (
+        <>
+          <Divider>Selected User</Divider>
+          {!!user ? (
+            <Input
+              value={user.name}
+              disabled
+              addonAfter={
+                <Popconfirm
+                  title="Are you sure delete this employee?"
+                  onConfirm={() => deleteUser(user)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Delete />
+                </Popconfirm>
+              }
+            />
+          ) : (
+            <Loading />
+          )}
+        </>
+      )}
     </>
   );
 }

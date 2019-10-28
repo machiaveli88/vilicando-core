@@ -5,7 +5,12 @@ import {
   ExecutionResult,
   MutationResult
 } from '@apollo/react-common';
-import { DocumentNode, VariableDefinitionNode, DefinitionNode } from 'graphql';
+import {
+  DocumentNode,
+  VariableDefinitionNode,
+  DefinitionNode,
+  SelectionNode
+} from 'graphql';
 import uuid from 'uuid/v4';
 import {
   TAdvancedItem,
@@ -45,9 +50,14 @@ export default function mutateHasura<
   const [__type, __collection] = __name.split('_'); // z.B. [update, user]
   const __typename = __collection + '_mutation_response'; // z.B. user_mutation_response
 
-  if (selections.length > 1)
+  if (
+    selections.filter(
+      (selection: SelectionNode) =>
+        'name' in selection && selection.name.value !== '__typename'
+    ).length > 1
+  )
     console.warn(
-      "hasura.mutate won't work correctly with more than one mutation, please use useMutation instead!"
+      "hasura.mutate won't work correctly with more than one mutation, please use multiple single mutations or useMutation instead!"
     );
 
   return [

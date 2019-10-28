@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
-import { DocumentNode, DefinitionNode } from 'graphql';
+import { DocumentNode, DefinitionNode, SelectionNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
 import { IQueryData, TOptimisticItem } from './typings';
 
@@ -15,9 +15,12 @@ export default function queryHasura<IItem, IVariables = OperationVariables>(
   >(document, options);
 
   const dataObject = data || {};
-  const key = Object.keys(dataObject)[0];
-  const result = (dataObject[key] || []).map(item => ({
-    __optimistic: false, // todo: __optimistic von optimisticResponse kommt nicht durch... hier sind alle items OHNE __optimistic :(
+  const key = Object.keys(dataObject).filter(x => x !== '__typename')[0];
+  const items = (!dataObject[key] || Array.isArray(dataObject[key])
+    ? dataObject[key] || []
+    : [dataObject[key]]) as Array<TOptimisticItem<IItem>>;
+  const result = items.map(item => ({
+    __optimistic: false,
     ...item
   }));
 
@@ -25,9 +28,14 @@ export default function queryHasura<IItem, IVariables = OperationVariables>(
   const definitionIndex = _document.definitions.findIndex(
     ({ kind }: DefinitionNode) => kind === 'OperationDefinition'
   );
-  if (_document.definitions[definitionIndex].selectionSet.selections.length > 1)
+  if (
+    _document.definitions[definitionIndex].selectionSet.selections.filter(
+      (selection: SelectionNode) =>
+        'name' in selection && selection.name.value !== '__typename'
+    ).length > 1
+  )
     console.warn(
-      "hasura.query won't work correctly with more than one query, please use useQuery instead!"
+      "hasura.query won't work correctly with more than one query, please use multiple single queries or useQuery instead!"
     );
 
   React.useEffect(() => {

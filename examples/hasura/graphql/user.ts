@@ -19,6 +19,16 @@ export const QUERY_USERS = gql`
   }
   ${FRAGMENT_USER}
 `;
+
+export const QUERY_USER = gql`
+  query user($id: uuid!) {
+    __typename
+    user_by_pk(id: $id) {
+      ...UserFragment
+    }
+  }
+  ${FRAGMENT_USER}
+`;
 export const UPDATE_USER = gql`
   mutation updateUser($id: uuid!, $name: String) {
     update_user(_set: { name: $name }, where: { id: { _eq: $id } }) {
