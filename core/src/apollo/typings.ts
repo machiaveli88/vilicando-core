@@ -25,7 +25,7 @@ export interface ISchema {
     mutationType?: object;
     queryType?: object;
     subscriptionType?: object;
-    types?: Array<{
+    types: Array<{
       description?: string;
       enumValues?: Array<object>;
       fields?: Array<{
@@ -39,7 +39,7 @@ export interface ISchema {
       inputFields?: Array<object>;
       interfaces?: Array<object>;
       kind?: string;
-      name?: string;
+      name: string;
       possibleTypes?: any;
     }>;
   };

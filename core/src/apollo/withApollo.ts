@@ -48,20 +48,13 @@ export default ({ http, ws, schema: { __schema } }: IWithApollo) => {
   }
 
   const resolvers = {};
-  const typeDefs: Array<DocumentNode> = [];
-  const { types } = __schema || {};
-  const fields = types.filter(({ kind }) => kind === 'OBJECT');
-
-  fields.forEach(({ name }) => {
-    resolvers[name] = {
-      __optimistic: () => false
-    };
-    typeDefs.push(gql`
-        extend type ${name} {
-          __optimistic: Boolean
-        }
-      `);
-  });
+  __schema.types
+    .filter(({ kind }) => kind === 'OBJECT')
+    .forEach(({ name }) => {
+      resolvers[name] = {
+        __optimistic: () => false
+      };
+    });
 
   return withApollo(
     ({ initialState = {} }) =>
@@ -69,8 +62,7 @@ export default ({ http, ws, schema: { __schema } }: IWithApollo) => {
         link,
         ssrMode, // todo: enable automatic static optimization https://github.com/zeit/next.js/blob/canary/examples/with-apollo/pages/client-only.js
         cache: new InMemoryCache().restore(initialState),
-        resolvers,
-        typeDefs
+        resolvers
       }),
     {
       getDataFromTree: 'ssr' // todo: eigentlich sollte im Client loading erst true sein, dann false (Ladeanimation wird gezeigt) und im Server die Daten direkt gezeigt werden => warum auch immer geht das gerade nicht! :(
