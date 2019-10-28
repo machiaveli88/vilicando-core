@@ -9,7 +9,7 @@ export type TOptimisticItem<IItem> = TAdvancedItem<IItem> & {
   __optimistic?: boolean;
 };
 
-export type TUpdateItem<IItem, IVariables> = Partial<IItem> & IVariables; // alle Attribute aus Item (diese als optional) und alle aus Variables (todo: die auch in Item vorhanden sind)
+export type TUpdateItem<IItem> = Partial<IItem> | Array<Partial<IItem>>;
 
 export interface IQueryData<IItem> {
   [x: string]: Array<TOptimisticItem<IItem>>;

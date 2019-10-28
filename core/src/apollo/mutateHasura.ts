@@ -26,9 +26,7 @@ export default function mutateHasura<
   }
 ): [
   (
-    items:
-      | TUpdateItem<IItem, IVariables>
-      | Array<TUpdateItem<IItem, IVariables>>,
+    items: TUpdateItem<IItem>,
     options?: MutationFunctionOptions<IMutationData<IItem>, IVariables>
   ) => Promise<ExecutionResult<IMutationData<IItem>>>,
   MutationResult<IMutationData<IItem>>
@@ -54,9 +52,7 @@ export default function mutateHasura<
 
   return [
     (
-      _items:
-        | TUpdateItem<IItem, IVariables>
-        | Array<TUpdateItem<IItem, IVariables>>,
+      _items: TUpdateItem<IItem>,
       _options?: MutationFunctionOptions<IMutationData<IItem>, IVariables>
     ) => {
       const items = (Array.isArray(_items) ? _items : [_items]).map(
