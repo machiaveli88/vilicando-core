@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@types/antd": "1.0.0",
-    "@types/dotenv": "^6.1.1",
+    "@types/dotenv": "^8.2.0",
     "@types/glob": "^7.1.1",
     "@types/next": "8.0.6",
     "@types/node-polyglot": "0.4.34",
