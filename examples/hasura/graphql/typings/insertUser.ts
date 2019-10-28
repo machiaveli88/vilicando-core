@@ -12,6 +12,7 @@ export interface insertUser_insert_user_returning {
   name: string | null;
   created_at: any;
   updated_at: any;
+  __optimistic: boolean | null;
 }
 
 export interface insertUser_insert_user {

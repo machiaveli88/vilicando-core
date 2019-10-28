@@ -7,6 +7,7 @@ const FRAGMENT_USER = gql`
     name
     created_at
     updated_at
+    __optimistic @client
   }
 `;
 
