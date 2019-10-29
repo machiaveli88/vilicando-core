@@ -10,15 +10,7 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <CoreProvider
-        theme={theme}
-        translations={translations}
-        showLoader={() => (
-          <Loader text="Example app">
-            <Logo />
-          </Loader>
-        )}
-      >
+      <CoreProvider theme={theme} translations={translations}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
