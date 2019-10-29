@@ -15,12 +15,21 @@ const buildDir = join(process.cwd(), '.next');
 const serverSrc = join(__dirname, '../server/server.js');
 const serverDist = join(buildDir, 'server.js');
 
-const build = () => {
+const copyFiles = () => {
   mkdirSync(buildDir, { recursive: true });
   console.info('  ✔ Folder created');
   copyFileSync(serverSrc, serverDist);
   console.info('  ✔ Files copied');
+};
+
+const build = () => {
+  copyFiles();
   execSync(`next build`, { stdio: 'inherit' });
+};
+
+const exportStatic = () => {
+  copyFiles();
+  execSync(`next export`, { stdio: 'inherit' });
 };
 
 const dev = ({ '--dev': dev = true, '--port': port = PORT || 3000 }) =>
@@ -84,23 +93,23 @@ const codegenOptimistic = () => {
     const fields = types.filter(({ kind }) => kind === 'OBJECT');
 
     let output = `/* tslint:disable */
-/* eslint-disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL extendings for __optimistic-field
-// ====================================================
-
-import gql from 'graphql-tag';
-`;
+  /* eslint-disable */
+  // This file was automatically generated and should not be edited.
+  
+  // ====================================================
+  // GraphQL extendings for __optimistic-field
+  // ====================================================
+  
+  import gql from 'graphql-tag';
+  `;
     fields.forEach(({ name }) => {
       output += `
-gql\`
-  extend type ${name} {
-    __optimistic: Boolean
-  }
-\`
-    `;
+  gql\`
+    extend type ${name} {
+      __optimistic: Boolean
+    }
+  \`
+      `;
     });
     outputFileSync(join(process.cwd(), 'graphql/optimistic.ts'), output);
 
@@ -128,14 +137,14 @@ const codegenGenerate = ({
   );
 
   let output = `/* tslint:disable */
-/* eslint-disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL type exports
-// ====================================================
-
-`;
+  /* eslint-disable */
+  // This file was automatically generated and should not be edited.
+  
+  // ====================================================
+  // GraphQL type exports
+  // ====================================================
+  
+  `;
   const files = readdirSync(join(process.cwd(), 'graphql/typings'));
   files.forEach(file => {
     const [dir, extension] = file.split('.');
@@ -143,7 +152,7 @@ const codegenGenerate = ({
 
     if (fileName !== 'index' && extension === 'ts')
       output += `export * from './${fileName}'
-`;
+  `;
   });
   outputFileSync(join(process.cwd(), 'graphql/typings/index.ts'), output);
 
@@ -153,4 +162,12 @@ const codegenGenerate = ({
   return cmd;
 };
 
-export { build, dev, start, up, codegenDownload, codegenGenerate };
+export {
+  build,
+  codegenDownload,
+  codegenGenerate,
+  dev,
+  exportStatic,
+  start,
+  up
+};

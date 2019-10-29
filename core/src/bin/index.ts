@@ -43,6 +43,8 @@ const scripts: {
         await dev(args);
       }
     ),
+  export: async () =>
+    await import('./scripts').then(({ exportStatic }) => exportStatic),
   start: async () => await import('./scripts').then(({ start }) => start),
   up: async () => await import('./scripts').then(({ up }) => up),
   'codegen:download': async () =>

@@ -1,5 +1,7 @@
 # vilicando-core
 
+Framework based on next.js & hasura.io for web applications with full offline support.
+
 1. [Roadmap](#roadmap)
 2. [Core](#core)
 3. [Theming](#theming)
@@ -20,6 +22,7 @@
 
 - [x] Database
 - [x] Example app with DB
+- [ ] Offline support
 
 #### 0.4
 

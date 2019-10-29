@@ -8,6 +8,7 @@
     "codegen": "vilicando-core codegen",
     "dev": "vilicando-core",
     "docker": "COMPOSE_PROJECT_NAME=vilicando-gql docker-compose up -d",
+    "export": "vilicando-core export",
     "start": "vilicando-core start",
     "up": "vilicando-core up"
   },
