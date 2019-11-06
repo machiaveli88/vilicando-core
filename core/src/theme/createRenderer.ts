@@ -10,6 +10,15 @@ import customProperty from 'fela-plugin-custom-property';
 import friendlyPseudoClass from 'fela-plugin-friendly-pseudo-class';
 import { createRenderer, TPlugin } from 'fela';
 
+const sizes = {
+  extraLarge: 1600,
+  huge: 1200,
+  large: 992,
+  medium: 768,
+  small: 576,
+  mini: 480
+};
+
 interface ICreateRenderer {
   plugins?: Array<TPlugin>;
   css?: string;
@@ -23,21 +32,37 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
       fallbackValue(),
       unit(),
       namedKeys({
-        // From
-        ifHugeUp: '@media (min-width: 1200px)',
-        ifLargeUp: '@media (min-width: 992px)',
-        ifMediumUp: '@media (min-width: 768px)',
-        ifSmallUp: '@media (min-width: 480px)',
-        // To
-        ifLargeDown: '@media (max-width: 1199px)',
-        ifMediumDown: '@media (max-width: 991px)',
-        ifSmallDown: '@media (max-width: 767px)',
+        // From (z.B. hugeUp: x >= huge)
+        ifExtraLargeUp: `@media only screen and (max-width: ${sizes.extraLarge}px)`,
+        ifHugeUp: `@media only screen and (max-width: ${sizes.huge}px)`,
+        ifLargeUp: `@media only screen and (max-width: ${sizes.large}px)`,
+        ifMediumUp: `@media only screen and (max-width: ${sizes.medium}px)`,
+        ifSmallUp: `@media only screen and (max-width: ${sizes.small}px)`,
+        ifMiniUp: `@media only screen and (max-width: ${sizes.mini}px)`,
+        // To (z.B. hugeDown: x <= huge)
+        ifHugeDown: `@media only screen and (max-width: ${sizes.extraLarge -
+          1}px)`,
+        ifLargeDown: `@media only screen and (max-width: ${sizes.huge - 1}px)`,
+        ifMediumDown: `@media only screen and (max-width: ${sizes.large -
+          1}px)`,
+        ifSmallDown: `@media only screen and (max-width: ${sizes.medium -
+          1}px)`,
+        ifMiniDown: `@media only screen and (max-width: ${sizes.small - 1}px)`,
+        ifExtraSmallDown: `@media only screen and (max-width: ${sizes.mini -
+          1}px)`,
         // On
-        ifHuge: '@media (min-width: 1200px)',
-        ifLarge: '@media (max-width: 1199px, min-width: 992)',
-        ifMedium: '@media (max-width: 991px, min-width: 768)',
-        ifSmall: '@media (max-width: 767px, min-width: 480)',
-        ifMini: '@media (max-width: 479px)'
+        ifExtraLarge: `@media only screen and (min-width: ${sizes.extraLarge}px)`,
+        ifHuge: `@media only screen and (max-width: ${sizes.extraLarge -
+          1}px) and (min-width: ${sizes.huge}px)`,
+        ifLarge: `@media only screen and (max-width: ${sizes.huge -
+          1}px) and (min-width: ${sizes.large}px)`,
+        ifMedium: `@media only screen and (max-width: ${sizes.large -
+          1}px) and (min-width: ${sizes.medium}px)`,
+        ifSmall: `@media only screen and (max-width: ${sizes.medium -
+          1}px) and (min-width: ${sizes.small}px)`,
+        ifMini: `@media only screen and (max-width: ${sizes.small -
+          1}px) and (min-width: ${sizes.mini}px)`,
+        ifExtraSmall: `@media only screen and (max-width: ${sizes.mini - 1}px)`
       }),
       customProperty({
         size: size => ({

@@ -3,7 +3,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import LanguageProvider from './LanguageProvider';
 import { IRenderer } from 'fela';
 import { RendererProvider } from 'react-fela';
-import { Progress } from './components';
+import { Progress, ResponsiveHelper } from './components';
 import { ThemeProvider } from './theme';
 import defaultTheme from './theme/theme.json';
 import { defaultRenderer } from './theme';
@@ -22,6 +22,7 @@ const defaultLocale =
 
 export interface ICoreProvider<TCacheShape = any> {
   children: React.ReactNode;
+  dev?: boolean;
   apollo?: ApolloClient<TCacheShape>;
   theme?: object;
   renderer?: IRenderer;
@@ -31,6 +32,7 @@ export interface ICoreProvider<TCacheShape = any> {
 
 function CoreProvider({
   children,
+  dev,
   apollo,
   theme,
   renderer = defaultRenderer,
@@ -49,7 +51,10 @@ function CoreProvider({
     <RendererProvider renderer={renderer}>
       <ThemeProvider value={{ ...defaultTheme, ...theme }}>
         <LanguageProvider translations={translations} locale={locale}>
-          <Progress>{content}</Progress>
+          <Progress>
+            {dev && <ResponsiveHelper />}
+            {content}
+          </Progress>
         </LanguageProvider>
       </ThemeProvider>
     </RendererProvider>

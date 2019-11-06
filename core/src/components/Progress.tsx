@@ -91,7 +91,11 @@ function Progress({ children }: IProgress) {
   });
   renderer.renderKeyframe(nprogressSpinner, {});
 
-  return <RendererProvider renderer={renderer}>{children}</RendererProvider>;
+  return (
+    <RendererProvider renderer={renderer}>
+      <>{children}</>
+    </RendererProvider>
+  );
 }
 
 export default Progress;
