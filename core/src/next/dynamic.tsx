@@ -19,11 +19,13 @@ function dynamicWithSSR<P = {}>(
   const { loading, onSSR, ...rest } = options;
   const isSSR = typeof window === 'undefined';
 
-  return dynamic(dynamicOptions, {
-    loading: props => (isSSR && onSSR ? onSSR : loading)(props),
-    ssr: !onSSR,
-    ...rest
-  });
+  return loading || onSSR
+    ? dynamic(dynamicOptions, {
+        loading: props => (isSSR && onSSR ? onSSR : loading)(props),
+        ssr: !onSSR,
+        ...rest
+      })
+    : dynamic(dynamicOptions, options);
 }
 
 export default dynamicWithSSR;
