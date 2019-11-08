@@ -1,14 +1,12 @@
 {
   "name": "vilicando-core",
   "private": true,
-  "version": "0.0.1",
-  "license": "ISC",
   "scripts": {
     "build": "cd core && yarn build",
     "build:watch": "cd core && yarn build:watch",
     "dev": "cd examples/basic && yarn dev",
     "pub": "cd core && npm publish",
-    "up": "yarn upgrade-interactive --latest && yarn check"
+    "up": "cd core && yarn up"
   },
   "workspaces": [
     "core",

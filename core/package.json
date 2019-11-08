@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.54",
+  "version": "0.3.55",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -13,7 +13,8 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
-    "check:less": "node lib/dev/check-antd-less.js"
+    "check:less": "node lib/dev/check-antd-less.js",
+    "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
     "@types/lodash": "^4.14.145",
@@ -40,7 +41,7 @@
     "graphql": "^14.5.8",
     "less": "2.7.3",
     "lodash": "^4.17.15",
-    "next": "^9.1.2",
+    "next": "9.1.2",
     "next-offline": "^5.0.0-beta.8",
     "next-with-apollo": "^4.3.0",
     "node-polyglot": "2.4.0",
