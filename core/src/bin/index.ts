@@ -32,14 +32,15 @@ const scripts: {
   build: async () => await import('./scripts').then(({ build }) => build),
   dev: async () =>
     await import('./scripts').then(
-      ({ codegenDownload, codegenGenerate, dev }) => async ({
-        '--no-codegen': noCodegen, // todo: statt arg checken ob graphql-Ordner existiert!
-        ...args
-      }: any) => {
-        if (existsSync(join(process.cwd(), 'graphql')) && !noCodegen) {
-          await codegenDownload(args);
-          await codegenGenerate(args);
-        }
+      ({ dev }) => async ({ '--no-codegen': noCodegen, ...args }: any) => {
+        if (existsSync(join(process.cwd(), 'graphql')) && !noCodegen)
+          await import('./codegen').then(
+            ({ download, generate }) => async () => {
+              await download(args);
+              await generate(args);
+            }
+          );
+
         await dev(args);
       }
     ),
@@ -48,16 +49,14 @@ const scripts: {
   start: async () => await import('./scripts').then(({ start }) => start),
   up: async () => await import('./scripts').then(({ up }) => up),
   'codegen:download': async () =>
-    await import('./scripts').then(({ codegenDownload }) => codegenDownload),
+    await import('./codegen').then(({ download }) => download),
   'codegen:generate': async () =>
-    await import('./scripts').then(({ codegenGenerate }) => codegenGenerate),
+    await import('./codegen').then(({ generate }) => generate),
   codegen: async () =>
-    await import('./scripts').then(
-      ({ codegenDownload, codegenGenerate }) => async args => {
-        await codegenDownload(args);
-        await codegenGenerate(args);
-      }
-    )
+    await import('./codegen').then(({ download, generate }) => async args => {
+      await download(args);
+      await generate(args);
+    })
 };
 const command = commands[0] || devCommand;
 const foundCommand = Boolean(scripts[command]);
