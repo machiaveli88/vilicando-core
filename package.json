@@ -5,6 +5,9 @@
     "build": "cd core && yarn build",
     "build:watch": "cd core && yarn build:watch",
     "dev": "cd examples/basic && yarn dev",
+    "dev:basic": "cd examples/basic && yarn dev",
+    "dev:hasura": "cd examples/hasura && yarn dev",
+    "dev:theming": "cd examples/theming && yarn dev",
     "pub": "cd core && npm publish",
     "up": "cd core && yarn up"
   },

@@ -31,9 +31,9 @@ const scripts: {
 } = {
   build: async () => await import('./scripts').then(({ build }) => build),
   codegen: async () =>
-    await import('./codegen').then(({ download, generate }) => async args => {
-      await download(args);
-      await generate(args);
+    await import('./codegen').then(({ download, generate }) => args => {
+      download(args);
+      generate(args);
     }),
   'codegen:download': async () =>
     await import('./codegen').then(({ download }) => download),
@@ -42,15 +42,16 @@ const scripts: {
   dev: async () =>
     await import('./scripts').then(
       ({ dev }) => async ({ '--no-codegen': noCodegen, ...args }: any) => {
-        if (existsSync(join(process.cwd(), 'graphql')) && !noCodegen)
-          await import('./codegen').then(
-            ({ download, generate }) => async () => {
-              await download(args);
-              await generate(args);
+        if (existsSync(join(process.cwd(), 'graphql')) && !noCodegen) {
+          (await import('./codegen').then(
+            ({ download, generate }) => (args: any) => {
+              download(args);
+              generate(args);
             }
-          );
+          ))(args);
+        }
 
-        await dev(args);
+        dev(args);
       }
     ),
   export: async () =>
