@@ -25,4 +25,4 @@ export {
   createRenderer,
   materialColors
 } from './theme';
-export { isDoubleTap } from './utils';
+export { isDoubleTap, notify } from './utils';
