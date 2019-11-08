@@ -30,6 +30,15 @@ const scripts: {
   [command: string]: () => Promise<(argv?: object) => void>;
 } = {
   build: async () => await import('./scripts').then(({ build }) => build),
+  codegen: async () =>
+    await import('./codegen').then(({ download, generate }) => async args => {
+      await download(args);
+      await generate(args);
+    }),
+  'codegen:download': async () =>
+    await import('./codegen').then(({ download }) => download),
+  'codegen:generate': async () =>
+    await import('./codegen').then(({ generate }) => generate),
   dev: async () =>
     await import('./scripts').then(
       ({ dev }) => async ({ '--no-codegen': noCodegen, ...args }: any) => {
@@ -47,16 +56,7 @@ const scripts: {
   export: async () =>
     await import('./scripts').then(({ exportStatic }) => exportStatic),
   start: async () => await import('./scripts').then(({ start }) => start),
-  up: async () => await import('./scripts').then(({ up }) => up),
-  'codegen:download': async () =>
-    await import('./codegen').then(({ download }) => download),
-  'codegen:generate': async () =>
-    await import('./codegen').then(({ generate }) => generate),
-  codegen: async () =>
-    await import('./codegen').then(({ download, generate }) => async args => {
-      await download(args);
-      await generate(args);
-    })
+  up: async () => await import('./scripts').then(({ up }) => up)
 };
 const command = commands[0] || devCommand;
 const foundCommand = Boolean(scripts[command]);
