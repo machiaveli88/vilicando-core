@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vilicando-core build",
     "codegen": "vilicando-core codegen",
+    "deploy": "npm run build && npm run export",
     "dev": "vilicando-core",
     "docker": "COMPOSE_PROJECT_NAME=vilicando-gql docker-compose up -d",
     "export": "vilicando-core export",

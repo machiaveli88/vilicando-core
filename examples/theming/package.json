@@ -5,6 +5,7 @@
   "license": "ISC",
   "scripts": {
     "up": "vilicando-core up",
+    "deploy": "npm run build && npm run export",
     "dev": "vilicando-core",
     "build": "vilicando-core build",
     "export": "vilicando-core export",
