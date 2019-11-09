@@ -351,11 +351,13 @@ export interface ITheme {
   outlineBlurSize: number | string;
   outlineColor: string;
   outlineWidth: string;
+  paddingXxl: string;
   paddingXl: string;
   paddingLg: string;
   paddingMd: string;
   paddingSm: string;
   paddingXs: string;
+  paddingXxs: string;
   pageHeaderPaddingHorizontal: string;
   pageHeaderPaddingVertical: string;
   paginationFontFamily: string;
