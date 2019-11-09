@@ -26,18 +26,18 @@ function ResponsiveHelper() {
       <span
         className={css({
           display: 'none',
-          ifExtraLarge: { display: 'inline-block' }
-        })}
-      >
-        extra-large
-      </span>
-      <span
-        className={css({
-          display: 'none',
           ifHuge: { display: 'inline-block' }
         })}
       >
         huge
+      </span>
+      <span
+        className={css({
+          display: 'none',
+          ifExtraLarge: { display: 'inline-block' }
+        })}
+      >
+        extra-large
       </span>
       <span
         className={css({
@@ -66,18 +66,18 @@ function ResponsiveHelper() {
       <span
         className={css({
           display: 'none',
-          ifMini: { display: 'inline-block' }
-        })}
-      >
-        mini
-      </span>
-      <span
-        className={css({
-          display: 'none',
           ifExtraSmall: { display: 'inline-block' }
         })}
       >
         extra-small
+      </span>
+      <span
+        className={css({
+          display: 'none',
+          ifMini: { display: 'inline-block' }
+        })}
+      >
+        mini
       </span>
     </div>
   );

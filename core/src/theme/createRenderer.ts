@@ -33,26 +33,26 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
       unit(),
       namedKeys({
         // From (z.B. hugeUp: x >= huge)
-        ifExtraLargeUp: `@media only screen and (max-width: ${sizes.extraLarge}px)`,
-        ifHugeUp: `@media only screen and (max-width: ${sizes.huge}px)`,
+        ifHugeUp: `@media only screen and (max-width: ${sizes.extraLarge}px)`,
+        ifExtraLargeUp: `@media only screen and (max-width: ${sizes.huge}px)`,
         ifLargeUp: `@media only screen and (max-width: ${sizes.large}px)`,
         ifMediumUp: `@media only screen and (max-width: ${sizes.medium}px)`,
         ifSmallUp: `@media only screen and (max-width: ${sizes.small}px)`,
-        ifMiniUp: `@media only screen and (max-width: ${sizes.mini}px)`,
+        ifExtraSmallUp: `@media only screen and (max-width: ${sizes.mini}px)`,
         // To (z.B. hugeDown: x <= huge)
-        ifHugeDown: `@media only screen and (max-width: ${sizes.extraLarge -
+        ifExtraLargeDown: `@media only screen and (max-width: ${sizes.extraLarge -
           1}px)`,
         ifLargeDown: `@media only screen and (max-width: ${sizes.huge - 1}px)`,
         ifMediumDown: `@media only screen and (max-width: ${sizes.large -
           1}px)`,
         ifSmallDown: `@media only screen and (max-width: ${sizes.medium -
           1}px)`,
-        ifMiniDown: `@media only screen and (max-width: ${sizes.small - 1}px)`,
-        ifExtraSmallDown: `@media only screen and (max-width: ${sizes.mini -
+        ifExtraSmallDown: `@media only screen and (max-width: ${sizes.small -
           1}px)`,
+        ifMiniDown: `@media only screen and (max-width: ${sizes.mini - 1}px)`,
         // On
-        ifExtraLarge: `@media only screen and (min-width: ${sizes.extraLarge}px)`,
-        ifHuge: `@media only screen and (max-width: ${sizes.extraLarge -
+        ifHuge: `@media only screen and (min-width: ${sizes.extraLarge}px)`,
+        ifExtraLarge: `@media only screen and (max-width: ${sizes.extraLarge -
           1}px) and (min-width: ${sizes.huge}px)`,
         ifLarge: `@media only screen and (max-width: ${sizes.huge -
           1}px) and (min-width: ${sizes.large}px)`,
@@ -60,9 +60,9 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
           1}px) and (min-width: ${sizes.medium}px)`,
         ifSmall: `@media only screen and (max-width: ${sizes.medium -
           1}px) and (min-width: ${sizes.small}px)`,
-        ifMini: `@media only screen and (max-width: ${sizes.small -
+        ifExtraSmall: `@media only screen and (max-width: ${sizes.small -
           1}px) and (min-width: ${sizes.mini}px)`,
-        ifExtraSmall: `@media only screen and (max-width: ${sizes.mini - 1}px)`
+        ifMini: `@media only screen and (max-width: ${sizes.mini - 1}px)`
       }),
       customProperty({
         size: size => ({
