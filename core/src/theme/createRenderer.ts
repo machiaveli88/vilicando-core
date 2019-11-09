@@ -21,10 +21,9 @@ const sizes = {
 
 interface ICreateRenderer {
   plugins?: Array<TPlugin>;
-  css?: string;
 }
 
-export default ({ plugins = [], css = '' }: ICreateRenderer) => {
+export default ({ plugins = [] }: ICreateRenderer) => {
   const renderer = createRenderer({
     plugins: [
       embedded(),
@@ -151,30 +150,7 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
       ...plugins
     ]
   });
-
-  renderer.renderStatic(`
-    ${normalize}
-
-    html, body {
-      height: 100%;
-      width: 100%;
-      position: fixed;
-      overflow: hidden;
-      user-select: none;
-    }
-
-    #__next {
-      display: flex;
-      flex-direction: column;
-      width: 100vw;
-      height: 100vh;
-      min-height: 100%;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    ${css}
-  `);
+  renderer.renderStatic(normalize);
 
   return renderer;
 };
