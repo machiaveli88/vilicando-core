@@ -768,15 +768,6 @@ export const useFela = (): {
     theme
   ]);
 
-  renderer.renderStatic(`
-    html, body {
-      background-color: ${parsedTheme.primaryColor};
-    }
-    #__next {
-      background-color: ${parsedTheme.white};
-    }
-  `);
-
   return { css, theme: parsedTheme, renderer };
 };
 
