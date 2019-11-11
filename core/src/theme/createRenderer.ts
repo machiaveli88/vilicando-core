@@ -32,12 +32,12 @@ export default ({ plugins = [] }: ICreateRenderer) => {
       unit(),
       namedKeys({
         // From (z.B. hugeUp: x >= huge)
-        ifHugeUp: `@media only screen and (max-width: ${sizes.extraLarge}px)`,
-        ifExtraLargeUp: `@media only screen and (max-width: ${sizes.huge}px)`,
-        ifLargeUp: `@media only screen and (max-width: ${sizes.large}px)`,
-        ifMediumUp: `@media only screen and (max-width: ${sizes.medium}px)`,
-        ifSmallUp: `@media only screen and (max-width: ${sizes.small}px)`,
-        ifExtraSmallUp: `@media only screen and (max-width: ${sizes.mini}px)`,
+        ifHugeUp: `@media only screen and (min-width: ${sizes.extraLarge}px)`,
+        ifExtraLargeUp: `@media only screen and (min-width: ${sizes.huge}px)`,
+        ifLargeUp: `@media only screen and (min-width: ${sizes.large}px)`,
+        ifMediumUp: `@media only screen and (min-width: ${sizes.medium}px)`,
+        ifSmallUp: `@media only screen and (min-width: ${sizes.small}px)`,
+        ifExtraSmallUp: `@media only screen and (min-width: ${sizes.mini}px)`,
         // To (z.B. hugeDown: x <= huge)
         ifExtraLargeDown: `@media only screen and (max-width: ${sizes.extraLarge -
           1}px)`,
