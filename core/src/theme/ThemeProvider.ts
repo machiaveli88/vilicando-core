@@ -170,7 +170,7 @@ export const parseTheme = (theme: object): ITheme => {
 export const ThemeContext = React.createContext({});
 
 export function useFela<T = {}, P = {}>(): {
-  css: (css: object) => string;
+  css: (css: CssFelaStyle<T, P>, className?: string) => string;
   theme: ITheme;
   renderer: IRenderer;
 } {
