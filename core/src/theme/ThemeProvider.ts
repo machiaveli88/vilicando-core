@@ -2,7 +2,7 @@ import * as React from 'react';
 import tinycolor from 'tinycolor2';
 import { camelCase } from 'lodash';
 import { IRenderer } from 'fela';
-import { useFela as useFelaBase } from 'react-fela';
+import { useFela as useFelaBase, CssFelaStyle } from 'react-fela';
 import { ITheme } from './types';
 
 function colorPalette(color: string, index: number) {
@@ -149,7 +149,9 @@ export const parseTheme = (theme: object): ITheme => {
       );
 
       // colorPalette
-      theme[key] = theme[key].replace(
+      theme[key] = theme[
+        key
+      ].replace(
         /(color\()?\~\`colorPalette\(\'([^,]+)\',([^,]+)\)[ ]?\`\)?/g,
         (match: string, stuff: string, color: string, index: string) =>
           colorPalette(color, parseInt(index))
@@ -167,20 +169,25 @@ export const parseTheme = (theme: object): ITheme => {
 
 export const ThemeContext = React.createContext({});
 
-export const useFela = (): {
+export function useFela<T = {}, P = {}>(): {
   css: (css: object) => string;
   theme: ITheme;
   renderer: IRenderer;
-} => {
+} {
   const theme = React.useContext(ThemeContext);
-  const { css, renderer } = useFelaBase();
+  const { css, renderer } = useFelaBase<T, P>();
 
   // replacing @-vars & functions with values
   const parsedTheme = React.useMemo(() => parseTheme(replaceLessVars(theme)), [
     theme
   ]);
 
-  return { css, theme: parsedTheme, renderer };
-};
+  return {
+    css: (styles: CssFelaStyle<T, P>, className?: string) =>
+      className ? css(styles) + ' ' + className : css(styles),
+    theme: parsedTheme,
+    renderer
+  };
+}
 
 export default ThemeContext.Provider;

@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.61",
+  "version": "0.3.62",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -17,8 +17,8 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.145",
-    "@types/node": "^12.12.6",
+    "@types/lodash": "^4.14.147",
+    "@types/node": "^12.12.7",
     "@zeit/next-less": "1.0.1",
     "apollo": "^2.21.0",
     "apollo-cache-inmemory": "^1.6.3",
