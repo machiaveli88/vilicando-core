@@ -4130,6 +4130,13 @@ fela-plugin-prefixer@10.8.2, fela-plugin-prefixer@^10.8.2:
     inline-style-prefixer "^5.1.0"
     isobject "^3.0.1"
 
+fela-plugin-typescript@^10.8.2:
+  version "10.8.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-typescript/-/fela-plugin-typescript-10.8.2.tgz#2f6f80275716ab4d109faf305d249ac838f7108c"
+  integrity sha512-P6ccbkjlD6u2jeCvNLgff+x2kLbKzeLnZF3jdUK06OdRGLAaOfx7jlsmnHvD5AVTkJ+0fc3tAkg/xSFZDxyrfA==
+  dependencies:
+    isobject "^3.0.1"
+
 fela-plugin-unit@10.8.2, fela-plugin-unit@^10.8.2:
   version "10.8.2"
   resolved "https://registry.yarnpkg.com/fela-plugin-unit/-/fela-plugin-unit-10.8.2.tgz#c24c15d4e435d19d2f493db4018a948de11fe4ca"

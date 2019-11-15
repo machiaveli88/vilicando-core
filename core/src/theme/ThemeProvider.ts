@@ -1,9 +1,12 @@
 import * as React from 'react';
 import tinycolor from 'tinycolor2';
 import { camelCase } from 'lodash';
-import { IRenderer } from 'fela';
-import { useFela as useFelaBase, CssFelaStyle } from 'react-fela';
+import { IRenderer, IStyle } from 'fela';
+import { useFela as useFelaBase, StyleFunction } from 'react-fela';
 import { ITheme } from './types';
+import { ICustomProperty } from './customProperty';
+import { INamedKeys } from './namedKeys';
+import { IFriendlyPseudoClass } from './friendlyPseudoClass';
 
 function colorPalette(color: string, index: number) {
   const hueStep = 2;
@@ -169,13 +172,24 @@ export const parseTheme = (theme: object): ITheme => {
 
 export const ThemeContext = React.createContext({});
 
-export function useFela<T = {}, P = {}>(): {
-  css: (css: CssFelaStyle<T, P>, className?: string) => string;
+interface IStyleExtended
+  extends Omit<IStyle, 'nested'>,
+    ICustomProperty,
+    INamedKeys<IStyleExtended>,
+    IFriendlyPseudoClass<IStyleExtended> {
+  [property: string]: IStyleExtended | string | number | boolean;
+}
+
+export function useFela<P = {}>(): {
+  css: (
+    css: IStyleExtended | StyleFunction<ITheme, P>,
+    className?: string
+  ) => string;
   theme: ITheme;
   renderer: IRenderer;
 } {
   const theme = React.useContext(ThemeContext);
-  const { css, renderer } = useFelaBase<T, P>();
+  const { css, renderer } = useFelaBase<ITheme, P>();
 
   // replacing @-vars & functions with values
   const parsedTheme = React.useMemo(() => parseTheme(replaceLessVars(theme)), [
@@ -183,8 +197,10 @@ export function useFela<T = {}, P = {}>(): {
   ]);
 
   return {
-    css: (styles: CssFelaStyle<T, P>, className?: string) =>
-      className ? css(styles) + ' ' + className : css(styles),
+    css: (
+      styles: IStyleExtended | StyleFunction<ITheme, P>,
+      className?: string
+    ) => (className ? css(styles) + ' ' + className : css(styles)),
     theme: parsedTheme,
     renderer
   };

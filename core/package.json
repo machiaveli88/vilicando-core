@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.3.63",
+  "version": "0.3.64",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -35,6 +35,7 @@
     "fela-plugin-friendly-pseudo-class": "^10.8.2",
     "fela-plugin-named-keys": "10.8.2",
     "fela-plugin-prefixer": "10.8.2",
+    "fela-plugin-typescript": "^10.8.2",
     "fela-plugin-unit": "10.8.2",
     "fela-plugin-validator": "10.8.2",
     "fela-preset-web": "10.8.2",
