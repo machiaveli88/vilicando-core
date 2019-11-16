@@ -44,6 +44,15 @@ export function useFela<P = {}>(): {
   renderer.renderStatic({ fontSize: theme.heading4Size }, 'h4');
   renderer.renderStatic({ fontSize: theme.heading5Size }, 'h5');
   renderer.renderStatic({ fontSize: theme.heading6Size }, 'h6');
+  renderer.renderStatic(
+    { color: theme.linkColor, textDecoration: theme.linkDecoration },
+    'a'
+  );
+  renderer.renderStatic(
+    { color: theme.linkHoverColor, textDecoration: theme.linkHoverDecoration },
+    'a:hover'
+  );
+  renderer.renderStatic({ color: theme.linkActiveColor }, 'a:active');
 
   return {
     css: (

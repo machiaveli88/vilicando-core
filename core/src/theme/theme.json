@@ -36,6 +36,12 @@
   "heading5Size": 21,
   "heading6Size": 18,
 
+  "linkColor": "#f44336",
+  "linkDecoration": "none",
+  "linkHoverColor": "#e57373",
+  "linkHoverDecoration": "none",
+  "linkActiveColor": "#d32f2f",
+
   "primary1": "#ffebee",
   "primary2": "#ffcdd2",
   "primary3": "#ef9a9a",

@@ -36,6 +36,12 @@ export interface ITheme {
   heading5Size: string | number;
   heading6Size: string | number;
 
+  linkColor: string;
+  linkDecoration: string;
+  linkHoverColor: string;
+  linkHoverDecoration: string;
+  linkActiveColor: string;
+
   primary1: string;
   primary10: string;
   primary2: string;
