@@ -1,7 +1,6 @@
 import * as React from 'react';
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import { RendererProvider } from 'react-fela';
 import { TRuleProps } from 'fela';
 import { useFela } from '../theme';
 
@@ -11,11 +10,22 @@ Router.events.on('routeChangeError', NProgress.done);
 
 interface IProgress {
   children: React.ReactNode;
+  color?: string;
 }
 
-function Progress({ children }: IProgress) {
+function Progress({ children, color }: IProgress) {
   const { theme, renderer } = useFela();
-  const color = theme.primaryColor;
+  const _color = color || theme['color'] || theme.secondaryColor;
+
+  const keyframe = (): TRuleProps => ({
+    '0%': {
+      transform: 'rotate(0deg)'
+    },
+    '100%': {
+      transform: 'rotate(360deg)'
+    }
+  });
+  const nprogressSpinner = renderer.renderKeyframe(keyframe, {});
 
   renderer.renderStatic(`
     /* Make clicks pass-through */
@@ -24,7 +34,7 @@ function Progress({ children }: IProgress) {
     }
 
     #nprogress .bar {
-      background: ${color};
+      background: ${_color};
 
       position: fixed;
       z-index: 1031;
@@ -42,7 +52,7 @@ function Progress({ children }: IProgress) {
       right: 0px;
       width: 100px;
       height: 100%;
-      box-shadow: 0 0 10px ${color}, 0 0 5px ${color};
+      box-shadow: 0 0 10px ${_color}, 0 0 5px ${_color};
       opacity: 1;
 
       transform: rotate(3deg) translate(0px, -4px);
@@ -63,11 +73,11 @@ function Progress({ children }: IProgress) {
       box-sizing: border-box;
 
       border: solid 2px transparent;
-      border-top-color: ${color};
-      border-left-color: ${color};
+      border-top-color: ${_color};
+      border-left-color: ${_color};
       border-radius: 50%;
 
-      animation: k1 400ms linear infinite;
+      animation: ${nprogressSpinner} 400ms linear infinite;
     }
 
     .nprogress-custom-parent {
@@ -81,21 +91,7 @@ function Progress({ children }: IProgress) {
     }
   `);
 
-  const nprogressSpinner = (): TRuleProps => ({
-    '0%': {
-      transform: 'rotate(0deg)'
-    },
-    '100%': {
-      transform: 'rotate(360deg)'
-    }
-  });
-  renderer.renderKeyframe(nprogressSpinner, {});
-
-  return (
-    <RendererProvider renderer={renderer}>
-      <>{children}</>
-    </RendererProvider>
-  );
+  return <>{children}</>;
 }
 
 export default Progress;

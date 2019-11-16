@@ -13,7 +13,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
 
   // todo: fixing animation (I think it depends on changes in renderer => https://github.com/machiaveli88/vilicando-core/commit/fdd93d65c25632633e3375b863465d687711a282 => scheint doch nicht so!)
 
-  const pulseRing = (): TRuleProps => ({
+  const pulseRingKeyframe = (): TRuleProps => ({
     '0%': {
       transform: 'scale(.33)'
     },
@@ -21,9 +21,9 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
       opacity: 0
     }
   });
-  renderer.renderKeyframe(pulseRing, {});
+  const pulseRing = renderer.renderKeyframe(pulseRingKeyframe, {});
 
-  const pulseDot = (): TRuleProps => ({
+  const pulseDotKeyframe = (): TRuleProps => ({
     '0%': {
       transform: 'scale(.8)'
     },
@@ -34,7 +34,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
       transform: 'scale(.8)'
     }
   });
-  renderer.renderKeyframe(pulseDot, {});
+  const pulseDot = renderer.renderKeyframe(pulseDotKeyframe, {});
 
   return (
     <div
@@ -47,7 +47,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
         right: 0,
         top: 0,
         background: `linear-gradient(135deg, ${theme.primary7} 0%,${theme.primary9} 100%)`,
-        zIndex: 2000
+        zIndex: 1030
       })}
     >
       <div
@@ -62,7 +62,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
           marginTop: -size * 1.5,
           borderRadius: size * 1.5,
           backgroundColor: theme.primary7,
-          animation: `k1 1.25s ${theme.easeOut} infinite`
+          animation: `${pulseRing} 1.25s ${theme.easeOut} infinite`
         })}
       />
       {!!children && (
@@ -79,16 +79,12 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
             backgroundColor: theme.white,
             borderRadius: size * 0.5,
             boxShadow: theme.shadow2,
-            animation: `k2 1.25s ${theme.easeInOut} -.4s infinite`
+            animation: `${pulseDot} 1.25s ${theme.easeInOut} -.4s infinite`
           })}
         >
           <div
             className={css({
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translateX(-50%) translateY(-50%)',
-              display: 'block',
+              center: true,
               '> *': {
                 width: size,
                 height: size
@@ -111,7 +107,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
             color: 'white',
             fontFamily: theme.fontFamily,
             fontSize: theme.fontSizeLg,
-            padding: theme.spacingLg
+            paddingY: theme.spacingXl
           })}
         >
           {text}

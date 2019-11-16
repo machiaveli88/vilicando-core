@@ -3,7 +3,10 @@ import { Loader, dynamic } from 'vilicando-core';
 import { Logo } from '@assets';
 
 const Content = dynamic(
-  import('@components').then(({ Content }) => Content),
+  Promise.all([
+    import('@components').then(({ Content }) => Content),
+    new Promise(resolve => setTimeout(resolve, 600))
+  ]).then(([mod]) => mod),
   {
     loading: () => (
       <Loader text="Loading content...">

@@ -51,7 +51,7 @@ function CoreProvider({
       <ThemeProvider value={theme}>
         <LanguageProvider translations={translations} locale={locale}>
           <Progress>
-            {dev && <ResponsiveHelper />}
+            {!!dev && <ResponsiveHelper />}
             {content}
           </Progress>
         </LanguageProvider>
