@@ -1,6 +1,5 @@
-// import friendlyPseudoClass from 'fela-plugin-friendly-pseudo-class'; // todo: wait for PR https://github.com/robinweser/fela/pull/747 , then remove function below
+import friendlyPseudoClass from 'fela-plugin-friendly-pseudo-class';
 import { IStyle } from 'fela';
-import isPlainObject from 'isobject';
 
 export interface IFriendlyPseudoClass<T = IStyle> {
   /**
@@ -57,48 +56,4 @@ export interface IFriendlyPseudoClass<T = IStyle> {
   onGrammarError?: T;
 }
 
-// todo: remove below, if PR is merged!
-
-const regex = new RegExp('^on([A-Z])');
-const pseudoElements = [
-  'after',
-  'before',
-  'first-letter',
-  'first-line',
-  'selection',
-  'backdrop',
-  'placeholder',
-  'marker',
-  'spelling-error',
-  'grammar-error'
-];
-
-function friendlyPseudoClass(style: Object): Object {
-  for (const property in style) {
-    const value = style[property];
-
-    if (isPlainObject(value)) {
-      const resolvedValue = friendlyPseudoClass(value);
-
-      if (regex.test(property)) {
-        const pseudo = property
-          .replace(/([A-Z])/g, (match: string) => '-' + match.toLowerCase())
-          .replace(
-            /^on-(.*)/g,
-            (match, p1: string) =>
-              `${pseudoElements.includes(p1) ? '::' : ':'}${p1}`
-          );
-        console.log(pseudo);
-
-        style[pseudo] = resolvedValue;
-        delete style[property];
-      } else {
-        style[property] = resolvedValue;
-      }
-    }
-  }
-
-  return style;
-}
-
-export default () => friendlyPseudoClass;
+export default friendlyPseudoClass;

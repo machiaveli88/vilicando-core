@@ -17,22 +17,10 @@
     "noUnusedParameters": false,
     "outDir": "",
     "paths": {
-      "@assets": ["assets"],
-      "@assets/*": ["assets/*"],
       "@components": ["components"],
       "@components/*": ["components/*"],
-      "@data": ["data"],
-      "@data/*": ["data/*"],
-      "@forms": ["forms"],
-      "@forms/*": ["forms/*"],
-      "@graphql": ["graphql"],
-      "@graphql/*": ["graphql/*"],
-      "@language": ["language"],
-      "@language/*": ["language/*"],
       "@pages": ["pages"],
-      "@pages/*": ["pages/*"],
-      "@utils": ["utils"],
-      "@utils/*": ["utils/*"]
+      "@pages/*": ["pages/*"]
     },
     "preserveConstEnums": true,
     "removeComments": false,

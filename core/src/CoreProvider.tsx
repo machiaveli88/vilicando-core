@@ -5,7 +5,6 @@ import { IRenderer } from 'fela';
 import { RendererProvider } from 'react-fela';
 import { Progress, ResponsiveHelper } from './components';
 import { ThemeProvider } from './theme';
-import defaultTheme from './theme/theme.json';
 import { defaultRenderer } from './theme';
 import { ApolloClient } from 'apollo-client';
 
@@ -49,7 +48,7 @@ function CoreProvider({
 
   return (
     <RendererProvider renderer={renderer}>
-      <ThemeProvider value={{ ...defaultTheme, ...theme }}>
+      <ThemeProvider value={theme}>
         <LanguageProvider translations={translations} locale={locale}>
           <Progress>
             {dev && <ResponsiveHelper />}

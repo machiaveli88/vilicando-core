@@ -43,12 +43,14 @@ const scripts: {
     await import('./scripts').then(
       ({ dev }) => async ({ '--no-codegen': noCodegen, ...args }: any) => {
         if (existsSync(join(process.cwd(), 'graphql')) && !noCodegen) {
-          (await import('./codegen').then(
-            ({ download, generate }) => (args: any) => {
-              download(args);
-              generate(args);
-            }
-          ))(args);
+          (
+            await import('./codegen').then(
+              ({ download, generate }) => (args: any) => {
+                download(args);
+                generate(args);
+              }
+            )
+          )(args);
         }
 
         dev(args);
@@ -64,7 +66,7 @@ const foundCommand = Boolean(scripts[command]);
 
 /* SCRIPT */
 
-['react', 'react-dom', 'antd'].forEach(dependency => {
+['react', 'react-dom'].forEach(dependency => {
   try {
     require.resolve(dependency);
   } catch (err) {

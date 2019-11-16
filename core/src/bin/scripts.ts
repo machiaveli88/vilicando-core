@@ -10,7 +10,7 @@ dotenv.config({ path: join(process.cwd(), '../.env') });
 const { PORT } = process.env;
 
 const buildDir = join(process.cwd(), '.next');
-const serverSrc = join(__dirname, '../server/server.js');
+const serverSrc = join(__dirname, '../server.js');
 const serverDist = join(buildDir, 'server.js');
 
 const copyFiles = () => {

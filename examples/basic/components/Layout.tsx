@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useFela } from 'vilicando-core';
-import { Row, Col } from 'antd';
 
 interface ILayout {
   children: React.ReactElement;
@@ -14,28 +13,30 @@ function Layout({ children }: ILayout) {
       className={css({
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100%'
+        minHeight: '100%',
+        alignItems: 'center'
       })}
     >
       <div
         className={css({
           backgroundColor: theme.primaryColor,
-          padding: theme.paddingMd
+          padding: theme.spacingMd,
+          textAlign: 'center',
+          width: '100%'
         })}
       >
         <h2 className={css({ color: theme.white, margin: 0 })}>Example App</h2>
       </div>
 
-      <Row type="flex" justify="center">
-        <Col
-          span={8}
-          className={css({
-            padding: theme.paddingMd
-          })}
-        >
-          {children}
-        </Col>
-      </Row>
+      <div
+        className={css({
+          width: '75%',
+          minWidth: theme.screenXs,
+          maxWidth: theme.screenMd
+        })}
+      >
+        {children}
+      </div>
     </div>
   );
 }
