@@ -24,7 +24,6 @@
     "apollo-link-ws": "^1.0.19",
     "arg": "^4.1.1",
     "babel-plugin-import": "1.12.2",
-    "babel-plugin-inline-react-svg": "1.1.0",
     "cross-env": "^6.0.3",
     "dotenv": "^8.2.0",
     "fela": "11.0.2",
@@ -50,6 +49,7 @@
     "typescript": "3.7.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "^4.3.3",
     "@types/dotenv": "^8.2.0",
     "@types/glob": "^7.1.1",
     "@types/next": "9.0.0",

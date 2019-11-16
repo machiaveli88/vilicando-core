@@ -35,6 +35,11 @@ module.exports = (props: IWithCore, nextConfig: any = {}) => {
 
       config.plugins.push(new EnvironmentPlugin(parsed));
 
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack']
+      });
+
       if (typeof webpack === 'function') {
         return webpack(config, options);
       }

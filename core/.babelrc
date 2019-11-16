@@ -11,22 +11,5 @@
         }
       }
     ]
-  ],
-  "plugins": [
-    [
-      "inline-react-svg",
-      {
-        "svgo": {
-          "plugins": [
-            {
-              "removeAttrs": { "attrs": "(data-name)" }
-            },
-            {
-              "cleanupIds": true
-            }
-          ]
-        }
-      }
-    ]
   ]
 }
