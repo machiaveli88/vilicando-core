@@ -1,5 +1,7 @@
 node_modules
 lib
+.old
+antd
 
 # misc
 npm-debug.log*
