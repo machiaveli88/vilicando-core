@@ -2,17 +2,30 @@
   "name": "vilicando-core",
   "private": true,
   "scripts": {
-    "build": "cd core && yarn build",
-    "build:watch": "cd core && yarn build:watch",
-    "dev": "cd examples/basic && yarn dev",
+    "build": "run-p build:*",
+    "build:antd": "cd antd && yarn build",
+    "build:core": "cd core && yarn build",
+    "dev": "yarn dev:basic",
     "dev:basic": "cd examples/basic && yarn dev",
-    "dev:hasura": "cd examples/hasura && yarn dev",
-    "dev:theming": "cd examples/theming && yarn dev",
-    "pub": "cd core && npm publish",
-    "up": "cd core && yarn up"
+    "dev:ssr": "cd examples/ssr && yarn dev",
+    "pub": "run-p pub:*",
+    "pub:antd": "cd antd && npm publish",
+    "pub:core": "cd core && npm publish",
+    "up": "run-p up:*",
+    "up:antd": "cd antd && yarn up",
+    "up:core": "cd core && yarn up",
+    "up:example-basic": "cd examples/basic && yarn up",
+    "up:example-ssr": "cd examples/ssr && yarn up",
+    "watch": "run-p watch:*",
+    "watch:antd": "cd antd && yarn build:watch",
+    "watch:core": "cd core && yarn build:watch"
   },
   "workspaces": [
+    "antd",
     "core",
     "examples/*"
-  ]
+  ],
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
 }
