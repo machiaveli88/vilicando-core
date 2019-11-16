@@ -1,0 +1,30 @@
+{
+  "primary1": "#e0f7fa",
+  "primary2": "#b2ebf2",
+  "primary3": "#80deea",
+  "primary4": "#4dd0e1",
+  "primary5": "#26c6da",
+  "primary6": "#00bcd4",
+  "primary7": "#00acc1",
+  "primary8": "#0097a7",
+  "primary9": "#00838f",
+  "primary10": "#006064",
+  "primaryColor": "#00bcd4",
+
+  "secondary1": "#f3e5f5",
+  "secondary2": "#e1bee7",
+  "secondary3": "#ce93d8",
+  "secondary4": "#ba68c8",
+  "secondary5": "#ab47bc",
+  "secondary6": "#9c27b0",
+  "secondary7": "#8e24aa",
+  "secondary8": "#7b1fa2",
+  "secondary9": "#6a1b9a",
+  "secondary10": "#4a148c",
+  "secondaryColor": "#9c27b0",
+
+  "headingColor": "#00bcd4",
+  "linkColor": "#00bcd4",
+  "linkHoverColor": "#9c27b0",
+  "linkActiveColor": "#9c27b0"
+}
