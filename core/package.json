@@ -3,12 +3,14 @@
   "version": "0.4.0",
   "license": "ISC",
   "private": false,
-  "main": "lib/index.js",
-  "bin": "lib/bin/index.js",
+  "main": "./lib/index.js",
+  "bin": "./lib/bin/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
-    "lib",
-    "server.js",
-    ".babelrc"
+    "./lib",
+    "./server.js",
+    "./tsconfig.extern.json",
+    "./.babelrc"
   ],
   "scripts": {
     "build": "tsc",

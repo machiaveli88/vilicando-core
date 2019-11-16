@@ -18,9 +18,7 @@
     "outDir": "",
     "paths": {
       "@components": ["components"],
-      "@components/*": ["components/*"],
-      "@pages": ["pages"],
-      "@pages/*": ["pages/*"]
+      "@pages": ["pages"]
     },
     "preserveConstEnums": true,
     "removeComments": false,
@@ -31,7 +29,6 @@
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
     "target": "esnext",
-    "types": ["node"]
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+    "types": ["node", "vilicando-core"]
+  }
 }

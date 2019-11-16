@@ -25,7 +25,9 @@ function Layout({ children }: ILayout) {
           width: '100%'
         })}
       >
-        <h2 className={css({ color: theme.white, margin: 0 })}>Example App</h2>
+        <h2 className={css({ color: theme.white, margin: 0 })}>
+          Basic Example App
+        </h2>
       </div>
 
       <div

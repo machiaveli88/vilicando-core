@@ -111,7 +111,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
             color: 'white',
             fontFamily: theme.fontFamily,
             fontSize: theme.fontSizeLg,
-            padding: theme.paddingLg
+            padding: theme.spacingLg
           })}
         >
           {text}

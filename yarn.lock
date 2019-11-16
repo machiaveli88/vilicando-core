@@ -8009,9 +8009,9 @@ rc-table@~6.9.4:
     shallowequal "^1.0.2"
 
 rc-table@~7.0.0-alpha.16:
-  version "7.0.0-alpha.17"
-  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-7.0.0-alpha.17.tgz#1ac190ac4007c88e8fe83640f3edf111b1bfd8a0"
-  integrity sha512-iZ973h89gXU00q/e5a51bZYYTgR5gawXv66xyKLjSPjeM2vBb7lVZn7+YCq7InrC99HT8eDCENRPtxCUnOffgg==
+  version "7.0.0-alpha.19"
+  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-7.0.0-alpha.19.tgz#4dbc463bea045062364e259d639e6fc4d0fc66fb"
+  integrity sha512-TIf5d6WDYRJ5tpL02fuVcZrKaDT2a+ab+BcsIGjijwmN5HdcLs/9Bfxx2urpRmVrfyFzEYXoAGLQB4wR7TyUrw==
   dependencies:
     classnames "^2.2.5"
     component-classes "^1.2.6"
