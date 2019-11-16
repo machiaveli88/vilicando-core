@@ -1,0 +1,7 @@
+{
+  "extends": "vilicando-core/tsconfig.extern.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+}

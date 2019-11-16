@@ -35,6 +35,7 @@ Framework based on next.js & hasura.io for web applications with full offline su
 - [ ] Adapting examples
 - [ ] Replacing next-with-apollo with https://github.com/zeit/next.js/blob/canary/examples/with-apollo/lib/apollo.js for static building
 - [ ] Add more examples
+- [ ] Language improvements
 - [ ] Cleanup package.json & check "yarn check"
 - [ ] Update Docs
 

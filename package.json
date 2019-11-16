@@ -9,6 +9,7 @@
     "dev:basic": "cd examples/basic && yarn dev",
     "dev:env": "cd examples/env && yarn dev",
     "dev:ssr": "cd examples/ssr && yarn dev",
+    "dev:translation": "cd examples/translation && yarn dev",
     "pub": "run-p pub:*",
     "pub:antd": "cd antd && npm publish",
     "pub:core": "cd core && npm publish",
@@ -18,6 +19,7 @@
     "up:example-basic": "cd examples/basic && yarn up",
     "up:example-env": "cd examples/env && yarn up",
     "up:example-ssr": "cd examples/ssr && yarn up",
+    "up:example-translation": "cd examples/translation && yarn up",
     "watch": "run-p watch:*",
     "watch:antd": "cd antd && yarn build:watch",
     "watch:core": "cd core && yarn build:watch"

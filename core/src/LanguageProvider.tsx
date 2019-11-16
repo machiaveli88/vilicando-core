@@ -27,6 +27,9 @@ function LanguageProvider({
   children
 }: ILanguageProvider) {
   const [locale, setLocale] = React.useState<string>(l);
+
+  React.useEffect(() => setLocale(l), [l]);
+
   const phrases = React.useMemo(
     () => (translations ? translations[locale] || {} : {}),
     [translations, locale]
