@@ -1,0 +1,12 @@
+{
+  "extends": "vilicando-core/.babelrc",
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
+    ]
+  ]
+}

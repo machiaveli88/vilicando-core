@@ -69,5 +69,4 @@ function LanguageProvider({
   );
 }
 
-export const LanguageConsumer = LanguageContext.Consumer;
 export default LanguageProvider;

@@ -1844,7 +1844,7 @@ antd@*:
     shallowequal "^1.1.0"
     warning "~4.0.3"
 
-"antd@>= 4.0.0-alpha.9":
+antd@4.0.0-alpha.9:
   version "4.0.0-alpha.9"
   resolved "https://registry.yarnpkg.com/antd/-/antd-4.0.0-alpha.9.tgz#67c59d8d99fc479acef45c4c557faedba150b17d"
   integrity sha512-z1F+DF6pv34Js3xn4ZaXzEhpzGZeAZxAzigfTeTBTEqde94RKyP3FwxzGlBFSzcRjjdu6LWpbRZnmxHV/sz8Cg==

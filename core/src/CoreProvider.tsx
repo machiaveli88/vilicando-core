@@ -7,17 +7,7 @@ import { Progress, ResponsiveHelper } from './components';
 import { ThemeProvider } from './theme';
 import { defaultRenderer } from './theme';
 import { ApolloClient } from 'apollo-client';
-
-const _navigator = {
-  ...(typeof window === 'undefined' ? {} : navigator)
-} as any;
-const defaultLocale =
-  _navigator.languages && _navigator.languages.length
-    ? _navigator.languages[0]
-    : _navigator.userLanguage ||
-      _navigator.language ||
-      _navigator.browserLanguage ||
-      'de';
+import { defaultLocale } from './utils';
 
 export interface ICoreProvider<TCacheShape = any> {
   children: React.ReactNode;
@@ -48,7 +38,7 @@ function CoreProvider({
 
   return (
     <RendererProvider renderer={renderer}>
-      <ThemeProvider value={theme}>
+      <ThemeProvider theme={theme}>
         <LanguageProvider translations={translations} locale={locale}>
           <Progress>
             {!!dev && <ResponsiveHelper />}

@@ -1,5 +1,4 @@
 const withOffline = require('next-offline');
-const fs = require('fs');
 const { config } = require('dotenv');
 const { join } = require('path');
 const { EnvironmentPlugin } = require('webpack');
@@ -9,8 +8,17 @@ interface IWithCore {
   aliases?: Array<string>;
 }
 
-module.exports = (props: IWithCore, nextConfig: any = {}) => {
-  const { env, aliases = ['components', 'pages'] } = props || {};
+module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
+  if (!nextConfig) {
+    if (props.webpack) {
+      nextConfig = { ...props };
+      props = {};
+    } else {
+      nextConfig = {};
+    }
+  }
+
+  const { env, aliases = ['components', 'pages'] } = props;
   const { webpack, dir, ...rest } = nextConfig;
 
   // use env-file, default is ./.env && ../.env
@@ -29,7 +37,7 @@ module.exports = (props: IWithCore, nextConfig: any = {}) => {
     webpack(config: any, options: any) {
       const dirname = dir || process.cwd();
 
-      aliases.forEach(alias => {
+      aliases.forEach((alias: string) => {
         config.resolve.alias[`@${alias}`] = join(dirname, `${alias}/`);
       });
 

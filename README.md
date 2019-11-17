@@ -28,13 +28,13 @@ Framework based on next.js & hasura.io for web applications with full offline su
 
 - [x] Cleanup, Updates, ...
 - [x] Remove Antd from Core
-- [ ] Additionally package for Antd
-- [ ] Adapting examples
+- [x] Additionally package for Antd
+- [x] Adapting examples
 - [ ] Remove Apollo/Graphql/Hasura from Core
 - [ ] Additionally package for Hasura
 - [ ] Adapting examples
 - [ ] Replacing next-with-apollo with https://github.com/zeit/next.js/blob/canary/examples/with-apollo/lib/apollo.js for static building
-- [ ] Add more examples
+- [x] Add more examples
 - [ ] Language improvements
 - [ ] Cleanup package.json & check "yarn check"
 - [ ] Update Docs
