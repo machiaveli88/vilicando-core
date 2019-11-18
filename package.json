@@ -15,6 +15,7 @@
     "pub": "run-p pub:*",
     "pub:antd": "cd antd && npm publish",
     "pub:core": "cd core && npm publish",
+    "theme": "cd antd && yarn theme",
     "up": "run-p up:*",
     "up:antd": "cd antd && yarn up",
     "up:core": "cd core && yarn up",

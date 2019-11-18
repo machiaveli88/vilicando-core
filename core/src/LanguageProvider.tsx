@@ -2,6 +2,7 @@ import * as moment from 'moment';
 import * as React from 'react';
 import 'moment/locale/de';
 import Polyglot from 'node-polyglot';
+import { defaultLocale } from './utils';
 
 export interface ILanguageContext {
   translate?: (key: string, options?: object) => string;
@@ -23,7 +24,7 @@ export function useLanguage(): ILanguageContext {
 
 function LanguageProvider({
   translations,
-  locale: l,
+  locale: l = defaultLocale,
   children
 }: ILanguageProvider) {
   const [locale, setLocale] = React.useState<string>(l);

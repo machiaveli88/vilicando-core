@@ -7,8 +7,10 @@ const { Header, Content, Footer } = Layout;
 function StartPage() {
   const { css, theme } = useFela();
 
+  console.log(theme.spacingXxl);
+
   return (
-    <Layout className="layout">
+    <Layout className={css({ height: '100vh' })}>
       <Header>
         <Menu
           theme="dark"
@@ -16,29 +18,58 @@ function StartPage() {
           defaultSelectedKeys={['2']}
           className={css({ lineHeight: theme.layoutHeaderHeight })}
         >
-          <Menu.Item key="1">nav 1</Menu.Item>
-          <Menu.Item key="2">nav 2</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
+          <Menu.Item key="1">Link 1</Menu.Item>
+          <Menu.Item key="2">Active Link 2</Menu.Item>
+          <Menu.Item key="3">Link 3</Menu.Item>
         </Menu>
       </Header>
-      <Content className={css({ paddingX: theme.paddingXxl })}>
-        <Breadcrumb className={css({ marginY: theme.paddingXl })}>
+      <Content
+        className={css({
+          paddingX: theme.spacingXxl,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        })}
+      >
+        <Breadcrumb className={css({ marginY: theme.paddingLg })}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
+
         <div
           className={css({
             background: theme.white,
-            padding: theme.paddingXl,
-            minHeight: 280
+            padding: theme.spacingXl,
+            flexGrow: 1,
+            width: '75%',
+            minWidth: theme.screenXs,
+            maxWidth: theme.screenMd
           })}
         >
-          Content
+          <h1>Hello World</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+            no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </p>
         </div>
       </Content>
-      <Footer className={css({ textAlign: 'center' })}>
-        Ant Design ©2018 Created by Ant UED
+
+      <Footer
+        className={css({
+          textAlign: 'center',
+          paddingY: theme.paddingMd,
+          color: theme.greyColor
+        })}
+      >
+        ©2019 vilicando-core
       </Footer>
     </Layout>
   );

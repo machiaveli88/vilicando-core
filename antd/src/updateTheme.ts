@@ -7,14 +7,21 @@ import { parseTheme, replaceLessVars } from './utils';
 
 const antd = require.resolve('antd');
 const lessPath = join(antd, '../../lib/style/themes/default.less');
-const themePath = join(__dirname, '../../src/theme/theme.json');
-const typesPath = join(__dirname, '../../src/theme/types.ts');
+const colorsPath = join(antd, '../../lib/style/color/colors.less');
+const themePath = join(__dirname, '../src/theme.json');
+const typesPath = join(__dirname, '../src/types.ts');
 
 if (existsSync(lessPath)) {
   const lessFile = readFileSync(lessPath, 'utf8');
-  const less = lessToJs(lessFile, {
+  let less = lessToJs(lessFile, {
     stripPrefix: true
   });
+
+  const colorsFile = readFileSync(colorsPath, 'utf8');
+  const colors = lessToJs(colorsFile, {
+    stripPrefix: true
+  });
+  less = Object.assign(less, colors);
 
   const themeFile = readFileSync(themePath, 'utf8');
   const theme = JSON.parse(themeFile);

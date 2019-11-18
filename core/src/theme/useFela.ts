@@ -13,21 +13,23 @@ export interface IStyleExtended
   [property: string]: IStyleExtended | string | number | boolean;
 }
 
-export interface IUseFela<T, P = {}> {
+export interface IUseFela<T = {}, P = {}> {
   css: (
-    css: IStyleExtended | StyleFunction<T, P>,
+    css: IStyleExtended | StyleFunction<T & ITheme, P>,
     className?: string
   ) => string;
-  theme: T;
+  theme: T & ITheme;
   renderer: IRenderer;
 }
 
-export default function useFela<T = ITheme, P = {}>(): IUseFela<T> {
-  const { theme, css, renderer } = useFelaBase<T, P>();
+export default function useFela<T = {}, P = {}>(): IUseFela<T> {
+  const { theme, css, renderer } = useFelaBase<T & ITheme, P>();
 
   return {
-    css: (styles: IStyleExtended | StyleFunction<T, P>, className?: string) =>
-      className ? css(styles) + ' ' + className : css(styles),
+    css: (
+      styles: IStyleExtended | StyleFunction<T & ITheme, P>,
+      className?: string
+    ) => (className ? css(styles) + ' ' + className : css(styles)),
     theme,
     renderer
   };

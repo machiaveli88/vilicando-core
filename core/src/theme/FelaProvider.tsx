@@ -1,17 +1,22 @@
 import * as React from 'react';
-import { RendererContext, ThemeProvider as FelaProvider } from 'react-fela';
-import { ITheme } from './types';
+import { ThemeProvider, RendererProvider } from 'react-fela';
+import { IRenderer } from 'fela';
+import defaultRenderer from './defaultRenderer';
 import defaultTheme from './theme.json';
+import { ITheme } from './types';
 
-interface IThemeProvider {
+interface IFelaProvider {
   theme: Partial<ITheme>;
+  renderer?: IRenderer;
   overwrite?: boolean;
   children?: React.ReactNode;
 }
 
-export default function ThemeProvider({ theme, ...props }: IThemeProvider) {
-  const renderer = React.useContext(RendererContext);
-
+export default function FelaProvider({
+  theme,
+  renderer = defaultRenderer,
+  ...props
+}: IFelaProvider) {
   const _theme = React.useMemo(() => {
     const _theme = Object.assign(defaultTheme, theme);
 
@@ -47,5 +52,9 @@ export default function ThemeProvider({ theme, ...props }: IThemeProvider) {
     return _theme;
   }, [theme]);
 
-  return <FelaProvider theme={_theme} {...props} />;
+  return (
+    <RendererProvider renderer={renderer}>
+      <ThemeProvider theme={_theme} {...props} />
+    </RendererProvider>
+  );
 }

@@ -24,16 +24,29 @@ function AntdProvider({ children, theme }: IAntdProvider) {
     parsedTheme.shadow0 = parsedTheme.shadow1Down;
     parsedTheme.shadow1 = parsedTheme.shadow1Down;
     parsedTheme.shadow3 = parsedTheme.shadow2;
-    parsedTheme.spacingXxs = parsedTheme.paddingXxs;
+
     parsedTheme.spacingXs = parsedTheme.paddingXs;
     parsedTheme.spacingSm = parsedTheme.paddingSm;
     parsedTheme.spacingMd = parsedTheme.paddingMd;
     parsedTheme.spacingLg = parsedTheme.paddingLg;
-    parsedTheme.spacingXl = parsedTheme.paddingXl;
-    parsedTheme.spacingXxl = parsedTheme.paddingXxl;
+
     parsedTheme.fontSizeMd = parsedTheme.fontSizeBase;
     parsedTheme.heading5Size = `calc(${parsedTheme.fontSizeBase} * 1.312)`;
     parsedTheme.heading6Size = `calc(${parsedTheme.fontSizeBase} * 1.125)`;
+
+    parsedTheme.blueColor = parsedTheme.blue6;
+    parsedTheme.purpleColor = parsedTheme.purple6;
+    parsedTheme.cyanColor = parsedTheme.cyan6;
+    parsedTheme.greenColor = parsedTheme.green6;
+    parsedTheme.magentaColor = parsedTheme.magenta6;
+    parsedTheme.pinkColor = parsedTheme.pink6;
+    parsedTheme.redColor = parsedTheme.red6;
+    parsedTheme.orangeColor = parsedTheme.orange6;
+    parsedTheme.yellowColor = parsedTheme.yellow6;
+    parsedTheme.volcanoColor = parsedTheme.volcano6;
+    parsedTheme.geekblueColor = parsedTheme.geekblue6;
+    parsedTheme.limeColor = parsedTheme.lime6;
+    parsedTheme.goldColor = parsedTheme.gold6;
 
     return parsedTheme;
   }, [theme]);

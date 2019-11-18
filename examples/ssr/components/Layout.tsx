@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useFela } from 'vilicando-core';
-import Link from 'next/link';
+import { useFela, Link } from 'vilicando-core';
 
 interface ILayout {
   children: React.ReactElement;

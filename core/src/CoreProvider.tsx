@@ -2,12 +2,9 @@ import * as React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import LanguageProvider from './LanguageProvider';
 import { IRenderer } from 'fela';
-import { RendererProvider } from 'react-fela';
 import { Progress, ResponsiveHelper } from './components';
-import { ThemeProvider } from './theme';
-import { defaultRenderer } from './theme';
+import { FelaProvider } from './theme';
 import { ApolloClient } from 'apollo-client';
-import { defaultLocale } from './utils';
 
 export interface ICoreProvider<TCacheShape = any> {
   children: React.ReactNode;
@@ -24,8 +21,8 @@ function CoreProvider({
   dev,
   apollo,
   theme,
-  renderer = defaultRenderer,
-  locale = defaultLocale,
+  renderer,
+  locale,
   translations = {}
 }: ICoreProvider) {
   const content = apollo ? (
@@ -37,16 +34,14 @@ function CoreProvider({
   // todo: Add Splash Screen: https://github.com/zeit/next.js/issues/5736, https://github.com/nguyenbathanh/react-loading-screen/blob/master/public/index.html
 
   return (
-    <RendererProvider renderer={renderer}>
-      <ThemeProvider theme={theme}>
-        <LanguageProvider translations={translations} locale={locale}>
-          <Progress>
-            {!!dev && <ResponsiveHelper />}
-            {content}
-          </Progress>
-        </LanguageProvider>
-      </ThemeProvider>
-    </RendererProvider>
+    <FelaProvider renderer={renderer} theme={theme}>
+      <LanguageProvider translations={translations} locale={locale}>
+        <Progress>
+          {!!dev && <ResponsiveHelper />}
+          {content}
+        </Progress>
+      </LanguageProvider>
+    </FelaProvider>
   );
 }
 

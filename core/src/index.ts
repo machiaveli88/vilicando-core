@@ -17,7 +17,10 @@ export {
   Document,
   DocumentContext,
   Head,
-  Html
+  Html,
+  Link,
+  Router,
+  withRouter
 } from './next';
 export {
   ThemeProvider,
@@ -25,6 +28,7 @@ export {
   theme,
   useFela,
   IUseFela,
-  createRenderer
+  createRenderer,
+  RendererProvider
 } from './theme';
 export { defaultLocale, isDoubleTap, notify } from './utils';

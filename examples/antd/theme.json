@@ -9,5 +9,5 @@
   "primary-7": "color(~`colorPalette('@{primary-6}', 7) `)",
   "primary-8": "color(~`colorPalette('@{primary-6}', 8) `)",
   "primary-9": "color(~`colorPalette('@{primary-6}', 9) `)",
-  "primary-color": "@orange-color"
+  "primary-color": "@volcano-6"
 }
