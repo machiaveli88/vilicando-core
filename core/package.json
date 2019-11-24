@@ -20,10 +20,6 @@
   "dependencies": {
     "@types/lodash": "^4.14.148",
     "@types/node": "^12.12.8",
-    "apollo": "^2.21.0",
-    "apollo-cache-inmemory": "^1.6.3",
-    "apollo-client": "^2.6.4",
-    "apollo-link-ws": "^1.0.19",
     "arg": "^4.1.1",
     "babel-plugin-import": "1.12.2",
     "cross-env": "^6.0.3",
@@ -38,29 +34,23 @@
     "fela-plugin-unit": "11.0.2",
     "fela-plugin-validator": "11.0.2",
     "fela-preset-web": "11.0.2",
-    "graphql": "^14.5.8",
     "lodash": "^4.17.15",
     "next": "9.1.4-canary.5",
     "next-offline": "^5.0.0-beta.8",
-    "next-with-apollo": "^4.3.0",
     "node-polyglot": "2.4.0",
     "nprogress": "^0.2.0",
     "push.js": "^1.0.12",
-    "react-fela": "11.0.2",
-    "subscriptions-transport-ws": "^0.9.16",
-    "typescript": "3.7.2"
+    "react-fela": "11.0.2"
   },
   "devDependencies": {
     "@svgr/webpack": "^4.3.3",
     "@types/dotenv": "^8.2.0",
-    "@types/glob": "^7.1.1",
     "@types/next": "9.0.0",
     "@types/node-polyglot": "0.4.34",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "16.9.11",
+    "@types/react": "16.9.13",
     "@types/react-dom": "16.9.4",
-    "@types/tinycolor2": "1.4.2",
-    "@types/uuid": "^3.4.6"
+    "typescript": "3.7.2"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",

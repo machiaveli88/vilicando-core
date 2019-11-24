@@ -30,11 +30,13 @@ Framework based on next.js & hasura.io for web applications with full offline su
 - [x] Remove Antd from Core
 - [x] Additionally package for Antd
 - [x] Adapting examples
-- [ ] Remove Apollo/Graphql/Hasura from Core
-- [ ] Additionally package for Hasura
-- [ ] Adapting examples
+- [x] Remove Apollo/Graphql/Hasura from Core
+- [x] Additionally package for Hasura
+- [x] Adapting examples
 - [ ] Replacing next-with-apollo with https://github.com/zeit/next.js/blob/canary/examples/with-apollo/lib/apollo.js for static building
 - [x] Add more examples
+- [ ] Additionally package for UI (based on react-native-web)
+- [ ] Add preact
 - [ ] Language improvements
 - [ ] Cleanup package.json & check "yarn check"
 - [ ] Update Docs
@@ -58,16 +60,7 @@ Framework based on next.js & hasura.io for web applications with full offline su
 
 ## Theming
 
-Vilicando uses [fela](http://fela.js.org) for theming and [antd](https://ant.design/) for the standard UI components. The standard theme variables therefore also depend on the Antd variables, which can be found [here](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less), plus:
-
-- padding-xl
-- secondary-1
-  ...
-- secondary-10
-- grey-1
-  ...
-- grey-10
-- XY-color (for each color)
+Vilicando uses [fela](http://fela.js.org) for theming and (with vilicando-antd) [antd](https://ant.design/) for the standard UI components. The theme variables therefore also depend on the Antd variables, which can be found [here](https://github.com/machiaveli88/vilicando-core/blob/master/antd/src/theme.json). The standard theme variables can be found in [here](https://github.com/machiaveli88/vilicando-core/blob/master/core/src/theme/theme.json).
 
 ## Language
 

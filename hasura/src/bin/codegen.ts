@@ -4,7 +4,7 @@ import { join } from 'path';
 import { readFileSync, readdirSync } from 'fs';
 import dotenv from 'dotenv';
 import { outputFileSync, removeSync } from 'fs-extra';
-import { ISchema } from '../apollo/typings';
+import { ISchema } from '../typings';
 
 dotenv.config({ path: join(process.cwd(), '.env') });
 dotenv.config({ path: join(process.cwd(), '../.env') });

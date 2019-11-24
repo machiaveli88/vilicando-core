@@ -4,9 +4,8 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { HttpLink } from 'apollo-link-http';
 import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloLink, split, DocumentNode } from 'apollo-link';
+import { ApolloLink, split } from 'apollo-link';
 import { onError } from 'apollo-link-error';
-import gql from 'graphql-tag';
 import { ISchema } from './typings';
 
 interface IWithApollo {

@@ -1,12 +1,3 @@
-export {
-  hasura,
-  useApolloClient,
-  useLazyQuery,
-  useMutation,
-  useQuery,
-  useSubscription,
-  withApollo
-} from './apollo';
 export { Loader } from './components';
 export { default as CoreProvider, ICoreProvider } from './CoreProvider';
 export { default as LanguageProvider, useLanguage } from './LanguageProvider';

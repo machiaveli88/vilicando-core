@@ -7,8 +7,6 @@ const { Header, Content, Footer } = Layout;
 function StartPage() {
   const { css, theme } = useFela();
 
-  console.log(theme.spacingXxl);
-
   return (
     <Layout className={css({ height: '100vh' })}>
       <Header>

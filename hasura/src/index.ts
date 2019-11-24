@@ -1,3 +1,4 @@
+export { default as HasuraProvider, IHasuraProvider } from './HasuraProvider';
 export {
   useApolloClient,
   useLazyQuery,
