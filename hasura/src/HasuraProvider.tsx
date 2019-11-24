@@ -1,16 +1,30 @@
 import * as React from 'react';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { WebSocketLink } from 'apollo-link-ws';
+import { ISchema } from './typings';
 
-export interface IHasuraProvider<TCacheShape = any> {
-  children: React.ReactNode;
-  apollo?: ApolloClient<TCacheShape>;
+export interface IHasuraContext {
+  http?: HttpLink.Options;
+  ws?: WebSocketLink.Configuration;
+  schema: ISchema;
 }
 
-function HasuraProvider({ children, apollo }: IHasuraProvider) {
-  // todo: Add Splash Screen: https://github.com/zeit/next.js/issues/5736, https://github.com/nguyenbathanh/react-loading-screen/blob/master/public/index.html
+export interface IHasuraProvider extends IHasuraContext {
+  children: React.ReactNode;
+}
 
-  return <ApolloProvider client={apollo}>{children}</ApolloProvider>;
+const HasuraContext = React.createContext<IHasuraContext>(null);
+
+export function useHasura(): IHasuraContext {
+  return React.useContext(HasuraContext);
+}
+
+function HasuraProvider({ children, http, ws, schema }: IHasuraProvider) {
+  return (
+    <HasuraContext.Provider value={{ http, ws, schema }}>
+      {children}
+    </HasuraContext.Provider>
+  );
 }
 
 export default HasuraProvider;

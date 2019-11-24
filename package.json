@@ -2,7 +2,7 @@
   "name": "vilicando-core",
   "private": true,
   "scripts": {
-    "build": "run-p build:*",
+    "build": "yarn build:core & run-p build:*",
     "build:antd": "cd antd && yarn build",
     "build:core": "cd core && yarn build",
     "build:hasura": "cd hasura && yarn build",

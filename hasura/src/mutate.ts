@@ -19,23 +19,31 @@ import {
   TUpdateItem
 } from './typings';
 
-export default function mutateHasura<
-  IItem extends { id: any },
-  IVariables = OperationVariables,
-  IQueryVariables = OperationVariables
->(
-  document: DocumentNode,
-  query: DocumentNode,
-  _options?: MutationHookOptions<IMutationData<IItem>, IVariables> & {
-    queryVariables?: IQueryVariables;
-  }
-): [
+export type IMutateDocument = DocumentNode;
+export type IMutateOptions<
+  IItem,
+  IVariables,
+  IQueryVariables
+> = MutationHookOptions<IMutationData<IItem>, IVariables> & {
+  queryVariables?: IQueryVariables;
+};
+export type IMutateReturn<IItem, IVariables> = [
   (
     items: TUpdateItem<IItem>,
     options?: MutationFunctionOptions<IMutationData<IItem>, IVariables>
   ) => Promise<ExecutionResult<IMutationData<IItem>>>,
   MutationResult<IMutationData<IItem>>
-] {
+];
+
+export default function mutate<
+  IItem extends { id: any },
+  IVariables = OperationVariables,
+  IQueryVariables = OperationVariables
+>(
+  document: IMutateDocument,
+  query: IMutateDocument,
+  _options?: IMutateOptions<IItem, IVariables, IQueryVariables>
+): IMutateReturn<IItem, IVariables> {
   const { queryVariables, ...options } = _options || {};
   const [update, result] = useMutation<IMutationData<IItem>, IVariables>(
     document,

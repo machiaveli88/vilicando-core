@@ -1,16 +1,35 @@
 import * as React from 'react';
 import { App, CoreProvider } from 'vilicando-core';
-import { withApollo, HasuraProvider } from 'vilicando-hasura';
+import { HasuraProvider } from 'vilicando-hasura';
 import { Layout } from '@components';
 import schema from '../schema.json';
 
+const headers = {
+  'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
+};
+
 class CustomApp extends App {
   render() {
-    const { Component, pageProps, apollo } = this.props;
+    const { Component, pageProps } = this.props;
 
     return (
       <CoreProvider>
-        <HasuraProvider apollo={apollo}>
+        <HasuraProvider
+          http={{
+            uri: process.env.GRAPHQL_HTTP,
+            headers
+          }}
+          ws={{
+            uri: process.env.GRAPHQL_WS,
+            options: {
+              reconnect: true,
+              connectionParams: {
+                headers
+              }
+            }
+          }}
+          schema={schema}
+        >
           <Layout>
             <Component {...pageProps} />
           </Layout>
@@ -20,23 +39,4 @@ class CustomApp extends App {
   }
 }
 
-const headers = {
-  'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
-};
-
-export default withApollo({
-  http: {
-    uri: process.env.GRAPHQL_HTTP,
-    headers
-  },
-  ws: {
-    uri: process.env.GRAPHQL_WS,
-    options: {
-      reconnect: true,
-      connectionParams: {
-        headers
-      }
-    }
-  },
-  schema
-})(CustomApp);
+export default CustomApp;

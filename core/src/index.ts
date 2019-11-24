@@ -9,6 +9,8 @@ export {
   DocumentContext,
   Head,
   Html,
+  IPage,
+  IPageContext,
   Link,
   Router,
   withRouter

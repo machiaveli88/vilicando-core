@@ -1,4 +1,4 @@
-export { default as HasuraProvider, IHasuraProvider } from './HasuraProvider';
+export { default as HasuraProvider, useHasura } from './HasuraProvider';
 export {
   useApolloClient,
   useLazyQuery,
@@ -6,8 +6,4 @@ export {
   useQuery,
   useSubscription
 } from '@apollo/react-hooks';
-export { default as withApollo } from './withApollo';
-
-import { default as query } from './queryHasura';
-import { default as mutate } from './mutateHasura';
-export const hasura = { query, mutate };
+export { default as withHasura, IWithHasura } from './withHasura';

@@ -33,11 +33,12 @@ Framework based on next.js & hasura.io for web applications with full offline su
 - [x] Remove Apollo/Graphql/Hasura from Core
 - [x] Additionally package for Hasura
 - [x] Adapting examples
-- [ ] Replacing next-with-apollo with https://github.com/zeit/next.js/blob/canary/examples/with-apollo/lib/apollo.js for static building
+- [x] Replacing next-with-apollo with https://github.com/zeit/next.js/blob/canary/examples/with-apollo/lib/apollo.js for static building
 - [x] Add more examples
 - [ ] Additionally package for UI (based on react-native-web)
 - [ ] Add preact
 - [ ] Language improvements
+- [ ] Monorep
 - [ ] Cleanup package.json & check "yarn check"
 - [ ] Update Docs
 
@@ -47,7 +48,7 @@ Framework based on next.js & hasura.io for web applications with full offline su
 
 #### 0.6 - Components & Improvements
 
-- [ ] Splash-Screen
+- [ ] Splash-Screen (https://github.com/zeit/next.js/issues/5736, https://github.com/nguyenbathanh/react-loading-screen/blob/master/public/index.html)
 - [ ] ...
 
 ## Core

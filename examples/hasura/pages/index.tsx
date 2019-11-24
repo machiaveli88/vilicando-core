@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { hasura } from 'vilicando-hasura';
+import { withHasura, IWithHasura } from 'vilicando-hasura';
 import {
   QUERY_USERS,
   IUser,
@@ -17,31 +17,31 @@ import {
   IUpdateAllUserVariables
 } from '@graphql';
 
-function StartPage() {
-  const [users, { loading }] = hasura.query<IUser>(QUERY_USERS);
-  const [updateUser] = hasura.mutate<IUpdateUser, IUpdateUserVariables>(
+function StartPage({ query, mutate }: IWithHasura) {
+  const [users, { loading }] = query<IUser>(QUERY_USERS);
+  const [updateUser] = mutate<IUpdateUser, IUpdateUserVariables>(
     UPDATE_USER,
     QUERY_USERS
   );
-  const [deleteUser] = hasura.mutate<IDeleteUser, IDeleteUserVariables>(
+  const [deleteUser] = mutate<IDeleteUser, IDeleteUserVariables>(
     DELETE_USER,
     QUERY_USERS
   );
-  const [insertUser] = hasura.mutate<IInsertUser, IInsertUserVariables>(
+  const [insertUser] = mutate<IInsertUser, IInsertUserVariables>(
     INSERT_USER,
     QUERY_USERS
   );
-  const [updateAllUser] = hasura.mutate<
-    IUpdateAllUser,
-    IUpdateAllUserVariables
-  >(UPDATE_ALL_USER, QUERY_USERS);
+  const [updateAllUser] = mutate<IUpdateAllUser, IUpdateAllUserVariables>(
+    UPDATE_ALL_USER,
+    QUERY_USERS
+  );
 
   return (
     <>
       <h2>Our employees:</h2>
 
       {loading ? (
-        <span>Lade...</span>
+        <p>Lade...</p>
       ) : (
         <ul>
           {users.map(user => (
@@ -54,7 +54,7 @@ function StartPage() {
               />
               &nbsp;
               {user.__optimistic ? (
-                <span>Lade...</span>
+                <p>Lade...</p>
               ) : (
                 <a href="#" onClick={() => deleteUser(user)}>
                   löschen
@@ -79,7 +79,10 @@ function StartPage() {
         onKeyDown={e => {
           if (e.key == 'Enter')
             updateAllUser(
-              users.map(user => ({ ...user, name: e.currentTarget.value }))
+              users.map(user => ({
+                ...user,
+                name: e.currentTarget.value
+              }))
             );
         }}
       />
@@ -87,4 +90,4 @@ function StartPage() {
   );
 }
 
-export default StartPage;
+export default withHasura(StartPage);

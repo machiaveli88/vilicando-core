@@ -4,10 +4,20 @@ import { DocumentNode, DefinitionNode, SelectionNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
 import { IQueryData, TOptimisticItem } from './typings';
 
-export default function queryHasura<IItem, IVariables = OperationVariables>(
-  document: DocumentNode,
-  options?: QueryHookOptions<IQueryData<IItem>, IVariables>
-): [Array<TOptimisticItem<IItem>>, QueryResult<IQueryData<IItem>, IVariables>] {
+export type IQueryDocument = DocumentNode;
+export type IQueryOptions<IItem, IVariables> = QueryHookOptions<
+  IQueryData<IItem>,
+  IVariables
+>;
+export type IQueryReturn<IItem, IVariables> = [
+  Array<TOptimisticItem<IItem>>,
+  QueryResult<IQueryData<IItem>, IVariables>
+];
+
+export default function query<IItem, IVariables = OperationVariables>(
+  document: IQueryDocument,
+  options?: IQueryOptions<IItem, IVariables>
+): IQueryReturn<IItem, IVariables> {
   const { skip, variables, onError } = options || {};
   const { data, subscribeToMore, ...rest } = useQuery<
     IQueryData<IItem>,
