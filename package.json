@@ -1,5 +1,5 @@
 {
-  "name": "vilicando-core",
+  "name": "vilicando",
   "private": true,
   "scripts": {
     "build": "yarn build:core & run-p build:*",
@@ -25,12 +25,11 @@
     "watch:hasura": "cd hasura && yarn build:watch"
   },
   "workspaces": [
-    "antd",
-    "core",
-    "hasura",
-    "examples/*"
+    "packages/*"
   ],
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "lerna": "^3.19.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1"
   }
 }

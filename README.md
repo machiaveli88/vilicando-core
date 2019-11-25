@@ -38,7 +38,7 @@ Framework based on next.js & hasura.io for web applications with full offline su
 - [ ] Additionally package for UI (based on react-native-web)
       ~~- [ ] Add preact~~ (error@node_modules/react-fela/es/useFela.js: Attempted import error: 'useContext' is not exported from 'react'.)
 - [ ] Language improvements
-- [ ] Monorep
+- [ ] Monorepo with lerna
 - [ ] Cleanup package.json & check "yarn check"
 - [ ] Update Docs
 
