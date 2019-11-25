@@ -36,7 +36,7 @@ Framework based on next.js & hasura.io for web applications with full offline su
 - [x] Replacing next-with-apollo with https://github.com/zeit/next.js/blob/canary/examples/with-apollo/lib/apollo.js for static building
 - [x] Add more examples
 - [ ] Additionally package for UI (based on react-native-web)
-- [ ] Add preact
+      ~~- [ ] Add preact~~ (error@node_modules/react-fela/es/useFela.js: Attempted import error: 'useContext' is not exported from 'react'.)
 - [ ] Language improvements
 - [ ] Monorep
 - [ ] Cleanup package.json & check "yarn check"
