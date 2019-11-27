@@ -1,7 +1,11 @@
 import React from 'react';
-import { useQuery as _useQuery, QueryHookOptions } from '@apollo/react-hooks';
+import {
+  useQuery as _useQuery,
+  QueryHookOptions,
+  OperationVariables,
+  QueryResult
+} from '@apollo/client';
 import { DocumentNode, DefinitionNode, SelectionNode } from 'graphql';
-import { OperationVariables, QueryResult } from '@apollo/react-common';
 import { IQueryData, TOptimisticItem } from './typings';
 
 export type IUseQueryDocument = DocumentNode;
@@ -45,7 +49,7 @@ export default function useQuery<IItem, IVariables = OperationVariables>(
     ).length > 1
   )
     console.warn(
-      "hasura.query won't work correctly with more than one query, please use multiple single queries or useQuery from @apollo/react-hooks instead!"
+      "hasura.query won't work correctly with more than one query, please use multiple single queries or useQuery from @apollo/client instead!"
     );
 
   React.useEffect(() => {

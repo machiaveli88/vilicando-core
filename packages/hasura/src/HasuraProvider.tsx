@@ -1,26 +1,30 @@
 import React from 'react';
 import Head from 'next/head';
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-import { WebSocketLink } from 'apollo-link-ws';
-import { getMainDefinition } from 'apollo-utilities';
-import { ApolloLink, split } from 'apollo-link';
-import { onError } from 'apollo-link-error';
 import { IPageContext } from 'vilicando-core';
-import { ApolloProvider } from '@apollo/react-hooks';
+import {
+  ApolloClient,
+  ApolloProvider,
+  ApolloLink,
+  split,
+  getMainDefinition,
+  HttpLink,
+  InMemoryCache,
+  NormalizedCacheObject,
+  HttpOptions
+} from '@apollo/client';
+import { WebSocketLink } from 'apollo-link-ws';
 import fetch from 'isomorphic-unfetch';
-import { ApolloProviderProps } from '@apollo/react-common/lib/context/ApolloProvider';
+import { ApolloProviderProps } from '@apollo/client/react/context/ApolloProvider';
 
 interface IGetHasuraProps {
   ssr?: boolean;
-  http?: HttpLink.Options;
+  http?: HttpOptions;
   ws?: WebSocketLink.Configuration;
 }
 
 interface IHasuraProvider<TCache = any>
   extends Partial<ApolloProviderProps<TCache>> {
-  http?: HttpLink.Options;
+  http?: HttpOptions;
   ws?: WebSocketLink.Configuration;
   initialState?: NormalizedCacheObject;
 }
@@ -28,7 +32,7 @@ interface IHasuraProvider<TCache = any>
 let apolloClient: ApolloClient<NormalizedCacheObject> = null;
 
 function createApolloClient(
-  _http: HttpLink.Options,
+  _http: HttpOptions,
   _ws: WebSocketLink.Configuration,
   initialState: NormalizedCacheObject = {}
 ): ApolloClient<NormalizedCacheObject> {
@@ -50,23 +54,12 @@ function createApolloClient(
     }
   };
 
-  const errorLink = onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors)
-      graphQLErrors.map(err =>
-        console.warn(`[GraphQL error]: Message: ${err.message}`)
-      );
-
-    if (networkError) console.warn(`[Network error]: ${networkError}`);
-  });
-
-  const links = [errorLink];
-  if (http)
-    links.push(new HttpLink({ credentials: 'same-origin', fetch, ...http }));
-
-  let link = ApolloLink.from(links);
+  let link = ApolloLink.from(
+    http ? [new HttpLink({ credentials: 'same-origin', fetch, ...http })] : []
+  );
 
   if (!ssrMode && ws) {
-    const wsLink = new WebSocketLink(ws);
+    const wsLink = new WebSocketLink(ws) as any; // todo: remove any
 
     link = split(
       ({ query }) => {
@@ -90,7 +83,7 @@ function createApolloClient(
 }
 
 function initApolloClient(
-  http: HttpLink.Options,
+  http: HttpOptions,
   ws: WebSocketLink.Configuration,
   initialState?: NormalizedCacheObject
 ) {

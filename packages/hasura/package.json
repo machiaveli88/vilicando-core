@@ -14,10 +14,9 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.3",
+    "@apollo/client": "^3.0.0-beta.14",
     "@apollo/react-ssr": "^3.1.3",
     "apollo": "^2.21.0",
-    "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-ws": "^1.0.19",
     "dotenv": "^8.2.0",
@@ -26,6 +25,7 @@
     "subscriptions-transport-ws": "^0.9.16"
   },
   "devDependencies": {
+    "@types/fs-extra": "^8.0.1",
     "@types/uuid": "^3.4.6",
     "typescript": "3.7.2"
   },

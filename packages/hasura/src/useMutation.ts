@@ -1,13 +1,11 @@
 import {
   useMutation as _useMutation,
-  MutationHookOptions
-} from '@apollo/react-hooks';
-import {
+  MutationHookOptions,
   OperationVariables,
   MutationFunctionOptions,
   ExecutionResult,
   MutationResult
-} from '@apollo/react-common';
+} from '@apollo/client';
 import {
   DocumentNode,
   VariableDefinitionNode,
@@ -68,7 +66,7 @@ export default function useMutation<
     ).length > 1
   )
     console.warn(
-      "hasura.mutate won't work correctly with more than one mutation, please use multiple single mutations or useMutation from @apollo/react-hooks instead!"
+      "hasura.mutate won't work correctly with more than one mutation, please use multiple single mutations or useMutation from @apollo/client instead!"
     );
 
   return [
