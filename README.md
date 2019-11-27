@@ -71,9 +71,7 @@ Please set the following .env-vars to enable full hasura/graphql support:
 - [x] ~~Add preact~~ (error@node_modules/react-fela/es/useFela.js: Attempted import error: 'useContext' is not exported from 'react'.)
 - [x] Monorepo with lerna
 - [x] Linting
-- [ ] Fix withHasura
-- [ ] theme typescript geht nicht
-- [ ] env-Vars & Overview
+- [x] env-Vars & Overview
 - [ ] Language improvements
 - [ ] Cleanup package.json & check "yarn check"
 - [ ] Update Docs
