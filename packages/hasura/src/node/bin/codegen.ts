@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { execSync } from 'child_process';
 import { join } from 'path';
-import { readFileSync, readdirSync } from 'fs';
+import { readFileSync, readdirSync, existsSync } from 'fs';
 import { outputFileSync, removeSync } from 'fs-extra';
 import { ISchema } from '../../typings';
 import { getEnv } from 'vilicando-core/lib/node/env';
@@ -19,8 +19,8 @@ const download = ({
   url
     ? execSync(
         secret
-          ? `apollo schema:download --endpoint=${url} --header="X-Hasura-Admin-Secret: ${secret}"`
-          : `apollo schema:download --endpoint=${url}`,
+          ? `apollo schema:download graphql/schema.json --endpoint=${url} --header="X-Hasura-Admin-Secret: ${secret}"`
+          : `apollo schema:download graphql/schema.json --endpoint=${url}`,
         {
           stdio: 'inherit'
         }
@@ -28,65 +28,57 @@ const download = ({
     : null;
 
 const optimistic = () => {
-  const schema = join(process.cwd(), 'schema.json');
+  const schema = join(process.cwd(), 'graphql/schema.json');
 
-  if (schema) {
+  if (existsSync(schema)) {
     const { __schema } = JSON.parse(readFileSync(schema).toString()) as ISchema;
-    const { types } = __schema || {};
-    const fields = types.filter(({ kind }) => kind === 'OBJECT');
-    let output = `/* tslint:disable */
-  /* eslint-disable */
-  // This file was automatically generated and should not be edited.
-  
-  // ====================================================
-  // GraphQL extendings for __optimistic-field
-  // ====================================================
-  
-  import gql from 'graphql-tag';
-  `;
-    fields.forEach(({ name }) => {
-      output += `
-  gql\`
-    extend type ${name} {
-      __optimistic: Boolean
-    }
-  \`
-      `;
+    __schema.types = (__schema || {}).types.map(type => {
+      if (type.kind === 'OBJECT')
+        return {
+          ...type,
+          fields: [
+            ...type.fields,
+            {
+              name: '__optimistic',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'Boolean',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ]
+        };
+
+      return type;
     });
-    outputFileSync(join(process.cwd(), 'graphql/optimistic.ts'), output);
+    outputFileSync(schema, JSON.stringify({ __schema }));
 
     console.info('  ✔ Creating extendings for __optimistic-field');
   }
 };
 
-const generate = ({
-  '--url': url = GRAPHQL_HTTP,
-  '--secret': secret = GRAPHQL_SECRET
-}: {
-  '--url'?: string;
-  '--secret'?: string;
-}) => {
-  if (!url) return null;
-
+const generate = () => {
   // generate extends for __optimistic-field
   optimistic();
 
   const cmd = execSync(
-    secret
-      ? `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=graphql/*.ts --tagName=gql --addTypename --header="X-Hasura-Admin-Secret: ${secret}"`
-      : `apollo codegen:generate typings --endpoint=${url} --target=typescript --includes=graphql/*.ts --tagName=gql --addTypename`, // todo: --watch https://stackoverflow.com/questions/13695046/watch-a-folder-for-changes-using-node-js-and-print-file-paths-when-they-are-cha
+    `apollo codegen:generate typings --localSchemaFile=graphql/schema.json --target=typescript --includes=graphql/*.ts --tagName=gql --addTypename`,
     { stdio: 'inherit' }
-  );
+  ); // todo: --watch https://stackoverflow.com/questions/13695046/watch-a-folder-for-changes-using-node-js-and-print-file-paths-when-they-are-cha
 
   let output = `/* tslint:disable */
-  /* eslint-disable */
-  // This file was automatically generated and should not be edited.
-  
-  // ====================================================
-  // GraphQL type exports
-  // ====================================================
-  
-  `;
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL type exports
+// ====================================================
+
+`;
   const files = readdirSync(join(process.cwd(), 'graphql/typings'));
   files.forEach(file => {
     const [dir, extension] = file.split('.');
@@ -94,7 +86,7 @@ const generate = ({
 
     if (fileName !== 'index' && extension === 'ts')
       output += `export * from './${fileName}'
-  `;
+`;
   });
   outputFileSync(join(process.cwd(), 'graphql/typings/index.ts'), output);
 

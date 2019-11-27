@@ -7,9 +7,8 @@ const FRAGMENT_USER = gql`
     name
     created_at
     updated_at
-    __optimistic @client
   }
-`;
+`; // todo: add & repair __optimistic
 
 export const QUERY_USERS = gql`
   query users {

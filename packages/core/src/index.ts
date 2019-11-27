@@ -9,8 +9,7 @@ export {
   DocumentContext,
   Head,
   Html,
-  IPage,
-  IPageContext,
+  IPageContext, // todo: can remove?
   Link,
   Router,
   withRouter

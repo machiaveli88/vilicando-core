@@ -7,12 +7,11 @@
 // ====================================================
 
 export interface user_user_by_pk {
-  __typename: 'user';
+  __typename: "user";
   id: any;
   name: string | null;
   created_at: any;
   updated_at: any;
-  __optimistic: boolean | null;
 }
 
 export interface user {

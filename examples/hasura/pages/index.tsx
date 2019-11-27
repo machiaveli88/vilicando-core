@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withHasura, IWithHasura } from 'vilicando-hasura';
+import { getHasuraProps, useQuery, useMutation } from 'vilicando-hasura';
 import {
   QUERY_USERS,
   IUser,
@@ -17,21 +17,21 @@ import {
   IUpdateAllUserVariables
 } from '@graphql';
 
-function StartPage({ useQuery, useMutate }: IWithHasura) {
+function StartPage() {
   const [users, { loading }] = useQuery<IUser>(QUERY_USERS);
-  const [updateUser] = useMutate<IUpdateUser, IUpdateUserVariables>(
+  const [updateUser] = useMutation<IUpdateUser, IUpdateUserVariables>(
     UPDATE_USER,
     QUERY_USERS
   );
-  const [deleteUser] = useMutate<IDeleteUser, IDeleteUserVariables>(
+  const [deleteUser] = useMutation<IDeleteUser, IDeleteUserVariables>(
     DELETE_USER,
     QUERY_USERS
   );
-  const [insertUser] = useMutate<IInsertUser, IInsertUserVariables>(
+  const [insertUser] = useMutation<IInsertUser, IInsertUserVariables>(
     INSERT_USER,
     QUERY_USERS
   );
-  const [updateAllUser] = useMutate<IUpdateAllUser, IUpdateAllUserVariables>(
+  const [updateAllUser] = useMutation<IUpdateAllUser, IUpdateAllUserVariables>(
     UPDATE_ALL_USER,
     QUERY_USERS
   );
@@ -89,14 +89,6 @@ function StartPage({ useQuery, useMutate }: IWithHasura) {
     </>
   );
 }
+StartPage.getInitialProps = getHasuraProps();
 
-/* 
-todo: wrapper weg und stattdessen so
-StartPage.getInitialProps = getHasuraProps({ ssr:false });
-StartPage.getInitialProps = async ({ req }) => {
-  const res = await fetch('https://api.github.com/repos/zeit/next.js')
-  const json = await res.json()
-  return { stars: json.stargazers_count }
-} */
-
-export default withHasura(StartPage);
+export default StartPage;

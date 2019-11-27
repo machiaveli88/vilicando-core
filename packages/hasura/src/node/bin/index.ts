@@ -7,7 +7,7 @@ const scripts: {
   codegen: async () =>
     await import('./codegen').then(({ download, generate }) => args => {
       download(args);
-      generate(args);
+      generate();
     }),
   'codegen:download': async () =>
     await import('./codegen').then(({ download }) => download),
