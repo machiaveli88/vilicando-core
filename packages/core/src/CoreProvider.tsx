@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ApolloProvider } from '@apollo/react-hooks';
 import LanguageProvider from './LanguageProvider';
 import { IRenderer } from 'fela';
 import { Progress, ResponsiveHelper } from './components';

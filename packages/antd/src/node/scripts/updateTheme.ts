@@ -3,7 +3,7 @@ import lessToJs from 'less-vars-to-js';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { difference } from 'lodash';
-import { parseTheme, replaceLessVars } from './utils';
+import { parseTheme, replaceLessVars } from '../../utils';
 
 const antd = require.resolve('antd');
 const lessPath = join(antd, '../../lib/style/themes/default.less');

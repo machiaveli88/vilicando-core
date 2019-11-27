@@ -30,18 +30,18 @@ export default abstract class Document extends NextDocument {
 
     return {
       ...initialProps,
-      styles: renderToSheetList(renderer).map(
-        ({ type, rehydration, support, media, css }: any) => (
-          <style
-            dangerouslySetInnerHTML={{ __html: css }}
-            data-fela-rehydration={rehydration}
-            data-fela-support={support}
-            data-fela-type={type}
-            key={`${type}-${media}`}
-            media={media}
-          />
-        )
-      )
+      styles: renderToSheetList(
+        renderer
+      ).map(({ type, rehydration, support, media, css }: any) => (
+        <style
+          dangerouslySetInnerHTML={{ __html: css }}
+          data-fela-rehydration={rehydration}
+          data-fela-support={support}
+          data-fela-type={type}
+          key={`${type}-${media}`}
+          media={media}
+        />
+      ))
     };
   }
 }

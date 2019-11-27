@@ -1,1 +1,1 @@
-module.exports = require('./lib/withAntd');
+module.exports = require('./lib/node/withAntd');

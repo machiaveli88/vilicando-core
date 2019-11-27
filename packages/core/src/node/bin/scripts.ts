@@ -2,12 +2,10 @@
 import { execSync } from 'child_process';
 import { join } from 'path';
 import { mkdirSync, copyFileSync } from 'fs';
-import dotenv from 'dotenv';
+import { getEnv } from '../env';
 
-dotenv.config({ path: join(process.cwd(), '.env') });
-dotenv.config({ path: join(process.cwd(), '../.env') });
-
-const { PORT } = process.env;
+// read env
+const { PORT } = getEnv();
 
 const buildDir = join(process.cwd(), '.next');
 const serverSrc = join(__dirname, '../server.js');

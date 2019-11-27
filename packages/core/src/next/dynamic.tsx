@@ -1,5 +1,5 @@
 import * as React from 'react';
-import dynamic, { DynamicOptions, Loader } from 'next/dynamic';
+import dynamic, { DynamicOptions } from 'next/dynamic';
 
 interface IDynamicOptions<P = {}> extends DynamicOptions<P> {
   onSSR?: ({

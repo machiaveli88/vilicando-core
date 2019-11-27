@@ -32,6 +32,13 @@ Please set the following .env-vars to enable full hasura/graphql support:
 - `GRAPHQL_WS:` url for websocket
 - `GRAPHQL_SECRET:` hasura admin secret
 
+## Environment Variables
+
+- `EXTENDS` - vilicando-core - extend your env
+- `GRAPHQL_HTTP:` - vilicando-hasura - url for graphql
+- `GRAPHQL_WS:` - vilicando-hasura - url for websocket
+- `GRAPHQL_SECRET:` - vilicando-hasura - hasura admin secret
+
 ## Roadmap
 
 #### 0.1 - Start & Theming
@@ -65,6 +72,7 @@ Please set the following .env-vars to enable full hasura/graphql support:
 - [x] Monorepo with lerna
 - [x] Linting
 - [ ] Fix withHasura
+- [ ] theme typescript geht nicht
 - [ ] env-Vars & Overview
 - [ ] Language improvements
 - [ ] Cleanup package.json & check "yarn check"

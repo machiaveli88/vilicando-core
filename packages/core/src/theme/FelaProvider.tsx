@@ -50,7 +50,7 @@ export default function FelaProvider({
     renderer.renderStatic({ color: _theme.linkActiveColor }, 'a:active');
 
     return _theme;
-  }, [theme]);
+  }, [renderer, theme]);
 
   return (
     <RendererProvider renderer={renderer}>

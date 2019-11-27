@@ -87,15 +87,15 @@ export const replaceLessVars = (theme: object): object => {
       // @var +- something
       if (theme[key].indexOf('ceil(') < 0)
         newTheme[key] = theme[key].replace(
-          /\(?\@[a-z0-9]+(-[a-z0-9]*)* [\+\-\*] (.+)\w\)?/g,
+          /\(?@[a-z0-9]+(-[a-z0-9]*)* [+\-*] (.+)\w\)?/g,
           (match: string) => `calc(${match})`
         );
 
       // @var
       newTheme[key] = newTheme[key].replace(
-        /\@\{?[a-z0-9]+(-[a-z0-9]*)*\}?/g,
+        /@\{?[a-z0-9]+(-[a-z0-9]*)*\}?/g,
         (match: string) =>
-          newTheme[match.replace(/\@\{?/g, '').replace(/\}?/g, '')]
+          newTheme[match.replace(/@\{?/g, '').replace(/\}?/g, '')]
       );
 
       // string => int
@@ -152,7 +152,7 @@ export const parseTheme = (theme: object): ITheme => {
       theme[key] = theme[
         key
       ].replace(
-        /(color\()?\~\`colorPalette\(\'([^,]+)\',([^,]+)\)[ ]?\`\)?/g,
+        /(color\()?~`colorPalette\('([^,]+)',([^,]+)\)[ ]?`\)?/g,
         (match: string, stuff: string, color: string, index: string) =>
           colorPalette(color, parseInt(index))
       );

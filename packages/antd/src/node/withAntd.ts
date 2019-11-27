@@ -1,5 +1,7 @@
-const withLess = require('@zeit/next-less');
-const theme = require('./theme.json');
+#!/usr/bin/env node
+// @ts-ignore todo: remove
+import withLess from '@zeit/next-less';
+import theme from '../theme.json';
 
 module.exports = (modifyVars: any = {}, nextConfig: any) => {
   if (!nextConfig) {

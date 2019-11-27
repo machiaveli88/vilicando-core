@@ -1,10 +1,11 @@
-const withOffline = require('next-offline');
-const { config } = require('dotenv');
-const { join } = require('path');
-const { EnvironmentPlugin } = require('webpack');
+#!/usr/bin/env node
+// @ts-ignore todo: remove
+import withOffline from 'next-offline';
+import { join } from 'path';
+import { EnvironmentPlugin } from 'webpack';
+import { getEnv } from './env';
 
 interface IWithCore {
-  env?: string;
   aliases?: Array<string>;
 }
 
@@ -18,20 +19,8 @@ module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
     }
   }
 
-  const { env, aliases = ['components', 'pages'] } = props;
+  const { aliases = ['components', 'pages'] } = props;
   const { webpack, dir, ...rest } = nextConfig;
-
-  // use env-file, default is ./.env && ../.env
-  const parsed = env
-    ? config({ path: env }).parsed
-    : {
-        ...config({
-          path: join(process.cwd(), '.env')
-        }).parsed,
-        ...config({
-          path: join(process.cwd(), '../.env')
-        }).parsed
-      };
 
   return withOffline({
     webpack(config: any, options: any) {
@@ -41,7 +30,7 @@ module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
         config.resolve.alias[`@${alias}`] = join(dirname, `${alias}/`);
       });
 
-      config.plugins.push(new EnvironmentPlugin(parsed));
+      config.plugins.push(new EnvironmentPlugin(getEnv()));
 
       config.module.rules.push({
         test: /\.svg$/,

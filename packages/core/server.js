@@ -1,1 +1,1 @@
-module.exports = require('./lib/withCore');
+module.exports = require('./lib/node/withCore');
