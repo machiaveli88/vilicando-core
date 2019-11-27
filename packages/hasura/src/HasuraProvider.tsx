@@ -10,8 +10,6 @@ import { onError } from 'apollo-link-error';
 import { IPageContext } from 'vilicando-core';
 import { ApolloProvider } from '@apollo/react-hooks';
 import fetch from 'isomorphic-unfetch';
-import { default as useQuery } from './useQuery';
-import { default as useMutation } from './useMutation';
 import { ApolloProviderProps } from '@apollo/react-common/lib/context/ApolloProvider';
 
 interface IGetHasuraProps {
