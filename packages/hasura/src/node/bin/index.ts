@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import runScript from 'vilicando-core/lib/bin/runScript';
+import runScript from 'vilicando-core/lib/node/bin/runScript';
 
 const scripts: {
   [command: string]: () => Promise<(argv?: object) => void>;

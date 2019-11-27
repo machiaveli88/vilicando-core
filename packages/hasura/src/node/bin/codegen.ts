@@ -2,14 +2,12 @@
 import { execSync } from 'child_process';
 import { join } from 'path';
 import { readFileSync, readdirSync } from 'fs';
-import dotenv from 'dotenv';
 import { outputFileSync, removeSync } from 'fs-extra';
-import { ISchema } from '../typings';
+import { ISchema } from '../../typings';
+import { getEnv } from 'vilicando-core/lib/node/env';
 
-dotenv.config({ path: join(process.cwd(), '.env') });
-dotenv.config({ path: join(process.cwd(), '../.env') });
-
-const { GRAPHQL_HTTP, GRAPHQL_SECRET } = process.env;
+// read env
+const { GRAPHQL_HTTP, GRAPHQL_SECRET } = getEnv();
 
 const download = ({
   '--url': url = GRAPHQL_HTTP,
@@ -36,7 +34,6 @@ const optimistic = () => {
     const { __schema } = JSON.parse(readFileSync(schema).toString()) as ISchema;
     const { types } = __schema || {};
     const fields = types.filter(({ kind }) => kind === 'OBJECT');
-
     let output = `/* tslint:disable */
   /* eslint-disable */
   // This file was automatically generated and should not be edited.
