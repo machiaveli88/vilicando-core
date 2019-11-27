@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Head from 'next/head';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';

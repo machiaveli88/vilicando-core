@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import deDE from 'antd/lib/locale-provider/de_DE';
 import enUS from 'antd/lib/locale-provider/en_US';
 import ConfigProvider from 'antd/lib/config-provider';

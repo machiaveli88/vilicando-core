@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { getHasuraProps, useQuery, useMutation } from 'vilicando-hasura';
 import {
   QUERY_USERS,

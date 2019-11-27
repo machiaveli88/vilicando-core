@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import dynamic, { DynamicOptions } from 'next/dynamic';
 
 interface IDynamicOptions<P = {}> extends DynamicOptions<P> {

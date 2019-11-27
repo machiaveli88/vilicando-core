@@ -1,5 +1,5 @@
-import * as moment from 'moment';
-import * as React from 'react';
+import React from 'react';
+import moment from 'moment';
 import 'moment/locale/de';
 import Polyglot from 'node-polyglot';
 import { defaultLocale } from './utils';

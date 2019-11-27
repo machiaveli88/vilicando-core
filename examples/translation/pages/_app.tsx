@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { App, CoreProvider, withRouter } from 'vilicando-core';
 import { Layout } from '@components';
 import translations from '../translations.json';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import LanguageProvider from './LanguageProvider';
 import { IRenderer } from 'fela';
 import { Progress, ResponsiveHelper } from './components';

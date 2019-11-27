@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useQuery as _useQuery, QueryHookOptions } from '@apollo/react-hooks';
 import { DocumentNode, DefinitionNode, SelectionNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';

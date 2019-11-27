@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useLanguage } from 'vilicando-core';
 
 function StartPage() {
