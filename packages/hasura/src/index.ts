@@ -1,9 +1,3 @@
-export { default as HasuraProvider, useHasura } from './HasuraProvider';
-export {
-  useApolloClient,
-  useLazyQuery,
-  useMutation,
-  useQuery,
-  useSubscription
-} from '@apollo/react-hooks';
 export { default as withHasura, IWithHasura } from './withHasura';
+export { default as useQuery } from './useQuery';
+export { default as useMutation } from './useMutation';

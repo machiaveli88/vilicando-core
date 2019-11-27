@@ -1,4 +1,7 @@
-import { useMutation, MutationHookOptions } from '@apollo/react-hooks';
+import {
+  useMutation as _useMutation,
+  MutationHookOptions
+} from '@apollo/react-hooks';
 import {
   OperationVariables,
   MutationFunctionOptions,
@@ -19,15 +22,15 @@ import {
   TUpdateItem
 } from './typings';
 
-export type IMutateDocument = DocumentNode;
-export type IMutateOptions<
+export type IUseMutationDocument = DocumentNode;
+export type IUseMutationOptions<
   IItem,
   IVariables,
   IQueryVariables
 > = MutationHookOptions<IMutationData<IItem>, IVariables> & {
   queryVariables?: IQueryVariables;
 };
-export type IMutateReturn<IItem, IVariables> = [
+export type IUseMutationReturn<IItem, IVariables> = [
   (
     items: TUpdateItem<IItem>,
     options?: MutationFunctionOptions<IMutationData<IItem>, IVariables>
@@ -35,17 +38,17 @@ export type IMutateReturn<IItem, IVariables> = [
   MutationResult<IMutationData<IItem>>
 ];
 
-export default function mutate<
+export default function useMutation<
   IItem extends { id: any },
   IVariables = OperationVariables,
   IQueryVariables = OperationVariables
 >(
-  document: IMutateDocument,
-  query: IMutateDocument,
-  _options?: IMutateOptions<IItem, IVariables, IQueryVariables>
-): IMutateReturn<IItem, IVariables> {
+  document: IUseMutationDocument,
+  query: IUseMutationDocument,
+  _options?: IUseMutationOptions<IItem, IVariables, IQueryVariables>
+): IUseMutationReturn<IItem, IVariables> {
   const { queryVariables, ...options } = _options || {};
-  const [update, result] = useMutation<IMutationData<IItem>, IVariables>(
+  const [update, result] = _useMutation<IMutationData<IItem>, IVariables>(
     document,
     options
   );
@@ -65,7 +68,7 @@ export default function mutate<
     ).length > 1
   )
     console.warn(
-      "hasura.mutate won't work correctly with more than one mutation, please use multiple single mutations or useMutation instead!"
+      "hasura.mutate won't work correctly with more than one mutation, please use multiple single mutations or useMutation from @apollo/react-hooks instead!"
     );
 
   return [

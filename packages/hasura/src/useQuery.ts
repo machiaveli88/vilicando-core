@@ -1,25 +1,25 @@
 import * as React from 'react';
-import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
+import { useQuery as _useQuery, QueryHookOptions } from '@apollo/react-hooks';
 import { DocumentNode, DefinitionNode, SelectionNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
 import { IQueryData, TOptimisticItem } from './typings';
 
-export type IQueryDocument = DocumentNode;
-export type IQueryOptions<IItem, IVariables> = QueryHookOptions<
+export type IUseQueryDocument = DocumentNode;
+export type IUseQueryOptions<IItem, IVariables> = QueryHookOptions<
   IQueryData<IItem>,
   IVariables
 >;
-export type IQueryReturn<IItem, IVariables> = [
+export type IUseQueryReturn<IItem, IVariables> = [
   Array<TOptimisticItem<IItem>>,
   QueryResult<IQueryData<IItem>, IVariables>
 ];
 
-export default function query<IItem, IVariables = OperationVariables>(
-  document: IQueryDocument,
-  options?: IQueryOptions<IItem, IVariables>
-): IQueryReturn<IItem, IVariables> {
+export default function useQuery<IItem, IVariables = OperationVariables>(
+  document: IUseQueryDocument,
+  options?: IUseQueryOptions<IItem, IVariables>
+): IUseQueryReturn<IItem, IVariables> {
   const { skip, variables, onError } = options || {};
-  const { data, subscribeToMore, ...rest } = useQuery<
+  const { data, subscribeToMore, ...rest } = _useQuery<
     IQueryData<IItem>,
     IVariables
   >(document, options);
@@ -45,7 +45,7 @@ export default function query<IItem, IVariables = OperationVariables>(
     ).length > 1
   )
     console.warn(
-      "hasura.query won't work correctly with more than one query, please use multiple single queries or useQuery instead!"
+      "hasura.query won't work correctly with more than one query, please use multiple single queries or useQuery from @apollo/react-hooks instead!"
     );
 
   React.useEffect(() => {
@@ -73,7 +73,7 @@ export default function query<IItem, IVariables = OperationVariables>(
       updateQuery: (previousQueryResult, { subscriptionData }) =>
         subscriptionData.data || previousQueryResult
     });
-  }, [skip]);
+  }, [_document, definitionIndex, onError, skip, subscribeToMore, variables]);
 
   return [result, { data, subscribeToMore, ...rest }];
 }

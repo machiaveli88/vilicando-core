@@ -17,21 +17,21 @@ import {
   IUpdateAllUserVariables
 } from '@graphql';
 
-function StartPage({ query, mutate }: IWithHasura) {
-  const [users, { loading }] = query<IUser>(QUERY_USERS);
-  const [updateUser] = mutate<IUpdateUser, IUpdateUserVariables>(
+function StartPage({ useQuery, useMutate }: IWithHasura) {
+  const [users, { loading }] = useQuery<IUser>(QUERY_USERS);
+  const [updateUser] = useMutate<IUpdateUser, IUpdateUserVariables>(
     UPDATE_USER,
     QUERY_USERS
   );
-  const [deleteUser] = mutate<IDeleteUser, IDeleteUserVariables>(
+  const [deleteUser] = useMutate<IDeleteUser, IDeleteUserVariables>(
     DELETE_USER,
     QUERY_USERS
   );
-  const [insertUser] = mutate<IInsertUser, IInsertUserVariables>(
+  const [insertUser] = useMutate<IInsertUser, IInsertUserVariables>(
     INSERT_USER,
     QUERY_USERS
   );
-  const [updateAllUser] = mutate<IUpdateAllUser, IUpdateAllUserVariables>(
+  const [updateAllUser] = useMutate<IUpdateAllUser, IUpdateAllUserVariables>(
     UPDATE_ALL_USER,
     QUERY_USERS
   );
@@ -69,7 +69,7 @@ function StartPage({ query, mutate }: IWithHasura) {
         placeholder="New employee"
         type="text"
         onKeyDown={e => {
-          if (e.key == 'Enter') insertUser({ name: e.currentTarget.value });
+          if (e.key === 'Enter') insertUser({ name: e.currentTarget.value });
         }}
       />
 
@@ -77,7 +77,7 @@ function StartPage({ query, mutate }: IWithHasura) {
         placeholder="Update all"
         type="text"
         onKeyDown={e => {
-          if (e.key == 'Enter')
+          if (e.key === 'Enter')
             updateAllUser(
               users.map(user => ({
                 ...user,
@@ -89,5 +89,14 @@ function StartPage({ query, mutate }: IWithHasura) {
     </>
   );
 }
+
+/* 
+todo: wrapper weg und stattdessen so
+StartPage.getInitialProps = getHasuraProps({ ssr:false });
+StartPage.getInitialProps = async ({ req }) => {
+  const res = await fetch('https://api.github.com/repos/zeit/next.js')
+  const json = await res.json()
+  return { stars: json.stargazers_count }
+} */
 
 export default withHasura(StartPage);
