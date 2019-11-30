@@ -1,0 +1,25 @@
+schema:
+  - https://graphql.finalytic.co/v1/graphql:
+      headers:
+        x-hasura-admin-secret: ${HASURA_ADMIN_SECRET}
+overwrite: true
+generates:
+  ./app/src/graphql.tsx:
+    documents:
+      - './app/src/**/*.{tsx,ts}'
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHOC: false
+      withHooks: true
+      withComponent: false
+      apolloReactHooksImportFrom: '@ex1f/ui'
+      apolloReactCommonImportFrom: '@ex1f/ui'
+      namingConvention:
+        typeNames: change-case#pascalCase
+        transformUnderscore: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write

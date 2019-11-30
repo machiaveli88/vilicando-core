@@ -103,22 +103,22 @@ export const getHasuraProps = ({
   ssr = true,
   http,
   ws
-}: IGetHasuraProps = {}) => async (
-  ctx: IPageContext & {
-    apolloClient: ApolloClient<any>;
-  }
-) => {
-  const { AppTree } = ctx;
-
+}: IGetHasuraProps = {}) => async ({
+  AppTree,
+  apolloClient,
+  res
+}: IPageContext & {
+  apolloClient: ApolloClient<any>;
+}) => {
   // Initialize ApolloClient, add it to the ctx object so
   // we can use it in `PageComponent.getInitialProps`.
-  const apolloClient = (ctx.apolloClient = initApolloClient(http, ws));
+  apolloClient = initApolloClient(http, ws);
 
   // Only on the server:
   if (typeof window === 'undefined') {
     // When redirecting, the response is finished.
     // No point in continuing to render
-    if (ctx.res && ctx.res.finished) {
+    if (res && res.finished) {
       return {};
     }
 
@@ -127,13 +127,7 @@ export const getHasuraProps = ({
       try {
         // Run all GraphQL queries
         const { getDataFromTree } = await import('@apollo/react-ssr');
-        await getDataFromTree(
-          <AppTree
-            pageProps={{
-              apolloClient
-            }}
-          />
-        );
+        await getDataFromTree(<AppTree pageProps={{ apolloClient }} />);
       } catch (error) {
         // Prevent Apollo Client GraphQL errors from crashing SSR.
         // Handle them in components via the data.error prop:
@@ -163,11 +157,10 @@ export default ({
   </ApolloProvider>
 );
 
-/* export default async function withHasura(
-  PageComponent: any, // todo: remove
+/* export async function withHasura(
+  PageComponent: any,
   { ssr = true, http, ws }: IGetHasuraProps = {}
 ) {
-  // todo: wandert in App.jsx
   const WithHasura = ({
     apolloClient,
     apolloState,
@@ -179,13 +172,21 @@ export default ({
     <ApolloProvider
       client={apolloClient || initApolloClient(http, ws, apolloState)}
     >
-      <PageComponent
-        useQuery={useQuery}
-        useMutation={useMutation}
-        {...pageProps}
-      />
+      <PageComponent {...pageProps} />
     </ApolloProvider>
   );
+
+  // Set the correct displayName in development
+  if (process.env.NODE_ENV !== 'production') {
+    const displayName =
+      PageComponent.displayName || PageComponent.name || 'Component';
+
+    if (displayName === 'App') {
+      console.warn('This withHasura HOC only works with PageComponents.');
+    }
+
+    WithHasura.displayName = `withHasura(${displayName})`;
+  }
 
   if (ssr || PageComponent.getInitialProps) {
     WithHasura.getInitialProps = async (
