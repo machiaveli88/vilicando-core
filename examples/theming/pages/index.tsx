@@ -8,7 +8,7 @@ function StartPage() {
     <>
       <h1>Hello World</h1>
       <p>
-        <span className={css({ color: theme.redColor, fontWeight: 'bold' })}>
+        <span className={css({ color: theme.redBase, fontWeight: 'bold' })}>
           Lorem ipsum dolor sit amet
         </span>
         , consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut

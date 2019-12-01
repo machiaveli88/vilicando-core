@@ -64,7 +64,7 @@ function StartPage() {
         className={css({
           textAlign: 'center',
           paddingY: theme.paddingMd,
-          color: theme.greyColor
+          color: theme.greyBase
         })}
       >
         ©2019 vilicando-core

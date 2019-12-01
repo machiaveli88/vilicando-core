@@ -4,7 +4,7 @@ import { IRenderer } from 'fela';
 import { Progress, ResponsiveHelper } from './components';
 import { FelaProvider } from './theme';
 
-export interface ICoreProvider<TCacheShape = any> {
+export interface ICoreProvider {
   children: React.ReactNode;
   dev?: boolean;
   theme?: object;

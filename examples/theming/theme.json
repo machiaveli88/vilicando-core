@@ -9,7 +9,7 @@
   "primary8": "#0097a7",
   "primary9": "#00838f",
   "primary10": "#006064",
-  "primaryColor": "#00bcd4",
+  "primaryBase": "#00bcd4",
 
   "secondary1": "#f3e5f5",
   "secondary2": "#e1bee7",
@@ -21,7 +21,7 @@
   "secondary8": "#7b1fa2",
   "secondary9": "#6a1b9a",
   "secondary10": "#4a148c",
-  "secondaryColor": "#9c27b0",
+  "secondaryBase": "#9c27b0",
 
   "headingColor": "#00bcd4",
   "linkColor": "#00bcd4",

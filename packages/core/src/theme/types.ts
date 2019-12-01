@@ -52,7 +52,7 @@ export interface ITheme {
   primary7: string;
   primary8: string;
   primary9: string;
-  primaryColor: string;
+  primaryBase: string;
 
   secondary1: string;
   secondary10: string;
@@ -64,7 +64,7 @@ export interface ITheme {
   secondary7: string;
   secondary8: string;
   secondary9: string;
-  secondaryColor: string;
+  secondaryBase: string;
 
   grey1: string;
   grey10: string;
@@ -76,7 +76,7 @@ export interface ITheme {
   grey7: string;
   grey8: string;
   grey9: string;
-  greyColor: string;
+  greyBase: string;
 
   blue1: string;
   blue10: string;
@@ -88,7 +88,7 @@ export interface ITheme {
   blue7: string;
   blue8: string;
   blue9: string;
-  blueColor: string;
+  blueBase: string;
 
   purple1: string;
   purple10: string;
@@ -100,7 +100,7 @@ export interface ITheme {
   purple7: string;
   purple8: string;
   purple9: string;
-  purpleColor: string;
+  purpleBase: string;
 
   cyan1: string;
   cyan10: string;
@@ -112,7 +112,7 @@ export interface ITheme {
   cyan7: string;
   cyan8: string;
   cyan9: string;
-  cyanColor: string;
+  cyanBase: string;
 
   green1: string;
   green10: string;
@@ -124,7 +124,7 @@ export interface ITheme {
   green7: string;
   green8: string;
   green9: string;
-  greenColor: string;
+  greenBase: string;
 
   magenta1: string;
   magenta10: string;
@@ -136,7 +136,7 @@ export interface ITheme {
   magenta7: string;
   magenta8: string;
   magenta9: string;
-  magentaColor: string;
+  magentaBase: string;
 
   pink1: string;
   pink10: string;
@@ -148,7 +148,7 @@ export interface ITheme {
   pink7: string;
   pink8: string;
   pink9: string;
-  pinkColor: string;
+  pinkBase: string;
 
   red1: string;
   red10: string;
@@ -160,7 +160,7 @@ export interface ITheme {
   red7: string;
   red8: string;
   red9: string;
-  redColor: string;
+  redBase: string;
 
   orange1: string;
   orange10: string;
@@ -172,7 +172,7 @@ export interface ITheme {
   orange7: string;
   orange8: string;
   orange9: string;
-  orangeColor: string;
+  orangeBase: string;
 
   volcano1: string;
   volcano10: string;
@@ -184,7 +184,7 @@ export interface ITheme {
   volcano7: string;
   volcano8: string;
   volcano9: string;
-  volcanoColor: string;
+  volcanoBase: string;
 
   yellow1: string;
   yellow10: string;
@@ -196,7 +196,7 @@ export interface ITheme {
   yellow7: string;
   yellow8: string;
   yellow9: string;
-  yellowColor: string;
+  yellowBase: string;
 
   geekblue1: string;
   geekblue10: string;
@@ -208,7 +208,7 @@ export interface ITheme {
   geekblue7: string;
   geekblue8: string;
   geekblue9: string;
-  geekblueColor: string;
+  geekblueBase: string;
 
   lime1: string;
   lime10: string;
@@ -220,7 +220,7 @@ export interface ITheme {
   lime7: string;
   lime8: string;
   lime9: string;
-  limeColor: string;
+  limeBase: string;
 
   gold1: string;
   gold10: string;
@@ -232,7 +232,7 @@ export interface ITheme {
   gold7: string;
   gold8: string;
   gold9: string;
-  goldColor: string;
+  goldBase: string;
 
   black: string;
   white: string;

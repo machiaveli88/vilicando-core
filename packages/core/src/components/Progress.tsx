@@ -15,7 +15,7 @@ interface IProgress {
 
 function Progress({ children, color }: IProgress) {
   const { theme, renderer } = useFela();
-  const _color = color || theme['color'] || theme.secondaryColor;
+  const _color = color || theme.secondaryBase;
 
   const keyframe = (): TRuleProps => ({
     '0%': {

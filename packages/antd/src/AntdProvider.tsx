@@ -34,21 +34,7 @@ function AntdProvider({ children, theme }: IAntdProvider) {
     parsedTheme.heading5Size = `calc(${parsedTheme.fontSizeBase} * 1.312)`;
     parsedTheme.heading6Size = `calc(${parsedTheme.fontSizeBase} * 1.125)`;
 
-    // todo: remove XyColor and use XyBase (added by antd recently)???
-    parsedTheme.blueColor = parsedTheme.blueBase;
-    parsedTheme.purpleColor = parsedTheme.purpleBase;
-    parsedTheme.cyanColor = parsedTheme.cyanBase;
-    parsedTheme.greenColor = parsedTheme.greenBase;
-    parsedTheme.magentaColor = parsedTheme.magentaBase;
-    parsedTheme.pinkColor = parsedTheme.pinkBase;
-    parsedTheme.redColor = parsedTheme.redBase;
-    parsedTheme.orangeColor = parsedTheme.orangeBase;
-    parsedTheme.yellowColor = parsedTheme.yellowBase;
-    parsedTheme.volcanoColor = parsedTheme.volcanoBase;
-    parsedTheme.geekblueColor = parsedTheme.geekblueBase;
-    parsedTheme.limeColor = parsedTheme.limeBase;
-    parsedTheme.goldColor = parsedTheme.goldBase;
-
+    parsedTheme.primaryBase = parsedTheme.primaryColor;
     return parsedTheme;
   }, [theme]);
 
