@@ -1,11 +1,13 @@
 import {
   useMutation as _useMutation,
-  MutationHookOptions,
+  MutationHookOptions
+} from '@apollo/react-hooks';
+import {
   OperationVariables,
   MutationFunctionOptions,
   ExecutionResult,
   MutationResult
-} from '@apollo/client';
+} from '@apollo/react-common';
 import {
   DocumentNode,
   VariableDefinitionNode,

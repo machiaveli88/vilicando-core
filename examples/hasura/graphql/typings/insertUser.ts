@@ -7,7 +7,7 @@
 // ====================================================
 
 export interface insertUser_insert_user_returning {
-  __typename: 'user';
+  __typename: "user";
   id: any;
   name: string | null;
   created_at: any;
@@ -15,7 +15,7 @@ export interface insertUser_insert_user_returning {
 }
 
 export interface insertUser_insert_user {
-  __typename: 'user_mutation_response';
+  __typename: "user_mutation_response";
   /**
    * data of the affected rows by the mutation
    */

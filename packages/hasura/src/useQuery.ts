@@ -1,11 +1,7 @@
 import React from 'react';
-import {
-  useQuery as _useQuery,
-  QueryHookOptions,
-  OperationVariables,
-  QueryResult
-} from '@apollo/client';
+import { useQuery as _useQuery, QueryHookOptions } from '@apollo/react-hooks';
 import { DocumentNode, DefinitionNode, SelectionNode } from 'graphql';
+import { OperationVariables, QueryResult } from '@apollo/react-common';
 import { IQueryData, TOptimisticItem } from './typings';
 
 export type IUseQueryDocument = DocumentNode;
