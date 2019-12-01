@@ -15,13 +15,12 @@ export {
   withRouter
 } from './next';
 export {
-  ThemeProvider,
+  FelaProvider,
   ITheme,
   theme,
   useFela,
   useFelaBase,
   IUseFela,
-  createRenderer,
-  RendererProvider
+  createRenderer
 } from './theme';
 export { defaultLocale, isDoubleTap, notify } from './utils';

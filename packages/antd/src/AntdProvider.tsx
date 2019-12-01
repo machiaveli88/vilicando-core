@@ -3,7 +3,7 @@ import deDE from 'antd/lib/locale-provider/de_DE';
 import enUS from 'antd/lib/locale-provider/en_US';
 import ConfigProvider from 'antd/lib/config-provider';
 import { parseTheme, replaceLessVars } from './utils';
-import { ThemeProvider, useLanguage } from 'vilicando-core';
+import { FelaProvider, useLanguage } from 'vilicando-core';
 import defaultTheme from './theme.json';
 
 export interface IAntdProvider {
@@ -39,11 +39,11 @@ function AntdProvider({ children, theme }: IAntdProvider) {
   }, [theme]);
 
   return (
-    <ThemeProvider theme={parsedTheme}>
+    <FelaProvider theme={parsedTheme}>
       <ConfigProvider locale={locale === 'de' ? deDE : enUS}>
         {children}
       </ConfigProvider>
-    </ThemeProvider>
+    </FelaProvider>
   );
 }
 
