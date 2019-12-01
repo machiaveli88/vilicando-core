@@ -8,8 +8,8 @@ import { parseTheme, replaceLessVars } from '../../utils';
 const antd = require.resolve('antd');
 const lessPath = join(antd, '../../lib/style/themes/default.less');
 const colorsPath = join(antd, '../../lib/style/color/colors.less');
-const themePath = join(__dirname, '../src/theme.json');
-const typesPath = join(__dirname, '../src/types.ts');
+const themePath = join(__dirname, '../../../src/theme.json');
+const typesPath = join(__dirname, '../../../src/types.ts');
 
 if (existsSync(lessPath)) {
   const lessFile = readFileSync(lessPath, 'utf8');

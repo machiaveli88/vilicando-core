@@ -34,19 +34,20 @@ function AntdProvider({ children, theme }: IAntdProvider) {
     parsedTheme.heading5Size = `calc(${parsedTheme.fontSizeBase} * 1.312)`;
     parsedTheme.heading6Size = `calc(${parsedTheme.fontSizeBase} * 1.125)`;
 
-    parsedTheme.blueColor = parsedTheme.blue6;
-    parsedTheme.purpleColor = parsedTheme.purple6;
-    parsedTheme.cyanColor = parsedTheme.cyan6;
-    parsedTheme.greenColor = parsedTheme.green6;
-    parsedTheme.magentaColor = parsedTheme.magenta6;
-    parsedTheme.pinkColor = parsedTheme.pink6;
-    parsedTheme.redColor = parsedTheme.red6;
-    parsedTheme.orangeColor = parsedTheme.orange6;
-    parsedTheme.yellowColor = parsedTheme.yellow6;
-    parsedTheme.volcanoColor = parsedTheme.volcano6;
-    parsedTheme.geekblueColor = parsedTheme.geekblue6;
-    parsedTheme.limeColor = parsedTheme.lime6;
-    parsedTheme.goldColor = parsedTheme.gold6;
+    // todo: remove XyColor and use XyBase (added by antd recently)???
+    parsedTheme.blueColor = parsedTheme.blueBase;
+    parsedTheme.purpleColor = parsedTheme.purpleBase;
+    parsedTheme.cyanColor = parsedTheme.cyanBase;
+    parsedTheme.greenColor = parsedTheme.greenBase;
+    parsedTheme.magentaColor = parsedTheme.magentaBase;
+    parsedTheme.pinkColor = parsedTheme.pinkBase;
+    parsedTheme.redColor = parsedTheme.redBase;
+    parsedTheme.orangeColor = parsedTheme.orangeBase;
+    parsedTheme.yellowColor = parsedTheme.yellowBase;
+    parsedTheme.volcanoColor = parsedTheme.volcanoBase;
+    parsedTheme.geekblueColor = parsedTheme.geekblueBase;
+    parsedTheme.limeColor = parsedTheme.limeBase;
+    parsedTheme.goldColor = parsedTheme.goldBase;
 
     return parsedTheme;
   }, [theme]);

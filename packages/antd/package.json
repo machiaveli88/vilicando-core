@@ -12,7 +12,7 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
-    "theme": "node lib/updateTheme.js",
+    "theme": "node lib/node/scripts/updateTheme.js",
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {

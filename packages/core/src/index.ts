@@ -19,6 +19,7 @@ export {
   ITheme,
   theme,
   useFela,
+  useFelaBase,
   IUseFela,
   createRenderer,
   RendererProvider

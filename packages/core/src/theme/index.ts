@@ -1,5 +1,10 @@
 export { default as FelaProvider } from './FelaProvider';
-export { default as useFela, IStyleExtended, IUseFela } from './useFela';
+export {
+  default as useFela,
+  useFelaBase,
+  IStyleExtended,
+  IUseFela
+} from './useFela';
 export { ITheme } from './types';
 export { default as createRenderer } from './createRenderer';
 export { default as defaultRenderer } from './defaultRenderer';

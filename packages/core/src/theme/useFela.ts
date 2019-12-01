@@ -1,5 +1,5 @@
-import { IRenderer, IStyle } from 'fela';
-import { useFela as useFelaBase, StyleFunction } from 'react-fela';
+import { IStyle } from 'fela';
+import { useFela, StyleFunction, FelaHookProps } from 'react-fela';
 import { ITheme } from './types';
 import { ICustomProperty } from './customProperty';
 import { INamedKeys } from './namedKeys';
@@ -13,24 +13,23 @@ export interface IStyleExtended
   [property: string]: IStyleExtended | string | number | boolean;
 }
 
-export interface IUseFela<T = {}, P = {}> {
+export interface IUseFela<T = {}, P = {}>
+  extends Omit<FelaHookProps<T, P>, 'css'> {
   css: (
-    css: IStyleExtended | StyleFunction<T & ITheme, P>,
+    css: IStyleExtended | StyleFunction<T, P>,
     className?: string
   ) => string;
-  theme: T & ITheme;
-  renderer: IRenderer;
 }
 
-export default function useFela<T = {}, P = {}>(): IUseFela<T> {
-  const { theme, css, renderer } = useFelaBase<T & ITheme, P>();
+// without typescript autocomplete
+export function useFelaBase<T = {}, P = {}>(): IUseFela<T, P> {
+  const { css, ...rest } = useFela<T, P>();
 
   return {
-    css: (
-      styles: IStyleExtended | StyleFunction<T & ITheme, P>,
-      className?: string
-    ) => (className ? css(styles) + ' ' + className : css(styles)),
-    theme,
-    renderer
+    css: (s, cn) => (cn ? `${css(s)} ${cn}` : css(s)),
+    ...rest
   };
 }
+
+// with typescript autocomplete for theme
+export default () => useFelaBase<ITheme>();

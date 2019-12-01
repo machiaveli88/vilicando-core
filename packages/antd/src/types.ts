@@ -11,6 +11,7 @@ export interface IAntdTheme {
   alertWarningBgColor: string;
   alertWarningBorderColor: string;
   alertWarningIconColor: string;
+  anchorBg: string;
   anchorBorderColor: string;
   animationDurationBase: string;
   animationDurationFast: string;
@@ -47,12 +48,12 @@ export interface IAntdTheme {
   blue7: string;
   blue8: string;
   blue9: string;
+  blueBase: string;
   bodyBackground: string;
   borderColorBase: string;
   borderColorInverse: string;
   borderColorSplit: string;
   borderRadiusBase: number | string;
-  borderRadiusSm: number | string;
   borderStyleBase: string;
   borderWidthBase: string;
   boxShadowBase: string;
@@ -77,6 +78,9 @@ export interface IAntdTheme {
   btnDefaultBg: string;
   btnDefaultBorder: string;
   btnDefaultColor: string;
+  btnDefaultGhostBg: string;
+  btnDefaultGhostBorder: string;
+  btnDefaultGhostColor: string;
   btnDisableBg: string;
   btnDisableBorder: string;
   btnDisableColor: string;
@@ -98,6 +102,10 @@ export interface IAntdTheme {
   btnSquareSizeLg: string;
   btnSquareSizeSm: string;
   btnTextShadow: string;
+  calendarBg: string;
+  calendarBorderColor: string;
+  calendarInputBg: string;
+  calendarItemActiveBg: string;
   cardActionsBackground: string;
   cardBackground: string;
   cardHeadBackground: string;
@@ -111,7 +119,9 @@ export interface IAntdTheme {
   carouselDotActiveWidth: string;
   carouselDotHeight: string;
   carouselDotWidth: string;
+  cascaderItemSelectedBg: string;
   checkboxBorderWidth: string;
+  checkboxCheckBg: string;
   checkboxCheckColor: string;
   checkboxColor: string;
   checkboxSize: string;
@@ -126,6 +136,7 @@ export interface IAntdTheme {
   commentActionHoverColor: string;
   commentAuthorNameColor: string;
   commentAuthorTimeColor: string;
+  commentBg: string;
   commentFontSizeBase: string;
   commentFontSizeSm: string;
   commentNestIndent: string;
@@ -143,14 +154,17 @@ export interface IAntdTheme {
   cyan7: string;
   cyan8: string;
   cyan9: string;
+  cyanBase: string;
   descriptionsBg: string;
   disabledBg: string;
   disabledColor: string;
   disabledColorDark: string;
+  drawerBg: string;
   drawerBodyPadding: string;
   drawerHeaderPadding: string;
   dropdownFontSize: string;
   dropdownLineHeight: string;
+  dropdownMenuBg: string;
   dropdownSelectedColor: string;
   dropdownVerticalPadding: string;
   easeBaseIn: string;
@@ -193,6 +207,7 @@ export interface IAntdTheme {
   geekblue7: string;
   geekblue8: string;
   geekblue9: string;
+  geekblueBase: string;
   gold1: string;
   gold10: string;
   gold2: string;
@@ -203,6 +218,7 @@ export interface IAntdTheme {
   gold7: string;
   gold8: string;
   gold9: string;
+  goldBase: string;
   green1: string;
   green10: string;
   green2: string;
@@ -213,6 +229,7 @@ export interface IAntdTheme {
   green7: string;
   green8: string;
   green9: string;
+  greenBase: string;
   gridColumns: number | string;
   gridGutterWidth: number | string;
   heading1Size: string;
@@ -279,6 +296,7 @@ export interface IAntdTheme {
   lime7: string;
   lime8: string;
   lime9: string;
+  limeBase: string;
   lineHeightBase: number | string;
   linkActiveColor: string;
   linkColor: string;
@@ -302,6 +320,7 @@ export interface IAntdTheme {
   magenta7: string;
   magenta8: string;
   magenta9: string;
+  magentaBase: string;
   menuBg: string;
   menuCollapsedWidth: string;
   menuDarkArrowColor: string;
@@ -326,8 +345,10 @@ export interface IAntdTheme {
   menuItemHeight: string;
   menuItemVerticalMargin: string;
   menuPopupBg: string;
+  messageNoticeContentBg: string;
   messageNoticeContentPadding: string;
   modalBodyPadding: string;
+  modalContentBg: string;
   modalFooterBg: string;
   modalFooterBorderColorSplit: string;
   modalHeaderBg: string;
@@ -344,6 +365,7 @@ export interface IAntdTheme {
   orange7: string;
   orange8: string;
   orange9: string;
+  orangeBase: string;
   outlineBlurSize: number | string;
   outlineColor: string;
   outlineWidth: string;
@@ -357,6 +379,7 @@ export interface IAntdTheme {
   pageHeaderPaddingVertical: string;
   paginationFontFamily: string;
   paginationFontWeightActive: number | string;
+  paginationItemBg: string;
   paginationItemBgActive: string;
   paginationItemSize: string;
   paginationItemSizeSm: string;
@@ -370,6 +393,7 @@ export interface IAntdTheme {
   pink7: string;
   pink8: string;
   pink9: string;
+  pinkBase: string;
   popoverArrowColor: string;
   popoverArrowOuterColor: string;
   popoverArrowWidth: string;
@@ -404,13 +428,17 @@ export interface IAntdTheme {
   purple7: string;
   purple8: string;
   purple9: string;
+  purpleBase: string;
   radioButtonActiveColor: string;
   radioButtonBg: string;
   radioButtonCheckedBg: string;
   radioButtonColor: string;
   radioButtonHoverColor: string;
+  radioDisabledButtonCheckedBg: string;
+  radioDisabledButtonCheckedColor: string;
   radioDotColor: string;
   radioSize: string;
+  radtioSolidCheckedColor: string;
   rateStarBg: string;
   rateStarColor: string;
   red1: string;
@@ -423,6 +451,7 @@ export interface IAntdTheme {
   red7: string;
   red8: string;
   red9: string;
+  redBase: string;
   screenLg: string;
   screenLgMax: string;
   screenLgMin: string;
@@ -479,12 +508,14 @@ export interface IAntdTheme {
   statisticTitleFontSize: string;
   statisticUnitFontSize: string;
   successColor: string;
+  switchBg: string;
   switchColor: string;
   switchDisabledOpacity: string;
   switchHeight: string;
   switchShadowColor: string;
   switchSmCheckedMarginLeft: string;
   switchSmHeight: string;
+  tableBg: string;
   tableBodySelectedSortBg: string;
   tableBodySortBg: string;
   tableBorderRadiusBase: number | string;
@@ -529,6 +560,7 @@ export interface IAntdTheme {
   textColorSecondary: string;
   textColorSecondaryDark: string;
   textSelectionBg: string;
+  timePickerBg: string;
   timePickerPanelColumnWidth: string;
   timePickerPanelWidth: string;
   timePickerSelectedBg: string;
@@ -555,6 +587,7 @@ export interface IAntdTheme {
   typographyTitleFontWeight: number | string;
   typographyTitleMarginBottom: string;
   typographyTitleMarginTop: string;
+  uploadActionsColor: string;
   volcano1: string;
   volcano10: string;
   volcano2: string;
@@ -565,6 +598,7 @@ export interface IAntdTheme {
   volcano7: string;
   volcano8: string;
   volcano9: string;
+  volcanoBase: string;
   warningColor: string;
   waveAnimationWidth: string;
   white: string;
@@ -578,6 +612,7 @@ export interface IAntdTheme {
   yellow7: string;
   yellow8: string;
   yellow9: string;
+  yellowBase: string;
   zindexAffix: number | string;
   zindexBackTop: number | string;
   zindexBadge: number | string;

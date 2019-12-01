@@ -1,6 +1,4 @@
-import { useFela as defaultUseFela, IUseFela } from 'vilicando-core';
+import { useFelaBase, ITheme } from 'vilicando-core';
 import { IAntdTheme } from './types';
 
-export default function useFela(): IUseFela<IAntdTheme> {
-  return defaultUseFela<IAntdTheme>();
-}
+export default () => useFelaBase<IAntdTheme & ITheme>();
