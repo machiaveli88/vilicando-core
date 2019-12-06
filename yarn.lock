@@ -2446,10 +2446,10 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/react@16.9.14":
-  version "16.9.14"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.14.tgz#7f1158ce450b4b5aa83b1c5e1324fa75f348bdd1"
-  integrity sha512-Q4tW4RGmR+u/CgzR8VqZcsUWjP4Pz/LcHfs9AzSG+aBnwq8As3Bid3vG1eGGsXg/xuR2k2tqNlI8pzyV8kxe0g==
+"@types/react@16.9.15":
+  version "16.9.15"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.15.tgz#aeabb7a50f96c9e31a16079ada20ede9ed602977"
+  integrity sha512-WsmM1b6xQn1tG3X2Hx4F3bZwc2E82pJXt5OPs2YJgg71IzvUoKOSSSYOvLXYCg1ttipM+UuA4Lj3sfvqjVxyZw==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -2978,10 +2978,10 @@ antd@*:
     shallowequal "^1.1.0"
     warning "~4.0.3"
 
-antd@4.0.0-alpha.12:
-  version "4.0.0-alpha.12"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-4.0.0-alpha.12.tgz#05eba03782c1a389a0ad9d5177ad4d2d03492a78"
-  integrity sha512-uTGJ514MZR12OyYQHsfLlR8S7m1yQS7pQz5L1oF1QLG8IojFn1530pW190H8TQbP/S3udksXO1+Sa4rUTBaptw==
+antd@4.0.0-alpha.13:
+  version "4.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-4.0.0-alpha.13.tgz#6a1282ac72b22f5a2cc6a85aa2941feeabcc76c4"
+  integrity sha512-fQV6+0exNa/qpWRh9l9QfH7CeyA2mtGUGxZNHh6fpilXUFJRdPULJ1VE6BGIBwqcMFW3HikgbeK2m83LNkISEw==
   dependencies:
     "@ant-design/create-react-context" "^0.2.4"
     "@ant-design/icons" "^4.0.0-alpha.11"
@@ -5157,6 +5157,11 @@ devalue@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/devalue/-/devalue-2.0.0.tgz#2afa0b7c1bb35bebbef792498150663fdcd33c68"
   integrity sha512-6H2FBD5DPnQS75UWJtQjoVeKZlmXoa765UgYS5RQnx6Ay9LUhUld0w1/D6cYdrY+wnu6XQNlpEBfnJUZK0YyPQ==
+
+devalue@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/devalue/-/devalue-2.0.1.tgz#5d368f9adc0928e47b77eea53ca60d2f346f9762"
+  integrity sha512-I2TiqT5iWBEyB8GRfTDP0hiLZ0YeDJZ+upDxjBfOC2lebO5LezQMv7QvIUTzdb64jQyAKLf1AHADtGN+jw6v8Q==
 
 dezalgo@^1.0.0:
   version "1.0.3"
@@ -8447,14 +8452,14 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-next-offline@^5.0.0-beta.8:
-  version "5.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-5.0.0-beta.10.tgz#9dc6bebdcc63345648f24c40d4b124fbb6d809a3"
-  integrity sha512-aen0charVWQ40o4B5RaY4bx8ef4duFveVfTRpzh82Pj+kCN1ko22/18Mj93frcRDimJ/YRbI/WnPWvPFGlos5g==
+next-offline@^5.0.0-beta.11:
+  version "5.0.0-beta.11"
+  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-5.0.0-beta.11.tgz#bbcacf7b2b3233f71150c0f38cccd38c170987d2"
+  integrity sha512-01d7hgtKKHrKjeiY4+Hhtsb8bwgQMwLuSpsUuLg5HwdU8QhuofI2W2Bk6VSDtbntcMoCmt5qQZX0UdS7bdi2gQ==
   dependencies:
     copy-webpack-plugin "~5.0.5"
     fs-extra "~8.1.0"
-    workbox-webpack-plugin "^5.0.0-rc.0"
+    workbox-webpack-plugin "5.0.0-rc.1"
 
 next@*:
   version "9.1.4"
@@ -8534,10 +8539,10 @@ next@*:
     webpack-sources "1.4.3"
     whatwg-fetch "3.0.0"
 
-next@9.1.5-canary.9:
-  version "9.1.5-canary.9"
-  resolved "https://registry.yarnpkg.com/next/-/next-9.1.5-canary.9.tgz#c37c7712927280b0621c3ce2039daa3fd1ecc060"
-  integrity sha512-EZmLSfg8TgENklhw2rxm2Ij/Ev0Hwda3IZ3DRvtgyp1x4J8W8+iuDeRzpRfm4rEHBLvjsI58bvNIr+JCroEOdg==
+next@9.1.5-canary.12:
+  version "9.1.5-canary.12"
+  resolved "https://registry.yarnpkg.com/next/-/next-9.1.5-canary.12.tgz#1457960dd60cb10f050e1411d29e6d13af6681db"
+  integrity sha512-Duqqksir7Ojc6PJkGfq5bgPr6ckb4DW5J5dkELCc2VsJf/dQy1Yps+SNBjJpDf8nw7Uymtbi3pjYEnW+QIu01Q==
   dependencies:
     "@ampproject/toolbox-optimizer" "1.1.1"
     "@babel/core" "7.7.2"
@@ -8569,7 +8574,7 @@ next@9.1.5-canary.9:
     cookie "0.4.0"
     css-loader "3.2.0"
     cssnano-simple "1.0.0"
-    devalue "2.0.0"
+    devalue "2.0.1"
     etag "1.8.1"
     file-loader "4.2.0"
     find-up "4.0.0"
@@ -12475,10 +12480,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.7.2:
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.2.tgz#27e489b95fa5909445e9fef5ee48d81697ad18fb"
-  integrity sha512-ml7V7JfiN2Xwvcer+XAf2csGO1bPBdRbFCkYBczNZggrBZ9c7G3riSUeJmqEU5uOtXNPMhE3n+R4FA/3YOAWOQ==
+typescript@3.7.3:
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.3.tgz#b36840668a16458a7025b9eabfad11b66ab85c69"
+  integrity sha512-Mcr/Qk7hXqFBXMN7p7Lusj1ktCBydylfQM/FZCk5glCNQJrCUKPkMHdo9R0MTFWsC/4kPFvDS0fDPvukfCkFsw==
 
 ua-parser-js@^0.7.18:
   version "0.7.20"
@@ -13106,7 +13111,7 @@ workbox-sw@^5.0.0-rc.1:
   resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-5.0.0-rc.1.tgz#1684767625810eecd666b1c38b85cad6bf7937c0"
   integrity sha512-ksmoDsGohjRabauezCdILNiJBdsqHtksfPpVjcD3OylFU4nuutJn6Gch0wGBFd7dPYCjJ9uN9rPAwkBeJF7KBg==
 
-workbox-webpack-plugin@^5.0.0-rc.0:
+workbox-webpack-plugin@5.0.0-rc.1:
   version "5.0.0-rc.1"
   resolved "https://registry.yarnpkg.com/workbox-webpack-plugin/-/workbox-webpack-plugin-5.0.0-rc.1.tgz#7e5b5eb02ec9a3e2af3a1c19f6f23faffef22511"
   integrity sha512-HcGBwaznmVUi6ehBXIwr24cHgbcfkLy2Hi5ARlXizddvNq8E8c8WsOBm2ubypEaV9LjRiJX/nUpKm66ySr/JfA==

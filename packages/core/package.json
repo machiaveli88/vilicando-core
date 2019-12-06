@@ -35,8 +35,8 @@
     "fela-plugin-validator": "11.0.2",
     "fela-preset-web": "11.0.2",
     "lodash": "^4.17.15",
-    "next": "9.1.5-canary.9",
-    "next-offline": "^5.0.0-beta.8",
+    "next": "9.1.5-canary.12",
+    "next-offline": "^5.0.0-beta.11",
     "node-polyglot": "2.4.0",
     "nprogress": "^0.2.0",
     "push.js": "^1.0.12",
@@ -48,10 +48,10 @@
     "@types/next": "9.0.0",
     "@types/node-polyglot": "0.4.34",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "16.9.14",
+    "@types/react": "16.9.15",
     "@types/react-dom": "16.9.4",
     "@types/webpack": "^4.41.0",
-    "typescript": "3.7.2"
+    "typescript": "3.7.3"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",
