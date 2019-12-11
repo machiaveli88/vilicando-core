@@ -15,12 +15,13 @@
     "example:translation": "cd examples/translation && yarn dev",
     "lint": "yarn prettier && eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
     "prettier": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\"",
-    "publish": "lerna version --force-publish",
+    "pub": "lerna version --force-publish",
     "theme": "cd packages/antd && yarn theme",
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "2.11.0",
