@@ -31,7 +31,18 @@ export default ({ plugins = [] }: ICreateRenderer) => {
       ...plugins
     ]
   });
-  renderer.renderStatic(normalize);
+  renderer.renderStatic(`
+    ${normalize}
+
+    #__next {
+      min-height: 100%;
+      display: flex;
+    }
+    #__next > * {
+      flex-grow: 1;
+    }
+    
+  `);
 
   return renderer;
 };
