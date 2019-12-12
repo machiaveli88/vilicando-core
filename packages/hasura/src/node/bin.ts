@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import runScript from 'vilicando-core/lib/node/bin/runScript';
 import { getEnv } from 'vilicando-core/lib/node/env';
 import { generate as _generate } from '@graphql-codegen/cli';
 
@@ -66,4 +67,24 @@ const codegen = async ({
         true
       );
 
-export { codegen };
+const scripts: {
+  [command: string]: () => Promise<(argv?: object) => void>;
+} = {
+  codegen: async () => new Promise(res => res(codegen))
+};
+
+runScript(
+  scripts,
+  {
+    // Types
+    '--url': String,
+    '--secret': String,
+    '--watch': Boolean,
+
+    // Aliases
+    '-u': '--url',
+    '-s': '--secret',
+    '-w': '--watch'
+  },
+  'codegen'
+);
