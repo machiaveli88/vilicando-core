@@ -5,7 +5,7 @@
   "license": "ISC",
   "scripts": {
     "build": "vilicando-core build",
-    "codegen": "vilicando-hasura codegen",
+    "codegen": "vilicando-hasura codegen --watch",
     "deploy": "npm run build && npm run export",
     "dev": "yarn codegen & vilicando-core",
     "docker": "COMPOSE_PROJECT_NAME=vilicando-gql docker-compose up -d",

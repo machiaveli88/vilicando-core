@@ -2,37 +2,16 @@ import React from 'react';
 import { useQuery as _useQuery, QueryHookOptions } from '@apollo/react-hooks';
 import { DocumentNode, DefinitionNode, SelectionNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
-import { IQueryData, TOptimisticItem } from './typings';
 
-export type IUseQueryDocument = DocumentNode;
-export type IUseQueryOptions<IItem, IVariables> = QueryHookOptions<
-  IQueryData<IItem>,
-  IVariables
->;
-export type IUseQueryReturn<IItem, IVariables> = [
-  Array<TOptimisticItem<IItem>>,
-  QueryResult<IQueryData<IItem>, IVariables>
-];
-
-export default function useQuery<IItem, IVariables = OperationVariables>(
-  document: IUseQueryDocument,
-  options?: IUseQueryOptions<IItem, IVariables>
-): IUseQueryReturn<IItem, IVariables> {
+export default function useQuery<IData, IVariables = OperationVariables>(
+  document: DocumentNode,
+  options?: QueryHookOptions<IData, IVariables>
+): [Partial<IData>, QueryResult<IData, IVariables>] {
   const { skip, variables, onError } = options || {};
-  const { data, subscribeToMore, ...rest } = _useQuery<
-    IQueryData<IItem>,
-    IVariables
-  >(document, options);
-
-  const dataObject = data || {};
-  const key = Object.keys(dataObject).filter(x => x !== '__typename')[0];
-  const items = (!dataObject[key] || Array.isArray(dataObject[key])
-    ? dataObject[key] || []
-    : [dataObject[key]]) as Array<TOptimisticItem<IItem>>;
-  const result = items.map(item => ({
-    __optimistic: false,
-    ...item
-  }));
+  const { data, subscribeToMore, ...rest } = _useQuery<IData, IVariables>(
+    document,
+    options
+  );
 
   const _document = JSON.parse(JSON.stringify(document));
   const definitionIndex = _document.definitions.findIndex(
@@ -56,7 +35,7 @@ export default function useQuery<IItem, IVariables = OperationVariables>(
       definitionIndex
     ].name.value = `sub_${_document.definitions[definitionIndex].name.value}`;
 
-    return subscribeToMore<IQueryData<IItem>, IVariables>({
+    return subscribeToMore<IData, IVariables>({
       document: _document,
       variables,
       onError: ({ name, message, stack }: Error) =>
@@ -75,5 +54,5 @@ export default function useQuery<IItem, IVariables = OperationVariables>(
     });
   }, [_document, definitionIndex, onError, skip, subscribeToMore, variables]);
 
-  return [result, { data, subscribeToMore, ...rest }];
+  return [data || {}, { data, subscribeToMore, ...rest }];
 }

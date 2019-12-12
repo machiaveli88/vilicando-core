@@ -56,6 +56,6 @@ if (existsSync(lessPath)) {
 
   writeFileSync(typesPath, types);
 
-  console.log('theme updated with following vars:', differences);
-  console.log('theme has following non-antd-vars:', missed);
+  console.info('theme updated with following vars:', differences);
+  console.info('theme has following non-antd-vars:', missed);
 }

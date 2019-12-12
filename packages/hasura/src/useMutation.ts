@@ -15,52 +15,29 @@ import {
   SelectionNode
 } from 'graphql';
 import uuid from 'uuid/v4';
-import {
-  TAdvancedItem,
-  IQueryData,
-  IMutationData,
-  TUpdateItem
-} from './typings';
 
-export type IUseMutationDocument = DocumentNode;
-export type IUseMutationOptions<
-  IItem,
-  IVariables,
-  IQueryVariables
-> = MutationHookOptions<IMutationData<IItem>, IVariables> & {
-  queryVariables?: IQueryVariables;
-};
-export type IUseMutationReturn<IItem, IVariables> = [
+export default function useMutation<IData, IVariables = OperationVariables>(
+  document: DocumentNode,
+  options?: MutationHookOptions<IData, IVariables>
+): [
   (
-    items: TUpdateItem<IItem>,
-    options?: MutationFunctionOptions<IMutationData<IItem>, IVariables>
-  ) => Promise<ExecutionResult<IMutationData<IItem>>>,
-  MutationResult<IMutationData<IItem>>
-];
+    items: any,
+    options?: MutationFunctionOptions<IData, IVariables>
+  ) => Promise<ExecutionResult<IData>>,
+  MutationResult<IData>
+] {
+  const [update, result] = _useMutation<IData, IVariables>(document, options);
 
-export default function useMutation<
-  IItem extends { id: any },
-  IVariables = OperationVariables,
-  IQueryVariables = OperationVariables
->(
-  document: IUseMutationDocument,
-  query: IUseMutationDocument,
-  _options?: IUseMutationOptions<IItem, IVariables, IQueryVariables>
-): IUseMutationReturn<IItem, IVariables> {
-  const { queryVariables, ...options } = _options || {};
-  const [update, result] = _useMutation<IMutationData<IItem>, IVariables>(
-    document,
-    options
-  );
+  // get types & Co
   const _document = JSON.parse(JSON.stringify(document));
   const definition = _document.definitions.find(
     ({ kind }: DefinitionNode) => kind === 'OperationDefinition'
   );
   const { selections } = definition.selectionSet;
   const __name = selections[0].name.value; // z.B. update_user
-  const [__type, __collection] = __name.split('_'); // z.B. [update, user]
-  const __typename = __collection + '_mutation_response'; // z.B. user_mutation_response
+  const [/* __type, */ __typename] = __name.split('_'); // z.B. [update, user]
 
+  // warn if more than one mutation
   if (
     selections.filter(
       (selection: SelectionNode) =>
@@ -72,20 +49,14 @@ export default function useMutation<
     );
 
   return [
-    (
-      _items: TUpdateItem<IItem>,
-      _options?: MutationFunctionOptions<IMutationData<IItem>, IVariables>
-    ) => {
-      const items = (Array.isArray(_items) ? _items : [_items]).map(
-        item =>
-          ({
-            __typename: __collection,
-            id: uuid(),
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-            ...item
-          } as TAdvancedItem<IItem>)
-      );
+    (_items: any, _options?: MutationFunctionOptions<IData, IVariables>) => {
+      const items = (Array.isArray(_items) ? _items : [_items]).map(item => ({
+        __typename,
+        id: uuid(),
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        ...item
+      }));
 
       let { variables, ...options } = _options || {};
       const _variables = {};
@@ -93,19 +64,21 @@ export default function useMutation<
         ({ variable }: VariableDefinitionNode) =>
           (_variables[variable.name.value] = items[0][variable.name.value])
       );
-      variables = { ..._variables, ...variables };
+      variables = Object.assign(_variables, variables);
 
       return update({
         variables,
-        optimisticResponse: (vars: {} | IVariables) => ({
-          [__name]: {
-            __typename,
-            returning: items.map(item =>
-              Object.assign(item, vars, { __optimistic: true })
-            )
-          }
-        }),
-        update: (
+        optimisticResponse: (vars: {} | IVariables): IData =>
+          (({
+            __typename: 'mutation_root',
+            [__name]: {
+              __typename: `${__typename}_mutation_response`,
+              returning: items.map(item => Object.assign(item, vars))
+            }
+          } as unknown) as IData),
+
+        // todo: need update for inserts!
+        /* update: (
           cache,
           {
             data: {
@@ -122,35 +95,29 @@ export default function useMutation<
 
           const data = {
             ...cacheData,
-            [__collection]: [...cacheData[__collection]]
+            [__typename]: [...cacheData[__typename]]
           };
 
           returning.forEach(item => {
-            const index = cacheData[__collection].findIndex(
+            const index = cacheData[__typename].findIndex(
               ({ id }) => id === item.id
             );
 
             if (~index)
-              if (__type === 'delete') data[__collection].splice(index, 1);
+              if (__type === 'delete') data[__typename].splice(index, 1);
               else
-                data[__collection][index] = Object.assign(
-                  data[__collection][index],
+                data[__typename][index] = Object.assign(
+                  data[__typename][index],
                   item
                 );
-            else data[__collection].push(item);
+            else data[__typename].push(item);
           });
-          data[__collection] = data[__collection].map(
-            (item: IQueryData<IItem>) => ({
-              __optimistic: false,
-              ...item
-            })
-          );
 
           cache.writeQuery<IQueryData<IItem>, IQueryVariables>({
             query,
             data
           });
-        },
+        }, */
         ...options
       });
     },

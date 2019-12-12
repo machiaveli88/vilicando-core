@@ -8,7 +8,7 @@ const FRAGMENT_USER = gql`
     created_at
     updated_at
   }
-`; // todo: add & repair __optimistic
+`;
 
 export const QUERY_USERS = gql`
   query users {

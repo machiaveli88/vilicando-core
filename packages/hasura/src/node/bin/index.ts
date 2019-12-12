@@ -4,15 +4,7 @@ import runScript from 'vilicando-core/lib/node/bin/runScript';
 const scripts: {
   [command: string]: () => Promise<(argv?: object) => void>;
 } = {
-  codegen: async () =>
-    await import('./codegen').then(({ download, generate }) => args => {
-      download(args);
-      generate();
-    }),
-  'codegen:download': async () =>
-    await import('./codegen').then(({ download }) => download),
-  'codegen:generate': async () =>
-    await import('./codegen').then(({ generate }) => generate)
+  codegen: async () => await import('./codegen').then(({ codegen }) => codegen)
 };
 
 runScript(
@@ -21,10 +13,12 @@ runScript(
     // Types
     '--url': String,
     '--secret': String,
+    '--watch': Boolean,
 
     // Aliases
     '-u': '--url',
-    '-s': '--secret'
+    '-s': '--secret',
+    '-w': '--watch'
   },
   'codegen'
 );
