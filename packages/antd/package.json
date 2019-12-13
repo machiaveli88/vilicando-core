@@ -19,7 +19,7 @@
     "@ant-design/icons": "4.0.0-alpha.11",
     "@zeit/next-less": "1.0.1",
     "antd": "4.0.0-beta.0",
-    "less": "2.7.3",
+    "less": "3.10.3",
     "lodash": "^4.17.15",
     "null-loader": "3.0.0",
     "tinycolor2": "1.4.1"

@@ -79,7 +79,6 @@ Please set the following .env-vars to enable full hasura/graphql support:
 #### ... Later
 
 - [ ] [Auth](https://blog.hasura.io/add-authentication-and-authorization-to-next-js-8-serverless-apps-using-jwt-and-graphql/)
-- [ ] [Auth0](https://auth0.com/docs/libraries/lock/v11)
 - [ ] Splash-Screen (https://github.com/zeit/next.js/issues/5736, https://github.com/nguyenbathanh/react-loading-screen/blob/master/public/index.html)
 - [ ] Additionally package for UI (based on [react-native-web](https://github.com/zeit/next.js/blob/canary/examples/with-react-native-web/pages/index.js))
 - [ ] ...
