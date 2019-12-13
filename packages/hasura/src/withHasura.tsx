@@ -5,11 +5,14 @@ import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { getMainDefinition } from 'apollo-utilities';
 import { ApolloLink, split } from 'apollo-link';
+import { RetryLink } from 'apollo-link-retry';
 import { onError } from 'apollo-link-error';
 import { IPageContext } from 'vilicando-core';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { WebSocketLink } from 'apollo-link-ws';
 import fetch from 'isomorphic-unfetch';
+import { persistCache } from 'apollo-cache-persist';
+import { PersistentStorage, PersistedData } from 'apollo-cache-persist/types';
 
 interface IWithHasuraProps {
   ssr?: boolean;
@@ -19,12 +22,27 @@ interface IWithHasuraProps {
 
 let apolloClient: ApolloClient<NormalizedCacheObject> = null;
 
+function initCache(initialState: NormalizedCacheObject) {
+  const cache = new InMemoryCache().restore(initialState || {});
+
+  if (typeof window !== 'undefined') {
+    persistCache({
+      cache,
+      storage: window.localStorage as PersistentStorage<
+        PersistedData<NormalizedCacheObject>
+      >
+    });
+  }
+
+  return cache;
+}
+
 function createApolloClient(
   _http: HttpLink.Options,
   _ws: WebSocketLink.Configuration,
-  initialState: NormalizedCacheObject = {}
+  initialState: NormalizedCacheObject
 ): ApolloClient<NormalizedCacheObject> {
-  const ssrMode = typeof window === 'undefined';
+  const ssrMode = typeof window === 'undefined'; // Disables forceFetch on the server (so queries are only run once)
   const headers = {
     'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
   };
@@ -55,6 +73,7 @@ function createApolloClient(
     http
       ? [
           errorLink,
+          new RetryLink({ attempts: { max: Infinity } }),
           new HttpLink({ credentials: 'same-origin', fetch, ...http })
         ]
       : [errorLink]
@@ -74,11 +93,7 @@ function createApolloClient(
       link
     );
 
-  return new ApolloClient({
-    ssrMode, // Disables forceFetch on the server (so queries are only run once)
-    link,
-    cache: new InMemoryCache().restore(initialState)
-  });
+  return new ApolloClient({ ssrMode, link, cache: initCache(initialState) });
 }
 
 function initApolloClient(
