@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// @ts-ignore todo: remove
+// @ts-ignore
 import withOffline from 'next-offline';
 import { join } from 'path';
 import { EnvironmentPlugin } from 'webpack';
-import { getEnv } from './env';
+import { getEnv } from './utils';
 
 interface IWithCore {
   aliases?: Array<string>;

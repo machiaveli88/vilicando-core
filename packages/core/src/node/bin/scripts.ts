@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { execSync } from 'child_process';
 import { join } from 'path';
-import { mkdirSync, copyFileSync } from 'fs';
-import { getEnv } from '../env';
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { getEnv } from '../utils';
 
 // read env
 const { PORT } = getEnv();
@@ -14,7 +14,13 @@ const serverDist = join(buildDir, 'server.js');
 const copyFiles = () => {
   mkdirSync(buildDir, { recursive: true });
   console.info('  ✔ Folder created');
-  copyFileSync(serverSrc, serverDist);
+
+  const data = readFileSync(serverSrc, 'utf8').replace(
+    '"./',
+    '"vilicando-core/lib/node/'
+  );
+  writeFileSync(serverDist, data, 'utf8');
+
   console.info('  ✔ Files copied');
 };
 

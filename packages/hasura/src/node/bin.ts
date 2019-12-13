@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import runScript from 'vilicando-core/lib/node/bin/runScript';
-import { getEnv } from 'vilicando-core/lib/node/env';
+import { getEnv } from 'vilicando-core/lib/node/utils';
 import { generate as _generate } from '@graphql-codegen/cli';
 
 // read env

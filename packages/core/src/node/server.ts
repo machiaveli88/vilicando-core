@@ -3,7 +3,7 @@ import next from 'next';
 import { join } from 'path';
 import { createServer } from 'http';
 import { parse as urlParse } from 'url';
-import { setEnv } from './env';
+import { setEnv } from './utils';
 
 // set env
 setEnv();
