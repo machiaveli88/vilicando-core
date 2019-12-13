@@ -1,5 +1,5 @@
 import React from 'react';
-import { getHasuraProps, withHasura } from 'vilicando-hasura';
+import { withHasura } from 'vilicando-hasura';
 import {
   useUsersQuery,
   useUpdateUserMutation,
@@ -64,6 +64,5 @@ function StartPage() {
     </>
   );
 }
-StartPage.getInitialProps = getHasuraProps();
 
 export default withHasura(StartPage);

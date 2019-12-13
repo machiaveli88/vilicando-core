@@ -1,38 +1,26 @@
 import React from 'react';
 import Head from 'next/head';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { getMainDefinition } from 'apollo-utilities';
+import { ApolloLink, split } from 'apollo-link';
+import { onError } from 'apollo-link-error';
 import { IPageContext } from 'vilicando-core';
-import {
-  ApolloClient,
-  ApolloProvider,
-  ApolloLink,
-  split,
-  getMainDefinition,
-  HttpLink,
-  InMemoryCache,
-  NormalizedCacheObject,
-  HttpOptions
-} from '@apollo/client';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { WebSocketLink } from 'apollo-link-ws';
 import fetch from 'isomorphic-unfetch';
-import { ApolloProviderProps } from '@apollo/client/react/context/ApolloProvider';
 
-interface IGetHasuraProps {
+interface IWithHasuraProps {
   ssr?: boolean;
-  http?: HttpOptions;
+  http?: HttpLink.Options;
   ws?: WebSocketLink.Configuration;
-}
-
-interface IHasuraProvider<TCache = any>
-  extends Partial<ApolloProviderProps<TCache>> {
-  http?: HttpOptions;
-  ws?: WebSocketLink.Configuration;
-  initialState?: NormalizedCacheObject;
 }
 
 let apolloClient: ApolloClient<NormalizedCacheObject> = null;
 
 function createApolloClient(
-  _http: HttpOptions,
+  _http: HttpLink.Options,
   _ws: WebSocketLink.Configuration,
   initialState: NormalizedCacheObject = {}
 ): ApolloClient<NormalizedCacheObject> {
@@ -54,13 +42,25 @@ function createApolloClient(
     }
   };
 
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors)
+      graphQLErrors.map(err =>
+        console.warn(`[GraphQL error]: Message: ${err.message}`)
+      );
+
+    if (networkError) console.warn(`[Network error]: ${networkError}`);
+  });
+
   let link = ApolloLink.from(
-    http ? [new HttpLink({ credentials: 'same-origin', fetch, ...http })] : []
+    http
+      ? [
+          errorLink,
+          new HttpLink({ credentials: 'same-origin', fetch, ...http })
+        ]
+      : [errorLink]
   );
 
-  if (!ssrMode && ws) {
-    const wsLink = new WebSocketLink(ws) as any; // todo: remove any
-
+  if (!ssrMode && ws)
     link = split(
       ({ query }) => {
         const definition = getMainDefinition(query);
@@ -70,10 +70,9 @@ function createApolloClient(
           definition.operation === 'subscription'
         );
       },
-      wsLink,
+      new WebSocketLink(ws),
       link
     );
-  }
 
   return new ApolloClient({
     ssrMode, // Disables forceFetch on the server (so queries are only run once)
@@ -83,7 +82,7 @@ function createApolloClient(
 }
 
 function initApolloClient(
-  http: HttpOptions,
+  http: HttpLink.Options,
   ws: WebSocketLink.Configuration,
   initialState?: NormalizedCacheObject
 ) {
@@ -98,68 +97,9 @@ function initApolloClient(
   return apolloClient;
 }
 
-// todo: ssr doesn't work
-export const getHasuraProps = ({
-  ssr = true,
-  http,
-  ws
-}: IGetHasuraProps = {}) => async ({
-  AppTree,
-  apolloClient,
-  res
-}: IPageContext & {
-  apolloClient: ApolloClient<any>;
-}) => {
-  // Initialize ApolloClient, add it to the ctx object so
-  // we can use it in `PageComponent.getInitialProps`.
-  apolloClient = initApolloClient(http, ws);
-
-  // Only on the server:
-  if (typeof window === 'undefined') {
-    // When redirecting, the response is finished.
-    // No point in continuing to render
-    if (res && res.finished) {
-      return {};
-    }
-
-    // Only if ssr is enabled
-    if (ssr) {
-      try {
-        // Run all GraphQL queries
-        const { getDataFromTree } = await import('@apollo/react-ssr');
-        await getDataFromTree(<AppTree pageProps={{ apolloClient }} />);
-      } catch (error) {
-        // Prevent Apollo Client GraphQL errors from crashing SSR.
-        // Handle them in components via the data.error prop:
-        // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
-        console.error('Error while running `getDataFromTree`', error);
-      }
-
-      // getDataFromTree does not call componentWillUnmount
-      // head side effect therefore need to be cleared manually
-      Head.rewind();
-    }
-  }
-
-  // Extract query data from the Apollo store
-  return { apolloState: apolloClient.cache.extract() };
-};
-
-export default ({
-  children,
-  client,
-  http,
-  ws,
-  initialState
-}: IHasuraProvider) => (
-  <ApolloProvider client={client || initApolloClient(http, ws, initialState)}>
-    {children}
-  </ApolloProvider>
-);
-
-/* export async function withHasura(
+export default function withHasura(
   PageComponent: any,
-  { ssr = true, http, ws }: IGetHasuraProps = {}
+  { ssr = true, http, ws }: IWithHasuraProps = {}
 ) {
   const WithHasura = ({
     apolloClient,
@@ -189,28 +129,33 @@ export default ({
   }
 
   if (ssr || PageComponent.getInitialProps) {
-    WithHasura.getInitialProps = async (
-      ctx: IPageContext & {
-        apolloClient: ApolloClient<any>;
-      }
-    ) => {
-      const { AppTree } = ctx;
-
+    WithHasura.getInitialProps = async ({
+      AppTree,
+      apolloClient,
+      res,
+      ...rest
+    }: IPageContext & {
+      apolloClient: ApolloClient<any>;
+    }) => {
       // Initialize ApolloClient, add it to the ctx object so
       // we can use it in `PageComponent.getInitialProps`.
-      const apolloClient = (ctx.apolloClient = initApolloClient(http, ws));
+      apolloClient = initApolloClient(http, ws);
 
       // Run wrapped getInitialProps methods
       let pageProps = {};
       if (PageComponent.getInitialProps) {
-        pageProps = await PageComponent.getInitialProps(ctx);
+        pageProps = await PageComponent.getInitialProps({
+          AppTree,
+          res,
+          ...rest
+        });
       }
 
       // Only on the server:
       if (typeof window === 'undefined') {
         // When redirecting, the response is finished.
         // No point in continuing to render
-        if (ctx.res && ctx.res.finished) {
+        if (res && res.finished) {
           return pageProps;
         }
 
@@ -251,4 +196,4 @@ export default ({
   }
 
   return WithHasura;
-} */
+}
