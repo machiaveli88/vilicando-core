@@ -6,7 +6,8 @@ import { OperationVariables, QueryResult } from '@apollo/react-common';
 export default function useQuery<IData, IVariables = OperationVariables>(
   document: DocumentNode,
   options?: QueryHookOptions<IData, IVariables>
-): [Partial<IData>, QueryResult<IData, IVariables>] {
+): [Array<any>, QueryResult<IData, IVariables>] {
+  // todo: replace Array<any> with IData[return]
   const { skip, variables, onError } = options || {};
   const { data, subscribeToMore, ...rest } = _useQuery<IData, IVariables>(
     document,
@@ -54,5 +55,13 @@ export default function useQuery<IData, IVariables = OperationVariables>(
     });
   }, [_document, definitionIndex, onError, skip, subscribeToMore, variables]);
 
-  return [data || {}, { data, subscribeToMore, ...rest }];
+  // extract items from returned data
+  const dataObject = data || {};
+  const key = Object.keys(dataObject).filter(x => x !== '__typename')[0];
+  const items =
+    !dataObject[key] || Array.isArray(dataObject[key])
+      ? dataObject[key] || []
+      : [dataObject[key]];
+
+  return [items, { data, subscribeToMore, ...rest }];
 }

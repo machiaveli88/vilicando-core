@@ -9,7 +9,7 @@ import {
 } from '@graphql';
 
 function StartPage() {
-  const [{ user }, { loading }] = useUsersQuery();
+  const [user, { loading }] = useUsersQuery();
   const [updateUser] = useUpdateUserMutation();
   const [deleteUser] = useDeleteUserMutation();
   const [insertUser] = useInsertUserMutation();
