@@ -24,3 +24,4 @@ export {
   createRenderer
 } from './theme';
 export { defaultLocale, isDoubleTap, notify } from './utils';
+export { useForm } from './hooks';
