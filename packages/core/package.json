@@ -35,7 +35,7 @@
     "fela-plugin-validator": "11.0.2",
     "fela-preset-web": "11.0.2",
     "lodash": "^4.17.15",
-    "next": "9.1.6-canary.5",
+    "next": "9.1.6-canary.9",
     "next-offline": "^5.0.0-beta.11",
     "node-polyglot": "2.4.0",
     "nprogress": "^0.2.0",
