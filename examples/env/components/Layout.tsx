@@ -20,7 +20,7 @@ function Layout({ children }: ILayout) {
       <div
         className={css({
           backgroundColor: theme.primaryBase,
-          padding: theme.spacingMd,
+          padding: theme.spacing.md,
           textAlign: 'center',
           width: '100%'
         })}
@@ -33,8 +33,8 @@ function Layout({ children }: ILayout) {
       <div
         className={css({
           width: '75%',
-          minWidth: theme.screenXs,
-          maxWidth: theme.screenMd
+          minWidth: theme.screen.xs,
+          maxWidth: theme.screen.md
         })}
       >
         {children}
