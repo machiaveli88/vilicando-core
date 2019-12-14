@@ -41,7 +41,7 @@ function createApolloClient(
   _http: HttpLink.Options,
   _ws: WebSocketLink.Configuration,
   initialState: NormalizedCacheObject
-): ApolloClient<NormalizedCacheObject> {
+) {
   const ssrMode = typeof window === 'undefined'; // Disables forceFetch on the server (so queries are only run once)
   const headers = {
     'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
