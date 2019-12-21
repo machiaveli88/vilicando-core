@@ -1,30 +1,36 @@
 {
-  "primary1": "#e0f7fa",
-  "primary2": "#b2ebf2",
-  "primary3": "#80deea",
-  "primary4": "#4dd0e1",
-  "primary5": "#26c6da",
-  "primary6": "#00bcd4",
-  "primary7": "#00acc1",
-  "primary8": "#0097a7",
-  "primary9": "#00838f",
-  "primary10": "#006064",
-  "primaryBase": "#00bcd4",
+  "primary": {
+    "1": "#e0f7fa",
+    "2": "#b2ebf2",
+    "3": "#80deea",
+    "4": "#4dd0e1",
+    "5": "#26c6da",
+    "6": "#00bcd4",
+    "7": "#00acc1",
+    "8": "#0097a7",
+    "9": "#00838f",
+    "10": "#006064",
+    "base": "#00bcd4"
+  },
 
-  "secondary1": "#f3e5f5",
-  "secondary2": "#e1bee7",
-  "secondary3": "#ce93d8",
-  "secondary4": "#ba68c8",
-  "secondary5": "#ab47bc",
-  "secondary6": "#9c27b0",
-  "secondary7": "#8e24aa",
-  "secondary8": "#7b1fa2",
-  "secondary9": "#6a1b9a",
-  "secondary10": "#4a148c",
-  "secondaryBase": "#9c27b0",
+  "secondary": {
+    "1": "#f3e5f5",
+    "2": "#e1bee7",
+    "3": "#ce93d8",
+    "4": "#ba68c8",
+    "5": "#ab47bc",
+    "6": "#9c27b0",
+    "7": "#8e24aa",
+    "8": "#7b1fa2",
+    "9": "#6a1b9a",
+    "10": "#4a148c",
+    "base": "#9c27b0"
+  },
 
-  "headingColor": "#00bcd4",
-  "linkColor": "#00bcd4",
-  "linkHoverColor": "#9c27b0",
-  "linkActiveColor": "#9c27b0"
+  "heading": { "color": "#00bcd4" },
+  "link": {
+    "color": "#00bcd4",
+    "hover": { "color": "#9c27b0" },
+    "active": { "color": "#9c27b0" }
+  }
 }

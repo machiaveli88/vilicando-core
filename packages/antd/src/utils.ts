@@ -1,11 +1,24 @@
 import tinycolor from 'tinycolor2';
-import { camelCase } from 'lodash';
+import { setWith, get } from 'lodash';
 import { IAntdTheme } from './types';
-import { ITheme as IDefaultTheme } from 'vilicando-core';
 
-export type ITheme = IDefaultTheme & IAntdTheme;
+const _setWith = (newTheme: {}, key: string, value: any) =>
+  setWith(newTheme, key.split('-').join('.'), value, (nsValue, k) => {
+    if (!!nsValue && typeof nsValue !== 'object') {
+      const index = key.search(k);
+      const after = key.slice(index + k.length + 1);
 
-export function colorPalette(color: string, index: number) {
+      _setWith(
+        index ? get(newTheme, key.slice(0, index - 1)) : newTheme,
+        k + after.charAt(0).toUpperCase() + after.slice(1),
+        value
+      );
+    }
+
+    return nsValue || {};
+  });
+
+const colorPalette = (color: string, index: number) => {
   const hueStep = 2;
   const saturationStep = 16;
   const saturationStep2 = 5;
@@ -78,14 +91,15 @@ export function colorPalette(color: string, index: number) {
     s: getSaturation(hsv, i, isLight),
     v: getValue(hsv, i, isLight)
   }).toHexString();
-}
+};
 
-export const replaceLessVars = (theme: object): object => {
-  const newTheme: object = { ...theme };
+const replaceLessVars = (theme: object): object => {
+  const newTheme = { ...theme };
+
   Object.keys(theme).forEach(key => {
     if (typeof theme[key] === 'string') {
-      // @var +- something
-      if (theme[key].indexOf('ceil(') < 0)
+      // @var +- something (if NOT ceil())
+      if (!~theme[key].indexOf('ceil('))
         newTheme[key] = theme[key].replace(
           /\(?@[a-z0-9]+(-[a-z0-9]*)* [+\-*] (.+)\w\)?/g,
           (match: string) => `calc(${match})`
@@ -115,9 +129,14 @@ export const replaceLessVars = (theme: object): object => {
   return newTheme;
 };
 
-export const parseTheme = (theme: object): ITheme => {
-  const newTheme = {};
+export function parseTheme<T = {}>(_theme: object): IAntdTheme & T {
+  const sortedTheme = {};
+  Object.keys(_theme)
+    .sort()
+    .forEach(key => (sortedTheme[key] = _theme[key]));
 
+  const theme = replaceLessVars(sortedTheme);
+  const newTheme = {};
   Object.keys(theme).forEach(key => {
     if (typeof theme[key] === 'string') {
       // hsv()
@@ -161,8 +180,8 @@ export const parseTheme = (theme: object): ITheme => {
       theme[key] = theme[key].replace('ceil', 'calc');
     }
 
-    newTheme[camelCase(key)] = theme[key];
+    _setWith(newTheme, key, theme[key]);
   });
 
-  return newTheme as ITheme;
-};
+  return newTheme as IAntdTheme & T;
+}

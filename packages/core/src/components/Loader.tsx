@@ -44,7 +44,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
         pointerEvents: 'none',
         right: 0,
         top: 0,
-        background: `linear-gradient(135deg, ${theme.primary7} 0%,${theme.primary9} 100%)`,
+        background: `linear-gradient(135deg, ${theme.primary[6]} 0%,${theme.primary[8]} 100%)`,
         zIndex: 1030
       })}
     >
@@ -59,8 +59,8 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
           marginLeft: -size * 1.5,
           marginTop: -size * 1.5,
           borderRadius: size * 1.5,
-          backgroundColor: theme.primary7,
-          animation: `${pulseRing} 1.25s ${theme.easeOut} infinite`
+          backgroundColor: theme.primary[6],
+          animation: `${pulseRing} 1.25s ${theme.ease.out} infinite`
         })}
       />
       {!!children && (
@@ -76,8 +76,8 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
             marginTop: -size * 0.5,
             backgroundColor: theme.white,
             borderRadius: size * 0.5,
-            boxShadow: theme.shadow2,
-            animation: `${pulseDot} 1.25s ${theme.easeInOut} -.4s infinite`
+            boxShadow: theme.shadow[2],
+            animation: `${pulseDot} 1.25s ${theme.ease.inOut} -.4s infinite`
           })}
         >
           <div
@@ -103,9 +103,9 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
             textAlign: 'center',
             display: 'block',
             color: 'white',
-            fontFamily: theme.fontFamily,
-            fontSize: theme.fontSizeLg,
-            paddingY: theme.spacingXl
+            fontFamily: theme.font.family,
+            fontSize: theme.font.size.lg,
+            paddingY: theme.spacing.xl
           })}
         >
           {text}

@@ -14,7 +14,7 @@ import {
   DefinitionNode,
   SelectionNode
 } from 'graphql';
-import uuid from 'uuid/v4';
+import { merge, uniqueId } from 'lodash';
 
 export default function useMutation<IData, IVariables = OperationVariables>(
   document: DocumentNode,
@@ -52,7 +52,7 @@ export default function useMutation<IData, IVariables = OperationVariables>(
     (_items: any, _options?: MutationFunctionOptions<IData, IVariables>) => {
       const items = (Array.isArray(_items) ? _items : [_items]).map(item => ({
         __typename,
-        id: uuid(),
+        id: uniqueId(),
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
         ...item
@@ -64,7 +64,7 @@ export default function useMutation<IData, IVariables = OperationVariables>(
         ({ variable }: VariableDefinitionNode) =>
           (_variables[variable.name.value] = items[0][variable.name.value])
       );
-      variables = Object.assign(_variables, variables);
+      variables = merge(_variables, variables);
 
       return update({
         variables,

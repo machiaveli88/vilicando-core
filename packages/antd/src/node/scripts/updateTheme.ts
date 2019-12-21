@@ -3,13 +3,29 @@ import lessToJs from 'less-vars-to-js';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { difference } from 'lodash';
-import { parseTheme, replaceLessVars } from '../../utils';
+import { parseTheme } from '../../utils';
 
 const antd = require.resolve('antd');
 const lessPath = join(antd, '../../lib/style/themes/default.less');
 const colorsPath = join(antd, '../../lib/style/color/colors.less');
 const themePath = join(__dirname, '../../../src/theme.json');
 const typesPath = join(__dirname, '../../../src/types.ts');
+
+const getNestedTypes = (theme: object | number | string) => {
+  let types = '';
+
+  Object.keys(theme).forEach(
+    key =>
+      (types +=
+        typeof theme[key] === 'object'
+          ? `${key}: { ${getNestedTypes(theme[key])} },`
+          : `${key}: ${
+              typeof theme[key] === 'number' ? 'number | string' : 'string'
+            };`)
+  );
+
+  return types;
+};
 
 if (existsSync(lessPath)) {
   const lessFile = readFileSync(lessPath, 'utf8');
@@ -42,18 +58,8 @@ if (existsSync(lessPath)) {
 
   writeFileSync(themePath, JSON.stringify(sortedTheme));
 
-  const parsedTheme = parseTheme(replaceLessVars(sortedTheme));
-  let types = 'export interface IAntdTheme {';
-  Object.keys(parsedTheme).forEach(
-    key =>
-      (types += `
-  ${key}: ${
-        typeof parsedTheme[key] === 'number' ? 'number | string' : 'string'
-      };`)
-  );
-  types += `
-}`;
-
+  const parsedTheme = parseTheme(sortedTheme);
+  let types = `export interface IAntdTheme {${getNestedTypes(parsedTheme)}}`;
   writeFileSync(typesPath, types);
 
   console.info('theme updated with following vars:', differences);

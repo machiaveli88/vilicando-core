@@ -8,13 +8,13 @@ function ResponsiveHelper() {
     <div
       className={css({
         position: 'fixed',
-        left: theme.spacingXl,
-        bottom: theme.spacingXl,
-        backgroundColor: theme.primaryBase,
+        left: theme.spacing.xl,
+        bottom: theme.spacing.xl,
+        backgroundColor: theme.primary.base,
         color: theme.white,
-        paddingX: theme.spacingMd,
-        paddingY: theme.spacingSm,
-        borderRadius: theme.spacingXl,
+        paddingX: theme.spacing.md,
+        paddingY: theme.spacing.sm,
+        borderRadius: theme.spacing.xl,
         opacity: 0.75,
         zIndex: 2000,
         onHover: {
