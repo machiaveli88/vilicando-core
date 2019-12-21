@@ -14,7 +14,7 @@ function StartPage() {
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['2']}
-          className={css({ lineHeight: theme.layoutHeaderHeight })}
+          className={css({ lineHeight: theme.layout.header.height })}
         >
           <Menu.Item key="1">Link 1</Menu.Item>
           <Menu.Item key="2">Active Link 2</Menu.Item>
@@ -23,13 +23,13 @@ function StartPage() {
       </Header>
       <Content
         className={css({
-          paddingX: theme.spacingXxl,
+          paddingX: theme.spacing.xxl,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center'
         })}
       >
-        <Breadcrumb className={css({ marginY: theme.paddingLg })}>
+        <Breadcrumb className={css({ marginY: theme.padding.lg })}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
@@ -38,11 +38,11 @@ function StartPage() {
         <div
           className={css({
             background: theme.white,
-            padding: theme.spacingXl,
+            padding: theme.spacing.xl,
             flexGrow: 1,
             width: '75%',
-            minWidth: theme.screenXs,
-            maxWidth: theme.screenMd
+            minWidth: theme.screen.xs,
+            maxWidth: theme.screen.md
           })}
         >
           <h1>Hello World</h1>
@@ -63,8 +63,8 @@ function StartPage() {
       <Footer
         className={css({
           textAlign: 'center',
-          paddingY: theme.paddingMd,
-          color: theme.greyBase
+          paddingY: theme.padding.md,
+          color: theme.grey.base
         })}
       >
         ©2019 vilicando-core

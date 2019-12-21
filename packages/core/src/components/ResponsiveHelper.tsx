@@ -10,7 +10,7 @@ function ResponsiveHelper() {
         position: 'fixed',
         left: theme.spacing.xl,
         bottom: theme.spacing.xl,
-        backgroundColor: theme.primaryBase,
+        backgroundColor: theme.primary.base,
         color: theme.white,
         paddingX: theme.spacing.md,
         paddingY: theme.spacing.sm,

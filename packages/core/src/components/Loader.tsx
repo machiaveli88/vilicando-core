@@ -76,7 +76,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
             marginTop: -size * 0.5,
             backgroundColor: theme.white,
             borderRadius: size * 0.5,
-            boxShadow: theme.shadow[1],
+            boxShadow: theme.shadow[2],
             animation: `${pulseDot} 1.25s ${theme.ease.inOut} -.4s infinite`
           })}
         >

@@ -2,40 +2,51 @@ import React from 'react';
 import deDE from 'antd/lib/locale-provider/de_DE';
 import enUS from 'antd/lib/locale-provider/en_US';
 import ConfigProvider from 'antd/lib/config-provider';
-import { parseTheme, replaceLessVars } from './utils';
-import { FelaProvider, useLanguage } from 'vilicando-core';
-import defaultTheme from './theme.json';
+import { parseTheme } from './utils';
+import {
+  FelaProvider,
+  useLanguage,
+  theme as defaultTheme
+} from 'vilicando-core';
+import antdTheme from './theme.json';
+import { IAntdTheme } from './types';
+import { ITheme as IDefaultTheme } from 'vilicando-core';
+import { merge } from 'lodash';
 
-export interface IAntdProvider {
+export type ITheme = IDefaultTheme & IAntdTheme;
+
+export interface IAntdProvider<T = {}> {
   children: React.ReactNode;
-  theme?: object;
+  theme?: Partial<ITheme> & T;
 }
 
-function AntdProvider({ children, theme }: IAntdProvider) {
+function AntdProvider<T>({ children, theme }: IAntdProvider<T>) {
   const { locale } = useLanguage();
 
   // replacing @-vars & functions with values
   const parsedTheme = React.useMemo(() => {
-    const parsedTheme = parseTheme(
-      replaceLessVars({ ...defaultTheme, ...theme })
+    const parsedTheme = parseTheme<T>({
+      ...antdTheme,
+      ...theme
+    });
+
+    const newTheme = merge<IDefaultTheme, IAntdTheme & T>(
+      defaultTheme,
+      parsedTheme
     );
 
-    // map to normal theme
-    parsedTheme.shadow0 = parsedTheme.shadow1Down;
-    parsedTheme.shadow1 = parsedTheme.shadow1Down;
-    parsedTheme.shadow3 = parsedTheme.shadow2;
+    newTheme.spacing.xs = newTheme.padding.xs;
+    newTheme.spacing.sm = newTheme.padding.sm;
+    newTheme.spacing.md = newTheme.padding.md;
+    newTheme.spacing.lg = newTheme.padding.lg;
 
-    parsedTheme.spacingXs = parsedTheme.paddingXs;
-    parsedTheme.spacingSm = parsedTheme.paddingSm;
-    parsedTheme.spacingMd = parsedTheme.paddingMd;
-    parsedTheme.spacingLg = parsedTheme.paddingLg;
+    newTheme.font.size.md = newTheme.font.size.base;
+    newTheme.heading[5].size = `calc(${newTheme.font.size.base} * 1.312)`;
+    newTheme.heading[6].size = `calc(${newTheme.font.size.base} * 1.125)`;
 
-    parsedTheme.fontSizeMd = parsedTheme.fontSizeBase;
-    parsedTheme.heading5Size = `calc(${parsedTheme.fontSizeBase} * 1.312)`;
-    parsedTheme.heading6Size = `calc(${parsedTheme.fontSizeBase} * 1.125)`;
+    newTheme.primary.base = newTheme.primary.color;
 
-    parsedTheme.primaryBase = parsedTheme.primaryColor;
-    return parsedTheme;
+    return newTheme;
   }, [theme]);
 
   return (
