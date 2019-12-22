@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import * as ApolloReactCommon from '@apollo/react-common';
+import * as ApolloReactCommon from 'vilicando-hasura';
 import * as ApolloReactHooks from 'vilicando-hasura';
 export type Maybe<T> = T | null;
 /** All built-in and custom scalars, mapped to their actual values */
