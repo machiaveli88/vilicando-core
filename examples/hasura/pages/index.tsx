@@ -5,7 +5,8 @@ import {
   useUpdateUserMutation,
   useDeleteUserMutation,
   useInsertUserMutation,
-  useUpdateAllUserMutation
+  useUpdateAllUserMutation,
+  UsersDocument
 } from '@graphql';
 
 function StartPage() {
@@ -44,7 +45,11 @@ function StartPage() {
         placeholder="New employee"
         type="text"
         onKeyDown={e => {
-          if (e.key === 'Enter') insertUser({ name: e.currentTarget.value });
+          if (e.key === 'Enter')
+            insertUser(
+              { name: e.currentTarget.value },
+              { updateQuery: { query: UsersDocument } }
+            );
         }}
       />
 

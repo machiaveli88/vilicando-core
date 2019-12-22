@@ -4,24 +4,48 @@ import {
 } from '@apollo/react-hooks';
 import {
   OperationVariables,
-  MutationFunctionOptions,
-  ExecutionResult,
+  MutationFunctionOptions as _MutationFunctionOptions,
   MutationResult
 } from '@apollo/react-common';
 import {
   DocumentNode,
   VariableDefinitionNode,
   DefinitionNode,
-  SelectionNode
+  SelectionNode,
+  ExecutionResult
 } from 'graphql';
 import { merge, uniqueId } from 'lodash';
 
-export default function useMutation<IData, IVariables = OperationVariables>(
+type TData = Partial<
+  {
+    __typename: 'mutation_root';
+  } & {
+    [x: string]: {
+      __typename?: string;
+      returning: Array<{ __typename?: string; id?: string }>;
+    } | null;
+  }
+>;
+
+interface IUpdateQuery {
+  query: DocumentNode;
+  variables?: OperationVariables;
+}
+
+interface MutationFunctionOptions<IData, IVariables>
+  extends _MutationFunctionOptions<IData, IVariables> {
+  updateQuery?: IUpdateQuery | Array<IUpdateQuery> | false;
+}
+
+export default function useMutation<
+  IData extends TData,
+  IVariables = OperationVariables
+>(
   document: DocumentNode,
   options?: MutationHookOptions<IData, IVariables>
 ): [
   (
-    items: any,
+    item: any,
     options?: MutationFunctionOptions<IData, IVariables>
   ) => Promise<ExecutionResult<IData>>,
   MutationResult<IData>
@@ -34,8 +58,8 @@ export default function useMutation<IData, IVariables = OperationVariables>(
     ({ kind }: DefinitionNode) => kind === 'OperationDefinition'
   );
   const { selections } = definition.selectionSet;
-  const __name = selections[0].name.value; // z.B. update_user
-  const [/* __type, */ __typename] = __name.split('_'); // z.B. [update, user]
+  const __name: string = selections[0].name.value; // z.B. update_user
+  const [__typename, __type] = __name.split('_').reverse(); // z.B. [user, update]
 
   // warn if more than one mutation
   if (
@@ -49,8 +73,8 @@ export default function useMutation<IData, IVariables = OperationVariables>(
     );
 
   return [
-    (_items: any, _options?: MutationFunctionOptions<IData, IVariables>) => {
-      const items = (Array.isArray(_items) ? _items : [_items]).map(item => ({
+    (_item: any, _options?: MutationFunctionOptions<IData, IVariables>) => {
+      const items = (Array.isArray(_item) ? _item : [_item]).map(item => ({
         __typename,
         id: uniqueId(),
         created_at: new Date().toISOString(),
@@ -58,7 +82,7 @@ export default function useMutation<IData, IVariables = OperationVariables>(
         ...item
       }));
 
-      let { variables, ...options } = _options || {};
+      let { variables, updateQuery, ...options } = _options || {};
       const _variables = {};
       definition.variableDefinitions.forEach(
         ({ variable }: VariableDefinitionNode) =>
@@ -68,17 +92,15 @@ export default function useMutation<IData, IVariables = OperationVariables>(
 
       return update({
         variables,
-        optimisticResponse: (vars: {} | IVariables): IData =>
-          (({
+        optimisticResponse: (vars: {} | IVariables) =>
+          ({
             __typename: 'mutation_root',
             [__name]: {
               __typename: `${__typename}_mutation_response`,
               returning: items.map(item => Object.assign(item, vars))
             }
-          } as unknown) as IData),
-
-        // todo: need update for inserts!
-        /* update: (
+          } as IData),
+        update: (
           cache,
           {
             data: {
@@ -86,38 +108,45 @@ export default function useMutation<IData, IVariables = OperationVariables>(
             }
           }
         ) => {
-          const cacheData = cache.readQuery<IQueryData<IItem>, IQueryVariables>(
-            {
-              query,
-              variables: queryVariables
-            }
-          );
+          if (updateQuery)
+            (Array.isArray(updateQuery) ? updateQuery : [updateQuery]).forEach(
+              ({ query, variables }) => {
+                const cacheData = cache.readQuery({
+                  query,
+                  variables
+                }) as object;
 
-          const data = {
-            ...cacheData,
-            [__typename]: [...cacheData[__typename]]
-          };
+                const data = {
+                  ...cacheData,
+                  [__typename]: [...cacheData[__typename]]
+                };
 
-          returning.forEach(item => {
-            const index = cacheData[__typename].findIndex(
-              ({ id }) => id === item.id
+                returning.forEach(item => {
+                  const index = cacheData[__typename].findIndex(
+                    ({ id }: { id: string }) => id === item.id
+                  );
+
+                  if (~index)
+                    if (__type === 'delete') data[__typename].splice(index, 1);
+                    else
+                      data[__typename][index] = Object.assign(
+                        data[__typename][index],
+                        item
+                      );
+                  else data[__typename].push(item);
+                });
+
+                cache.writeQuery({
+                  query,
+                  data
+                });
+              }
             );
-
-            if (~index)
-              if (__type === 'delete') data[__typename].splice(index, 1);
-              else
-                data[__typename][index] = Object.assign(
-                  data[__typename][index],
-                  item
-                );
-            else data[__typename].push(item);
-          });
-
-          cache.writeQuery<IQueryData<IItem>, IQueryVariables>({
-            query,
-            data
-          });
-        }, */
+          else if (__type === 'insert' && updateQuery !== false)
+            console.warn(
+              'updateQuery should be set on insert-mutations, otherwise set updateQuery to false to disable this warning!'
+            );
+        },
         ...options
       });
     },
