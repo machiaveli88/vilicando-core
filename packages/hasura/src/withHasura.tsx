@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { ApolloOfflineClient } from 'offix-client';
+import { ApolloClient } from 'apollo-client';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { getMainDefinition } from 'apollo-utilities';
@@ -11,8 +11,8 @@ import { IPageContext } from 'vilicando-core';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { WebSocketLink } from 'apollo-link-ws';
 import fetch from 'isomorphic-unfetch';
-import ApolloClient from 'apollo-client';
-import { ApolloOfflineProvider } from 'react-offix-hooks';
+import { persistCache } from 'apollo-cache-persist';
+import { PersistentStorage, PersistedData } from 'apollo-cache-persist/types';
 
 interface IWithHasuraProps {
   ssr?: boolean;
@@ -20,7 +20,22 @@ interface IWithHasuraProps {
   ws?: WebSocketLink.Configuration;
 }
 
-let apolloClient: ApolloClient<any> | ApolloOfflineClient = null;
+let apolloClient: ApolloClient<NormalizedCacheObject> = null;
+
+function initCache(initialState: NormalizedCacheObject) {
+  const cache = new InMemoryCache().restore(initialState || {});
+
+  if (typeof window !== 'undefined') {
+    persistCache({
+      cache,
+      storage: window.localStorage as PersistentStorage<
+        PersistedData<NormalizedCacheObject>
+      >
+    });
+  }
+
+  return cache;
+}
 
 function createApolloClient(
   _http: HttpLink.Options,
@@ -78,11 +93,7 @@ function createApolloClient(
       link
     );
 
-  return new (ssrMode ? ApolloClient : ApolloOfflineClient)({
-    ssrMode,
-    link,
-    cache: new InMemoryCache().restore(initialState || {})
-  });
+  return new ApolloClient({ ssrMode, link, cache: initCache(initialState) });
 }
 
 function initApolloClient(
@@ -110,18 +121,14 @@ export default function withHasura(
     apolloState,
     ...pageProps
   }: {
-    apolloClient: any;
+    apolloClient: ApolloClient<any>;
     apolloState: NormalizedCacheObject;
   }) => (
-    <ApolloOfflineProvider
+    <ApolloProvider
       client={apolloClient || initApolloClient(http, ws, apolloState)}
     >
-      <ApolloProvider
-        client={apolloClient || initApolloClient(http, ws, apolloState)}
-      >
-        <PageComponent {...pageProps} />
-      </ApolloProvider>
-    </ApolloOfflineProvider>
+      <PageComponent {...pageProps} />
+    </ApolloProvider>
   );
 
   // Set the correct displayName in development
@@ -129,21 +136,20 @@ export default function withHasura(
     const displayName =
       PageComponent.displayName || PageComponent.name || 'Component';
 
-    if (displayName === 'App') {
+    if (displayName === 'App')
       console.warn('This withHasura HOC only works with PageComponents.');
-    }
 
     WithHasura.displayName = `withHasura(${displayName})`;
   }
 
-  if (ssr || PageComponent.getInitialProps) {
+  if (ssr || PageComponent.getInitialProps)
     WithHasura.getInitialProps = async ({
       AppTree,
       apolloClient,
       res,
       ...rest
     }: IPageContext & {
-      apolloClient: ApolloClient<any> | ApolloOfflineClient;
+      apolloClient: ApolloClient<any>;
     }) => {
       // Initialize ApolloClient, add it to the ctx object so
       // we can use it in `PageComponent.getInitialProps`.
@@ -151,24 +157,21 @@ export default function withHasura(
 
       // Run wrapped getInitialProps methods
       let pageProps = {};
-      if (PageComponent.getInitialProps) {
+      if (PageComponent.getInitialProps)
         pageProps = await PageComponent.getInitialProps({
           AppTree,
           res,
           ...rest
         });
-      }
 
       // Only on the server:
-      if (typeof window === 'undefined') {
-        // When redirecting, the response is finished.
-        // No point in continuing to render
-        if (res && res.finished) {
+      if (typeof window === 'undefined')
+        if (res && res.finished)
+          // When redirecting, the response is finished.
+          // No point in continuing to render
           return pageProps;
-        }
-
         // Only if ssr is enabled
-        if (ssr) {
+        else if (ssr) {
           try {
             // Run all GraphQL queries
             const { getDataFromTree } = await import('@apollo/react-ssr');
@@ -191,7 +194,6 @@ export default function withHasura(
           // head side effect therefore need to be cleared manually
           Head.rewind();
         }
-      }
 
       // Extract query data from the Apollo store
       const apolloState = apolloClient.cache.extract();
@@ -201,7 +203,6 @@ export default function withHasura(
         apolloState
       };
     };
-  }
 
   return WithHasura;
 }
