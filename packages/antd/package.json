@@ -1,6 +1,6 @@
 {
   "name": "vilicando-antd",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "ISC",
   "private": false,
   "main": "./lib/index.js",
@@ -16,9 +16,9 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "@ant-design/icons": "4.0.0-alpha.11",
+    "@ant-design/icons": "4.0.0-alpha.18",
     "@zeit/next-less": "1.0.1",
-    "antd": "4.0.0-beta.0",
+    "antd": "4.0.0-beta.1",
     "less": "3.10.3",
     "lodash": "^4.17.15",
     "null-loader": "3.0.0",
