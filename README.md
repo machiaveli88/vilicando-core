@@ -73,7 +73,7 @@ Please set the following .env-vars to enable full hasura/graphql support:
 - [x] Linting
 - [x] env-Vars & Overview
 - [x] Language improvements
-- [ ] Cleanup package.json & check "yarn check"
+- [x] Cleanup package.json & check "yarn check"
 - [ ] Update Docs
 
 #### ... Later
