@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { ApolloClient } from 'apollo-client';
+import { ApolloOfflineClient } from 'offix-client';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { getMainDefinition } from 'apollo-utilities';
@@ -11,8 +11,8 @@ import { IPageContext } from 'vilicando-core';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { WebSocketLink } from 'apollo-link-ws';
 import fetch from 'isomorphic-unfetch';
-import { persistCache } from 'apollo-cache-persist';
-import { PersistentStorage, PersistedData } from 'apollo-cache-persist/types';
+import ApolloClient from 'apollo-client';
+import { ApolloOfflineProvider } from 'react-offix-hooks';
 
 interface IWithHasuraProps {
   ssr?: boolean;
@@ -20,22 +20,7 @@ interface IWithHasuraProps {
   ws?: WebSocketLink.Configuration;
 }
 
-let apolloClient: ApolloClient<NormalizedCacheObject> = null;
-
-function initCache(initialState: NormalizedCacheObject) {
-  const cache = new InMemoryCache().restore(initialState || {});
-
-  if (typeof window !== 'undefined') {
-    persistCache({
-      cache,
-      storage: window.localStorage as PersistentStorage<
-        PersistedData<NormalizedCacheObject>
-      >
-    });
-  }
-
-  return cache;
-}
+let apolloClient: ApolloClient<any> | ApolloOfflineClient = null;
 
 function createApolloClient(
   _http: HttpLink.Options,
@@ -93,7 +78,11 @@ function createApolloClient(
       link
     );
 
-  return new ApolloClient({ ssrMode, link, cache: initCache(initialState) });
+  return new (ssrMode ? ApolloClient : ApolloOfflineClient)({
+    ssrMode,
+    link,
+    cache: new InMemoryCache().restore(initialState || {})
+  });
 }
 
 function initApolloClient(
@@ -121,14 +110,18 @@ export default function withHasura(
     apolloState,
     ...pageProps
   }: {
-    apolloClient: ApolloClient<any>;
+    apolloClient: any;
     apolloState: NormalizedCacheObject;
   }) => (
-    <ApolloProvider
+    <ApolloOfflineProvider
       client={apolloClient || initApolloClient(http, ws, apolloState)}
     >
-      <PageComponent {...pageProps} />
-    </ApolloProvider>
+      <ApolloProvider
+        client={apolloClient || initApolloClient(http, ws, apolloState)}
+      >
+        <PageComponent {...pageProps} />
+      </ApolloProvider>
+    </ApolloOfflineProvider>
   );
 
   // Set the correct displayName in development
@@ -150,7 +143,7 @@ export default function withHasura(
       res,
       ...rest
     }: IPageContext & {
-      apolloClient: ApolloClient<any>;
+      apolloClient: ApolloClient<any> | ApolloOfflineClient;
     }) => {
       // Initialize ApolloClient, add it to the ctx object so
       // we can use it in `PageComponent.getInitialProps`.
