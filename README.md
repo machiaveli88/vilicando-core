@@ -72,14 +72,14 @@ Please set the following .env-vars to enable full hasura/graphql support:
 - [x] Monorepo with lerna
 - [x] Linting
 - [x] env-Vars & Overview
-- [ ] Language improvements
+- [x] Language improvements
 - [ ] Cleanup package.json & check "yarn check"
 - [ ] Update Docs
 
 #### ... Later
 
 - [ ] [Auth](https://blog.hasura.io/add-authentication-and-authorization-to-next-js-8-serverless-apps-using-jwt-and-graphql/)
-- [ ] [Offix](https://offix.dev/docs/react)
+- [ ] [Offix](https://offix.dev/docs/react) or [Offline Mutations](https://medium.com/twostoryrobot/a-recipe-for-offline-support-in-react-apollo-571ad7e6f7f4)
 - [ ] Splash-Screen (https://github.com/zeit/next.js/issues/5736, https://github.com/nguyenbathanh/react-loading-screen/blob/master/public/index.html)
 - [ ] Additionally package for UI (based on [react-native-web](https://github.com/zeit/next.js/blob/canary/examples/with-react-native-web/pages/index.js))
 - [ ] ...

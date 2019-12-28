@@ -1,13 +1,13 @@
 import React from 'react';
-import { useLanguage } from 'vilicando-core';
+import { useLanguage } from '../translations';
 
 function StartPage() {
-  const { translate } = useLanguage();
+  const { HEADER, TEXT } = useLanguage();
 
   return (
     <>
-      <h1>{translate('HEADER')}</h1>
-      <p>{translate('TEXT')}</p>
+      <h1>{HEADER}</h1>
+      <p>{TEXT}</p>
     </>
   );
 }

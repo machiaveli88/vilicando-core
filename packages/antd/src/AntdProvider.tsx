@@ -3,11 +3,7 @@ import deDE from 'antd/lib/locale-provider/de_DE';
 import enUS from 'antd/lib/locale-provider/en_US';
 import ConfigProvider from 'antd/lib/config-provider';
 import { parseTheme } from './utils';
-import {
-  FelaProvider,
-  useLanguage,
-  theme as defaultTheme
-} from 'vilicando-core';
+import { FelaProvider, useLocale, theme as defaultTheme } from 'vilicando-core';
 import antdTheme from './theme.json';
 import { IAntdTheme } from './types';
 import { ITheme as IDefaultTheme } from 'vilicando-core';
@@ -21,7 +17,7 @@ export interface IAntdProvider<T = {}> {
 }
 
 function AntdProvider<T>({ children, theme }: IAntdProvider<T>) {
-  const { locale } = useLanguage();
+  const { locale } = useLocale();
 
   // replacing @-vars & functions with values
   const parsedTheme = React.useMemo(() => {

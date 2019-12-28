@@ -1,5 +1,6 @@
 import React from 'react';
-import { useFela, useLanguage, Link } from 'vilicando-core';
+import { useFela, Link } from 'vilicando-core';
+import { useLanguage } from '../translations';
 
 interface ILayout {
   children: React.ReactElement;
@@ -7,7 +8,7 @@ interface ILayout {
 
 function Layout({ children }: ILayout) {
   const { css, theme } = useFela();
-  const { translate } = useLanguage();
+  const { LANGUAGES } = useLanguage();
 
   return (
     <div
@@ -42,12 +43,12 @@ function Layout({ children }: ILayout) {
         <ul>
           <li>
             <Link href="/?lang=de" as="/de">
-              <a>{translate('GERMAN')}</a>
+              <a>{LANGUAGES.GERMAN}</a>
             </Link>
           </li>
           <li>
             <Link href="/?lang=en" as="/en">
-              <a>{translate('ENGLISH')}</a>
+              <a>{LANGUAGES.ENGLISH}</a>
             </Link>
           </li>
         </ul>

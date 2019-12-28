@@ -1,5 +1,5 @@
 import React from 'react';
-import LanguageProvider from './LanguageProvider';
+import LocaleProvider, { ILocales } from './language';
 import { IRenderer } from 'fela';
 import { Progress, ResponsiveHelper } from './components';
 import { FelaProvider } from './theme';
@@ -9,8 +9,7 @@ export interface ICoreProvider {
   dev?: boolean;
   theme?: object;
   renderer?: IRenderer;
-  locale?: string;
-  translations?: object;
+  locale?: ILocales;
 }
 
 function CoreProvider({
@@ -18,19 +17,18 @@ function CoreProvider({
   dev,
   theme,
   renderer,
-  locale,
-  translations = {}
+  locale
 }: ICoreProvider) {
   // todo: Add Splash Screen: https://github.com/zeit/next.js/issues/5736, https://github.com/nguyenbathanh/react-loading-screen/blob/master/public/index.html
 
   return (
     <FelaProvider renderer={renderer} theme={theme}>
-      <LanguageProvider translations={translations} locale={locale}>
+      <LocaleProvider locale={locale}>
         <Progress>
           {!!dev && <ResponsiveHelper />}
           {children}
         </Progress>
-      </LanguageProvider>
+      </LocaleProvider>
     </FelaProvider>
   );
 }

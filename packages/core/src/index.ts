@@ -1,6 +1,11 @@
 export { Loader } from './components';
 export { default as CoreProvider, ICoreProvider } from './CoreProvider';
-export { default as LanguageProvider, useLanguage } from './LanguageProvider';
+export {
+  default as LocaleProvider,
+  useLocale,
+  ILocales,
+  initLanguage
+} from './language';
 export {
   App,
   Body,
