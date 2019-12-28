@@ -1,13 +1,13 @@
 {
   "name": "vilicando-antd",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "ISC",
   "private": false,
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
   "files": [
-    "./lib",
-    "./server.js",
-    "./.babelrc"
+    "lib",
+    "server.js",
+    ".babelrc"
   ],
   "scripts": {
     "build": "tsc",

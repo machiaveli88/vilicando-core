@@ -1,12 +1,12 @@
 {
   "name": "vilicando-hasura",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "ISC",
   "private": false,
-  "main": "./lib/index.js",
-  "bin": "./lib/node/bin.js",
+  "main": "lib/index.js",
+  "bin": "lib/node/bin.js",
   "files": [
-    "./lib"
+    "lib"
   ],
   "scripts": {
     "build": "tsc",
