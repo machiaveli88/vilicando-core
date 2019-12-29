@@ -44,6 +44,7 @@ const codegen = async ({
                 withComponent: false,
                 apolloReactHooksImportFrom: 'vilicando-hasura',
                 apolloReactCommonImportFrom: 'vilicando-hasura',
+                typesPrefix: 'T',
                 namingConvention: {
                   typeNames: 'change-case#pascalCase',
                   transformUnderscore: true
