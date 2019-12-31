@@ -415,7 +415,7 @@
   "popover-color": "@text-color",
   "popover-distance": "@popover-arrow-width + 4px",
   "popover-min-width": "177px",
-  "preset-colors": "pink, magenta, red, volcano, orange, yellow, gold, cyan, lime, green, blue, geekblue, purple, grey",
+  "preset-colors": "pink, magenta, red, volcano, orange, yellow, gold, cyan, lime, green, blue, geekblue, purple",
   "primary-1": "color(~`colorPalette('@{primary-6}', 1) `)",
   "primary-10": "color(~`colorPalette('@{primary-6}', 10) `)",
   "primary-2": "color(~`colorPalette('@{primary-6}', 2) `)",
