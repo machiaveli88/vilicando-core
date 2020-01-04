@@ -18,7 +18,7 @@
     "lint": "yarn prettier && eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
     "merge": "name=\"$(git branch | grep \\* | cut -d ' ' -f2)\" && git checkout master && git merge $name --no-ff -m \"Merge $name\" && git branch -d $name && git push origin master",
     "prettier": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\"",
-    "pub": "lerna version --force-publish",
+    "pub": "lerna version --force-publish && lerna publish",
     "theme": "cd packages/antd && yarn theme",
     "up": "yarn upgrade-interactive --latest"
   },
@@ -33,7 +33,7 @@
     "eslint": "6.8.0",
     "eslint-plugin-react": "7.17.0",
     "eslint-plugin-react-hooks": "2.3.0",
-    "lerna": "^3.20.1",
+    "lerna": "^3.20.2",
     "prettier": "^1.19.1",
     "react": "16.12.0",
     "react-dom": "16.12.0"
