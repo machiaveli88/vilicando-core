@@ -13,18 +13,14 @@ export type Scalars = {
   timestamptz: any;
 };
 
-/** columns and relationships of "group" */
 export type TGroup = {
   __typename?: 'group';
   id: Scalars['uuid'];
   name: Scalars['String'];
-  /** An array relationship */
   users: Array<TGroupUsers>;
-  /** An aggregated array relationship */
   users_aggregate: TGroupUsersAggregate;
 };
 
-/** columns and relationships of "group" */
 export type TGroupUsersArgs = {
   distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -33,7 +29,6 @@ export type TGroupUsersArgs = {
   where?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** columns and relationships of "group" */
 export type TGroupUsersAggregateArgs = {
   distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -42,14 +37,12 @@ export type TGroupUsersAggregateArgs = {
   where?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** aggregated selection of "group" */
 export type TGroupAggregate = {
   __typename?: 'group_aggregate';
   aggregate?: Maybe<TGroupAggregateFields>;
   nodes: Array<TGroup>;
 };
 
-/** aggregate fields of "group" */
 export type TGroupAggregateFields = {
   __typename?: 'group_aggregate_fields';
   count?: Maybe<Scalars['Int']>;
@@ -57,26 +50,22 @@ export type TGroupAggregateFields = {
   min?: Maybe<TGroupMinFields>;
 };
 
-/** aggregate fields of "group" */
 export type TGroupAggregateFieldsCountArgs = {
   columns?: Maybe<Array<TGroupSelectColumn>>;
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "group" */
 export type TGroupAggregateOrderBy = {
   count?: Maybe<TOrderBy>;
   max?: Maybe<TGroupMaxOrderBy>;
   min?: Maybe<TGroupMinOrderBy>;
 };
 
-/** input type for inserting array relation for remote table "group" */
 export type TGroupArrRelInsertInput = {
   data: Array<TGroupInsertInput>;
   on_conflict?: Maybe<TGroupOnConflict>;
 };
 
-/** Boolean expression to filter rows from the table "group". All fields are combined with a logical 'AND'. */
 export type TGroupBoolExp = {
   _and?: Maybe<Array<Maybe<TGroupBoolExp>>>;
   _not?: Maybe<TGroupBoolExp>;
@@ -86,135 +75,106 @@ export type TGroupBoolExp = {
   users?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** unique or primary key constraints on table "group" */
 export enum TGroupConstraint {
-  /** unique or primary key constraint */
   GroupPkey = 'group_pkey'
 }
 
-/** input type for inserting data into table "group" */
 export type TGroupInsertInput = {
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
   users?: Maybe<TGroupUsersArrRelInsertInput>;
 };
 
-/** aggregate max on columns */
 export type TGroupMaxFields = {
   __typename?: 'group_max_fields';
   name?: Maybe<Scalars['String']>;
 };
 
-/** order by max() on columns of table "group" */
 export type TGroupMaxOrderBy = {
   name?: Maybe<TOrderBy>;
 };
 
-/** aggregate min on columns */
 export type TGroupMinFields = {
   __typename?: 'group_min_fields';
   name?: Maybe<Scalars['String']>;
 };
 
-/** order by min() on columns of table "group" */
 export type TGroupMinOrderBy = {
   name?: Maybe<TOrderBy>;
 };
 
-/** response of any mutation on the table "group" */
 export type TGroupMutationResponse = {
   __typename?: 'group_mutation_response';
-  /** number of affected rows by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
   returning: Array<TGroup>;
 };
 
-/** input type for inserting object relation for remote table "group" */
 export type TGroupObjRelInsertInput = {
   data: TGroupInsertInput;
   on_conflict?: Maybe<TGroupOnConflict>;
 };
 
-/** on conflict condition type for table "group" */
 export type TGroupOnConflict = {
   constraint: TGroupConstraint;
   update_columns: Array<TGroupUpdateColumn>;
   where?: Maybe<TGroupBoolExp>;
 };
 
-/** ordering options when selecting data from "group" */
 export type TGroupOrderBy = {
   id?: Maybe<TOrderBy>;
   name?: Maybe<TOrderBy>;
   users_aggregate?: Maybe<TGroupUsersAggregateOrderBy>;
 };
 
-/** select columns of table "group" */
 export enum TGroupSelectColumn {
-  /** column name */
   Id = 'id',
-  /** column name */
   Name = 'name'
 }
 
-/** input type for updating data in table "group" */
 export type TGroupSetInput = {
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
 };
 
-/** update columns of table "group" */
 export enum TGroupUpdateColumn {
-  /** column name */
   Id = 'id',
-  /** column name */
   Name = 'name'
 }
 
-/** columns and relationships of "group_users" */
 export type TGroupUsers = {
   __typename?: 'group_users';
-  /** An object relationship */
   group: TGroup;
   group_id: Scalars['uuid'];
   id: Scalars['uuid'];
-  /** An object relationship */
   user: TUser;
   user_id: Scalars['uuid'];
 };
 
-/** aggregated selection of "group_users" */
 export type TGroupUsersAggregate = {
   __typename?: 'group_users_aggregate';
   aggregate?: Maybe<TGroupUsersAggregateFields>;
   nodes: Array<TGroupUsers>;
 };
 
-/** aggregate fields of "group_users" */
 export type TGroupUsersAggregateFields = {
   __typename?: 'group_users_aggregate_fields';
   count?: Maybe<Scalars['Int']>;
 };
 
-/** aggregate fields of "group_users" */
 export type TGroupUsersAggregateFieldsCountArgs = {
   columns?: Maybe<Array<TGroupUsersSelectColumn>>;
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "group_users" */
 export type TGroupUsersAggregateOrderBy = {
   count?: Maybe<TOrderBy>;
 };
 
-/** input type for inserting array relation for remote table "group_users" */
 export type TGroupUsersArrRelInsertInput = {
   data: Array<TGroupUsersInsertInput>;
   on_conflict?: Maybe<TGroupUsersOnConflict>;
 };
 
-/** Boolean expression to filter rows from the table "group_users". All fields are combined with a logical 'AND'. */
 export type TGroupUsersBoolExp = {
   _and?: Maybe<Array<Maybe<TGroupUsersBoolExp>>>;
   _not?: Maybe<TGroupUsersBoolExp>;
@@ -226,13 +186,10 @@ export type TGroupUsersBoolExp = {
   user_id?: Maybe<TUuidComparisonExp>;
 };
 
-/** unique or primary key constraints on table "group_users" */
 export enum TGroupUsersConstraint {
-  /** unique or primary key constraint */
   GroupUsersPkey = 'group_users_pkey'
 }
 
-/** input type for inserting data into table "group_users" */
 export type TGroupUsersInsertInput = {
   group?: Maybe<TGroupObjRelInsertInput>;
   group_id?: Maybe<Scalars['uuid']>;
@@ -241,29 +198,23 @@ export type TGroupUsersInsertInput = {
   user_id?: Maybe<Scalars['uuid']>;
 };
 
-/** response of any mutation on the table "group_users" */
 export type TGroupUsersMutationResponse = {
   __typename?: 'group_users_mutation_response';
-  /** number of affected rows by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
   returning: Array<TGroupUsers>;
 };
 
-/** input type for inserting object relation for remote table "group_users" */
 export type TGroupUsersObjRelInsertInput = {
   data: TGroupUsersInsertInput;
   on_conflict?: Maybe<TGroupUsersOnConflict>;
 };
 
-/** on conflict condition type for table "group_users" */
 export type TGroupUsersOnConflict = {
   constraint: TGroupUsersConstraint;
   update_columns: Array<TGroupUsersUpdateColumn>;
   where?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** ordering options when selecting data from "group_users" */
 export type TGroupUsersOrderBy = {
   group?: Maybe<TGroupOrderBy>;
   group_id?: Maybe<TOrderBy>;
@@ -272,176 +223,121 @@ export type TGroupUsersOrderBy = {
   user_id?: Maybe<TOrderBy>;
 };
 
-/** select columns of table "group_users" */
 export enum TGroupUsersSelectColumn {
-  /** column name */
   GroupId = 'group_id',
-  /** column name */
   Id = 'id',
-  /** column name */
   UserId = 'user_id'
 }
 
-/** input type for updating data in table "group_users" */
 export type TGroupUsersSetInput = {
   group_id?: Maybe<Scalars['uuid']>;
   id?: Maybe<Scalars['uuid']>;
   user_id?: Maybe<Scalars['uuid']>;
 };
 
-/** update columns of table "group_users" */
 export enum TGroupUsersUpdateColumn {
-  /** column name */
   GroupId = 'group_id',
-  /** column name */
   Id = 'id',
-  /** column name */
   UserId = 'user_id'
 }
 
-/** mutation root */
 export type TMutationRoot = {
   __typename?: 'mutation_root';
-  /** delete data from the table: "group" */
   delete_group?: Maybe<TGroupMutationResponse>;
-  /** delete data from the table: "group_users" */
   delete_group_users?: Maybe<TGroupUsersMutationResponse>;
-  /** delete data from the table: "task" */
   delete_task?: Maybe<TTaskMutationResponse>;
-  /** delete data from the table: "user" */
   delete_user?: Maybe<TUserMutationResponse>;
-  /** insert data into the table: "group" */
   insert_group?: Maybe<TGroupMutationResponse>;
-  /** insert data into the table: "group_users" */
   insert_group_users?: Maybe<TGroupUsersMutationResponse>;
-  /** insert data into the table: "task" */
   insert_task?: Maybe<TTaskMutationResponse>;
-  /** insert data into the table: "user" */
   insert_user?: Maybe<TUserMutationResponse>;
-  /** update data of the table: "group" */
   update_group?: Maybe<TGroupMutationResponse>;
-  /** update data of the table: "group_users" */
   update_group_users?: Maybe<TGroupUsersMutationResponse>;
-  /** update data of the table: "task" */
   update_task?: Maybe<TTaskMutationResponse>;
-  /** update data of the table: "user" */
   update_user?: Maybe<TUserMutationResponse>;
 };
 
-/** mutation root */
 export type TMutationRootDeleteGroupArgs = {
   where: TGroupBoolExp;
 };
 
-/** mutation root */
 export type TMutationRootDeleteGroupUsersArgs = {
   where: TGroupUsersBoolExp;
 };
 
-/** mutation root */
 export type TMutationRootDeleteTaskArgs = {
   where: TTaskBoolExp;
 };
 
-/** mutation root */
 export type TMutationRootDeleteUserArgs = {
   where: TUserBoolExp;
 };
 
-/** mutation root */
 export type TMutationRootInsertGroupArgs = {
   objects: Array<TGroupInsertInput>;
   on_conflict?: Maybe<TGroupOnConflict>;
 };
 
-/** mutation root */
 export type TMutationRootInsertGroupUsersArgs = {
   objects: Array<TGroupUsersInsertInput>;
   on_conflict?: Maybe<TGroupUsersOnConflict>;
 };
 
-/** mutation root */
 export type TMutationRootInsertTaskArgs = {
   objects: Array<TTaskInsertInput>;
   on_conflict?: Maybe<TTaskOnConflict>;
 };
 
-/** mutation root */
 export type TMutationRootInsertUserArgs = {
   objects: Array<TUserInsertInput>;
   on_conflict?: Maybe<TUserOnConflict>;
 };
 
-/** mutation root */
 export type TMutationRootUpdateGroupArgs = {
   _set?: Maybe<TGroupSetInput>;
   where: TGroupBoolExp;
 };
 
-/** mutation root */
 export type TMutationRootUpdateGroupUsersArgs = {
   _set?: Maybe<TGroupUsersSetInput>;
   where: TGroupUsersBoolExp;
 };
 
-/** mutation root */
 export type TMutationRootUpdateTaskArgs = {
   _set?: Maybe<TTaskSetInput>;
   where: TTaskBoolExp;
 };
 
-/** mutation root */
 export type TMutationRootUpdateUserArgs = {
   _set?: Maybe<TUserSetInput>;
   where: TUserBoolExp;
 };
 
-/** column ordering options */
 export enum TOrderBy {
-  /** in the ascending order, nulls last */
   Asc = 'asc',
-  /** in the ascending order, nulls first */
   AscNullsFirst = 'asc_nulls_first',
-  /** in the ascending order, nulls last */
   AscNullsLast = 'asc_nulls_last',
-  /** in the descending order, nulls first */
   Desc = 'desc',
-  /** in the descending order, nulls first */
   DescNullsFirst = 'desc_nulls_first',
-  /** in the descending order, nulls last */
   DescNullsLast = 'desc_nulls_last'
 }
 
-/** query root */
 export type TQueryRoot = {
   __typename?: 'query_root';
-  /** fetch data from the table: "group" */
   group: Array<TGroup>;
-  /** fetch aggregated fields from the table: "group" */
   group_aggregate: TGroupAggregate;
-  /** fetch data from the table: "group" using primary key columns */
   group_by_pk?: Maybe<TGroup>;
-  /** fetch data from the table: "group_users" */
   group_users: Array<TGroupUsers>;
-  /** fetch aggregated fields from the table: "group_users" */
   group_users_aggregate: TGroupUsersAggregate;
-  /** fetch data from the table: "group_users" using primary key columns */
   group_users_by_pk?: Maybe<TGroupUsers>;
-  /** fetch data from the table: "task" */
   task: Array<TTask>;
-  /** fetch aggregated fields from the table: "task" */
   task_aggregate: TTaskAggregate;
-  /** fetch data from the table: "task" using primary key columns */
   task_by_pk?: Maybe<TTask>;
-  /** fetch data from the table: "user" */
   user: Array<TUser>;
-  /** fetch aggregated fields from the table: "user" */
   user_aggregate: TUserAggregate;
-  /** fetch data from the table: "user" using primary key columns */
   user_by_pk?: Maybe<TUser>;
 };
 
-/** query root */
 export type TQueryRootGroupArgs = {
   distinct_on?: Maybe<Array<TGroupSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -450,7 +346,6 @@ export type TQueryRootGroupArgs = {
   where?: Maybe<TGroupBoolExp>;
 };
 
-/** query root */
 export type TQueryRootGroupAggregateArgs = {
   distinct_on?: Maybe<Array<TGroupSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -459,12 +354,10 @@ export type TQueryRootGroupAggregateArgs = {
   where?: Maybe<TGroupBoolExp>;
 };
 
-/** query root */
 export type TQueryRootGroupByPkArgs = {
   id: Scalars['uuid'];
 };
 
-/** query root */
 export type TQueryRootGroupUsersArgs = {
   distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -473,7 +366,6 @@ export type TQueryRootGroupUsersArgs = {
   where?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** query root */
 export type TQueryRootGroupUsersAggregateArgs = {
   distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -482,12 +374,10 @@ export type TQueryRootGroupUsersAggregateArgs = {
   where?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** query root */
 export type TQueryRootGroupUsersByPkArgs = {
   id: Scalars['uuid'];
 };
 
-/** query root */
 export type TQueryRootTaskArgs = {
   distinct_on?: Maybe<Array<TTaskSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -496,7 +386,6 @@ export type TQueryRootTaskArgs = {
   where?: Maybe<TTaskBoolExp>;
 };
 
-/** query root */
 export type TQueryRootTaskAggregateArgs = {
   distinct_on?: Maybe<Array<TTaskSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -505,12 +394,10 @@ export type TQueryRootTaskAggregateArgs = {
   where?: Maybe<TTaskBoolExp>;
 };
 
-/** query root */
 export type TQueryRootTaskByPkArgs = {
   id: Scalars['uuid'];
 };
 
-/** query root */
 export type TQueryRootUserArgs = {
   distinct_on?: Maybe<Array<TUserSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -519,7 +406,6 @@ export type TQueryRootUserArgs = {
   where?: Maybe<TUserBoolExp>;
 };
 
-/** query root */
 export type TQueryRootUserAggregateArgs = {
   distinct_on?: Maybe<Array<TUserSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -528,12 +414,10 @@ export type TQueryRootUserAggregateArgs = {
   where?: Maybe<TUserBoolExp>;
 };
 
-/** query root */
 export type TQueryRootUserByPkArgs = {
   id: Scalars['uuid'];
 };
 
-/** expression to compare columns of type String. All fields are combined with logical 'AND'. */
 export type TStringComparisonExp = {
   _eq?: Maybe<Scalars['String']>;
   _gt?: Maybe<Scalars['String']>;
@@ -552,36 +436,22 @@ export type TStringComparisonExp = {
   _similar?: Maybe<Scalars['String']>;
 };
 
-/** subscription root */
 export type TSubscriptionRoot = {
   __typename?: 'subscription_root';
-  /** fetch data from the table: "group" */
   group: Array<TGroup>;
-  /** fetch aggregated fields from the table: "group" */
   group_aggregate: TGroupAggregate;
-  /** fetch data from the table: "group" using primary key columns */
   group_by_pk?: Maybe<TGroup>;
-  /** fetch data from the table: "group_users" */
   group_users: Array<TGroupUsers>;
-  /** fetch aggregated fields from the table: "group_users" */
   group_users_aggregate: TGroupUsersAggregate;
-  /** fetch data from the table: "group_users" using primary key columns */
   group_users_by_pk?: Maybe<TGroupUsers>;
-  /** fetch data from the table: "task" */
   task: Array<TTask>;
-  /** fetch aggregated fields from the table: "task" */
   task_aggregate: TTaskAggregate;
-  /** fetch data from the table: "task" using primary key columns */
   task_by_pk?: Maybe<TTask>;
-  /** fetch data from the table: "user" */
   user: Array<TUser>;
-  /** fetch aggregated fields from the table: "user" */
   user_aggregate: TUserAggregate;
-  /** fetch data from the table: "user" using primary key columns */
   user_by_pk?: Maybe<TUser>;
 };
 
-/** subscription root */
 export type TSubscriptionRootGroupArgs = {
   distinct_on?: Maybe<Array<TGroupSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -590,7 +460,6 @@ export type TSubscriptionRootGroupArgs = {
   where?: Maybe<TGroupBoolExp>;
 };
 
-/** subscription root */
 export type TSubscriptionRootGroupAggregateArgs = {
   distinct_on?: Maybe<Array<TGroupSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -599,12 +468,10 @@ export type TSubscriptionRootGroupAggregateArgs = {
   where?: Maybe<TGroupBoolExp>;
 };
 
-/** subscription root */
 export type TSubscriptionRootGroupByPkArgs = {
   id: Scalars['uuid'];
 };
 
-/** subscription root */
 export type TSubscriptionRootGroupUsersArgs = {
   distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -613,7 +480,6 @@ export type TSubscriptionRootGroupUsersArgs = {
   where?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** subscription root */
 export type TSubscriptionRootGroupUsersAggregateArgs = {
   distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -622,12 +488,10 @@ export type TSubscriptionRootGroupUsersAggregateArgs = {
   where?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** subscription root */
 export type TSubscriptionRootGroupUsersByPkArgs = {
   id: Scalars['uuid'];
 };
 
-/** subscription root */
 export type TSubscriptionRootTaskArgs = {
   distinct_on?: Maybe<Array<TTaskSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -636,7 +500,6 @@ export type TSubscriptionRootTaskArgs = {
   where?: Maybe<TTaskBoolExp>;
 };
 
-/** subscription root */
 export type TSubscriptionRootTaskAggregateArgs = {
   distinct_on?: Maybe<Array<TTaskSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -645,12 +508,10 @@ export type TSubscriptionRootTaskAggregateArgs = {
   where?: Maybe<TTaskBoolExp>;
 };
 
-/** subscription root */
 export type TSubscriptionRootTaskByPkArgs = {
   id: Scalars['uuid'];
 };
 
-/** subscription root */
 export type TSubscriptionRootUserArgs = {
   distinct_on?: Maybe<Array<TUserSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -659,7 +520,6 @@ export type TSubscriptionRootUserArgs = {
   where?: Maybe<TUserBoolExp>;
 };
 
-/** subscription root */
 export type TSubscriptionRootUserAggregateArgs = {
   distinct_on?: Maybe<Array<TUserSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -668,29 +528,26 @@ export type TSubscriptionRootUserAggregateArgs = {
   where?: Maybe<TUserBoolExp>;
 };
 
-/** subscription root */
 export type TSubscriptionRootUserByPkArgs = {
   id: Scalars['uuid'];
 };
 
-/** columns and relationships of "task" */
 export type TTask = {
   __typename?: 'task';
   created_at: Scalars['timestamptz'];
+  finished_at?: Maybe<Scalars['timestamptz']>;
   id: Scalars['uuid'];
   note?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_at: Scalars['timestamptz'];
 };
 
-/** aggregated selection of "task" */
 export type TTaskAggregate = {
   __typename?: 'task_aggregate';
   aggregate?: Maybe<TTaskAggregateFields>;
   nodes: Array<TTask>;
 };
 
-/** aggregate fields of "task" */
 export type TTaskAggregateFields = {
   __typename?: 'task_aggregate_fields';
   count?: Maybe<Scalars['Int']>;
@@ -698,155 +555,134 @@ export type TTaskAggregateFields = {
   min?: Maybe<TTaskMinFields>;
 };
 
-/** aggregate fields of "task" */
 export type TTaskAggregateFieldsCountArgs = {
   columns?: Maybe<Array<TTaskSelectColumn>>;
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "task" */
 export type TTaskAggregateOrderBy = {
   count?: Maybe<TOrderBy>;
   max?: Maybe<TTaskMaxOrderBy>;
   min?: Maybe<TTaskMinOrderBy>;
 };
 
-/** input type for inserting array relation for remote table "task" */
 export type TTaskArrRelInsertInput = {
   data: Array<TTaskInsertInput>;
   on_conflict?: Maybe<TTaskOnConflict>;
 };
 
-/** Boolean expression to filter rows from the table "task". All fields are combined with a logical 'AND'. */
 export type TTaskBoolExp = {
   _and?: Maybe<Array<Maybe<TTaskBoolExp>>>;
   _not?: Maybe<TTaskBoolExp>;
   _or?: Maybe<Array<Maybe<TTaskBoolExp>>>;
   created_at?: Maybe<TTimestamptzComparisonExp>;
+  finished_at?: Maybe<TTimestamptzComparisonExp>;
   id?: Maybe<TUuidComparisonExp>;
   note?: Maybe<TStringComparisonExp>;
   title?: Maybe<TStringComparisonExp>;
   updated_at?: Maybe<TTimestamptzComparisonExp>;
 };
 
-/** unique or primary key constraints on table "task" */
 export enum TTaskConstraint {
-  /** unique or primary key constraint */
   TaskPkey = 'task_pkey'
 }
 
-/** input type for inserting data into table "task" */
 export type TTaskInsertInput = {
   created_at?: Maybe<Scalars['timestamptz']>;
+  finished_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   note?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** aggregate max on columns */
 export type TTaskMaxFields = {
   __typename?: 'task_max_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
+  finished_at?: Maybe<Scalars['timestamptz']>;
   note?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** order by max() on columns of table "task" */
 export type TTaskMaxOrderBy = {
   created_at?: Maybe<TOrderBy>;
+  finished_at?: Maybe<TOrderBy>;
   note?: Maybe<TOrderBy>;
   title?: Maybe<TOrderBy>;
   updated_at?: Maybe<TOrderBy>;
 };
 
-/** aggregate min on columns */
 export type TTaskMinFields = {
   __typename?: 'task_min_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
+  finished_at?: Maybe<Scalars['timestamptz']>;
   note?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** order by min() on columns of table "task" */
 export type TTaskMinOrderBy = {
   created_at?: Maybe<TOrderBy>;
+  finished_at?: Maybe<TOrderBy>;
   note?: Maybe<TOrderBy>;
   title?: Maybe<TOrderBy>;
   updated_at?: Maybe<TOrderBy>;
 };
 
-/** response of any mutation on the table "task" */
 export type TTaskMutationResponse = {
   __typename?: 'task_mutation_response';
-  /** number of affected rows by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
   returning: Array<TTask>;
 };
 
-/** input type for inserting object relation for remote table "task" */
 export type TTaskObjRelInsertInput = {
   data: TTaskInsertInput;
   on_conflict?: Maybe<TTaskOnConflict>;
 };
 
-/** on conflict condition type for table "task" */
 export type TTaskOnConflict = {
   constraint: TTaskConstraint;
   update_columns: Array<TTaskUpdateColumn>;
   where?: Maybe<TTaskBoolExp>;
 };
 
-/** ordering options when selecting data from "task" */
 export type TTaskOrderBy = {
   created_at?: Maybe<TOrderBy>;
+  finished_at?: Maybe<TOrderBy>;
   id?: Maybe<TOrderBy>;
   note?: Maybe<TOrderBy>;
   title?: Maybe<TOrderBy>;
   updated_at?: Maybe<TOrderBy>;
 };
 
-/** select columns of table "task" */
 export enum TTaskSelectColumn {
-  /** column name */
   CreatedAt = 'created_at',
-  /** column name */
+  FinishedAt = 'finished_at',
   Id = 'id',
-  /** column name */
   Note = 'note',
-  /** column name */
   Title = 'title',
-  /** column name */
   UpdatedAt = 'updated_at'
 }
 
-/** input type for updating data in table "task" */
 export type TTaskSetInput = {
   created_at?: Maybe<Scalars['timestamptz']>;
+  finished_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   note?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** update columns of table "task" */
 export enum TTaskUpdateColumn {
-  /** column name */
   CreatedAt = 'created_at',
-  /** column name */
+  FinishedAt = 'finished_at',
   Id = 'id',
-  /** column name */
   Note = 'note',
-  /** column name */
   Title = 'title',
-  /** column name */
   UpdatedAt = 'updated_at'
 }
 
-/** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
 export type TTimestamptzComparisonExp = {
   _eq?: Maybe<Scalars['timestamptz']>;
   _gt?: Maybe<Scalars['timestamptz']>;
@@ -859,20 +695,16 @@ export type TTimestamptzComparisonExp = {
   _nin?: Maybe<Array<Scalars['timestamptz']>>;
 };
 
-/** columns and relationships of "user" */
 export type TUser = {
   __typename?: 'user';
   created_at: Scalars['timestamptz'];
-  /** An array relationship */
   groups: Array<TGroupUsers>;
-  /** An aggregated array relationship */
   groups_aggregate: TGroupUsersAggregate;
   id: Scalars['uuid'];
   name?: Maybe<Scalars['String']>;
   updated_at: Scalars['timestamptz'];
 };
 
-/** columns and relationships of "user" */
 export type TUserGroupsArgs = {
   distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -881,7 +713,6 @@ export type TUserGroupsArgs = {
   where?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** columns and relationships of "user" */
 export type TUserGroupsAggregateArgs = {
   distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -890,14 +721,12 @@ export type TUserGroupsAggregateArgs = {
   where?: Maybe<TGroupUsersBoolExp>;
 };
 
-/** aggregated selection of "user" */
 export type TUserAggregate = {
   __typename?: 'user_aggregate';
   aggregate?: Maybe<TUserAggregateFields>;
   nodes: Array<TUser>;
 };
 
-/** aggregate fields of "user" */
 export type TUserAggregateFields = {
   __typename?: 'user_aggregate_fields';
   count?: Maybe<Scalars['Int']>;
@@ -905,26 +734,22 @@ export type TUserAggregateFields = {
   min?: Maybe<TUserMinFields>;
 };
 
-/** aggregate fields of "user" */
 export type TUserAggregateFieldsCountArgs = {
   columns?: Maybe<Array<TUserSelectColumn>>;
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "user" */
 export type TUserAggregateOrderBy = {
   count?: Maybe<TOrderBy>;
   max?: Maybe<TUserMaxOrderBy>;
   min?: Maybe<TUserMinOrderBy>;
 };
 
-/** input type for inserting array relation for remote table "user" */
 export type TUserArrRelInsertInput = {
   data: Array<TUserInsertInput>;
   on_conflict?: Maybe<TUserOnConflict>;
 };
 
-/** Boolean expression to filter rows from the table "user". All fields are combined with a logical 'AND'. */
 export type TUserBoolExp = {
   _and?: Maybe<Array<Maybe<TUserBoolExp>>>;
   _not?: Maybe<TUserBoolExp>;
@@ -936,13 +761,10 @@ export type TUserBoolExp = {
   updated_at?: Maybe<TTimestamptzComparisonExp>;
 };
 
-/** unique or primary key constraints on table "user" */
 export enum TUserConstraint {
-  /** unique or primary key constraint */
   UserPkey = 'user_pkey'
 }
 
-/** input type for inserting data into table "user" */
 export type TUserInsertInput = {
   created_at?: Maybe<Scalars['timestamptz']>;
   groups?: Maybe<TGroupUsersArrRelInsertInput>;
@@ -951,7 +773,6 @@ export type TUserInsertInput = {
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** aggregate max on columns */
 export type TUserMaxFields = {
   __typename?: 'user_max_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
@@ -959,14 +780,12 @@ export type TUserMaxFields = {
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** order by max() on columns of table "user" */
 export type TUserMaxOrderBy = {
   created_at?: Maybe<TOrderBy>;
   name?: Maybe<TOrderBy>;
   updated_at?: Maybe<TOrderBy>;
 };
 
-/** aggregate min on columns */
 export type TUserMinFields = {
   __typename?: 'user_min_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
@@ -974,36 +793,29 @@ export type TUserMinFields = {
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** order by min() on columns of table "user" */
 export type TUserMinOrderBy = {
   created_at?: Maybe<TOrderBy>;
   name?: Maybe<TOrderBy>;
   updated_at?: Maybe<TOrderBy>;
 };
 
-/** response of any mutation on the table "user" */
 export type TUserMutationResponse = {
   __typename?: 'user_mutation_response';
-  /** number of affected rows by the mutation */
   affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
   returning: Array<TUser>;
 };
 
-/** input type for inserting object relation for remote table "user" */
 export type TUserObjRelInsertInput = {
   data: TUserInsertInput;
   on_conflict?: Maybe<TUserOnConflict>;
 };
 
-/** on conflict condition type for table "user" */
 export type TUserOnConflict = {
   constraint: TUserConstraint;
   update_columns: Array<TUserUpdateColumn>;
   where?: Maybe<TUserBoolExp>;
 };
 
-/** ordering options when selecting data from "user" */
 export type TUserOrderBy = {
   created_at?: Maybe<TOrderBy>;
   groups_aggregate?: Maybe<TGroupUsersAggregateOrderBy>;
@@ -1012,19 +824,13 @@ export type TUserOrderBy = {
   updated_at?: Maybe<TOrderBy>;
 };
 
-/** select columns of table "user" */
 export enum TUserSelectColumn {
-  /** column name */
   CreatedAt = 'created_at',
-  /** column name */
   Id = 'id',
-  /** column name */
   Name = 'name',
-  /** column name */
   UpdatedAt = 'updated_at'
 }
 
-/** input type for updating data in table "user" */
 export type TUserSetInput = {
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
@@ -1032,19 +838,13 @@ export type TUserSetInput = {
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** update columns of table "user" */
 export enum TUserUpdateColumn {
-  /** column name */
   CreatedAt = 'created_at',
-  /** column name */
   Id = 'id',
-  /** column name */
   Name = 'name',
-  /** column name */
   UpdatedAt = 'updated_at'
 }
 
-/** expression to compare columns of type uuid. All fields are combined with logical 'AND'. */
 export type TUuidComparisonExp = {
   _eq?: Maybe<Scalars['uuid']>;
   _gt?: Maybe<Scalars['uuid']>;
