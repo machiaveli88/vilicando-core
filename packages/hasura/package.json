@@ -1,6 +1,6 @@
 {
   "name": "vilicando-hasura",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -37,6 +37,7 @@
   "peerDependencies": {
     "react": ">= 16.9.0",
     "react-dom": ">= 16.9.0",
+    "typescript": ">= 3.7.4",
     "vilicando-core": "*"
   }
 }

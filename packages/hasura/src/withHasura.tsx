@@ -46,19 +46,27 @@ function createApolloClient(
   const headers = {
     'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
   };
-  const http = _http || {
-    uri: process.env.GRAPHQL_HTTP,
-    headers
-  };
-  const ws = _ws || {
-    uri: process.env.GRAPHQL_WS,
-    options: {
-      reconnect: true,
-      connectionParams: {
-        headers
-      }
-    }
-  };
+  const http =
+    _http ||
+    (process.env.GRAPHQL_HTTP
+      ? {
+          uri: process.env.GRAPHQL_HTTP,
+          headers
+        }
+      : undefined);
+  const ws =
+    _ws ||
+    (process.env.GRAPHQL_WS
+      ? {
+          uri: process.env.GRAPHQL_WS,
+          options: {
+            reconnect: true,
+            connectionParams: {
+              headers
+            }
+          }
+        }
+      : undefined);
 
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors)
