@@ -42,7 +42,7 @@ export interface INamedKeys<T = IStyle> {
 
 export default () =>
   namedKeys({
-    // From (z.B. hugeUp: x >= huge)
+    // Up (z.B. hugeUp: x >= huge)
     ifHugeUp: `@media only screen and (min-width: ${sizes.extraLarge}px)`,
     ifExtraLargeUp: `@media only screen and (min-width: ${sizes.huge}px)`,
     ifLargeUp: `@media only screen and (min-width: ${sizes.large}px)`,
@@ -50,7 +50,7 @@ export default () =>
     ifSmallUp: `@media only screen and (min-width: ${sizes.small}px)`,
     ifExtraSmallUp: `@media only screen and (min-width: ${sizes.mini}px)`,
     ifMiniUp: `@media only screen and (min-width: ${sizes.tiny}px)`,
-    // To (z.B. hugeDown: x <= huge)
+    // Down (z.B. hugeDown: x <= huge)
     ifExtraLargeDown: `@media only screen and (max-width: ${sizes.extraLarge -
       1}px)`,
     ifLargeDown: `@media only screen and (max-width: ${sizes.huge - 1}px)`,
@@ -60,7 +60,7 @@ export default () =>
       1}px)`,
     ifMiniDown: `@media only screen and (max-width: ${sizes.mini - 1}px)`,
     ifTinyDown: `@media only screen and (max-width: ${sizes.tiny - 1}px)`,
-    // On
+    // Exact
     ifHuge: `@media only screen and (min-width: ${sizes.extraLarge}px)`,
     ifExtraLarge: `@media only screen and (max-width: ${sizes.extraLarge -
       1}px) and (min-width: ${sizes.huge}px)`,
