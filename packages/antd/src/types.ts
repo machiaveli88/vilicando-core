@@ -1,5 +1,6 @@
 export interface IAntdTheme {
   alert: {
+    close: { color: string; hover: { color: string } };
     error: {
       bg: { color: string };
       border: { color: string };
@@ -10,11 +11,13 @@ export interface IAntdTheme {
       border: { color: string };
       icon: { color: string };
     };
+    message: { color: string };
     success: {
       bg: { color: string };
       border: { color: string };
       icon: { color: string };
     };
+    text: { color: string };
     warning: {
       bg: { color: string };
       border: { color: string };
@@ -88,6 +91,7 @@ export interface IAntdTheme {
     font: { size: { lg: string; sm: string }; weight: number | string };
     group: { border: string };
     height: { base: string; lg: string; sm: string };
+    link: { ghost: { color: string } };
     padding: { base: string; lg: string; sm: string };
     primary: { bg: string; color: string; shadow: string };
     shadow: string;
@@ -97,6 +101,7 @@ export interface IAntdTheme {
   calendar: {
     bg: string;
     border: { color: string };
+    full: { bg: string; panel: { bg: string } };
     input: { bg: string };
     item: { active: { bg: string } };
   };
@@ -115,6 +120,12 @@ export interface IAntdTheme {
   };
   cascader: {
     bg: string;
+    dropdown: {
+      edge: { child: { vertical: { padding: string } } };
+      font: { size: string };
+      line: { height: string };
+      vertical: { padding: string };
+    };
     item: { selected: { bg: string } };
     menu: { bg: string; border: { color: { split: string } } };
   };
@@ -161,6 +172,7 @@ export interface IAntdTheme {
     header: { padding: string };
   };
   dropdown: {
+    edge: { child: { vertical: { padding: string } } };
     font: { size: string };
     line: { height: string };
     menu: { bg: string; submenu: { disabled: { bg: string } } };
@@ -261,7 +273,7 @@ export interface IAntdTheme {
     disabled: { bg: string };
     height: { base: string; lg: string; sm: string };
     hover: { border: { color: string } };
-    icon: { hover: { color: string } };
+    icon: { color: string; hover: { color: string } };
     number: {
       handler: {
         active: { bg: string };
@@ -334,7 +346,9 @@ export interface IAntdTheme {
     10: string;
     base: string;
   };
-  mentions: { dropdown: { bg: string } };
+  mentions: {
+    dropdown: { bg: string; menu: { item: { hover: { bg: string } } } };
+  };
   menu: {
     bg: string;
     collapsed: { width: string };
@@ -370,7 +384,6 @@ export interface IAntdTheme {
     heading: { color: string };
     mask: { bg: string };
   };
-  month: { panel: { bg: string } };
   normal: { color: string };
   notification: { bg: string };
   orange: {
@@ -388,7 +401,9 @@ export interface IAntdTheme {
   };
   outline: { blur: { size: number | string }; color: string; width: string };
   padding: { lg: string; md: string; sm: string; xs: string };
-  page: { header: { back: { color: string }; padding: string } };
+  page: {
+    header: { back: { color: string }; ghost: { bg: string }; padding: string };
+  };
   pagination: {
     font: { family: string; weight: { active: number | string } };
     item: {
@@ -397,6 +412,17 @@ export interface IAntdTheme {
       link: { bg: string };
       size: string;
     };
+  };
+  picker: {
+    basic: {
+      cell: {
+        disabled: { bg: string };
+        hover: { color: string; with: { range: { color: string } } };
+      };
+    };
+    bg: string;
+    border: { color: string };
+    date: { hover: { range: { border: { color: string } } } };
   };
   pink: {
     1: string;
@@ -439,6 +465,7 @@ export interface IAntdTheme {
     default: { color: string };
     radius: string;
     remaining: { color: string };
+    steps: { item: { bg: string } };
     text: { color: string };
   };
   purple: {
@@ -504,11 +531,17 @@ export interface IAntdTheme {
     background: string;
     border: { color: string };
     clear: { background: string };
-    dropdown: { bg: string };
+    dropdown: {
+      bg: string;
+      font: { size: string };
+      line: { height: string };
+      vertical: { padding: string };
+    };
     item: {
       active: { bg: string };
       selected: { bg: string; font: { weight: number | string } };
     };
+    selection: { item: { bg: string; border: { color: string } } };
   };
   shadow: {
     1: { down: string; left: string; right: string; up: string };
@@ -552,7 +585,7 @@ export interface IAntdTheme {
     body: { selected: { sort: { bg: string } }; sort: { bg: string } };
     border: { radius: { base: number | string } };
     expanded: { row: { bg: string } };
-    filter: { btns: { bg: string } };
+    filter: { btns: { bg: string }; dropdown: { bg: string } };
     footer: { bg: string; color: string };
     header: {
       bg: string;
@@ -592,18 +625,6 @@ export interface IAntdTheme {
     selection: { bg: string };
   };
   theme: string;
-  time: {
-    picker: {
-      bg: string;
-      inner: { bg: string };
-      panel: {
-        column: { width: string };
-        inner: { bg: string };
-        width: string;
-      };
-      selected: { bg: string };
-    };
-  };
   timeline: {
     color: string;
     dot: { bg: string; border: { width: string }; color: string };
@@ -652,7 +673,6 @@ export interface IAntdTheme {
   warning: { color: string };
   wave: { animation: { width: string } };
   white: string;
-  year: { panel: { bg: string } };
   yellow: {
     1: string;
     2: string;

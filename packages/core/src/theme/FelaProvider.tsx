@@ -26,6 +26,7 @@ export default function FelaProvider({
       `
         --primary-color: ${_theme.primary.base};
         --secondary-color: ${_theme.secondary.base};
+        --background-color: ${_theme.background};
         --light-color: ${_theme.white};
         --dark-color: ${_theme.black};
       `,

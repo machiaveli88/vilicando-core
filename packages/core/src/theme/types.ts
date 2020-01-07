@@ -286,6 +286,7 @@ export interface ITheme {
     base: string;
   };
 
+  background: string;
   black: string;
   white: string;
 }

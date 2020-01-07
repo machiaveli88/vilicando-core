@@ -36,10 +36,10 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
     ${normalize}
 
     html {
-      color: var(--primary-color);
       user-select: none;
     }
     body {
+      background-color: var(--background-color);
       overscroll-behavior: none;
     }
     *, body, button, html, input, select, textarea {

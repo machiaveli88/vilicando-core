@@ -31,6 +31,13 @@ function StartPage() {
           </li>
           <li
             className={css({
+              color: 'var(--background-color)'
+            })}
+          >
+            --background-color
+          </li>
+          <li
+            className={css({
               color: 'var(--light-color)',
               backgroundColor: 'var(--dark-color)'
             })}

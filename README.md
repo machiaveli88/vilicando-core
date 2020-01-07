@@ -22,6 +22,7 @@ Vilicando uses [fela](http://fela.js.org) for theming and (with vilicando-antd) 
 
 - --primary-color
 - --seondary-color
+- --background-color
 - --light-color
 - --dark-color
 

@@ -8,6 +8,7 @@
     "xs": 480,
     "xxs": 360
   },
+
   "spacing": {
     "xxl": 32,
     "xl": 24,
@@ -275,6 +276,7 @@
     "base": "#ffc107"
   },
 
+  "background": "#f44336",
   "black": "#000000",
   "white": "#ffffff"
 }
