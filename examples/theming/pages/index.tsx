@@ -20,6 +20,33 @@ function StartPage() {
         vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
         gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
       </p>
+      <p>
+        Also with css-variables!
+        <ul>
+          <li className={css({ color: 'var(--primary-color)' })}>
+            --primary-color
+          </li>
+          <li className={css({ color: 'var(--secondary-color)' })}>
+            --secondary-color
+          </li>
+          <li
+            className={css({
+              color: 'var(--light-color)',
+              backgroundColor: 'var(--dark-color)'
+            })}
+          >
+            --light-color
+          </li>
+          <li
+            className={css({
+              color: 'var(--dark-color)',
+              backgroundColor: 'var(--light-color)'
+            })}
+          >
+            --dark-color
+          </li>
+        </ul>
+      </p>
     </>
   );
 }

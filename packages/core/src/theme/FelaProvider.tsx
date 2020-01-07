@@ -23,6 +23,15 @@ export default function FelaProvider({
 
     // default styles
     renderer.renderStatic(
+      `
+        --primary-color: ${_theme.primary.base};
+        --secondary-color: ${_theme.secondary.base};
+        --light-color: ${_theme.white};
+        --dark-color: ${_theme.black};
+      `,
+      ':root'
+    );
+    renderer.renderStatic(
       {
         fontFamily: _theme.font.family,
         fontSize: _theme.font.size.md,

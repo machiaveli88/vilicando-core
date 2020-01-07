@@ -13,9 +13,10 @@ import { createRenderer, TPlugin } from 'fela';
 
 interface ICreateRenderer {
   plugins?: Array<TPlugin>;
+  css?: string;
 }
 
-export default ({ plugins = [] }: ICreateRenderer) => {
+export default ({ plugins = [], css = '' }: ICreateRenderer) => {
   const renderer = createRenderer({
     plugins: [
       typescript(),
@@ -34,14 +35,27 @@ export default ({ plugins = [] }: ICreateRenderer) => {
   renderer.renderStatic(`
     ${normalize}
 
+    html {
+      color: var(--primary-color);
+      user-select: none;
+    }
+    body {
+      overscroll-behavior: none;
+    }
+    *, body, button, html, input, select, textarea {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
     #__next {
       min-height: 100%;
       display: flex;
+      flex-direction: column;
     }
     #__next > * {
       flex-grow: 1;
     }
-    
+
+    ${css}
   `);
 
   return renderer;

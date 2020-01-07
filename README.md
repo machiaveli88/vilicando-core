@@ -18,6 +18,13 @@ Framework based on next.js, react-fela & hasura.io for web applications with ful
 
 Vilicando uses [fela](http://fela.js.org) for theming and (with vilicando-antd) [antd](https://ant.design/) for the standard UI components. The theme variables therefore also depend on the Antd variables, which can be found [here](https://github.com/machiaveli88/vilicando-core/blob/master/antd/src/theme.json). The standard theme variables can be found in [here](https://github.com/machiaveli88/vilicando-core/blob/master/core/src/theme/theme.json).
 
+### CSS Variables
+
+- --primary-color
+- --seondary-color
+- --light-color
+- --dark-color
+
 ## Language
 
 Based on [polyglot](https://github.com/airbnb/polyglot.js#options-overview).
