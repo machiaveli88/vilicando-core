@@ -6,7 +6,7 @@ import { FelaProvider } from './theme';
 import ConfigProvider from './ConfigProvider';
 
 interface ICoreProvider {
-  children: React.ReactNode;
+  children: React.ReactNode | Array<React.ReactNode>;
   dev?: boolean;
   title?: string;
   theme?: object;

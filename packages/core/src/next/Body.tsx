@@ -2,7 +2,7 @@ import React from 'react';
 import { Main, NextScript } from 'next/document';
 
 interface IBody {
-  children?: React.ReactNode;
+  children?: React.ReactNode | Array<React.ReactNode>;
 }
 
 function Body({ children }: IBody) {

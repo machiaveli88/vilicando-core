@@ -8,7 +8,7 @@ interface IConfigContext {
 
 interface IConfigProvider {
   title?: string;
-  children: React.ReactNode;
+  children: React.ReactNode | Array<React.ReactNode>;
 }
 
 const ConfigContext = React.createContext<IConfigContext>({});

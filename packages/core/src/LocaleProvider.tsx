@@ -10,7 +10,7 @@ interface ILocaleContext {
 }
 interface ILocaleProvider {
   locale?: TLocale;
-  children: React.ReactNode;
+  children: React.ReactNode | Array<React.ReactNode>;
 }
 
 const LocaleContext = React.createContext<ILocaleContext>({});

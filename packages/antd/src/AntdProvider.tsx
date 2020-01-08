@@ -12,7 +12,7 @@ import { merge } from 'lodash';
 export type ITheme = IDefaultTheme & IAntdTheme;
 
 export interface IAntdProvider<T = {}> {
-  children: React.ReactNode;
+  children: React.ReactNode | Array<React.ReactNode>;
   theme?: Partial<ITheme> & T;
 }
 

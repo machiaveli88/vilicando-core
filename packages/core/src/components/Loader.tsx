@@ -3,7 +3,7 @@ import { TRuleProps } from 'fela';
 import { useFela } from '../theme';
 
 export interface IComponentLoader {
-  children?: React.ReactNode;
+  children?: React.ReactNode | Array<React.ReactNode>;
   size?: number;
   text?: string | React.ReactNode;
 }

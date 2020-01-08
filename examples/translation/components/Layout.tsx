@@ -3,7 +3,7 @@ import { useFela, useConfig, Link } from 'vilicando-core';
 import { useLanguage } from '../translations';
 
 interface ILayout {
-  children: React.ReactElement;
+  children: React.ReactNode | Array<React.ReactNode>;
 }
 
 function Layout({ children }: ILayout) {

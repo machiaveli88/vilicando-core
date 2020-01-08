@@ -2,7 +2,7 @@ import React from 'react';
 import { useFela, useConfig } from 'vilicando-core';
 
 interface ILayout {
-  children: React.ReactElement;
+  children: React.ReactNode | Array<React.ReactNode>;
 }
 
 function Layout({ children }: ILayout) {

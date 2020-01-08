@@ -9,7 +9,7 @@ Router.events.on('routeChangeComplete', NProgress.done);
 Router.events.on('routeChangeError', NProgress.done);
 
 interface IProgress {
-  children: React.ReactNode;
+  children: React.ReactNode | Array<React.ReactNode>;
   color?: string;
 }
 

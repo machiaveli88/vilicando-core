@@ -2,7 +2,7 @@ import React from 'react';
 import { Head as NextHead } from 'next/document';
 
 interface IHead {
-  children?: React.ReactNode;
+  children?: React.ReactNode | Array<React.ReactNode>;
 }
 
 function Head({ children }: IHead) {

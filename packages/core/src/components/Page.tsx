@@ -3,7 +3,7 @@ import { Title } from '../next';
 import { useConfig } from '../ConfigProvider';
 
 interface IPage {
-  children?: React.ReactNode;
+  children?: React.ReactNode | Array<React.ReactNode>;
   className?: string;
   title?: string;
   meta?: React.ReactNode;

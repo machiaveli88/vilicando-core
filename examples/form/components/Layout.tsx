@@ -3,7 +3,7 @@ import { useConfig } from 'vilicando-core';
 import { useFela } from 'vilicando-antd';
 
 interface ILayout {
-  children: React.ReactElement;
+  children: React.ReactNode | Array<React.ReactNode>;
 }
 
 function Layout({ children }: ILayout) {

@@ -10,7 +10,7 @@ interface IFelaProvider {
   theme: Partial<ITheme>;
   renderer?: IRenderer;
   overwrite?: boolean;
-  children?: React.ReactNode;
+  children?: React.ReactNode | Array<React.ReactNode>;
 }
 
 export default function FelaProvider({
