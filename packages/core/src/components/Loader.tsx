@@ -35,82 +35,85 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
   const pulseDot = renderer.renderKeyframe(pulseDotKeyframe, {});
 
   return (
-    <div
-      className={css({
-        bottom: 0,
-        left: 0,
-        margin: 0,
-        position: 'fixed',
-        pointerEvents: 'none',
-        right: 0,
-        top: 0,
-        background: `linear-gradient(135deg, ${theme.primary[6]} 0%,${theme.primary[8]} 100%)`,
-        zIndex: 1030
-      })}
-    >
+    <div>
+      {/* need this unneccassary div, because if dynamic is used with onSSR => inner divs className is missing!!!! */}
       <div
         className={css({
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          height: size * 3,
-          width: size * 3,
-          display: 'block',
-          marginLeft: -size * 1.5,
-          marginTop: -size * 1.5,
-          borderRadius: size * 1.5,
-          backgroundColor: theme.primary[6],
-          animation: `${pulseRing} 1.25s ${theme.ease.out} infinite`
+          bottom: 0,
+          left: 0,
+          margin: 0,
+          position: 'fixed',
+          pointerEvents: 'none',
+          right: 0,
+          top: 0,
+          background: `linear-gradient(135deg, ${theme.primary[6]} 0%,${theme.primary[8]} 100%)`,
+          zIndex: 1030
         })}
-      />
-      {!!children && (
+      >
         <div
           className={css({
             position: 'absolute',
             left: '50%',
             top: '50%',
-            height: size,
-            width: size,
+            height: size * 3,
+            width: size * 3,
             display: 'block',
-            marginLeft: -size * 0.5,
-            marginTop: -size * 0.5,
-            backgroundColor: theme.white,
-            borderRadius: size * 0.5,
-            boxShadow: theme.shadow[2],
-            animation: `${pulseDot} 1.25s ${theme.ease.inOut} -.4s infinite`
+            marginLeft: -size * 1.5,
+            marginTop: -size * 1.5,
+            borderRadius: size * 1.5,
+            backgroundColor: theme.primary[6],
+            animation: `${pulseRing} 1.25s ${theme.ease.out} infinite`
           })}
-        >
+        />
+        {!!children && (
           <div
             className={css({
-              center: true,
-              '> *': {
-                width: size,
-                height: size
-              }
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              height: size,
+              width: size,
+              display: 'block',
+              marginLeft: -size * 0.5,
+              marginTop: -size * 0.5,
+              backgroundColor: theme.white,
+              borderRadius: size * 0.5,
+              boxShadow: theme.shadow[2],
+              animation: `${pulseDot} 1.25s ${theme.ease.inOut} -.4s infinite`
             })}
           >
-            {children}
+            <div
+              className={css({
+                center: true,
+                '> *': {
+                  width: size,
+                  height: size
+                }
+              })}
+            >
+              {children}
+            </div>
           </div>
-        </div>
-      )}
-      {!!text && (
-        <div
-          className={css({
-            position: 'absolute',
-            left: 0,
-            bottom: 0,
-            width: '100%',
-            textAlign: 'center',
-            display: 'block',
-            color: 'white',
-            fontFamily: theme.font.family,
-            fontSize: theme.font.size.lg,
-            paddingY: theme.spacing.xl
-          })}
-        >
-          {text}
-        </div>
-      )}
+        )}
+        {!!text && (
+          <div
+            className={css({
+              position: 'absolute',
+              left: 0,
+              bottom: 0,
+              width: '100%',
+              textAlign: 'center',
+              display: 'block',
+              color: 'white',
+              fontFamily: theme.font.family,
+              fontSize: theme.font.size.lg,
+              paddingY: theme.spacing.xl
+            })}
+          >
+            {text}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
