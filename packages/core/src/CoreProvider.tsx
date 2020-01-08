@@ -1,5 +1,5 @@
 import React from 'react';
-import LocaleProvider, { ILocales } from './language';
+import LocaleProvider, { TLocale } from './LocaleProvider';
 import { IRenderer } from 'fela';
 import { Progress, ResponsiveHelper } from './components';
 import { FelaProvider } from './theme';
@@ -9,7 +9,7 @@ export interface ICoreProvider {
   dev?: boolean;
   theme?: object;
   renderer?: IRenderer;
-  locale?: ILocales;
+  locale?: TLocale;
 }
 
 function CoreProvider({
