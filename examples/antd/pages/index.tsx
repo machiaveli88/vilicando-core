@@ -41,7 +41,7 @@ function StartPage() {
             padding: theme.spacing.xl,
             flexGrow: 1,
             width: '75%',
-            minWidth: theme.screen.xs,
+            minWidth: theme.screen.xxs,
             maxWidth: theme.screen.md
           })}
         >

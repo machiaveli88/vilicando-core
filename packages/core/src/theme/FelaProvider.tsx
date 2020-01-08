@@ -32,9 +32,15 @@ export default function FelaProvider({
     );
     renderer.renderStatic(
       {
-        backgroundColor: theme.background.color.base
+        backgroundColor: _theme.background.color.base
       },
       'body'
+    );
+    renderer.renderStatic(
+      {
+        backgroundColor: _theme.background.color.light
+      },
+      '#__next'
     );
     renderer.renderStatic({ color: _theme.heading.color }, 'h1,h2,h3,h4,h5,h6');
     renderer.renderStatic({ fontSize: _theme.heading[1].size }, 'h1');

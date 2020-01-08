@@ -33,7 +33,7 @@ function Layout({ children }: ILayout) {
       <div
         className={css({
           width: '75%',
-          minWidth: theme.screen.xs,
+          minWidth: theme.screen.xxs,
           maxWidth: theme.screen.md
         })}
       >

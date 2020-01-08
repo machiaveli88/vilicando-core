@@ -35,11 +35,13 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
   renderer.renderStatic(`
     ${normalize}
 
+    html,body {
+      height: 100%;
+    }
     html {
       user-select: none;
     }
     body {
-      background-color: var(--background-color);
       overscroll-behavior: none;
     }
     *, body, button, html, input, select, textarea {
