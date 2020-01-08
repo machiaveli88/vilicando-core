@@ -23,22 +23,18 @@ export default function FelaProvider({
 
     // default styles
     renderer.renderStatic(
-      `
-        --primary-color: ${_theme.primary.base};
-        --secondary-color: ${_theme.secondary.base};
-        --background-color: ${_theme.background};
-        --light-color: ${_theme.white};
-        --dark-color: ${_theme.black};
-      `,
-      ':root'
-    );
-    renderer.renderStatic(
       {
         fontFamily: _theme.font.family,
         fontSize: _theme.font.size.md,
         color: _theme.black
       },
       'html,body'
+    );
+    renderer.renderStatic(
+      {
+        backgroundColor: theme.background.color.base
+      },
+      'body'
     );
     renderer.renderStatic({ color: _theme.heading.color }, 'h1,h2,h3,h4,h5,h6');
     renderer.renderStatic({ fontSize: _theme.heading[1].size }, 'h1');

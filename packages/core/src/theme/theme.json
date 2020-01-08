@@ -276,7 +276,7 @@
     "base": "#ffc107"
   },
 
-  "background": "#f44336",
+  "background": { "color": { "base": "#f44336", "light": "#ffebee" } },
   "black": "#000000",
   "white": "#ffffff"
 }

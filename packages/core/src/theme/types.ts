@@ -286,7 +286,7 @@ export interface ITheme {
     base: string;
   };
 
-  background: string;
+  background: { color: { base: string; light: string } };
   black: string;
   white: string;
 }
