@@ -6,15 +6,17 @@ import defaultRenderer from './defaultRenderer';
 import defaultTheme from './theme.json';
 import { ITheme } from './types';
 
-interface IFelaProvider {
-  theme: Partial<ITheme>;
+export interface IFela {
+  theme?: Partial<ITheme>;
   renderer?: IRenderer;
+}
+interface IFelaProvider extends IFela {
   overwrite?: boolean;
   children?: React.ReactNode | Array<React.ReactNode>;
 }
 
 export default function FelaProvider({
-  theme,
+  theme = {},
   renderer = defaultRenderer,
   ...props
 }: IFelaProvider) {

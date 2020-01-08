@@ -1,17 +1,12 @@
 import React from 'react';
-import LocaleProvider, { TLocale } from './LocaleProvider';
-import { IRenderer } from 'fela';
+import LocaleProvider, { ILocale } from './LocaleProvider';
 import { Progress, ResponsiveHelper } from './components';
-import { FelaProvider } from './theme';
-import ConfigProvider from './ConfigProvider';
+import { FelaProvider, IFela } from './theme';
+import ConfigProvider, { IConfig } from './ConfigProvider';
 
-interface ICoreProvider {
+interface ICoreProvider extends IConfig, ILocale, IFela {
   children: React.ReactNode | Array<React.ReactNode>;
   dev?: boolean;
-  title?: string;
-  theme?: object;
-  renderer?: IRenderer;
-  locale?: TLocale;
 }
 
 function CoreProvider({

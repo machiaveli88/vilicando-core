@@ -4,12 +4,14 @@ import { defaultLocale } from './utils';
 import 'moment/locale/de';
 
 export type TLocale = 'en' | 'de';
-interface ILocaleContext {
+
+export interface ILocale {
   locale?: TLocale;
+}
+interface ILocaleContext extends ILocale {
   setLocale?: (locale: TLocale) => void;
 }
-interface ILocaleProvider {
-  locale?: TLocale;
+interface ILocaleProvider extends ILocale {
   children: React.ReactNode | Array<React.ReactNode>;
 }
 

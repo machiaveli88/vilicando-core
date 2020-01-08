@@ -1,4 +1,4 @@
-export { default as FelaProvider } from './FelaProvider';
+export { default as FelaProvider, IFela } from './FelaProvider';
 export {
   default as useFela,
   useFelaBase,

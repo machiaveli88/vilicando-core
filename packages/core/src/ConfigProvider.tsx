@@ -1,13 +1,11 @@
 import React from 'react';
 import Title from './next/Title';
 
-interface IConfigContext {
+export interface IConfig {
   title?: string;
-  // todo: add loader
 }
-
-interface IConfigProvider {
-  title?: string;
+interface IConfigContext extends IConfig {}
+interface IConfigProvider extends IConfig {
   children: React.ReactNode | Array<React.ReactNode>;
 }
 
@@ -17,10 +15,13 @@ export function useConfig() {
   return React.useContext<IConfigContext>(ConfigContext);
 }
 
-export default function ConfigProvider({ title, children }: IConfigProvider) {
+export default function ConfigProvider({
+  children,
+  ...props
+}: IConfigProvider) {
   return (
-    <ConfigContext.Provider value={{ title }}>
-      {!!title && <Title>{title}</Title>}
+    <ConfigContext.Provider value={props}>
+      {!!props.title && <Title>{props.title}</Title>}
       {children}
     </ConfigContext.Provider>
   );
