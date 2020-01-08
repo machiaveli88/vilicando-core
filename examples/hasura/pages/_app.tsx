@@ -7,7 +7,7 @@ class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <CoreProvider>
+      <CoreProvider title="Hasura Example App">
         <Layout>
           <Component {...pageProps} />
         </Layout>

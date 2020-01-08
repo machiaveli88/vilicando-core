@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFela } from 'vilicando-core';
+import { useFela, useConfig } from 'vilicando-core';
 
 interface ILayout {
   children: React.ReactElement;
@@ -7,6 +7,7 @@ interface ILayout {
 
 function Layout({ children }: ILayout) {
   const { css, theme } = useFela();
+  const { title } = useConfig();
 
   return (
     <div
@@ -25,9 +26,7 @@ function Layout({ children }: ILayout) {
           width: '100%'
         })}
       >
-        <h2 className={css({ color: theme.white, margin: 0 })}>
-          Theming Example App
-        </h2>
+        <h2 className={css({ color: theme.white, margin: 0 })}>{title}</h2>
       </div>
 
       <div

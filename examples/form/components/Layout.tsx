@@ -1,5 +1,6 @@
 import React from 'react';
-import { useFela } from 'vilicando-core';
+import { useConfig } from 'vilicando-core';
+import { useFela } from 'vilicando-antd';
 
 interface ILayout {
   children: React.ReactElement;
@@ -7,6 +8,7 @@ interface ILayout {
 
 function Layout({ children }: ILayout) {
   const { css, theme } = useFela();
+  const { title } = useConfig();
 
   return (
     <div
@@ -25,9 +27,7 @@ function Layout({ children }: ILayout) {
           width: '100%'
         })}
       >
-        <h2 className={css({ color: theme.white, margin: 0 })}>
-          Form Example App
-        </h2>
+        <h2 className={css({ color: theme.white, margin: 0 })}>{title}</h2>
       </div>
 
       <div

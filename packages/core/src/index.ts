@@ -1,5 +1,6 @@
-export { Loader } from './components';
-export { default as CoreProvider, ICoreProvider } from './CoreProvider';
+export { Loader, Page } from './components';
+export { default as ConfigProvider, useConfig } from './ConfigProvider';
+export { default as CoreProvider } from './CoreProvider';
 export { default as language } from './language';
 export {
   default as LocaleProvider,
@@ -17,6 +18,7 @@ export {
   IPageContext, // todo: can remove?
   Link,
   Router,
+  Title,
   withRouter
 } from './next';
 export {

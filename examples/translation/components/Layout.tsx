@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFela, Link } from 'vilicando-core';
+import { useFela, useConfig, Link } from 'vilicando-core';
 import { useLanguage } from '../translations';
 
 interface ILayout {
@@ -8,6 +8,7 @@ interface ILayout {
 
 function Layout({ children }: ILayout) {
   const { css, theme } = useFela();
+  const { title } = useConfig();
   const { LANGUAGES } = useLanguage();
 
   return (
@@ -27,9 +28,7 @@ function Layout({ children }: ILayout) {
           width: '100%'
         })}
       >
-        <h2 className={css({ color: theme.white, margin: 0 })}>
-          Translation Example App
-        </h2>
+        <h2 className={css({ color: theme.white, margin: 0 })}>{title}</h2>
       </div>
 
       <div

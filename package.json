@@ -13,6 +13,7 @@
     "example:hasura": "cd examples/hasura && yarn dev",
     "example:ssr": "cd examples/ssr && yarn dev",
     "example:theming": "cd examples/theming && yarn dev",
+    "example:title": "cd examples/title && yarn dev",
     "example:translation": "cd examples/translation && yarn dev",
     "feature": "echo \"Name: \" && read name && git checkout -b feature-$name master",
     "lint": "yarn prettier && eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
