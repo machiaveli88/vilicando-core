@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.4.9",
+  "version": "0.4.12",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -36,7 +36,7 @@
     "fela-plugin-validator": "11.0.2",
     "fela-preset-web": "11.0.2",
     "lodash": "^4.17.15",
-    "next": "9.1.8-canary.4",
+    "next": "9.1.8-canary.5",
     "next-offline": "^5.0.0-beta.11",
     "nprogress": "^0.2.0",
     "push.js": "^1.0.12",
@@ -48,7 +48,7 @@
     "@types/nprogress": "^0.2.0",
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
-    "@types/webpack": "^4.41.1",
+    "@types/webpack": "^4.41.2",
     "typescript": "3.7.4"
   },
   "peerDependencies": {
