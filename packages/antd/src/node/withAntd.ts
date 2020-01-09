@@ -16,7 +16,7 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
   const { lessLoaderOptions, webpack, ...rest } = nextConfig;
 
   return withLess({
-    // todo: extractCssChunksOptions: { orderWarning: false }, // todo: waiting for PR https://github.com/zeit/next-plugins/pull/510
+    extractCssChunksOptions: { orderWarning: false },
     lessLoaderOptions: {
       javascriptEnabled: true,
       modifyVars: {
@@ -27,18 +27,6 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
     },
     webpack: (config: any, options: any) => {
       const { isServer } = options;
-
-      config.module.rules.forEach((rule: any) => {
-        if (Array.isArray(rule.use))
-          rule.use.forEach((u: any) => {
-            if (u.loader === 'css-loader' && u.options) {
-              console.info(
-                'HACK: Removing `minimize` option from `css-loader` entries in Webpack config'
-              );
-              delete u.options.minimize;
-            }
-          });
-      });
 
       if (isServer) {
         const antStyles = /antd\/.*?\/style.*?/;

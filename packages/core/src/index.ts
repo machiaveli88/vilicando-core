@@ -15,7 +15,6 @@ export {
   DocumentContext,
   Head,
   Html,
-  IPageContext, // todo: can remove?
   Link,
   Router,
   Title,

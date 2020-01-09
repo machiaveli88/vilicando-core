@@ -7,7 +7,7 @@ import { getMainDefinition } from 'apollo-utilities';
 import { ApolloLink, split } from 'apollo-link';
 import { RetryLink } from 'apollo-link-retry';
 import { onError } from 'apollo-link-error';
-import { IPageContext } from 'vilicando-core';
+import { NextPageContext } from 'next';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { WebSocketLink } from 'apollo-link-ws';
 import fetch from 'isomorphic-unfetch';
@@ -156,7 +156,7 @@ export default function withHasura(
       apolloClient,
       res,
       ...rest
-    }: IPageContext & {
+    }: NextPageContext & {
       apolloClient: ApolloClient<any>;
     }) => {
       // Initialize ApolloClient, add it to the ctx object so
