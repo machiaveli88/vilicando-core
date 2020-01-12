@@ -1,6 +1,6 @@
 {
   "blue": { "base": "#1890ff" },
-  "border": { "radius": { "base": 0 } },
+  "border": { "radius": { "base": "0px" } },
   "cyan": { "base": "#13c2c2" },
   "font": {
     "family": "'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
@@ -18,17 +18,17 @@
   "preset": {
     "colors": "pink, magenta, red, volcano, orange, yellow, gold, cyan, lime, green, blue, geekblue, purple"
   },
-  "primary": { "color": "@red-base" },
+  "primary": { "color": "#f5222d" },
   "purple": { "base": "#722ed1" },
   "red": { "base": "#f5222d" },
   "shadow": {
     "1": {
-      "down": "0 0 8px @shadow-color",
-      "left": "0 0 8px @shadow-color",
-      "right": "0 0 8px @shadow-color",
-      "up": "0 0 8px @shadow-color"
+      "down": "0 0 8px rgba(0, 0, 0, 0.18)",
+      "left": "0 0 8px rgba(0, 0, 0, 0.18)",
+      "right": "0 0 8px rgba(0, 0, 0, 0.18)",
+      "up": "0 0 8px rgba(0, 0, 0, 0.18)"
     },
-    "2": "0 0 12px @shadow-color",
+    "2": "0 0 12px rgba(0, 0, 0, 0.18)",
     "color": "rgba(0, 0, 0, 0.18)"
   },
   "volcano": { "base": "#fa541c" },

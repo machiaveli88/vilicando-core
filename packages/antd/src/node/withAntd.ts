@@ -2,17 +2,14 @@
 // @ts-ignore todo: remove
 import withLess from '@zeit/next-less';
 import overwrite from '../overwrite.json';
+import { flattenObject } from '../utils';
 
-const flattenObject = (obj: object, prefix = '') =>
-  Object.keys(obj).reduce((acc, k) => {
-    const pre = prefix.length ? prefix + '-' : '';
-
-    if (typeof obj[k] === 'object')
-      Object.assign(acc, flattenObject(obj[k], pre + k));
-    else acc[(pre + k).replace(/([A-Z])/g, '-$1').toLowerCase()] = obj[k];
-
-    return acc;
-  }, {});
+const manipulateObj = (obj: object, antd: string, origin: string) => {
+  if (obj[antd] || obj[origin]) {
+    obj[antd] = obj[antd] || obj[origin];
+    delete obj[origin];
+  }
+};
 
 module.exports = (modifyVars: any = {}, nextConfig: any) => {
   if (!nextConfig) {
@@ -25,15 +22,23 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
   }
 
   const { lessLoaderOptions, webpack, ...rest } = nextConfig;
+  modifyVars = flattenObject({
+    ...overwrite,
+    ...modifyVars
+  });
+  // see also in AntdProvider!
+  manipulateObj(modifyVars, 'padding-xs', 'spacing-xs');
+  manipulateObj(modifyVars, 'padding-sm', 'spacing-sm');
+  manipulateObj(modifyVars, 'padding-md', 'spacing-md');
+  manipulateObj(modifyVars, 'padding-lg', 'spacing-lg');
+  manipulateObj(modifyVars, 'font-size-base', 'font-size-md');
+  manipulateObj(modifyVars, 'primary-color', 'primary-base');
 
   return withLess({
     extractCssChunksOptions: { orderWarning: false },
     lessLoaderOptions: {
       javascriptEnabled: true,
-      modifyVars: flattenObject({
-        ...overwrite,
-        ...modifyVars
-      }),
+      modifyVars,
       ...lessLoaderOptions
     },
     webpack: (config: any, options: any) => {

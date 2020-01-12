@@ -8,6 +8,7 @@ import overwrite from './overwrite.json';
 import { IAntdTheme } from './types';
 import { ITheme as IDefaultTheme } from 'vilicando-core';
 import { merge } from 'lodash';
+import { colorPalette } from './utils';
 
 type ITheme<T = {}> = IDefaultTheme & IAntdTheme & T;
 
@@ -31,6 +32,7 @@ function AntdProvider<T>({ children, theme }: IAntdProvider<T>) {
 
   const parsedTheme = React.useMemo(() => {
     const newTheme = merge<ITheme, ITheme<T>>(baseTheme, theme);
+    // see also in withAntd!
     newTheme.spacing.xs = theme?.spacing?.xs || newTheme.padding.xs;
     newTheme.spacing.sm = theme?.spacing?.sm || newTheme.padding.sm;
     newTheme.spacing.md = theme?.spacing?.md || newTheme.padding.md;
@@ -41,6 +43,25 @@ function AntdProvider<T>({ children, theme }: IAntdProvider<T>) {
     newTheme.heading[6].size =
       theme?.heading?.[6]?.size || `calc(${newTheme.font.size.base} * 1.125)`;
     newTheme.primary.base = theme?.primary?.base || newTheme.primary.color;
+
+    const changedColors = {};
+    const colors = newTheme.preset.colors.replace(/ /g, '').split(',');
+    ['primary', 'secondary', 'grey', ...colors].forEach(color => {
+      if (theme?.[color]?.base) {
+        const schema = { ...newTheme[color], ...theme[color] };
+        for (let i = 1; i <= 10; i++)
+          if (!theme?.[color]?.[i]) {
+            schema[i] = colorPalette(theme[color].base, i);
+            newTheme[color][i] = schema[i];
+          }
+        changedColors[color] = { ...schema };
+      }
+    });
+    if (process.env.NODE_ENV !== 'development')
+      console.warn(
+        'Automatically color generating is only for development! Please add the following object to your theme.json',
+        changedColors
+      );
 
     return newTheme;
   }, [theme, baseTheme]);

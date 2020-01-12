@@ -1,4 +1,4 @@
-export { Loader, Page } from './components';
+export { Loader, Page, ResponsiveHelper } from './components';
 export { default as ConfigProvider, useConfig } from './ConfigProvider';
 export { default as CoreProvider } from './CoreProvider';
 export { default as language } from './language';

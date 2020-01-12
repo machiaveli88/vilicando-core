@@ -1,6 +1,8 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { useFela } from 'vilicando-antd';
+import { times } from 'lodash';
+import { Button } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
@@ -57,6 +59,34 @@ function StartPage() {
             accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
             no sea takimata sanctus est Lorem ipsum dolor sit amet.
           </p>
+          <div
+            className={css({
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginY: theme.spacing.xxl
+            })}
+          >
+            {times(10, i => (
+              <div
+                key={i}
+                className={css({
+                  position: 'relative',
+                  size: 40,
+                  backgroundColor: theme.primary[i + 1],
+                  color: i < 4 ? theme.black : theme.white
+                })}
+              >
+                <span
+                  className={css({
+                    center: true
+                  })}
+                >
+                  {i + 1}
+                </span>
+              </div>
+            ))}
+          </div>
+          <Button type="primary">Primary Button</Button>
         </div>
       </Content>
 
