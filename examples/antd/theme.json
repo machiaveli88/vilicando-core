@@ -1,13 +1,15 @@
 {
-  "primary-1": "color(~`colorPalette('@{primary-6}', 1) `)",
-  "primary-10": "color(~`colorPalette('@{primary-6}', 10) `)",
-  "primary-2": "color(~`colorPalette('@{primary-6}', 2) `)",
-  "primary-3": "color(~`colorPalette('@{primary-6}', 3) `)",
-  "primary-4": "color(~`colorPalette('@{primary-6}', 4) `)",
-  "primary-5": "color(~`colorPalette('@{primary-6}', 5) `)",
-  "primary-6": "@primary-color",
-  "primary-7": "color(~`colorPalette('@{primary-6}', 7) `)",
-  "primary-8": "color(~`colorPalette('@{primary-6}', 8) `)",
-  "primary-9": "color(~`colorPalette('@{primary-6}', 9) `)",
-  "primary-color": "@volcano-6"
+  "primary": {
+    "1": "#f9f0ff",
+    "2": "#efdbff",
+    "3": "#d3adf7",
+    "4": "#b37feb",
+    "5": "#9254de",
+    "6": "#722ed1",
+    "7": "#531dab",
+    "8": "#391085",
+    "9": "#22075e",
+    "10": "#120338",
+    "color": "#722ed1"
+  }
 }

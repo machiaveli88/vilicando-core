@@ -1,7 +1,18 @@
 #!/usr/bin/env node
 // @ts-ignore todo: remove
 import withLess from '@zeit/next-less';
-import theme from '../theme.json';
+import overwrite from '../overwrite.json';
+
+const flattenObject = (obj: object, prefix = '') =>
+  Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? prefix + '-' : '';
+
+    if (typeof obj[k] === 'object')
+      Object.assign(acc, flattenObject(obj[k], pre + k));
+    else acc[(pre + k).replace(/([A-Z])/g, '-$1').toLowerCase()] = obj[k];
+
+    return acc;
+  }, {});
 
 module.exports = (modifyVars: any = {}, nextConfig: any) => {
   if (!nextConfig) {
@@ -19,10 +30,10 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
     extractCssChunksOptions: { orderWarning: false },
     lessLoaderOptions: {
       javascriptEnabled: true,
-      modifyVars: {
-        ...theme,
+      modifyVars: flattenObject({
+        ...overwrite,
         ...modifyVars
-      },
+      }),
       ...lessLoaderOptions
     },
     webpack: (config: any, options: any) => {

@@ -45,7 +45,7 @@ function StartPage() {
             maxWidth: theme.screen.md
           })}
         >
-          <h1>Hello World</h1>
+          <h1 className={css({ color: theme.primary.base })}>Hello World</h1>
           <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam

@@ -20,7 +20,7 @@
     "merge": "name=\"$(git branch | grep \\* | cut -d ' ' -f2)\" && git checkout master && git merge $name --no-ff -m \"Merge $name\" && git branch -d $name && git push origin master",
     "prettier": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\"",
     "pub": "lerna publish",
-    "theme": "cd packages/antd && yarn theme",
+    "theme": "cd packages/antd && yarn theme && cd ../.. && yarn lint",
     "up": "yarn upgrade-interactive --latest",
     "version": "lerna version --force-publish"
   },

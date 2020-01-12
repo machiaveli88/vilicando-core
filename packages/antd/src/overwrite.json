@@ -1,0 +1,37 @@
+{
+  "blue": { "base": "#1890ff" },
+  "border": { "radius": { "base": 0 } },
+  "cyan": { "base": "#13c2c2" },
+  "font": {
+    "family": "'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+    "size": { "base": "16px" }
+  },
+  "geekblue": { "base": "#2f54eb" },
+  "gold": { "base": "#faad14" },
+  "green": { "base": "#52c41a" },
+  "layout": { "header": { "height": "56px" } },
+  "lime": { "base": "#a0d911" },
+  "magenta": { "base": "#eb2f96" },
+  "orange": { "base": "#fa8c16" },
+  "padding": { "lg": "16px", "md": "12px", "sm": "8px", "xs": "4px" },
+  "pink": { "base": "#eb2f96" },
+  "preset": {
+    "colors": "pink, magenta, red, volcano, orange, yellow, gold, cyan, lime, green, blue, geekblue, purple"
+  },
+  "primary": { "color": "@red-base" },
+  "purple": { "base": "#722ed1" },
+  "red": { "base": "#f5222d" },
+  "shadow": {
+    "1": {
+      "down": "0 0 8px @shadow-color",
+      "left": "0 0 8px @shadow-color",
+      "right": "0 0 8px @shadow-color",
+      "up": "0 0 8px @shadow-color"
+    },
+    "2": "0 0 12px @shadow-color",
+    "color": "rgba(0, 0, 0, 0.18)"
+  },
+  "volcano": { "base": "#fa541c" },
+  "white": "#ffffff",
+  "yellow": { "base": "#fadb14" }
+}
