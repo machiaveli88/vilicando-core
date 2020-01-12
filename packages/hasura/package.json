@@ -1,6 +1,6 @@
 {
   "name": "vilicando-hasura",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
