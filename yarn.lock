@@ -9376,10 +9376,10 @@ next@*:
     webpack-sources "1.4.3"
     whatwg-fetch "3.0.0"
 
-next@9.1.8-canary.8:
-  version "9.1.8-canary.8"
-  resolved "https://registry.yarnpkg.com/next/-/next-9.1.8-canary.8.tgz#f7c4e8d628374e8342d2b1be44ee03d4462aaa7d"
-  integrity sha512-rIc0eWFcgJI9DJPA0iG2yADH0w+lPkgfYlk2Z6fLWR4gH6ECZn/vgL6jscQmgxYkw8LFfD+JeTyyv3uY0KAmBw==
+next@9.1.8-canary.11:
+  version "9.1.8-canary.11"
+  resolved "https://registry.yarnpkg.com/next/-/next-9.1.8-canary.11.tgz#c9121b11be5a62f0e3d4192444377f59d7b2ec38"
+  integrity sha512-+6Y6lcMfuEx+lWu49RqfgFz/w5Cy8OCfdameBzHOA+DslLp68jnEYVhSdtFXvgQ6cPgGLf7nsSqik98sMW3H7Q==
   dependencies:
     "@ampproject/toolbox-optimizer" "1.1.1"
     "@babel/core" "7.7.2"
