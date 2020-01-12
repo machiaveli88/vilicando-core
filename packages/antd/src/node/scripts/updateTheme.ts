@@ -4,6 +4,7 @@ import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import tinycolor from 'tinycolor2';
 import { setWith, get } from 'lodash';
+import { flattenObject, diffObject } from '../../utils';
 
 const antd = require.resolve('antd');
 const lessPath = join(antd, '../../lib/style/themes/default.less');
@@ -207,7 +208,7 @@ const replaceLessVars = (theme: object) => {
     replaceLessVars(theme);
 };
 
-export function parseTheme(_theme: object) {
+function parseTheme(_theme: object) {
   // sort and remove linebreaks
   const theme = {};
   Object.keys(_theme)
@@ -225,21 +226,18 @@ export function parseTheme(_theme: object) {
   return newTheme;
 }
 
-const getNestedObject = (
-  theme: object | number | string,
-  getValue: (key: string) => number | string,
-  isType?: boolean
-) => {
+const getNestedTypes = (theme: object | number | string) => {
   let obj = '';
 
-  Object.keys(theme).forEach(key => {
-    const _key = isType ? `'${key}'?:` : `"${key}":`;
-
-    obj +=
-      typeof theme[key] === 'object'
-        ? `${_key} ${getNestedObject(theme[key], getValue, isType)},`
-        : `${_key} ${getValue(theme[key])},`;
-  });
+  Object.keys(theme).forEach(
+    key =>
+      (obj +=
+        typeof theme[key] === 'object'
+          ? `'${key}'?: ${getNestedTypes(theme[key])},`
+          : `'${key}'?: ${
+              typeof theme[key] === 'number' ? 'number | string' : 'string'
+            },`)
+  );
 
   return `{ ${obj} }`;
 };
@@ -255,15 +253,19 @@ if (existsSync(lessPath)) {
   });
   theme = parseTheme(Object.assign(theme, colors));
 
-  let types = `export interface IAntdTheme ${getNestedObject(
-    theme,
-    key => (typeof key === 'number' ? 'number | string' : 'string'),
-    true
-  )}`;
-  writeFileSync(typesPath, types);
-
-  let newTheme = getNestedObject(theme, key =>
-    typeof key === 'string' ? `"${key}"` : key
+  const prevTheme = JSON.parse(readFileSync(themePath, 'utf8'));
+  const _differences = diffObject(
+    flattenObject(prevTheme),
+    flattenObject(theme)
   );
-  writeFileSync(themePath, newTheme);
+  const differences = {};
+  Object.keys(_differences).forEach(key => {
+    if (_differences[key].type !== 'unchanged')
+      differences[key] = _differences[key];
+  });
+  console.info('theme updated with following vars:', differences);
+
+  let types = `export interface IAntdTheme ${getNestedTypes(theme)}`;
+  writeFileSync(typesPath, types);
+  writeFileSync(themePath, JSON.stringify(theme));
 }
