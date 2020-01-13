@@ -35,18 +35,22 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
   renderer.renderStatic(`
     ${normalize}
 
+    * {
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
     html,body {
       height: 100%;
     }
     html {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
       user-select: none;
     }
     body {
       overscroll-behavior: none;
-    }
-    *, body, button, html, input, select, textarea {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
     #__next {
       min-height: 100%;

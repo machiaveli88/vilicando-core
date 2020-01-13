@@ -38,6 +38,8 @@ export interface INamedKeys<T = IStyle> {
   ifExtraSmall?: T;
   ifMini?: T;
   ifTiny?: T;
+  ifLandscape?: T;
+  ifPortrait?: T;
 }
 
 export default () =>
@@ -74,5 +76,8 @@ export default () =>
       1}px) and (min-width: ${sizes.mini}px)`,
     ifMini: `@media only screen and (max-width: ${sizes.mini -
       1}px) and (min-width: ${sizes.tiny}px)`,
-    ifTiny: `@media only screen and (max-width: ${sizes.tiny - 1}px)`
+    ifTiny: `@media only screen and (max-width: ${sizes.tiny - 1}px)`,
+    // Screen-orientation
+    ifLandscape: '@media all and (orientation:landscape)',
+    ifPortrait: '@media all and (orientation:landscape)'
   });
