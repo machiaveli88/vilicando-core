@@ -79,5 +79,5 @@ export default () =>
     ifTiny: `@media only screen and (max-width: ${sizes.tiny - 1}px)`,
     // Screen-orientation
     ifLandscape: '@media all and (orientation:landscape)',
-    ifPortrait: '@media all and (orientation:landscape)'
+    ifPortrait: '@media all and (orientation:portrait)'
   });
