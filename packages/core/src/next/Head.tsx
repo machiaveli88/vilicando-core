@@ -11,7 +11,7 @@ function Head({ children }: IHead) {
       <meta name="viewport" content="width=device-width" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta httpEquiv="Content-Language" content="de" />
-      <meta http-equiv="cleartype" content="on" />
+      <meta httpEquiv="cleartype" content="on" />
       <meta
         name="viewport"
         content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"

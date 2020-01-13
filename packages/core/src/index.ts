@@ -30,4 +30,4 @@ export {
   createRenderer
 } from './theme';
 export { defaultLocale, isDoubleTap, notify, parseInt } from './utils';
-export { useForm, useTraceChanges } from './hooks';
+export { useForm, usePWA, useTraceChanges } from './hooks';

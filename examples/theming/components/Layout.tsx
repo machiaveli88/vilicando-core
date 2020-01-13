@@ -14,7 +14,6 @@ function Layout({ children }: ILayout) {
       className={css({
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100%',
         alignItems: 'center'
       })}
     >

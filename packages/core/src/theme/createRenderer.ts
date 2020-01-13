@@ -35,24 +35,12 @@ export default ({ plugins = [], css = '' }: ICreateRenderer) => {
   renderer.renderStatic(`
     ${normalize}
 
-    * {
-      -webkit-tap-highlight-color: rgba(0,0,0,0);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
     html,body {
+      width: 100%;
       height: 100%;
     }
-    html {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    body {
-      overscroll-behavior: none;
-    }
     #__next {
+      width: 100%;
       min-height: 100%;
       display: flex;
       flex-direction: column;
