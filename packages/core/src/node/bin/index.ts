@@ -8,6 +8,7 @@ const scripts: {
   dev: async () => await import('./scripts').then(({ dev }) => dev),
   export: async () =>
     await import('./scripts').then(({ exportStatic }) => exportStatic),
+  pwa: async () => await import('./pwa').then(({ pwa }) => pwa),
   start: async () => await import('./scripts').then(({ start }) => start),
   up: async () => await import('./scripts').then(({ up }) => up)
 };

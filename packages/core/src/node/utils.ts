@@ -1,7 +1,24 @@
 #!/usr/bin/env node
 import { join } from 'path';
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'fs';
 import { config, parse, DotenvParseOutput } from 'dotenv';
+
+export const copyFiles = (
+  buildDir: string,
+  serverSrc: string,
+  serverDist: string
+) => {
+  mkdirSync(buildDir, { recursive: true });
+  console.info('  ✔ Folder created');
+
+  const data = readFileSync(serverSrc, 'utf8').replace(
+    '"./',
+    '"vilicando-core/lib/node/'
+  );
+  writeFileSync(serverDist, data, 'utf8');
+
+  console.info('  ✔ Files copied');
+};
 
 export const setEnv = () => {
   const envPath = join(process.cwd(), '.env');
