@@ -1,5 +1,9 @@
 import React from 'react';
-import { ThemeProvider, RendererProvider } from 'react-fela';
+import {
+  ThemeProvider,
+  RendererProvider,
+  ThemeProviderProps
+} from 'react-fela';
 import { IRenderer } from 'fela';
 import { merge } from 'lodash';
 import defaultRenderer from './defaultRenderer';
@@ -10,8 +14,7 @@ export interface IFela {
   theme?: Partial<ITheme>;
   renderer?: IRenderer;
 }
-interface IFelaProvider extends IFela {
-  overwrite?: boolean;
+interface IFelaProvider extends IFela, Omit<ThemeProviderProps, 'theme'> {
   children?: React.ReactNode | Array<React.ReactNode>;
 }
 
@@ -20,10 +23,10 @@ export default function FelaProvider({
   renderer = defaultRenderer,
   ...props
 }: IFelaProvider) {
+  // merging theme & set default styles
   const _theme = React.useMemo(() => {
     const _theme = merge(defaultTheme, theme);
 
-    // default styles
     renderer.renderStatic(
       {
         fontFamily: _theme.font.family,

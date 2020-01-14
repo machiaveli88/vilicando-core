@@ -1,5 +1,5 @@
 import React from 'react';
-import { App, CoreProvider } from 'vilicando-core';
+import { App, AppProvider } from 'vilicando-core';
 import { AntdProvider } from 'vilicando-antd';
 import theme from '../theme.json';
 
@@ -8,11 +8,11 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <CoreProvider title="Antd Example App">
+      <AppProvider title="Antd Example App">
         <AntdProvider theme={theme}>
           <Component {...pageProps} />
         </AntdProvider>
-      </CoreProvider>
+      </AppProvider>
     );
   }
 }

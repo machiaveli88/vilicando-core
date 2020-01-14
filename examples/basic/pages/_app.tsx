@@ -1,5 +1,5 @@
 import React from 'react';
-import { App, CoreProvider } from 'vilicando-core';
+import { App, AppProvider } from 'vilicando-core';
 import { Layout } from '@components';
 
 export default class CustomApp extends App {
@@ -7,11 +7,11 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <CoreProvider title="Basic Example App">
+      <AppProvider title="Basic Example App">
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </CoreProvider>
+      </AppProvider>
     );
   }
 }

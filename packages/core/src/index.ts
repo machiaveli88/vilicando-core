@@ -1,6 +1,6 @@
 export { Loader, Page, ResponsiveHelper } from './components';
 export { default as ConfigProvider, useConfig } from './ConfigProvider';
-export { default as CoreProvider } from './CoreProvider';
+export { default as AppProvider } from './AppProvider';
 export { default as language } from './language';
 export {
   default as LocaleProvider,
@@ -30,4 +30,4 @@ export {
   createRenderer
 } from './theme';
 export { defaultLocale, isDoubleTap, notify, parseInt } from './utils';
-export { useForm, usePWA, useTraceChanges } from './hooks';
+export { useForm, useTraceChanges } from './hooks';

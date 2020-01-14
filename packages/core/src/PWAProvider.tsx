@@ -1,7 +1,12 @@
 import React from 'react';
-import { useFela } from '../theme';
+import { useFela } from '.';
+import Head from 'next/head';
 
-export default function usePWA() {
+interface IPWAProvider {
+  children?: React.ReactNode | Array<React.ReactNode>;
+}
+
+export default function PWAProvider({ children }: IPWAProvider) {
   const { renderer } = useFela();
 
   React.useEffect(() => {
@@ -38,5 +43,7 @@ export default function usePWA() {
       },
       '#__next'
     );
-  }, []);
+  }, [renderer]);
+
+  return <>{children}</>;
 }

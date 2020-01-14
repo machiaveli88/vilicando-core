@@ -1,5 +1,5 @@
 import React from 'react';
-import { App, CoreProvider, withRouter, TLocale } from 'vilicando-core';
+import { App, AppProvider, withRouter, TLocale } from 'vilicando-core';
 import { Layout } from '@components';
 
 class CustomApp extends App {
@@ -9,11 +9,11 @@ class CustomApp extends App {
     const locale = lang as TLocale;
 
     return (
-      <CoreProvider locale={locale} title="Translation Example App">
+      <AppProvider locale={locale} title="Translation Example App">
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </CoreProvider>
+      </AppProvider>
     );
   }
 }
