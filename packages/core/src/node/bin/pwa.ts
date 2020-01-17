@@ -51,50 +51,71 @@ const manifestPath = join(publicDir, 'manifest.json');
 const themePath = join(process.cwd(), 'theme.json');
 
 export const pwa = async () => {
-  // theme laden
-  let theme: ITheme = {};
-  if (existsSync(themePath))
-    theme = JSON.parse(readFileSync(themePath, 'utf8')) || {};
+  const logoName =
+    existsSync(publicDir) &&
+    readdirSync(publicDir).find(name => name.split('.')?.[0] === 'logo');
 
-  // manifest generieren
-  let data: IManifest = {};
-  if (existsSync(manifestPath))
-    data = JSON.parse(readFileSync(manifestPath, 'utf8')) || {};
-  data = {
-    ...data,
-    // name,
-    // short_name,
-    display: data.display || 'standalone',
-    background_color: data.background_color || theme.primary.base,
-    theme_color: data.background_color || theme.primary.base
-  };
-  writeFileSync(manifestPath, JSON.stringify(data), 'utf8');
-  console.info('  ✔ manifest.json created!');
+  if (logoName) {
+    const logoPath = join(publicDir, logoName);
 
-  const logoName = readdirSync(publicDir).find(
-    name => name.split('.')?.[0] === 'logo'
-  );
+    // theme laden
+    let theme: ITheme = {};
+    if (existsSync(themePath))
+      theme = JSON.parse(readFileSync(themePath, 'utf8')) || {};
 
-  const { htmlMeta } = await generateImages(
-    join(publicDir, logoName),
-    join(publicDir, 'images'),
-    {
-      background: data.background_color,
-      opaque: false,
-      scrape: false,
-      manifest: manifestPath,
-      favicon: true,
-      log: false
-    }
-  );
+    // manifest generieren
+    let data: IManifest = {};
+    if (existsSync(manifestPath))
+      data = JSON.parse(readFileSync(manifestPath, 'utf8')) || {};
+    data = {
+      ...data,
+      // name,
+      // short_name,
+      display: data.display || 'standalone',
+      background_color: data.background_color || theme.primary.base,
+      theme_color: data.background_color || theme.primary.base
+    };
+    writeFileSync(manifestPath, JSON.stringify(data), 'utf8');
+    console.info('  ✔ manifest.json created!');
 
-  // todo:
-  // safari-pinned-tab.svg!
-  // htmlMeta in Head schreiben!
-  // logoName variabel machen
-  // background variabel machen
-  // name/short-name variabel machen
-  // Idee: Skript wird automatisch aufgerufen, schaut ob ein Logo vorhanden ist, wenn ja schaut es ob alle icons + manifest vorhanden sind, wenn nein wird Skript ausgeführt (ansonsten nur wenn explizit aufgerufen!!!)!
+    // pwas generieren
+    const { htmlMeta } = await generateImages(
+      logoPath,
+      join(publicDir, 'images'),
+      {
+        background: data.background_color,
+        opaque: false,
+        scrape: false,
+        manifest: manifestPath,
+        favicon: true,
+        log: false
+      }
+    );
 
-  console.info('  ✔ pwa-assets generated!');
+    // todo: safari-pinned-tab.svg generieren
+    // nur strokes, diese schwarz, 16x16 Pixel!
+    /* if (logoName.split('.').reverse()?.[0] === 'svg') {
+      writeFileSync(
+        join(publicDir, 'images/safari-pinned-tab.svg'),
+        readFileSync(logoPath, 'utf8').replace(
+          /<svg [^\>]*>/g,
+          '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16px" height="16px">'
+        ),
+        'utf8'
+      );
+      console.info('  ✔ safari-pinned-tab.svg generated!');
+    } else
+      console.info(
+        '  ✘ logo has to be .svg, to create automatically safari-pinned-tab.svg!'
+      ); */
+
+    // todo:
+    // htmlMeta in Head schreiben!
+    // logoName variabel machen
+    // background variabel machen
+    // name/short-name variabel machen
+    // Idee: Skript wird automatisch aufgerufen, schaut ob ein Logo vorhanden ist, wenn ja schaut es ob alle icons + manifest vorhanden sind, wenn nein wird Skript ausgeführt (ansonsten nur wenn explizit aufgerufen!!!)!
+
+    console.info('  ✔ pwa-assets generated!');
+  } else console.info('  ✘ no logo found!');
 };
