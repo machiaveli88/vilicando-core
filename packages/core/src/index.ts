@@ -1,6 +1,5 @@
 export { Loader, Page, ResponsiveHelper } from './components';
-export { default as ConfigProvider, useConfig } from './ConfigProvider';
-export { default as AppProvider } from './AppProvider';
+export { default as AppProvider, useConfig } from './AppProvider';
 export { default as language } from './language';
 export {
   default as LocaleProvider,
