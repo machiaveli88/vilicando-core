@@ -9,7 +9,7 @@ class CustomApp extends App {
     const locale = lang as TLocale;
 
     return (
-      <AppProvider locale={locale} title="Translation Example App">
+      <AppProvider locale={locale} name="Translation Example App">
         <Layout>
           <Component {...pageProps} />
         </Layout>

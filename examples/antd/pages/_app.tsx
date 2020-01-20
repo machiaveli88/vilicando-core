@@ -8,7 +8,7 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <AppProvider title="Antd Example App">
+      <AppProvider name="Antd Example App">
         <AntdProvider theme={theme}>
           <Component {...pageProps} />
         </AntdProvider>

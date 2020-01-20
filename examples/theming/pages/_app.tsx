@@ -8,7 +8,7 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <AppProvider theme={theme} title="Theming Example App">
+      <AppProvider theme={theme} name="Theming Example App">
         <Layout>
           <Component {...pageProps} />
         </Layout>

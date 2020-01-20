@@ -8,7 +8,7 @@ interface ILayout {
 
 function Layout({ children }: ILayout) {
   const { css, theme } = useFela();
-  const { title } = useConfig();
+  const { name } = useConfig();
 
   return (
     <div
@@ -27,7 +27,7 @@ function Layout({ children }: ILayout) {
           width: '100%'
         })}
       >
-        <h2 className={css({ color: theme.white, margin: 0 })}>{title}</h2>
+        <h2 className={css({ color: theme.white, margin: 0 })}>{name}</h2>
       </div>
 
       <div

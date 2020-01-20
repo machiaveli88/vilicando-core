@@ -6,12 +6,12 @@ import PWAProvider from './PWAProvider';
 import Title from './next/Title';
 
 interface IConfigContext {
-  title?: string;
+  name?: string;
 }
 interface IConfig extends IConfigContext, ILocale, Omit<IFela, 'renderer'> {}
 interface IAppProvider extends IConfig, Pick<IFela, 'renderer'> {
   children: React.ReactNode | Array<React.ReactNode>;
-  // config: IConfig;
+  // config?: IConfig;
   isPWA?: boolean;
 }
 
@@ -21,18 +21,20 @@ export function useConfig() {
   return React.useContext<IConfigContext>(ConfigContext);
 }
 
-function AppProvider({
+export default function AppProvider({
   children,
   // config,
   isPWA,
-  title,
+  locale,
+  name,
   theme,
-  renderer,
-  locale
+  renderer
 }: IAppProvider) {
+  // const { name, theme, locale } = config;
+
   return (
-    <ConfigContext.Provider value={{ title }}>
-      {!!title && <Title>{title}</Title>}
+    <ConfigContext.Provider value={{ name }}>
+      {!!name && <Title>{name}</Title>}
       <FelaProvider renderer={renderer} theme={theme}>
         <LocaleProvider locale={locale}>
           <Progress>
@@ -43,5 +45,3 @@ function AppProvider({
     </ConfigContext.Provider>
   );
 }
-
-export default AppProvider;

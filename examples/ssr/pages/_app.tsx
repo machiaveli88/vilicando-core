@@ -7,7 +7,7 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <AppProvider title="SSR Example App">
+      <AppProvider name="SSR Example App">
         <Layout>
           <Component {...pageProps} />
         </Layout>

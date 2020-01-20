@@ -3,7 +3,7 @@ import { Page } from 'vilicando-core';
 
 function StartPage() {
   return (
-    <Page title="Subtitle">
+    <Page title="Subname">
       <h1>Hello World</h1>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy

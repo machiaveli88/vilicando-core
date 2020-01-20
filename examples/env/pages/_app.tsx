@@ -7,7 +7,7 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <AppProvider title="Env Example App">
+      <AppProvider name="Env Example App">
         <Layout>
           <Component {...pageProps} />
         </Layout>

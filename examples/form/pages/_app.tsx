@@ -8,7 +8,7 @@ export default class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <AppProvider title="Form Example App">
+      <AppProvider name="Form Example App">
         <AntdProvider>
           <Layout>
             <Component {...pageProps} />

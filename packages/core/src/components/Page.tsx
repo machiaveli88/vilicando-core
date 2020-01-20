@@ -10,12 +10,12 @@ interface IPage {
 }
 
 function Page({ children, className, title, meta }: IPage) {
-  const { title: _title } = useConfig();
+  const { name } = useConfig();
 
   return (
     <>
       {(!!title || !!meta) && (
-        <Title meta={meta}>{_title ? `${_title} - ${title}` : title}</Title>
+        <Title meta={meta}>{name ? `${name} - ${title}` : title}</Title>
       )}
       {className ? <div className={className}>{children}</div> : children}
     </>
