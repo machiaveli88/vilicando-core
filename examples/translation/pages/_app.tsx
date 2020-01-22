@@ -1,6 +1,7 @@
 import React from 'react';
 import { App, AppProvider, withRouter, TLocale } from 'vilicando-core';
 import { Layout } from '@components';
+import config from '../config.json';
 
 class CustomApp extends App {
   render() {
@@ -9,7 +10,7 @@ class CustomApp extends App {
     const locale = lang as TLocale;
 
     return (
-      <AppProvider locale={locale} name="Translation Example App">
+      <AppProvider {...config} locale={locale}>
         <Layout>
           <Component {...pageProps} />
         </Layout>

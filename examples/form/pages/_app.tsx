@@ -1,6 +1,6 @@
 import React from 'react';
-import { App, AppProvider } from 'vilicando-core';
-import { AntdProvider } from 'vilicando-antd';
+import { App } from 'vilicando-core';
+import { AppProvider } from 'vilicando-antd';
 import { Layout } from '@components';
 
 export default class CustomApp extends App {
@@ -9,11 +9,9 @@ export default class CustomApp extends App {
 
     return (
       <AppProvider name="Form Example App">
-        <AntdProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </AntdProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </AppProvider>
     );
   }

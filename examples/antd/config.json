@@ -1,0 +1,8 @@
+{
+  "name": "Antd Example App",
+  "theme": {
+    "primary": {
+      "base": "#722ed1"
+    }
+  }
+}

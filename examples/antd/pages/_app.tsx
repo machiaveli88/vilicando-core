@@ -1,17 +1,15 @@
 import React from 'react';
-import { App, AppProvider } from 'vilicando-core';
-import { AntdProvider } from 'vilicando-antd';
-import theme from '../theme.json';
+import { App } from 'vilicando-core';
+import { AppProvider } from 'vilicando-antd';
+import config from '../config.json';
 
 export default class CustomApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
     return (
-      <AppProvider name="Antd Example App">
-        <AntdProvider theme={theme}>
-          <Component {...pageProps} />
-        </AntdProvider>
+      <AppProvider {...config}>
+        <Component {...pageProps} />
       </AppProvider>
     );
   }

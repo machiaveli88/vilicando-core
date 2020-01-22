@@ -1,4 +1,4 @@
 const server = require('vilicando-core/server');
-const theme = require('./theme');
+const { theme } = require('./config');
 
 module.exports = server({ theme });
