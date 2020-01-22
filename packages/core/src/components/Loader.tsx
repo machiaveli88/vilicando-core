@@ -1,6 +1,7 @@
 import React from 'react';
 import { TRuleProps } from 'fela';
 import { useFela } from '../theme';
+import { useConfig } from '../AppProvider';
 
 export interface IComponentLoader {
   children?: React.ReactNode | Array<React.ReactNode>;
@@ -10,6 +11,11 @@ export interface IComponentLoader {
 
 function Loader({ size = 250, children, text }: IComponentLoader) {
   const { css, theme, renderer } = useFela();
+  const { loader, logo } = useConfig();
+  const content =
+    children ||
+    (!!loader && <img src={`/${loader}`} alt="loader" />) ||
+    (!!logo && <img src={`/${logo}`} alt="logo" />);
 
   const pulseRingKeyframe = (): TRuleProps => ({
     '0%': {
@@ -65,7 +71,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
             animation: `${pulseRing} 1.25s ${theme.ease.out} infinite`
           })}
         />
-        {!!children && (
+        {!!content && (
           <div
             className={css({
               position: 'absolute',
@@ -91,7 +97,7 @@ function Loader({ size = 250, children, text }: IComponentLoader) {
                 }
               })}
             >
-              {children}
+              {content}
             </div>
           </div>
         )}
