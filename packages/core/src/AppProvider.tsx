@@ -13,8 +13,9 @@ interface IConfig {
   loader?: string; // path to loader-image (in public-folder)
   isPWA?: boolean;
 }
-interface IAppProvider extends IConfig, ILocale, IFela {
+export interface IAppProvider extends IConfig, ILocale, IFela {
   children: React.ReactNode | Array<React.ReactNode>;
+  themeProvider?: any; // todo
 }
 
 const ConfigContext = React.createContext<IConfig>({});
@@ -25,6 +26,7 @@ export function useConfig() {
 
 export default function AppProvider({
   children,
+  themeProvider: ThemeProvider = FelaProvider,
   isPWA,
   name,
   shortName,
@@ -78,13 +80,13 @@ export default function AppProvider({
         />
       </Head>
 
-      <FelaProvider renderer={renderer} theme={theme}>
+      <ThemeProvider renderer={renderer} theme={theme}>
         <LocaleProvider locale={locale}>
           <Progress>
             {isPWA ? <PWAProvider>{children}</PWAProvider> : children}
           </Progress>
         </LocaleProvider>
-      </FelaProvider>
+      </ThemeProvider>
     </ConfigContext.Provider>
   );
 }

@@ -89,7 +89,6 @@ export const pwa = async ({ '--skip': skip = false }) => {
 
       // favicon generieren
       await generateImages(logoPath, imagesDir, {
-        background: data.background_color,
         opaque: false,
         scrape: false,
         manifest: manifestPath,
@@ -99,6 +98,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
       });
       // icons generieren
       await generateImages(logoPath, imagesDir, {
+        background: data.background_color,
         opaque: false,
         scrape: false,
         manifest: manifestPath,
