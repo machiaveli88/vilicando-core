@@ -1,6 +1,5 @@
 import React from 'react';
 import { Loader, dynamic } from 'vilicando-core';
-import { Logo } from '@assets';
 
 const Content = dynamic(
   Promise.all([
@@ -8,11 +7,7 @@ const Content = dynamic(
     new Promise(resolve => setTimeout(resolve, 600))
   ]).then(([mod]) => mod),
   {
-    loading: () => (
-      <Loader text="Loading content...">
-        <Logo />
-      </Loader>
-    ),
+    loading: () => <Loader text="Loading content..." />,
     ssr: false
   }
 );
