@@ -8,8 +8,9 @@ import Head from 'next/head';
 interface IConfig {
   name?: string;
   shortName?: string;
-  description?: string; // todo: wird benötigt für pwa-generation und für den Header (<meta name="description" content="description is written here">)
-  // logo?: string; // todo: Pfad relativ zu /public, wird benötigt für pwa-generation und ist Standart-Grafik im Loader (wenn nichts anderes angegeben)
+  description?: string;
+  logo?: string; // path to logo (in public-folder)
+  loader?: string; // path to loader-image (in public-folder)
 }
 interface IAppProvider extends IConfig, ILocale, IFela {
   children: React.ReactNode | Array<React.ReactNode>;
@@ -27,26 +28,25 @@ export default function AppProvider({
   isPWA,
   name,
   shortName,
+  description,
   theme,
   locale,
   renderer,
   ...config
 }: IAppProvider) {
   return (
-    <ConfigContext.Provider value={{ name, shortName, ...config }}>
+    <ConfigContext.Provider value={{ name, shortName, description, ...config }}>
       <Head>
         {(!!name || !!shortName) && <title>{name || shortName}</title>}
+        {!!description && (
+          <meta name="description" content={description}></meta>
+        )}
 
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta httpEquiv="Content-Language" content="de" />
         <meta
           name="viewport"
           content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
-        />
-
-        <link
-          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-          rel="stylesheet"
         />
       </Head>
 

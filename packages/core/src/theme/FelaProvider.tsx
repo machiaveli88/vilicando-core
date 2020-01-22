@@ -6,6 +6,7 @@ import {
 } from 'react-fela';
 import { IRenderer } from 'fela';
 import { merge } from 'lodash';
+import Head from 'next/head';
 import defaultRenderer from './defaultRenderer';
 import defaultTheme from './theme.json';
 import { ITheme } from './types';
@@ -72,7 +73,24 @@ export default function FelaProvider({
 
   return (
     <RendererProvider renderer={renderer}>
-      <ThemeProvider theme={_theme} {...props} />
+      <>
+        <Head>
+          {!!~JSON.stringify(_theme).indexOf('Open Sans') && (
+            <link
+              href="https://fonts.googleapis.com/css?family=Open+Sans"
+              rel="stylesheet"
+            />
+          )}
+          {!!~JSON.stringify(_theme).indexOf('Roboto') && (
+            <link
+              href="https://fonts.googleapis.com/css?family=Roboto"
+              rel="stylesheet"
+            />
+          )}
+        </Head>
+
+        <ThemeProvider theme={_theme} {...props} />
+      </>
     </RendererProvider>
   );
 }
