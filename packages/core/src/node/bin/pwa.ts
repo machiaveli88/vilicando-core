@@ -67,10 +67,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
     !existsSync(manifestPath) ||
     (!!isPWA && !existsSync(pwaExampleAssetPath))
   ) {
-    const logoName =
-      (!!logo && existsSync(join(publicDir, logo)) && logo) || // logo-name/path is given in config...
-      (existsSync(publicDir) &&
-        readdirSync(publicDir).find(name => name.split('.')?.[0] === 'logo')); // ...or search for logo in public-dir
+    const logoName = !!logo && existsSync(join(publicDir, logo)) && logo; // logo-name/path is given in config...
 
     if (logoName) {
       const logoPath = join(publicDir, logoName);

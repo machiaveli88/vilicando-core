@@ -31,13 +31,16 @@ export default function AppProvider({
   name,
   shortName,
   description,
+  logo,
   theme,
   locale,
   renderer,
   ...config
 }: IAppProvider) {
   return (
-    <ConfigContext.Provider value={{ name, shortName, description, ...config }}>
+    <ConfigContext.Provider
+      value={{ name, shortName, description, logo, ...config }}
+    >
       <Head>
         {(!!name || !!shortName) && <title>{name || shortName}</title>}
         {!!description && (
@@ -51,33 +54,37 @@ export default function AppProvider({
           content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
         />
 
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="196x196"
-          href="/images/favicon-196.png"
-        />
+        {!!logo && (
+          <>
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="196x196"
+              href="/images/favicon-196.png"
+            />
 
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/images/apple-icon-180.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="167x167"
-          href="/images/apple-icon-167.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href="/images/apple-icon-152.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="120x120"
-          href="/images/apple-icon-120.png"
-        />
+            <link
+              rel="apple-touch-icon"
+              sizes="180x180"
+              href="/images/apple-icon-180.png"
+            />
+            <link
+              rel="apple-touch-icon"
+              sizes="167x167"
+              href="/images/apple-icon-167.png"
+            />
+            <link
+              rel="apple-touch-icon"
+              sizes="152x152"
+              href="/images/apple-icon-152.png"
+            />
+            <link
+              rel="apple-touch-icon"
+              sizes="120x120"
+              href="/images/apple-icon-120.png"
+            />
+          </>
+        )}
       </Head>
 
       <ThemeProvider renderer={renderer} theme={theme}>
