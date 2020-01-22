@@ -11,7 +11,7 @@ export default function useTraceChanges<T extends {}>(p: T) {
     }, {});
 
     if (Object.keys(changedProps).length > 0)
-      console.log('Changed props:', changedProps);
+      console.info('Changed props:', changedProps);
 
     prev.current = p;
   }, [p]);
