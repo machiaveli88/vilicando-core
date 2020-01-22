@@ -60,7 +60,7 @@ export interface IAntdTheme {
   body?: { background?: string };
   border?: {
     color?: { base?: string; inverse?: string; split?: string };
-    radius?: { base?: string };
+    radius?: { base?: string; sm?: string };
     style?: { base?: string };
     width?: { base?: string };
   };
@@ -92,7 +92,7 @@ export interface IAntdTheme {
     group?: { border?: string };
     height?: { base?: string; lg?: string; sm?: string };
     link?: { ghost?: { color?: string } };
-    padding?: { base?: string; lg?: string; sm?: string };
+    padding?: { horizontal?: { base?: string; lg?: string; sm?: string } };
     primary?: { bg?: string; color?: string; shadow?: string };
     shadow?: string;
     square?: { size?: string; sizeLg?: string; sizeSm?: string };
@@ -169,6 +169,7 @@ export interface IAntdTheme {
   drawer?: {
     bg?: string;
     body?: { padding?: string };
+    footer?: { padding?: { horizontal?: string; vertical?: string } };
     header?: { padding?: string };
   };
   dropdown?: {
@@ -298,7 +299,12 @@ export interface IAntdTheme {
   layout?: {
     body?: { background?: string };
     footer?: { background?: string; padding?: string };
-    header?: { background?: string; height?: string; padding?: string };
+    header?: {
+      background?: string;
+      color?: string;
+      height?: string;
+      padding?: string;
+    };
     sider?: { background?: string; backgroundLight?: string };
     trigger?: {
       background?: string;
@@ -390,7 +396,11 @@ export interface IAntdTheme {
   modal?: {
     body?: { padding?: string };
     content?: { bg?: string };
-    footer?: { bg?: string; border?: { color?: { split?: string } } };
+    footer?: {
+      bg?: string;
+      border?: { color?: { split?: string } };
+      padding?: { horizontal?: string; vertical?: string };
+    };
     header?: { bg?: string; border?: { color?: { split?: string } } };
     heading?: { color?: string };
     mask?: { bg?: string };
@@ -439,13 +449,16 @@ export interface IAntdTheme {
   picker?: {
     basic?: {
       cell?: {
+        active?: { with?: { range?: { color?: string } } };
         disabled?: { bg?: string };
         hover?: { color?: string; with?: { range?: { color?: string } } };
       };
     };
     bg?: string;
     border?: { color?: string };
-    date?: { hover?: { range?: { border?: { color?: string } } } };
+    date?: {
+      hover?: { range?: { border?: { color?: string }; color?: string } };
+    };
   };
   pink?: {
     '1'?: string;
@@ -604,8 +617,13 @@ export interface IAntdTheme {
     color?: string;
     disabled?: { opacity?: string };
     height?: string;
+    min?: { width?: string };
     shadow?: { color?: string };
-    sm?: { checked?: { margin?: { left?: string } }; height?: string };
+    sm?: {
+      checked?: { margin?: { left?: string } };
+      height?: string;
+      min?: { width?: string };
+    };
   };
   table?: {
     bg?: string;
@@ -664,6 +682,7 @@ export interface IAntdTheme {
   timeline?: {
     color?: string;
     dot?: { bg?: string; border?: { width?: string }; color?: string };
+    item?: { padding?: { bottom?: string } };
     width?: string;
   };
   tooltip?: {
@@ -725,7 +744,7 @@ export interface IAntdTheme {
   zindex?: {
     affix?: number | string;
     back?: { top?: number | string };
-    badge?: number | string;
+    badge?: string;
     dropdown?: number | string;
     message?: number | string;
     modal?: number | string;
