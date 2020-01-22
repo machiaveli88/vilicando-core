@@ -18,7 +18,7 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "@svgr/webpack": "^5.0.1",
+    "@svgr/webpack": "^5.1.0",
     "@types/lodash": "^4.14.148",
     "@types/node": "^13.1.8",
     "arg": "^4.1.2",
@@ -37,20 +37,20 @@
     "fela-preset-web": "11.0.2",
     "lighthouse": "^5.6.0",
     "lodash": "^4.17.15",
-    "next": "9.2.1-canary.2",
+    "next": "9.2.1-canary.7",
     "next-offline": "^5.0.0-beta.11",
     "nprogress": "^0.2.0",
     "push.js": "^1.0.12",
-    "pwa-asset-generator": "^2.2.0",
+    "pwa-asset-generator": "^2.2.1",
     "react-fela": "11.0.2"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/next": "9.0.0",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "16.9.17",
-    "@types/react-dom": "16.9.4",
-    "@types/webpack": "^4.41.2",
+    "@types/react": "16.9.18",
+    "@types/react-dom": "16.9.5",
+    "@types/webpack": "^4.41.3",
     "typescript": "3.7.5"
   },
   "peerDependencies": {
