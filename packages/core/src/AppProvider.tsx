@@ -3,38 +3,53 @@ import LocaleProvider, { ILocale } from './LocaleProvider';
 import { Progress } from './components';
 import { FelaProvider, IFela } from './theme';
 import PWAProvider from './PWAProvider';
-import Title from './next/Title';
+import Head from 'next/head';
 
-interface IConfigContext {
+interface IConfig {
   name?: string;
+  shortName?: string;
+  description?: string; // todo: wird benötigt für pwa-generation und für den Header (<meta name="description" content="description is written here">)
+  // logo?: string; // todo: Pfad relativ zu /public, wird benötigt für pwa-generation und ist Standart-Grafik im Loader (wenn nichts anderes angegeben)
 }
-interface IConfig extends IConfigContext, ILocale, Omit<IFela, 'renderer'> {}
-interface IAppProvider extends IConfig, Pick<IFela, 'renderer'> {
+interface IAppProvider extends IConfig, ILocale, IFela {
   children: React.ReactNode | Array<React.ReactNode>;
-  // config?: IConfig;
   isPWA?: boolean;
 }
 
-const ConfigContext = React.createContext<IConfigContext>({});
+const ConfigContext = React.createContext<IConfig>({});
 
 export function useConfig() {
-  return React.useContext<IConfigContext>(ConfigContext);
+  return React.useContext<IConfig>(ConfigContext);
 }
 
 export default function AppProvider({
   children,
-  // config,
   isPWA,
-  locale,
   name,
+  shortName,
   theme,
-  renderer
+  locale,
+  renderer,
+  ...config
 }: IAppProvider) {
-  // const { name, theme, locale } = config;
-
   return (
-    <ConfigContext.Provider value={{ name }}>
-      {!!name && <Title>{name}</Title>}
+    <ConfigContext.Provider value={{ name, shortName, ...config }}>
+      <Head>
+        {(!!name || !!shortName) && <title>{name || shortName}</title>}
+
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        <meta httpEquiv="Content-Language" content="de" />
+        <meta
+          name="viewport"
+          content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
+        />
+
+        <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+          rel="stylesheet"
+        />
+      </Head>
+
       <FelaProvider renderer={renderer} theme={theme}>
         <LocaleProvider locale={locale}>
           <Progress>
