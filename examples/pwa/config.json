@@ -1,6 +1,6 @@
 {
   "isPWA": true,
-  "name": "pwa",
+  "name": "PWA Example app",
   "shortName": "pwa-example",
   "logo": "logo.svg",
   "theme": {

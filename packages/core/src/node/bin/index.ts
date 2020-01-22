@@ -19,10 +19,12 @@ runScript(scripts, {
   '--port': Number,
   '--dev': Boolean,
   '--latest': Boolean,
+  '--skip': Boolean,
 
   // Aliases
   '-h': '--help',
   '-p': '--port',
   '-d': '--dev',
-  '-l': '--latest'
+  '-l': '--latest',
+  '-s': '--skip'
 });

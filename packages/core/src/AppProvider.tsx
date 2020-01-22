@@ -11,10 +11,10 @@ interface IConfig {
   description?: string;
   logo?: string; // path to logo (in public-folder)
   loader?: string; // path to loader-image (in public-folder)
+  isPWA?: boolean;
 }
 interface IAppProvider extends IConfig, ILocale, IFela {
   children: React.ReactNode | Array<React.ReactNode>;
-  isPWA?: boolean;
 }
 
 const ConfigContext = React.createContext<IConfig>({});
@@ -47,6 +47,34 @@ export default function AppProvider({
         <meta
           name="viewport"
           content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
+        />
+
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="196x196"
+          href="/images/favicon-196.png"
+        />
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/images/apple-icon-180.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="167x167"
+          href="/images/apple-icon-167.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="152x152"
+          href="/images/apple-icon-152.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="120x120"
+          href="/images/apple-icon-120.png"
         />
       </Head>
 

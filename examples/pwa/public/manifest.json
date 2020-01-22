@@ -1,5 +1,5 @@
 {
-  "name": "pwa",
+  "name": "PWA Example app",
   "short_name": "pwa-example",
   "display": "standalone",
   "background_color": "#f44336",
