@@ -1,9 +1,9 @@
 {
   "name": "pwa",
   "short_name": "pwa-example",
-  "theme_color": "#f44336",
-  "background_color": "#f44336",
   "display": "standalone",
+  "background_color": "#f44336",
+  "theme_color": "#f44336",
   "icons": [
     {
       "src": "images/manifest-icon-192.png",

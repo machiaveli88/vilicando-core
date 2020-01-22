@@ -1,0 +1,10 @@
+{
+  "isPWA": true,
+  "name": "pwa",
+  "shortName": "pwa-example",
+  "logo": "logo.svg",
+  "theme": {
+    "primary": { "base": "#f44336" },
+    "background": { "color": { "base": "#f44336", "light": "#ffffff" } }
+  }
+}
