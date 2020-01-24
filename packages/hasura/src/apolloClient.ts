@@ -11,44 +11,32 @@ import initCache from './initCache';
 
 let apolloClient: ApolloClient<NormalizedCacheObject> = null;
 
-function createApolloClient(
-  _http: HttpLink.Options,
-  _ws: WebSocketLink.Configuration,
-  initialState: NormalizedCacheObject
-) {
+function createApolloClient(state: NormalizedCacheObject) {
   const ssrMode = typeof window === 'undefined'; // Disables forceFetch on the server (so queries are only run once)
   const headers = {
     'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
   };
-  const http =
-    _http ||
-    (process.env.GRAPHQL_HTTP
-      ? {
-          uri: process.env.GRAPHQL_HTTP,
-          headers
-        }
-      : undefined);
-  const ws =
-    _ws ||
-    (process.env.GRAPHQL_WS
-      ? {
-          uri: process.env.GRAPHQL_WS,
-          options: {
-            reconnect: true,
-            connectionParams: {
-              headers
-            }
-          }
-        }
-      : undefined);
+  const http = !!process.env.GRAPHQL_HTTP && {
+    uri: process.env.GRAPHQL_HTTP,
+    headers
+  };
+  const ws = !!process.env.GRAPHQL_WS && {
+    uri: process.env.GRAPHQL_WS,
+    options: {
+      reconnect: true,
+      connectionParams: {
+        headers
+      }
+    }
+  };
 
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors)
       graphQLErrors.map(err =>
-        console.warn(`[GraphQL error]: Message: ${err.message}`)
+        console.error(`[GraphQL error]: Message: ${err.message}`)
       );
 
-    if (networkError) console.warn(`[Network error]: ${networkError}`);
+    if (networkError) console.error(`[Network error]: ${networkError}`);
   });
 
   let link = ApolloLink.from(
@@ -75,21 +63,16 @@ function createApolloClient(
       link
     );
 
-  return new ApolloClient({ ssrMode, link, cache: initCache(initialState) });
+  return new ApolloClient({ ssrMode, link, cache: initCache(state) });
 }
 
-export default function initApolloClient(
-  http?: HttpLink.Options,
-  ws?: WebSocketLink.Configuration,
-  initialState?: NormalizedCacheObject
-) {
+export default function initApolloClient(state?: NormalizedCacheObject) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
-  if (typeof window === 'undefined')
-    return createApolloClient(http, ws, initialState);
+  if (typeof window === 'undefined') return createApolloClient(state);
 
   // Reuse client on the client-side
-  if (!apolloClient) apolloClient = createApolloClient(http, ws, initialState);
+  if (!apolloClient) apolloClient = createApolloClient(state);
 
   return apolloClient;
 }

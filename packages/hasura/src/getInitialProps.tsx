@@ -1,19 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
 import { NextPageContext } from 'next';
-import { WebSocketLink } from 'apollo-link-ws';
 import initApolloClient from './apolloClient';
 
-interface IWithHasuraProps {
-  // todo: doppelt
-  ssr?: boolean;
-  http?: HttpLink.Options;
-  ws?: WebSocketLink.Configuration;
-}
-
-export default ({ http, ws, ssr }: IWithHasuraProps) => async ({
+export default (ssr: boolean) => async ({
   AppTree,
   apolloClient,
   res
@@ -23,7 +14,7 @@ NextPageContext & {
 }) => {
   // Initialize ApolloClient, add it to the ctx object so
   // we can use it in `PageComponent.getInitialProps`.
-  apolloClient = initApolloClient(http, ws);
+  apolloClient = initApolloClient();
 
   // Run wrapped getInitialProps methods
   let pageProps = {};

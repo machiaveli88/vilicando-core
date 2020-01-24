@@ -1,20 +1,16 @@
 import React from 'react';
 import { ApolloClient } from 'apollo-client';
 import { NormalizedCacheObject } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-import { WebSocketLink } from 'apollo-link-ws';
 import ApolloProvider from './ApolloProvider';
 import getInitialProps from './getInitialProps';
 
 interface IWithHasuraProps {
   ssr?: boolean;
-  http?: HttpLink.Options;
-  ws?: WebSocketLink.Configuration;
 }
 
 export default function withHasura(
   PageComponent: any,
-  { ssr = true, ...props }: IWithHasuraProps = {}
+  { ssr = true }: IWithHasuraProps = {}
 ) {
   const WithHasura = ({
     apolloClient,
@@ -24,7 +20,7 @@ export default function withHasura(
     apolloClient: ApolloClient<any>;
     apolloState: NormalizedCacheObject;
   }) => (
-    <ApolloProvider client={apolloClient} state={apolloState} {...props}>
+    <ApolloProvider client={apolloClient} state={apolloState}>
       <PageComponent {...pageProps} />
     </ApolloProvider>
   );
@@ -41,7 +37,7 @@ export default function withHasura(
   }
 
   if (ssr || PageComponent.getInitialProps)
-    WithHasura.getInitialProps = getInitialProps({ ssr, ...props });
+    WithHasura.getInitialProps = getInitialProps(ssr);
 
   return WithHasura;
 }
