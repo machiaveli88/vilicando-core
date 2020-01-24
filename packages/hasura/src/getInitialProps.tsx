@@ -4,7 +4,7 @@ import { ApolloClient } from 'apollo-client';
 import { NextPageContext } from 'next';
 import initApolloClient from './apolloClient';
 
-export default (ssr: boolean, pageProps: object) => async ({
+export default (pageProps: object) => async ({
   AppTree,
   apolloClient,
   res
@@ -22,7 +22,7 @@ export default (ssr: boolean, pageProps: object) => async ({
       // No point in continuing to render
       return pageProps;
     // Only if ssr is enabled
-    else if (ssr) {
+    else {
       try {
         // Run all GraphQL queries
         const { getDataFromTree } = await import('@apollo/react-ssr');

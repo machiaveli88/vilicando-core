@@ -4,14 +4,7 @@ import { NormalizedCacheObject } from 'apollo-cache-inmemory';
 import ApolloProvider from './ApolloProvider';
 import getInitialProps from './getInitialProps';
 
-interface IWithHasuraProps {
-  ssr?: boolean;
-}
-
-export default async function withHasura(
-  PageComponent: any,
-  { ssr = true }: IWithHasuraProps = {}
-) {
+export default async function withHasura(PageComponent: any) {
   const WithHasura = ({
     apolloClient,
     apolloState,
@@ -40,7 +33,7 @@ export default async function withHasura(
   if (PageComponent.getInitialProps)
     pageProps = await PageComponent.getInitialProps();
 
-  if (ssr) WithHasura.getInitialProps = getInitialProps(ssr, pageProps);
+  WithHasura.getInitialProps = getInitialProps(pageProps);
 
   return WithHasura;
 }
