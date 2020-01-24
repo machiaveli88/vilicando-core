@@ -21,7 +21,6 @@ export default (pageProps: object) => async ({
       // When redirecting, the response is finished.
       // No point in continuing to render
       return pageProps;
-    // Only if ssr is enabled
     else {
       try {
         // Run all GraphQL queries

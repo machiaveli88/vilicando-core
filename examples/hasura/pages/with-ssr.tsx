@@ -1,4 +1,5 @@
 import React from 'react';
+import { withHasura } from 'vilicando-hasura';
 import {
   useUsersQuery,
   useUpdateUserMutation,
@@ -21,7 +22,7 @@ function StartPage() {
   return (
     <>
       <h2 className={css({ marginBottom: 0 })}>Our employees</h2>
-      <h4 className={css({ marginTop: 0 })}>...only visible on client!</h4>
+      <h4 className={css({ marginTop: 0 })}>...also visible on ssr!</h4>
 
       {loading ? (
         <p>Lade...</p>
@@ -73,4 +74,4 @@ function StartPage() {
   );
 }
 
-export default StartPage;
+export default withHasura(StartPage);

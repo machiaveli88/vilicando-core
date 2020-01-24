@@ -6,8 +6,8 @@ import { NormalizedCacheObject } from 'apollo-cache-inmemory';
 
 interface IApolloProvider {
   children?: React.ReactNode | Array<React.ReactNode>;
-  client?: ApolloClient<any>;
   state?: NormalizedCacheObject;
+  client?: ApolloClient<any>;
 }
 
 export default ({

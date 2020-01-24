@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFela, useConfig } from 'vilicando-core';
+import { useFela, useConfig, Link } from 'vilicando-core';
 
 interface ILayout {
   children: React.ReactNode | Array<React.ReactNode>;
@@ -33,10 +33,28 @@ function Layout({ children }: ILayout) {
         className={css({
           width: '75%',
           minWidth: theme.screen.xxs,
-          maxWidth: theme.screen.md
+          maxWidth: theme.screen.md,
+          display: 'flex',
+          justifyContent: 'space-between'
         })}
       >
-        {children}
+        <div>{children}</div>
+
+        <div>
+          <h3>Navigation</h3>
+          <ul>
+            <li>
+              <Link href="/">
+                <a>Data only on client visible</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/with-ssr">
+                <a>Data also on ssr visible</a>
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
