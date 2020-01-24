@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { join } from 'path';
 import { generateImages } from 'pwa-asset-generator';
-import { existsSync, readFileSync, writeFileSync, readdirSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 
 interface IManifest {
   name?: string;

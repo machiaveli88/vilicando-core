@@ -21,7 +21,6 @@ export const QUERY_USERS = gql`
 
 export const QUERY_USER = gql`
   query user($id: uuid!) {
-    __typename
     user_by_pk(id: $id) {
       ...UserFragment
     }

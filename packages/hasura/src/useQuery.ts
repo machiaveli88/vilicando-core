@@ -3,10 +3,14 @@ import { useQuery as _useQuery, QueryHookOptions } from '@apollo/react-hooks';
 import { DocumentNode, DefinitionNode, SelectionNode } from 'graphql';
 import { OperationVariables, QueryResult } from '@apollo/react-common';
 
-export default function useQuery<IData, IVariables = OperationVariables>(
+export default function useQuery<
+  IData,
+  IVariables = OperationVariables,
+  TReturn = Array<any>
+>(
   document: DocumentNode,
   options?: QueryHookOptions<IData, IVariables>
-): [Array<any>, QueryResult<IData, IVariables>] {
+): [TReturn, QueryResult<IData, IVariables>] {
   // todo: replace Array<any> with IData[return]
   const { skip, variables, onError } = options || {};
   const { data, subscribeToMore, ...rest } = _useQuery<IData, IVariables>(

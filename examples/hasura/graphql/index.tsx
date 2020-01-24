@@ -872,7 +872,7 @@ export type TUserQueryVariables = {
   id: Scalars['uuid'];
 };
 
-export type TUserQuery = { __typename: 'query_root' } & {
+export type TUserQuery = { __typename?: 'query_root' } & {
   user_by_pk: Maybe<{ __typename?: 'user' } & TUserFragmentFragment>;
 };
 
@@ -964,10 +964,11 @@ export function useUsersQuery(
     TUsersQueryVariables
   >
 ) {
-  return ApolloReactHooks.useQuery<TUsersQuery, TUsersQueryVariables>(
-    UsersDocument,
-    baseOptions
-  );
+  return ApolloReactHooks.useQuery<
+    TUsersQuery,
+    TUsersQueryVariables,
+    Array<{ __typename?: 'user' } & TUserFragmentFragment>
+  >(UsersDocument, baseOptions);
 }
 export function useUsersLazyQuery(
   baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
@@ -988,7 +989,6 @@ export type UsersQueryResult = ApolloReactCommon.QueryResult<
 >;
 export const UserDocument = gql`
   query user($id: uuid!) {
-    __typename
     user_by_pk(id: $id) {
       ...UserFragment
     }
@@ -1018,10 +1018,11 @@ export function useUserQuery(
     TUserQueryVariables
   >
 ) {
-  return ApolloReactHooks.useQuery<TUserQuery, TUserQueryVariables>(
-    UserDocument,
-    baseOptions
-  );
+  return ApolloReactHooks.useQuery<
+    TUserQuery,
+    TUserQueryVariables,
+    Maybe<{ __typename?: 'user' } & TUserFragmentFragment>
+  >(UserDocument, baseOptions);
 }
 export function useUserLazyQuery(
   baseOptions?: ApolloReactHooks.LazyQueryHookOptions<

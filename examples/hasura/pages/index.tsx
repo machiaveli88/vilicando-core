@@ -10,7 +10,7 @@ import {
 } from '@graphql';
 
 function StartPage() {
-  const [user, { loading }] = useUsersQuery();
+  const [users, { loading }] = useUsersQuery();
   const [updateUser] = useUpdateUserMutation();
   const [deleteUser] = useDeleteUserMutation();
   const [insertUser] = useInsertUserMutation();
@@ -24,7 +24,7 @@ function StartPage() {
         <p>Lade...</p>
       ) : (
         <ul>
-          {user.map(user => (
+          {users.map(user => (
             <li key={user.id}>
               <input
                 value={user.name}
@@ -59,7 +59,7 @@ function StartPage() {
         onKeyDown={e => {
           if (e.key === 'Enter')
             updateAllUser(
-              user.map(user => ({
+              users.map(user => ({
                 ...user,
                 name: e.currentTarget.value
               }))
