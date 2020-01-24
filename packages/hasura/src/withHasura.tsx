@@ -8,7 +8,7 @@ interface IWithHasuraProps {
   ssr?: boolean;
 }
 
-export default function withHasura(
+export default async function withHasura(
   PageComponent: any,
   { ssr = true }: IWithHasuraProps = {}
 ) {
@@ -36,8 +36,11 @@ export default function withHasura(
     WithHasura.displayName = `withHasura(${displayName})`;
   }
 
-  if (ssr || PageComponent.getInitialProps)
-    WithHasura.getInitialProps = getInitialProps(ssr);
+  let pageProps = {};
+  if (PageComponent.getInitialProps)
+    pageProps = await PageComponent.getInitialProps();
+
+  if (ssr) WithHasura.getInitialProps = getInitialProps(ssr, pageProps);
 
   return WithHasura;
 }

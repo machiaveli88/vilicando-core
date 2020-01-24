@@ -4,26 +4,16 @@ import { ApolloClient } from 'apollo-client';
 import { NextPageContext } from 'next';
 import initApolloClient from './apolloClient';
 
-export default (ssr: boolean) => async ({
+export default (ssr: boolean, pageProps: object) => async ({
   AppTree,
   apolloClient,
   res
-}: // ...rest
-NextPageContext & {
+}: NextPageContext & {
   apolloClient: ApolloClient<any>;
 }) => {
   // Initialize ApolloClient, add it to the ctx object so
   // we can use it in `PageComponent.getInitialProps`.
   apolloClient = initApolloClient();
-
-  // Run wrapped getInitialProps methods
-  let pageProps = {};
-  /* if (PageComponent.getInitialProps)
-    pageProps = await PageComponent.getInitialProps({
-      AppTree,
-      res,
-      ...rest
-    }); */
 
   // Only on the server:
   if (typeof window === 'undefined')
