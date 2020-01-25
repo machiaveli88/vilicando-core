@@ -2,27 +2,30 @@ import React from 'react';
 import deDE from 'antd/lib/locale-provider/de_DE';
 import enUS from 'antd/lib/locale-provider/en_US';
 import ConfigProvider from 'antd/lib/config-provider';
-import { FelaProvider, useLocale, theme as defaultTheme } from 'vilicando-core';
+import {
+  FelaProvider,
+  IFelaProvider,
+  useLocale,
+  theme as defaultTheme
+} from 'vilicando-core';
 import antdTheme from './theme.json';
 import overwrite from './overwrite.json';
 import { IAntdTheme } from './types';
-import { ITheme as IDefaultTheme } from 'vilicando-core';
+import { ITheme } from 'vilicando-core';
 import { merge } from 'lodash';
+import { RendererProvider } from 'react-fela';
 import { colorPalette } from './utils';
 
-type ITheme<T = {}> = IDefaultTheme & IAntdTheme & T;
-
-export interface IAntdProvider<T = {}> {
-  children: React.ReactNode | Array<React.ReactNode>;
-  theme?: ITheme<T>;
-}
-
-function AntdProvider<T>({ children, theme }: IAntdProvider<T>) {
+function AntdProvider({
+  children,
+  theme,
+  renderer
+}: IFelaProvider<IAntdTheme>) {
   const { locale } = useLocale();
 
   const baseTheme = React.useMemo(
     () =>
-      merge<IDefaultTheme, IAntdTheme, Partial<IAntdTheme>>(
+      merge<ITheme, IAntdTheme, Partial<IAntdTheme>>(
         defaultTheme,
         antdTheme,
         overwrite
@@ -31,7 +34,7 @@ function AntdProvider<T>({ children, theme }: IAntdProvider<T>) {
   );
 
   const parsedTheme = React.useMemo(() => {
-    const newTheme = merge<ITheme, ITheme<T>>(baseTheme, theme);
+    const newTheme = merge(baseTheme, theme);
     // see also in withAntd!
     newTheme.spacing.xs = theme?.spacing?.xs || newTheme.padding.xs;
     newTheme.spacing.sm = theme?.spacing?.sm || newTheme.padding.sm;
@@ -66,12 +69,18 @@ function AntdProvider<T>({ children, theme }: IAntdProvider<T>) {
     return newTheme;
   }, [theme, baseTheme]);
 
-  return (
+  const content = (
     <FelaProvider theme={parsedTheme}>
       <ConfigProvider locale={locale === 'de' ? deDE : enUS}>
         {children}
       </ConfigProvider>
     </FelaProvider>
+  );
+
+  return renderer ? (
+    <RendererProvider renderer={renderer}>{content}</RendererProvider>
+  ) : (
+    content
   );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import LocaleProvider, { ILocale } from './LocaleProvider';
 import { Progress } from './components';
-import { FelaProvider, IFela } from './theme';
+import { FelaProvider, IFelaProvider } from './theme';
 import PWAProvider from './PWAProvider';
 import Head from 'next/head';
 
@@ -13,9 +13,9 @@ interface IConfig {
   loader?: string; // path to loader-image (in public-folder)
   isPWA?: boolean;
 }
-export interface IAppProvider extends IConfig, ILocale, IFela {
+export interface IAppProvider extends IConfig, ILocale, IFelaProvider {
   children: React.ReactNode | Array<React.ReactNode>;
-  themeProvider?: any; // todo
+  themeProvider?: (props: IFelaProvider) => JSX.Element;
 }
 
 const ConfigContext = React.createContext<IConfig>({});

@@ -21,6 +21,7 @@ export {
 } from './next';
 export {
   FelaProvider,
+  IFelaProvider,
   ITheme,
   theme,
   useFela,

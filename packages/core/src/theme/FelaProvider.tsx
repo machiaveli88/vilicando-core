@@ -11,12 +11,11 @@ import defaultRenderer from './defaultRenderer';
 import defaultTheme from './theme.json';
 import { ITheme } from './types';
 
-export interface IFela {
-  theme?: Partial<ITheme>;
-  renderer?: IRenderer;
-}
-interface IFelaProvider extends IFela, Omit<ThemeProviderProps, 'theme'> {
+export interface IFelaProvider<T = {}>
+  extends Omit<ThemeProviderProps, 'theme'> {
   children?: React.ReactNode | Array<React.ReactNode>;
+  theme?: Partial<T & ITheme>;
+  renderer?: IRenderer;
 }
 
 export default function FelaProvider({
