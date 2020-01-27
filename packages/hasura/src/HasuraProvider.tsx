@@ -4,7 +4,7 @@ import initApolloClient from './apolloClient';
 import ApolloClient from 'apollo-client';
 import { NormalizedCacheObject } from 'apollo-cache-inmemory';
 
-interface IApolloProvider {
+interface IHasuraProvider {
   children?: React.ReactNode | Array<React.ReactNode>;
   state?: NormalizedCacheObject;
   client?: ApolloClient<any>;
@@ -14,6 +14,6 @@ export default ({
   children,
   state,
   client = initApolloClient(state)
-}: IApolloProvider) => (
+}: IHasuraProvider) => (
   <ApolloProvider client={client}>{children}</ApolloProvider>
 );

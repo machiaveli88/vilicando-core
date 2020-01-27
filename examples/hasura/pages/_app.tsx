@@ -1,6 +1,6 @@
 import React from 'react';
 import { App, AppProvider } from 'vilicando-core';
-import { ApolloProvider } from 'vilicando-hasura';
+import { HasuraProvider } from 'vilicando-hasura';
 import { Layout } from '@components';
 import config from '../config.json';
 
@@ -10,11 +10,11 @@ class CustomApp extends App {
 
     return (
       <AppProvider {...config}>
-        <ApolloProvider>
+        <HasuraProvider>
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        </ApolloProvider>
+        </HasuraProvider>
       </AppProvider>
     );
   }

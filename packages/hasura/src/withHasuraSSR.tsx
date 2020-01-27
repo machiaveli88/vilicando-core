@@ -1,11 +1,11 @@
 import React from 'react';
 import { ApolloClient } from 'apollo-client';
 import { NormalizedCacheObject } from 'apollo-cache-inmemory';
-import ApolloProvider from './ApolloProvider';
+import HasuraProvider from './HasuraProvider';
 import getInitialProps from './getInitialProps';
 
-export default async function withHasura(PageComponent: any) {
-  const WithHasura = ({
+export default async function withHasuraSSR(PageComponent: any) {
+  const WithHasuraSSR = ({
     apolloClient,
     apolloState,
     ...pageProps
@@ -13,9 +13,9 @@ export default async function withHasura(PageComponent: any) {
     apolloClient: ApolloClient<any>;
     apolloState: NormalizedCacheObject;
   }) => (
-    <ApolloProvider client={apolloClient} state={apolloState}>
+    <HasuraProvider client={apolloClient} state={apolloState}>
       <PageComponent {...pageProps} />
-    </ApolloProvider>
+    </HasuraProvider>
   );
 
   // Set the correct displayName in development
@@ -24,16 +24,16 @@ export default async function withHasura(PageComponent: any) {
       PageComponent.displayName || PageComponent.name || 'Component';
 
     if (displayName === 'App')
-      console.warn('This withHasura HOC only works with PageComponents.');
+      console.warn('This withHasuraSSR HOC only works with PageComponents.');
 
-    WithHasura.displayName = `withHasura(${displayName})`;
+    WithHasuraSSR.displayName = `withHasuraSSR(${displayName})`;
   }
 
   let pageProps = {};
   if (PageComponent.getInitialProps)
     pageProps = await PageComponent.getInitialProps();
 
-  WithHasura.getInitialProps = getInitialProps(pageProps);
+  WithHasuraSSR.getInitialProps = getInitialProps(pageProps);
 
-  return WithHasura;
+  return WithHasuraSSR;
 }
