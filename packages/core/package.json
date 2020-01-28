@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.5.2",
+  "version": "0.5.4",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -18,7 +18,7 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "@svgr/webpack": "5.0.1",
+    "@svgr/webpack": "5.1.0",
     "@types/lodash": "4.14.149",
     "@types/node": "13.5.0",
     "arg": "4.1.2",
