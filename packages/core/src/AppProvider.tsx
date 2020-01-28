@@ -5,6 +5,48 @@ import { FelaProvider, IFelaProvider } from './theme';
 import PWAProvider from './PWAProvider';
 import Head from 'next/head';
 
+export interface IManifest {
+  name?: string;
+  short_name?: string;
+  icons?: Array<{
+    src: string;
+    sizes: string;
+    type?:
+      | 'image/apng'
+      | 'image/bmp'
+      | 'image/gif'
+      | 'image/x-icon'
+      | 'image/jpeg'
+      | 'image/png'
+      | 'image/svg+xml'
+      | 'image/tiff'
+      | 'image/webp';
+  }>;
+  start_url?: string;
+  background_color?: string; // backgroundColor of splashscreen
+  display?: 'fullscreen' | 'standalone' | 'minimal-ui' | 'browser';
+  orientation?:
+    | 'any'
+    | 'natural'
+    | 'landscape'
+    | 'landscape-primary'
+    | 'landscape-secondary'
+    | 'portrait'
+    | 'portrait-primary'
+    | 'portrait-secondary';
+  scope?: string;
+  theme_color?: string; // color of toolbar
+  description?: string;
+  dir?: 'ltr' | 'rtl' | 'auto'; // text-direction of name/short_name
+  lang?: string; // language, e.g. "en-US"
+  prefer_related_applications?: boolean;
+  related_applications?: Array<{
+    platform: string;
+    url: string;
+    id?: string;
+  }>;
+}
+
 interface IConfig {
   name?: string;
   shortName?: string;
@@ -12,6 +54,7 @@ interface IConfig {
   logo?: string; // path to logo (in public-folder)
   loader?: string; // path to loader-image (in public-folder)
   isPWA?: boolean;
+  manifest?: IManifest;
 }
 export interface IAppProvider extends IConfig, ILocale, IFelaProvider {
   children: React.ReactNode | Array<React.ReactNode>;

@@ -2,48 +2,7 @@
 import { join } from 'path';
 import { generateImages } from 'pwa-asset-generator';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
-
-interface IManifest {
-  name?: string;
-  short_name?: string;
-  icons?: Array<{
-    src: string;
-    sizes: string;
-    type?:
-      | 'image/apng'
-      | 'image/bmp'
-      | 'image/gif'
-      | 'image/x-icon'
-      | 'image/jpeg'
-      | 'image/png'
-      | 'image/svg+xml'
-      | 'image/tiff'
-      | 'image/webp';
-  }>;
-  start_url?: string;
-  background_color?: string; // backgroundColor of splashscreen
-  display?: 'fullscreen' | 'standalone' | 'minimal-ui' | 'browser';
-  orientation?:
-    | 'any'
-    | 'natural'
-    | 'landscape'
-    | 'landscape-primary'
-    | 'landscape-secondary'
-    | 'portrait'
-    | 'portrait-primary'
-    | 'portrait-secondary';
-  scope?: string;
-  theme_color?: string; // color of toolbar
-  description?: string;
-  dir?: 'ltr' | 'rtl' | 'auto'; // text-direction of name/short_name
-  lang?: string; // language, e.g. "en-US"
-  prefer_related_applications?: boolean;
-  related_applications?: Array<{
-    platform: string;
-    url: string;
-    id?: string;
-  }>;
-}
+import { IManifest } from '../../AppProvider';
 
 const publicDir = join(process.cwd(), 'public');
 const imagesDir = join(publicDir, 'images');
@@ -59,8 +18,15 @@ export const pwa = async ({ '--skip': skip = false }) => {
     console.info(
       '  ✘ no config.json found! It is recommended to use a config.json!'
     );
-  const { name, shortName: short_name, description, logo, theme, isPWA } =
-    config || {};
+  const {
+    name,
+    shortName: short_name,
+    description,
+    logo,
+    theme,
+    isPWA,
+    manifest = {}
+  } = config || {};
 
   if (
     !skip ||
@@ -79,7 +45,8 @@ export const pwa = async ({ '--skip': skip = false }) => {
         description,
         display: 'standalone',
         background_color: theme?.primary?.base,
-        theme_color: theme?.background?.color?.base || theme?.primary?.base
+        theme_color: theme?.background?.color?.base || theme?.primary?.base,
+        ...manifest
       };
       writeFileSync(manifestPath, JSON.stringify(data), 'utf8');
       console.info('  ✔ manifest.json created!');
