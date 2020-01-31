@@ -8,7 +8,7 @@ export interface ICustomProperty {
   marginY?: number | string;
   borderX?: string;
   borderY?: string;
-  ellipsis?: boolean;
+  ellipsis?: boolean | number | string;
   clearfix?: boolean;
   center?: boolean;
   centerX?: boolean;
@@ -47,12 +47,12 @@ export default () =>
       borderBottom: border
     }),
     ellipsis: (ellipsis: boolean) =>
-      ellipsis === true
+      !!ellipsis
         ? {
             whiteSpace: 'nowrap',
             overflowX: 'hidden',
             textOverflow: 'ellipsis',
-            maxWidth: '100%'
+            maxWidth: ellipsis === true ? '100%' : ellipsis
           }
         : {},
     clearfix: (clearfix: boolean) =>
