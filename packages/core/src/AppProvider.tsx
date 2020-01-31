@@ -4,6 +4,7 @@ import { Progress } from './components';
 import { FelaProvider, IFelaProvider } from './theme';
 import PWAProvider from './PWAProvider';
 import Head from 'next/head';
+import { CookiesProvider } from 'react-cookie';
 
 export interface IManifest {
   name?: string;
@@ -132,9 +133,11 @@ export default function AppProvider({
 
       <ThemeProvider renderer={renderer} theme={theme}>
         <LocaleProvider locale={locale}>
-          <Progress>
-            {isPWA ? <PWAProvider>{children}</PWAProvider> : children}
-          </Progress>
+          <CookiesProvider>
+            <Progress>
+              {isPWA ? <PWAProvider>{children}</PWAProvider> : children}
+            </Progress>
+          </CookiesProvider>
         </LocaleProvider>
       </ThemeProvider>
     </ConfigContext.Provider>

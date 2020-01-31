@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -42,6 +42,7 @@
     "nprogress": "0.2.0",
     "push.js": "1.0.12",
     "pwa-asset-generator": "2.2.1",
+    "react-cookie": "^4.0.3",
     "react-fela": "11.0.2"
   },
   "devDependencies": {
