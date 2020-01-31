@@ -1,4 +1,5 @@
 export * from './next';
+export * from './react-cookie';
 export { Loader, Page, ResponsiveHelper } from './components';
 export { default as AppProvider, IAppProvider, useConfig } from './AppProvider';
 export { default as language } from './language';
