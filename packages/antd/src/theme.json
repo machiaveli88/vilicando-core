@@ -270,7 +270,10 @@
   "form": {
     "error": { "input": { "bg": "#fff" } },
     "item": {
-      "label": { "colon": { "margin": { "left": "2px", "right": "8px" } } },
+      "label": {
+        "colon": { "margin": { "left": "2px", "right": "8px" } },
+        "font": { "size": "14px" }
+      },
       "margin": { "bottom": "24px" },
       "trailing": { "colon": "true" }
     },
@@ -790,9 +793,9 @@
     "horizontal": {
       "margin": "0 32px 0 0",
       "marginRtl": "0 0 0 32px",
-      "padding": "12px 16px",
-      "paddingLg": "16px",
-      "paddingSm": "8px 16px"
+      "padding": "12px 0",
+      "paddingLg": "16px 0",
+      "paddingSm": "8px 0"
     },
     "hover": { "color": "#40a9ff" },
     "ink": { "bar": { "color": "#1890ff" } },

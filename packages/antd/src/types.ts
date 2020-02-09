@@ -206,7 +206,10 @@ export interface IAntdTheme {
   form?: {
     error?: { input?: { bg?: string } };
     item?: {
-      label?: { colon?: { margin?: { left?: string; right?: string } } };
+      label?: {
+        colon?: { margin?: { left?: string; right?: string } };
+        font?: { size?: string };
+      };
       margin?: { bottom?: string };
       trailing?: { colon?: string };
     };

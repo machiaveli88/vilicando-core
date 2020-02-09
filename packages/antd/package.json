@@ -1,6 +1,6 @@
 {
   "name": "vilicando-antd",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -18,7 +18,7 @@
   "dependencies": {
     "@ant-design/icons": "4.0.0-alpha.19",
     "@zeit/next-less": "1.0.1",
-    "antd": "4.0.0-rc.3",
+    "antd": "4.0.0-rc.4",
     "less": "3.10.3",
     "lodash": "4.17.15",
     "null-loader": "3.0.0",

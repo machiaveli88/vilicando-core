@@ -55,7 +55,6 @@ Please set the following .env-vars to enable full hasura/graphql support:
 
 - [x] Database
 - [x] Example app with DB
-- [ ] [Offline support](https://medium.com/twostoryrobot/a-recipe-for-offline-support-in-react-apollo-571ad7e6f7f4)
 
 #### 0.4 - Refactoring
 
@@ -79,7 +78,11 @@ Please set the following .env-vars to enable full hasura/graphql support:
 #### ... Later
 
 - [ ] [Auth](https://blog.hasura.io/add-authentication-and-authorization-to-next-js-8-serverless-apps-using-jwt-and-graphql/)
-- [ ] [Offix](https://offix.dev/docs/react) or [Offline Mutations](https://medium.com/twostoryrobot/a-recipe-for-offline-support-in-react-apollo-571ad7e6f7f4)
 - [ ] Splash-Screen (https://github.com/zeit/next.js/issues/5736, https://github.com/nguyenbathanh/react-loading-screen/blob/master/public/index.html)
 - [ ] Additionally package for UI (based on [react-native-web](https://github.com/zeit/next.js/blob/canary/examples/with-react-native-web/pages/index.js))
-- [ ] ...
+
+##### Offline Support for Hasura
+
+- [ ] [Offline support](https://medium.com/twostoryrobot/a-recipe-for-offline-support-in-react-apollo-571ad7e6f7f4)
+- [ ] [Offline Sync](https://blog.hasura.io/building-an-offline-first-web-app-with-rxdb-hasura/)
+- [ ] [Offix](https://offix.dev/docs/react)
