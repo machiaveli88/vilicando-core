@@ -9,7 +9,6 @@ import { merge } from 'lodash';
 import defaultRenderer from './defaultRenderer';
 import defaultTheme from './theme.json';
 import { ITheme } from './types';
-import WebFont from 'webfontloader';
 
 export interface IFelaProvider<T = {}>
   extends Omit<ThemeProviderProps, 'theme'> {
@@ -77,19 +76,18 @@ export default function FelaProvider({
   }, [renderer, theme]);
 
   React.useEffect(() => {
-    if (typeof window !== 'undefined') {
+    import('webfontloader').then(WebFont => {
       const stringifiedTheme = JSON.stringify(_theme);
-      const families = [];
+      const families: Array<string> = [];
 
       if (!!~stringifiedTheme.indexOf('Open Sans')) families.push('Open Sans');
       if (!!~stringifiedTheme.indexOf('Roboto')) families.push('Roboto');
 
       if (families.length) {
         families[families.length - 1] += '&display=swap';
-
         WebFont.load({ google: { families } });
       }
-    }
+    });
   }, [theme]);
 
   return (
