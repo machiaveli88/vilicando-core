@@ -51,16 +51,21 @@ function AntdProvider({
     const colors = newTheme.preset.colors.replace(/ /g, '').split(',');
     ['primary', 'secondary', 'grey', ...colors].forEach(color => {
       if (theme?.[color]?.base) {
+        let hasChanges = false;
         const schema = { ...newTheme[color], ...theme[color] };
         for (let i = 1; i <= 10; i++)
           if (!theme?.[color]?.[i]) {
             schema[i] = colorPalette(theme[color].base, i);
             newTheme[color][i] = schema[i];
+            hasChanges = true;
           }
-        changedColors[color] = { ...schema };
+        if (hasChanges) changedColors[color] = { ...schema };
       }
     });
-    if (process.env.NODE_ENV !== 'development')
+    if (
+      Object.keys(changedColors).length &&
+      process.env.NODE_ENV !== 'development'
+    )
       console.warn(
         'Automatically color generating is only for development! Please add the following object to your theme.json',
         changedColors

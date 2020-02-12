@@ -93,10 +93,6 @@ export default function AppProvider({
 
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta httpEquiv="Content-Language" content="de" />
-        <meta
-          name="viewport"
-          content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
-        />
 
         {!!logo && (
           <>
