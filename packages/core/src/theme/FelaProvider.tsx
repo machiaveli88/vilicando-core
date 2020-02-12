@@ -6,7 +6,6 @@ import {
 } from 'react-fela';
 import { IRenderer } from 'fela';
 import { merge } from 'lodash';
-import Head from 'next/head';
 import defaultRenderer from './defaultRenderer';
 import defaultTheme from './theme.json';
 import { ITheme } from './types';
@@ -78,17 +77,19 @@ export default function FelaProvider({
   }, [renderer, theme]);
 
   React.useEffect(() => {
-    const stringifiedTheme = JSON.stringify(_theme);
-    const families = [];
+    if (typeof window !== 'undefined') {
+      const stringifiedTheme = JSON.stringify(_theme);
+      const families = [];
 
-    if (!!~stringifiedTheme.indexOf('Open Sans')) families.push('Open Sans');
-    if (!!~stringifiedTheme.indexOf('Roboto')) families.push('Roboto');
+      if (!!~stringifiedTheme.indexOf('Open Sans')) families.push('Open Sans');
+      if (!!~stringifiedTheme.indexOf('Roboto')) families.push('Roboto');
 
-    WebFont.load({
-      google: {
-        families
+      if (families.length) {
+        families[families.length - 1] += '&display=swap';
+
+        WebFont.load({ google: { families } });
       }
-    });
+    }
   }, [theme]);
 
   return (
