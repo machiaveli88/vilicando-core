@@ -10,6 +10,7 @@ import Head from 'next/head';
 import defaultRenderer from './defaultRenderer';
 import defaultTheme from './theme.json';
 import { ITheme } from './types';
+import WebFont from 'webfontloader';
 
 export interface IFelaProvider<T = {}>
   extends Omit<ThemeProviderProps, 'theme'> {
@@ -65,31 +66,34 @@ export default function FelaProvider({
       },
       'a:hover'
     );
-    renderer.renderStatic({ color: _theme.link.active.color }, 'a:active');
+    renderer.renderStatic(
+      {
+        color: _theme.link.active.color,
+        textDecoration: _theme.link.active.decoration
+      },
+      'a:active'
+    );
 
     return _theme;
   }, [renderer, theme]);
 
+  React.useEffect(() => {
+    const stringifiedTheme = JSON.stringify(_theme);
+    const families = [];
+
+    if (!!~stringifiedTheme.indexOf('Open Sans')) families.push('Open Sans');
+    if (!!~stringifiedTheme.indexOf('Roboto')) families.push('Roboto');
+
+    WebFont.load({
+      google: {
+        families
+      }
+    });
+  }, [theme]);
+
   return (
     <RendererProvider renderer={renderer}>
-      <>
-        <Head>
-          {!!~JSON.stringify(_theme).indexOf('Open Sans') && (
-            <link
-              href="https://fonts.googleapis.com/css?family=Open+Sans"
-              rel="stylesheet"
-            />
-          )}
-          {!!~JSON.stringify(_theme).indexOf('Roboto') && (
-            <link
-              href="https://fonts.googleapis.com/css?family=Roboto"
-              rel="stylesheet"
-            />
-          )}
-        </Head>
-
-        <ThemeProvider theme={_theme} {...props} />
-      </>
+      <ThemeProvider theme={_theme} {...props} />
     </RendererProvider>
   );
 }
