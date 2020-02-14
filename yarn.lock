@@ -113,12 +113,12 @@
     core-js "^3.4.0"
     lodash.xorby "^4.7.0"
 
-"@apollo/federation@0.11.3":
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.11.3.tgz#82252205c7f90fc69034f2a0073efa71aad52d0e"
-  integrity sha512-6KK9noDoWXujIgmp7RHcA9quQTByM8b4saxmujeO4RnZmMQq4bcpN8AJAykulE1x3DuHqeUbLNl3s7gGlEhOWw==
+"@apollo/federation@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.12.0.tgz#1cbd03d484c4fec9958d79b415999f8da431e80b"
+  integrity sha512-jJb4CzJDLWghkVkhQE5go9XvekQZgL8MsHAGWHzrgHXfUNHZhAjkxODH0duPEq2WunGSp6rSu4rerW1cC89JvA==
   dependencies:
-    apollo-graphql "^0.3.7"
+    apollo-graphql "^0.4.0"
     apollo-server-env "^2.4.3"
     core-js "^3.4.0"
     lodash.xorby "^4.7.0"
@@ -2507,7 +2507,17 @@
     debug "^4.1.1"
     semver "^5.6.0"
 
-"@oclif/config@1.13.3", "@oclif/config@^1", "@oclif/config@^1.12.8", "@oclif/config@^1.6.22":
+"@oclif/config@1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.14.0.tgz#0af93facd5c5087f804489f1603c4f3bc0c45014"
+  integrity sha512-KsOP/mx9lzTah+EtGqLUXN3PDL0J3zb9/dTneFyiUK2K6T7vFEGhV6OasmqTh4uMZHGYTGrNPV8x/Yw6qZNL6A==
+  dependencies:
+    "@oclif/errors" "^1.0.0"
+    "@oclif/parser" "^3.8.0"
+    debug "^4.1.1"
+    tslib "^1.9.3"
+
+"@oclif/config@^1", "@oclif/config@^1.12.8", "@oclif/config@^1.6.22":
   version "1.13.3"
   resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.13.3.tgz#1b13e18d0e4242ddbd9cbd100f0eec819aa2bf8c"
   integrity sha512-qs5XvGRw+1M41abOKCjd0uoeHCgsMxa2MurD2g2K8CtQlzlMXl0rW5idVeimIg5208LLuxkfzQo8TKAhhRCWLg==
@@ -2516,7 +2526,7 @@
     debug "^4.1.1"
     tslib "^1.9.3"
 
-"@oclif/errors@1.2.2", "@oclif/errors@^1.2.1", "@oclif/errors@^1.2.2":
+"@oclif/errors@1.2.2", "@oclif/errors@^1.0.0", "@oclif/errors@^1.2.1", "@oclif/errors@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@oclif/errors/-/errors-1.2.2.tgz#9d8f269b15f13d70aa93316fed7bebc24688edc2"
   integrity sha512-Eq8BFuJUQcbAPVofDxwdE0bL14inIiwt5EaKRVY9ZDIG11jwdXZqiQEECJx0VfnLyUZdYfRd/znDI/MytdJoKg==
@@ -3671,60 +3681,60 @@ apollo-client@2.6.8:
     tslib "^1.10.0"
     zen-observable "^0.8.0"
 
-apollo-codegen-core@^0.36.0:
-  version "0.36.0"
-  resolved "https://registry.yarnpkg.com/apollo-codegen-core/-/apollo-codegen-core-0.36.0.tgz#561af8fde3ea7aaeb9f24a3eb2f567ff04c9bf9f"
-  integrity sha512-RorGvym1AFZzrPwLCWznMcyHCfzCWZb7IktC1TyvvgSuKA9whAGLbkLB9tXk7gE3bcmkRmNaWJUWfb+8iZ+rRg==
+apollo-codegen-core@^0.36.1:
+  version "0.36.1"
+  resolved "https://registry.yarnpkg.com/apollo-codegen-core/-/apollo-codegen-core-0.36.1.tgz#208d9efcd532a8fea3f8e96818fa34fc3bd4c0d5"
+  integrity sha512-PSucYRG29+BAnQE8A4KhGqUK0LdFfAiep8az1qNDq6RDfqVhdqzMF32ZpQWuEx7cz4YTRcBs9cg2/ZjXxAgJwA==
   dependencies:
     "@babel/generator" "7.8.3"
     "@babel/parser" "^7.1.3"
     "@babel/types" "7.8.3"
     apollo-env "^0.6.1"
-    apollo-language-server "^1.19.0"
+    apollo-language-server "^1.19.1"
     ast-types "^0.13.0"
     common-tags "^1.5.1"
     recast "^0.18.0"
 
-apollo-codegen-flow@^0.34.0:
-  version "0.34.0"
-  resolved "https://registry.yarnpkg.com/apollo-codegen-flow/-/apollo-codegen-flow-0.34.0.tgz#498eb79ca8d5f7115916ad9bf39d68dfe05db97c"
-  integrity sha512-Vc4i0lV9O0D3vrwWvKkiFWqeUxgl81jAGNGSy2pOhfDut84kS85GbR0fO4eQ8JTLYqh/PquT3Oq6Q5UfSQQE9w==
+apollo-codegen-flow@^0.34.1:
+  version "0.34.1"
+  resolved "https://registry.yarnpkg.com/apollo-codegen-flow/-/apollo-codegen-flow-0.34.1.tgz#253823dda2c21a84eac599d81e0c2ac0f5b45f18"
+  integrity sha512-q28f5rY+KwVWNoPyTJHSSJfA+y9JdXFxvzDZNQ7odUKuLZRDJSswYZkBYk/Nq/rkl7RwOJ7qgwEG6AxhPMvH1g==
   dependencies:
     "@babel/generator" "7.8.3"
     "@babel/types" "7.8.3"
-    apollo-codegen-core "^0.36.0"
+    apollo-codegen-core "^0.36.1"
     change-case "^3.0.1"
     common-tags "^1.5.1"
     inflected "^2.0.3"
 
-apollo-codegen-scala@^0.35.0:
-  version "0.35.0"
-  resolved "https://registry.yarnpkg.com/apollo-codegen-scala/-/apollo-codegen-scala-0.35.0.tgz#6b499dee69352ed221146735a158103909ee3ab1"
-  integrity sha512-QBhaYX+F4B0nESLP+n1GvDZ03EWRo31dfEA2eu+DUx+Nez1kMzbohFOFDaN7h1DADIarPyELQ3CQb5yDrzFMMw==
+apollo-codegen-scala@^0.35.1:
+  version "0.35.1"
+  resolved "https://registry.yarnpkg.com/apollo-codegen-scala/-/apollo-codegen-scala-0.35.1.tgz#e831711f4b88d8851c616dd0e0aaf5aa887a6258"
+  integrity sha512-9yywcpwZiclKRXXSFGYuJcQIOTlPyPKSYH/+Rls1Vu5CafPGgkhIJQLtvtc80PJMaK1vmYVvsrDsAO91Tu/frw==
   dependencies:
-    apollo-codegen-core "^0.36.0"
+    apollo-codegen-core "^0.36.1"
     change-case "^3.0.1"
     common-tags "^1.5.1"
     inflected "^2.0.3"
 
-apollo-codegen-swift@^0.36.0:
-  version "0.36.0"
-  resolved "https://registry.yarnpkg.com/apollo-codegen-swift/-/apollo-codegen-swift-0.36.0.tgz#7ca37d2da756b44cb1d22cf5c7953e001229cd34"
-  integrity sha512-i6AoxYunQhUeXauZdsY9DunvdGMAd83DwRHxH/XCbwOcjSWTflnSxd8JJzNA6uMOI7lN276k8XpYQMB+xaNKig==
+apollo-codegen-swift@^0.36.1:
+  version "0.36.1"
+  resolved "https://registry.yarnpkg.com/apollo-codegen-swift/-/apollo-codegen-swift-0.36.1.tgz#d0e7d7a0c4de1314a334251f2673fc0f9ba08c0b"
+  integrity sha512-no5bq4xiTqeT591bpGTdy3ATfflmmQXc9h6q935lVrak5uqGigd72RPWHNeN/BbnGg6khaL9jBbSs2+VqrOGug==
   dependencies:
-    apollo-codegen-core "^0.36.0"
+    apollo-codegen-core "^0.36.1"
     change-case "^3.0.1"
     common-tags "^1.5.1"
     inflected "^2.0.3"
 
-apollo-codegen-typescript@^0.36.0:
-  version "0.36.0"
-  resolved "https://registry.yarnpkg.com/apollo-codegen-typescript/-/apollo-codegen-typescript-0.36.0.tgz#884d7013e037901c111ae7bfa60fb5bd478286cc"
-  integrity sha512-mnhUXrZ1Ynqvav7mWxQHNWg+ShtgRsub7z4NwlURQjI1UfQRtrQKRQzY8Q/3ihTUSTYoD0tHeBv8ZJcVXq0dWw==
+apollo-codegen-typescript@^0.36.1:
+  version "0.36.1"
+  resolved "https://registry.yarnpkg.com/apollo-codegen-typescript/-/apollo-codegen-typescript-0.36.1.tgz#29994511e33b4dbe37eacd0c1a63ff8d58786e95"
+  integrity sha512-iQ2FGxA9Neb5728eqtvC9J4Ig6heOEMdgVcfsIrUQRTRKiPp7iIKc2DS8ReMX6LMdRhm000ldcquJFQJldFjLg==
   dependencies:
     "@babel/generator" "7.8.3"
     "@babel/types" "7.8.3"
-    apollo-codegen-core "^0.36.0"
+    apollo-codegen-core "^0.36.1"
     change-case "^3.0.1"
     common-tags "^1.5.1"
     inflected "^2.0.3"
@@ -3735,6 +3745,14 @@ apollo-datasource@^0.6.0:
   integrity sha512-gRYyFVpJgHE2hhS+VxMeOerxXQ/QYxWG7T6QddfugJWYAG9DRCl65e2b7txcGq2NP3r+O1iCm4GNwhRBDJbd8A==
   dependencies:
     apollo-server-caching "^0.5.0"
+    apollo-server-env "^2.4.3"
+
+apollo-datasource@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/apollo-datasource/-/apollo-datasource-0.7.0.tgz#2a6d82edb2eba21b4ddf21877009ba39ff821945"
+  integrity sha512-Yja12BgNQhzuFGG/5Nw2MQe0hkuQy2+9er09HxeEyAf2rUDIPnhPrn1MDoZTB8MU7UGfjwITC+1ofzKkkrZobA==
+  dependencies:
+    apollo-server-caching "^0.5.1"
     apollo-server-env "^2.4.3"
 
 apollo-env@^0.6.0:
@@ -3811,16 +3829,16 @@ apollo-language-server@1.18.0:
     vscode-languageserver "^5.1.0"
     vscode-uri "1.0.6"
 
-apollo-language-server@^1.19.0:
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/apollo-language-server/-/apollo-language-server-1.19.0.tgz#451ab7817a96b19cf7fffc59a00bef7fd7c94a9b"
-  integrity sha512-BkrfKs0k+Pr3GXnnS1pbuX9qKhFLBRbImFwO1fka2fmeQ8J2uZc8oSHR3TZ7jWEYA7DQsTPNu1SD4GFfE750UA==
+apollo-language-server@^1.19.1:
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/apollo-language-server/-/apollo-language-server-1.19.1.tgz#9fc70db60280a5a29d942c56b7684d8c6e2fcd29"
+  integrity sha512-Xq9DL+7rl1I78hU5TTJG1zxfPWbz08l/XOthI+rCEhzhIFafzOlUjrtJziuYr1AmAAjA9CJLzaaUDC9ixm+Sfw==
   dependencies:
-    "@apollo/federation" "0.11.3"
+    "@apollo/federation" "0.12.0"
     "@apollographql/apollo-tools" "^0.4.3"
     "@apollographql/graphql-language-service-interface" "^2.0.2"
     "@endemolshinegroup/cosmiconfig-typescript-loader" "^1.0.0"
-    apollo-datasource "^0.6.0"
+    apollo-datasource "^0.7.0"
     apollo-env "^0.6.1"
     apollo-graphql "^0.4.0"
     apollo-link "^1.2.3"
@@ -3911,6 +3929,13 @@ apollo-server-caching@^0.5.0:
   dependencies:
     lru-cache "^5.0.0"
 
+apollo-server-caching@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/apollo-server-caching/-/apollo-server-caching-0.5.1.tgz#5cd0536ad5473abb667cc82b59bc56b96fb35db6"
+  integrity sha512-L7LHZ3k9Ao5OSf2WStvQhxdsNVplRQi7kCAPfqf9Z3GBEnQ2uaL0EgO0hSmtVHfXTbk5CTRziMT1Pe87bXrFIw==
+  dependencies:
+    lru-cache "^5.0.0"
+
 apollo-server-env@^2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/apollo-server-env/-/apollo-server-env-2.4.3.tgz#9bceedaae07eafb96becdfd478f8d92617d825d2"
@@ -3944,28 +3969,28 @@ apollo-utilities@^1.0.1, apollo-utilities@^1.3.0:
     ts-invariant "^0.4.0"
     tslib "^1.9.3"
 
-apollo@2.22.0:
-  version "2.22.0"
-  resolved "https://registry.yarnpkg.com/apollo/-/apollo-2.22.0.tgz#fb92fa9e1b9fd4d72f72125a10697f3e46cad558"
-  integrity sha512-9Xmfdx/q0YU1LkcZIV1chAy1iY+bNTsgzamhw71gMg6qto94qnEYBX531Cv+80V+Bx6/f0ZGgofmgPPJx4KCTA==
+apollo@2.22.1:
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/apollo/-/apollo-2.22.1.tgz#6d360d2f8fb4e2caef17051e2d5ea592ef1dda6e"
+  integrity sha512-FONVPKvK0gg+loWCh7KOAAa/HlvbKcR7pdiC3Mtpohe3RWKqKb/QLsBPHjCgz1mjVyVL+05Cv/SjnQ9WHUO6/g==
   dependencies:
     "@apollographql/apollo-tools" "^0.4.3"
     "@oclif/command" "1.5.19"
-    "@oclif/config" "1.13.3"
+    "@oclif/config" "1.14.0"
     "@oclif/errors" "1.2.2"
     "@oclif/plugin-autocomplete" "0.1.5"
     "@oclif/plugin-help" "2.2.3"
     "@oclif/plugin-not-found" "1.2.3"
     "@oclif/plugin-plugins" "1.7.9"
     "@oclif/plugin-warn-if-update-available" "1.7.0"
-    apollo-codegen-core "^0.36.0"
-    apollo-codegen-flow "^0.34.0"
-    apollo-codegen-scala "^0.35.0"
-    apollo-codegen-swift "^0.36.0"
-    apollo-codegen-typescript "^0.36.0"
+    apollo-codegen-core "^0.36.1"
+    apollo-codegen-flow "^0.34.1"
+    apollo-codegen-scala "^0.35.1"
+    apollo-codegen-swift "^0.36.1"
+    apollo-codegen-typescript "^0.36.1"
     apollo-env "^0.6.1"
     apollo-graphql "^0.4.0"
-    apollo-language-server "^1.19.0"
+    apollo-language-server "^1.19.1"
     chalk "2.4.2"
     env-ci "3.2.2"
     gaze "1.1.3"
@@ -6967,150 +6992,150 @@ fd-slicer@~1.0.1:
   dependencies:
     pend "~1.2.0"
 
-fela-bindings@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-bindings/-/fela-bindings-11.0.2.tgz#9edea882b31caf6dd79ee4f03b61e3d9ebf970c0"
-  integrity sha512-PUkchNsnJ7+6Y8dArpYaqIPYwdrPESRt/RTNfisNhT6vjz1KsvAp3c82TAEChLLUNJhqzyng7ywsYHQY1TEwxQ==
+fela-bindings@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-bindings/-/fela-bindings-11.1.2.tgz#2540dc0ce9bfc9e1751647f95829bf4b4b4ab639"
+  integrity sha512-UKnQLRto5JN5Ma6VC7TzGHvl47B3ySM9qJ7dsx7i/1Tvt8m+JscTPMG7PC9McugrUkGNokQlabU2wb4t+GoUAg==
   dependencies:
     fast-loops "^1.0.0"
-    fela-dom "^11.0.2"
-    fela-tools "^11.0.2"
+    fela-dom "^11.1.2"
+    fela-tools "^11.1.2"
     react-addons-shallow-compare "^15.6.2"
     shallow-equal "^1.0.0"
 
-fela-dom@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-dom/-/fela-dom-11.0.2.tgz#1cdf2b111d6c19d438d83572273c97075adbada3"
-  integrity sha512-Z2gUOh2j4zsfk5KzZS+5W9dE2cmLUVpyj4xpZYMqjcfb4qoBWfmeod7j2zNiiKCxxzrvvycErtq/gtPoYxeS1g==
+fela-dom@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-dom/-/fela-dom-11.1.2.tgz#ac1c100fc0c0da852c0ad8ba74c6d5097d1a4819"
+  integrity sha512-6KQFApM679ibDamPtIWL8cf6+xB80s8GwSleVOE6OWy/BNPnOjwa6rLcR9Myto/auWBu2+kJFjoeOP9VxORyjw==
   dependencies:
     css-in-js-utils "^3.0.0"
     fast-loops "^1.0.1"
-    fela-utils "^11.0.2"
+    fela-utils "^11.1.2"
     sort-css-media-queries "^1.4.3"
 
-fela-plugin-custom-property@11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-custom-property/-/fela-plugin-custom-property-11.0.2.tgz#b100937703c44cbed49bb074c80a54e32835d5c2"
-  integrity sha512-38FdD3tUx9UQu4Mo/pViEe0vstwnt+93je6eq67Bund/ypk36hIUoA+erMpCUi02BSMWuDF0ENIdwtkb1R9FUA==
+fela-plugin-custom-property@11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-custom-property/-/fela-plugin-custom-property-11.1.2.tgz#70ccdb08e31b003216ae4ea80388d40d82ffc76a"
+  integrity sha512-46pSWLIGIJUyaiyfz213NMsv4FFdcGFxf9QR47iYJ6OuW2xmoyDDV/Qq0EHiwAw0BEfsWtdvowew3CJLeDkPJg==
   dependencies:
     css-in-js-utils "^3.0.0"
     isobject "^3.0.1"
 
-fela-plugin-embedded@11.0.2, fela-plugin-embedded@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-embedded/-/fela-plugin-embedded-11.0.2.tgz#340b89b943c37dc5d960d25f88d053cd1218f6f1"
-  integrity sha512-zSYMDsOr0+W42TDIIowhybthZzl6iW6FsCgyRMLCcCK94TIyswWYMSkwZc+x5RxqIcV7Qwp9Zle7A5ilV/4YzA==
+fela-plugin-embedded@11.1.2, fela-plugin-embedded@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-embedded/-/fela-plugin-embedded-11.1.2.tgz#191709c933753f7d7f806c2e97b8ee84cea7f04d"
+  integrity sha512-sjFQtynfVh/PzYcR7QBbxy0SeLZSQAddl7ct8gaeuz6KM0fjn6yvyolubbvoR2B3rYzy2ZfZpg49kjpErXLwYA==
   dependencies:
     fast-loops "^1.0.0"
     isobject "^3.0.1"
 
-fela-plugin-extend@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-extend/-/fela-plugin-extend-11.0.2.tgz#d67d61bf3a582661dd4ba81fbb7a9bcc2fe2ea0c"
-  integrity sha512-JhmJfwpvS6/jDfKg0CMHVNA4s3BsF+rBb5zVHTX0bGDjDgNAf7qbBAaq7mBnqNCRKX6PpJC5Z/DSoVdNVu8iXQ==
+fela-plugin-extend@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-extend/-/fela-plugin-extend-11.1.2.tgz#4cd6034a37019743c5c03151cd8027251c070afc"
+  integrity sha512-bW/r7wmmszBrHvwHBrP4XCQGppP8vgSQWjpqMVSRoTs553ki4IshZPK7eXhsOXzd4+uW0we7v2K1OhC3KdKZXA==
   dependencies:
     css-in-js-utils "^3.0.0"
     fast-loops "^1.0.0"
-    fela-utils "^11.0.2"
+    fela-utils "^11.1.2"
     isobject "^3.0.1"
 
-fela-plugin-fallback-value@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-fallback-value/-/fela-plugin-fallback-value-11.0.2.tgz#859fcd9ee22a4f30e4434109864f4e901c4c59e3"
-  integrity sha512-MX0gBAYwfKQdYlj2vKbq2Spml5GZRLyR7zc7xZDz/8d43U4K9aZPJAbYESdTEIDJzhVLWJPhiHlQT7K0O+/U0A==
+fela-plugin-fallback-value@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-fallback-value/-/fela-plugin-fallback-value-11.1.2.tgz#d1becf9626d6f3a99baf738799c75fe68f91d34d"
+  integrity sha512-N612OWTygZE2NJoi3hQ+m4j4OvDcKic0LUMVOdRcAYjxcSeq+ss7HNvQTVvGt82+EcyQASxAbx/ZDtpL9Scqsg==
   dependencies:
     css-in-js-utils "^3.0.0"
     isobject "^3.0.1"
 
-fela-plugin-friendly-pseudo-class@11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-friendly-pseudo-class/-/fela-plugin-friendly-pseudo-class-11.0.2.tgz#214a62a37da86d792f4895f16d6b9e6910397343"
-  integrity sha512-z0J2vWb/cNhYdHkRVdjDcJtZbDlk5TnHEBZQzGpfUbMFLQOsOl5S9EAg5zxW+i1NHyYJ0SQfaFQPGJL3Z2+KWQ==
+fela-plugin-friendly-pseudo-class@11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-friendly-pseudo-class/-/fela-plugin-friendly-pseudo-class-11.1.2.tgz#34ed73ab2de54510374fc17312c192b8407ce6eb"
+  integrity sha512-v/Gk6sk2ScjqKm0CLW8bT1zGzBjPIek5SdGE9ni6GZnBejKkgIsHmIvZX+2+9Xoioo+LiyUhioxp71uU4DC2Mg==
   dependencies:
     isobject "^3.0.1"
 
-fela-plugin-named-keys@11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-named-keys/-/fela-plugin-named-keys-11.0.2.tgz#66d209a1543573891e8248713d7820e755c212f0"
-  integrity sha512-aYzLCVH9Ee0H+3HZquWHbikDRpmpCkwkCdbuxWw48/73uIoX+uyvAkTEAg+03cG++sIVUT8fvJOBYv4Vq9/OdA==
+fela-plugin-named-keys@11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-named-keys/-/fela-plugin-named-keys-11.1.2.tgz#e4b7254694cbcc4350553d0e130a0cf9eb6e138f"
+  integrity sha512-r/Tu8dc5sj8fSEYwX7EvvjzNGNhEZwxCw+MDOHqqL1cCJKSe/v9+gLl5kilH5MNDHRGw8w/+nXWhY/z3mr4Qsg==
   dependencies:
     css-in-js-utils "^3.0.0"
     isobject "^3.0.1"
 
-fela-plugin-prefixer@11.0.2, fela-plugin-prefixer@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-prefixer/-/fela-plugin-prefixer-11.0.2.tgz#80c1ecbc8f5d0bbd42964e36b530098c0a596f97"
-  integrity sha512-BTScfd9w80MEzxjRQO7OQlCNz15fYyFK+sPKq4SFOfXaWqwqJxODPHTJAAcUR9hjgiqdd8dJSIzUZdwFllKh1w==
+fela-plugin-prefixer@11.1.2, fela-plugin-prefixer@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-prefixer/-/fela-plugin-prefixer-11.1.2.tgz#2abcb0faed6ec0ee4e9207e3b1e4bbba793f1e91"
+  integrity sha512-PqiQvvkndC1aT4JDK/r4TGj+AX2Gvz9xzSDGkPdwPlxPTCjiheO5xdRd96IMrCQC+GSKkGn1BqHGlWAlAmPY2A==
   dependencies:
     css-in-js-utils "^3.0.0"
     fast-loops "^1.0.0"
-    fela-plugin-fallback-value "^11.0.2"
+    fela-plugin-fallback-value "^11.1.2"
     inline-style-prefixer "^5.1.0"
     isobject "^3.0.1"
 
-fela-plugin-typescript@11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-typescript/-/fela-plugin-typescript-11.0.2.tgz#c64613be2739e7bf0a2969dc8c8abb6eb71553cb"
-  integrity sha512-+TS5/om6Nit9pvvLgygO1HqQinbtKuxsWmoX0t/wpQChyPGCB7Yie3P16RpEuO5EUxfOC/pzPwMOrJm60a6KMA==
+fela-plugin-typescript@11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-typescript/-/fela-plugin-typescript-11.1.2.tgz#5d2bc00733401652e215fe1af18c7bda6a9bcecf"
+  integrity sha512-p35AvLdYa/Onx22u4t1TMq7eF9ixZ4A8GzNEV5xUm4wGRuLDNd9FaaLdbjqfAjWWDuaodNYWV8jHh4WB4tSTUQ==
   dependencies:
     isobject "^3.0.1"
 
-fela-plugin-unit@11.0.2, fela-plugin-unit@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-unit/-/fela-plugin-unit-11.0.2.tgz#3a690ad2787c69c947791babb391e85f6f3570ff"
-  integrity sha512-Og2dJObBXfVANihntp/Gp/JjfZiZOZxIeLOIwu5UFC4cYnHAui5Igv9niKV/QKX5ki+IDTrshYrBLeDkBb7tNw==
+fela-plugin-unit@11.1.2, fela-plugin-unit@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-unit/-/fela-plugin-unit-11.1.2.tgz#52eafc74bcbfc4f6ff979b19e9c7b94d87fc5247"
+  integrity sha512-Gk4aDf60s3wecp+UZupaauXyhVn4pa8XFEoAug8IZbK5804WnJdqwxNljOKG4LA0geicC6gKAAW31GoOIoKnSw==
   dependencies:
     css-in-js-utils "^3.0.0"
     isobject "^3.0.1"
 
-fela-plugin-validator@11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-plugin-validator/-/fela-plugin-validator-11.0.2.tgz#3b272c54ff3b4c48a929cf9af1fdefe9ccfb3851"
-  integrity sha512-v26PuF7BBxw9pYK7GIK6IopTB0B7YGh/8XJzJeENTrcviN96BreZ0WOpXnF4ORqIxqFHo81qnmgSRJ2k7Cs4rw==
+fela-plugin-validator@11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-plugin-validator/-/fela-plugin-validator-11.1.2.tgz#a4c7f6c69ad78d95389c0be00e2d6bd7712380b1"
+  integrity sha512-/C/fJK4f5pYWZX5X3F025n96c6VP6ggGsn3fhF83Qkn0OW7XwhbbaWAHCA62aQy59Qk65Dx6a3EjAjDvIIZWCw==
   dependencies:
     css-in-js-utils "^3.0.0"
     csslint "^1.0.5"
-    fela-utils "^11.0.2"
+    fela-utils "^11.1.2"
     isobject "^3.0.1"
 
-fela-preset-web@11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-preset-web/-/fela-preset-web-11.0.2.tgz#6127d14301ad9b0a183e6cdb05ba54a8edeb3277"
-  integrity sha512-N0c7EvoTu4GMQngwwtBd0fuT1TMpmD4FYq449kbOgAjAU4VVzk8glOfZmH467361Q0OfDmLtHW7yjogf3f7ZsA==
+fela-preset-web@11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-preset-web/-/fela-preset-web-11.1.2.tgz#255ac5766cbda331b1f653ecd443c8c2a6725d0e"
+  integrity sha512-jqgLPhTYXUtjJlCJDi1hz1euJt2TlESxQcPrM6YbL8XBidW8fgB+7B7xPd8F7k6FdojeeYfWcMcthke+l7sTog==
   dependencies:
-    fela-plugin-embedded "^11.0.2"
-    fela-plugin-extend "^11.0.2"
-    fela-plugin-fallback-value "^11.0.2"
-    fela-plugin-prefixer "^11.0.2"
-    fela-plugin-unit "^11.0.2"
+    fela-plugin-embedded "^11.1.2"
+    fela-plugin-extend "^11.1.2"
+    fela-plugin-fallback-value "^11.1.2"
+    fela-plugin-prefixer "^11.1.2"
+    fela-plugin-unit "^11.1.2"
 
-fela-tools@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-tools/-/fela-tools-11.0.2.tgz#01b0a7c1eebe65adf15570a7833d8409f34d1bcc"
-  integrity sha512-aScz8kHUDXlggqwf58FGp2Fzjhzsbiti2lJDVHGKio1YDJ3hTfKdlrlxhgYbQsS9dC7n35IkIjPi0sX+qS8UDg==
-  dependencies:
-    css-in-js-utils "^3.0.0"
-    fast-loops "^1.0.0"
-    fela "^11.0.2"
-    fela-utils "^11.0.2"
-
-fela-utils@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela-utils/-/fela-utils-11.0.2.tgz#d736e98830074936ff38ef7149d9db0bc3915c49"
-  integrity sha512-3frW2i64XKWfvkL+YjzAMIYaPcjYlqJpKuZFPqwtG5Ro5JMBfgKNBkMcHJsMgzCYb/Gx/G+32U2Q7wFwABLYlA==
+fela-tools@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-tools/-/fela-tools-11.1.2.tgz#4f4b4d71795e3f341846da5d7e1aa800a33724ca"
+  integrity sha512-GshBOotlxxZD6b0IOf9iOHLZQqJbwhkAw9mncbWTgNeeLmkUWYQuJmVDaXrjfkz8SY4iWHPYf8hkUnZjHF3o8g==
   dependencies:
     css-in-js-utils "^3.0.0"
     fast-loops "^1.0.0"
+    fela "^11.1.2"
+    fela-utils "^11.1.2"
 
-fela@11.0.2, fela@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fela/-/fela-11.0.2.tgz#fb41aef05f32f7432ce6e9291e63a2c2c9d8ebf0"
-  integrity sha512-vGvEs8niBGQpJoJyqpfuQt2wNxRpf/N1GM3HhuZ9TfRvVku2C0RU8dlgBo+GdrwNlw0mKho0oklWyu27bcPoMw==
+fela-utils@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela-utils/-/fela-utils-11.1.2.tgz#edb14b0dbdbda519b213363ad02525f3459328e9"
+  integrity sha512-n101di41/Wd+j1m8hra4HH8aoSH8aeyQU/Vgd16TZDj/mF8UDEuxxc8WJDGPf65JssfriQuN9qWxb5DiVZaXCw==
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    fast-loops "^1.0.0"
+
+fela@11.1.2, fela@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/fela/-/fela-11.1.2.tgz#bf730fdf8e927969f4fb41a12470a71a47f36c30"
+  integrity sha512-KKAoVxxK0/ept9rW07ZjXD2VrJdHCWH43wu7/FUdl/MNofH8f6TU7wiyPRxQw9v+6wETApgVHBm/OBKjZqJbtA==
   dependencies:
     css-in-js-utils "^3.0.0"
     csstype "^2.5.5"
     fast-loops "^1.0.0"
-    fela-utils "^11.0.2"
+    fela-utils "^11.1.2"
     isobject "^3.0.1"
 
 figgy-pudding@^3.4.1, figgy-pudding@^3.5.1:
@@ -12648,13 +12673,13 @@ react-error-overlay@5.1.6:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
   integrity sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==
 
-react-fela@11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/react-fela/-/react-fela-11.0.2.tgz#3118bde66caa9eb223b1e3bc11036f28b23b103a"
-  integrity sha512-Zfb1VE1+YoEMdBzg/1LvIHokNpnhyFjW0E7G7TacCNPEVwPVIxjWQCT5tczqLkekVblBDm0A4XHcdpek97KK5w==
+react-fela@11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/react-fela/-/react-fela-11.1.2.tgz#712ccc2a5c6130f981245c31b201d4327311c528"
+  integrity sha512-RIa8oTb4TvTi3mbGSu1JlD3lnyPxC1sVUBVdiuazfoA/BGPtsXIRBOfCajUyJFwh7XAQGpsuOWqBhwpAVbd8bA==
   dependencies:
-    fela-bindings "^11.0.2"
-    fela-dom "^11.0.2"
+    fela-bindings "^11.1.2"
+    fela-dom "^11.1.2"
     prop-types "^15.5.8"
 
 react-is@16.8.6:
