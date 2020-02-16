@@ -6,11 +6,12 @@ import config from '../config.json';
 class CustomApp extends App {
   render() {
     const { Component, pageProps, router } = this.props;
-    const { lang } = router.query;
-    const locale = lang as TLocale;
+    const {
+      query: { lang }
+    } = router;
 
     return (
-      <AppProvider {...config} locale={locale}>
+      <AppProvider {...config} locale={lang as TLocale}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
