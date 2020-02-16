@@ -33,28 +33,10 @@ function Layout({ children }: ILayout) {
         className={css({
           width: '75%',
           minWidth: theme.screen.xxs,
-          maxWidth: theme.screen.md,
-          display: 'flex',
-          justifyContent: 'space-between'
+          maxWidth: theme.screen.md
         })}
       >
-        <div>{children}</div>
-
-        <div>
-          <h3>Navigation</h3>
-          <ul>
-            <li>
-              <Link href="/without-ssr">
-                <a>Data only on client visible</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a>Data also on ssr visible</a>
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {children}
       </div>
     </div>
   );

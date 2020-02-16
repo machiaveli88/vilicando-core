@@ -12,6 +12,7 @@
     "example:env": "cd examples/env && yarn dev",
     "example:form": "cd examples/form && yarn dev",
     "example:hasura": "cd examples/hasura && yarn dev",
+    "example:hasura-global": "cd examples/hasura-global && yarn dev",
     "example:pwa": "cd examples/pwa && yarn dev",
     "example:ssr": "cd examples/ssr && yarn dev",
     "example:theming": "cd examples/theming && yarn dev",

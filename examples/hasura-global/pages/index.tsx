@@ -8,7 +8,6 @@ import {
   UsersDocument
 } from '@graphql';
 import { useFela } from 'vilicando-core';
-import { withHasura } from 'vilicando-hasura';
 
 function StartPage() {
   const { css } = useFela();
@@ -22,6 +21,9 @@ function StartPage() {
   return (
     <>
       <h2 className={css({ marginBottom: 0 })}>Our employees</h2>
+      <h4 className={css({ marginTop: 0 })}>...only visible on client!</h4>
+
+      <p>Hasura can also be used globally, but then does not support SSR.</p>
 
       {loading ? (
         <p>Lade...</p>
@@ -73,4 +75,4 @@ function StartPage() {
   );
 }
 
-export default withHasura()(StartPage);
+export default StartPage;

@@ -8,11 +8,14 @@ import { onError } from 'apollo-link-error';
 import { WebSocketLink } from 'apollo-link-ws';
 import fetch from 'isomorphic-unfetch';
 import initCache from './initCache';
+import { IContext } from './initContext';
 
 let apolloClient: ApolloClient<NormalizedCacheObject> = null;
 
-function createApolloClient(state: NormalizedCacheObject) {
-  const ssrMode = typeof window === 'undefined'; // Disables forceFetch on the server (so queries are only run once)
+function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
+  // The `ctx` (NextPageContext) will only be present on the server.
+  // use it to extract auth headers (ctx.req) or similar.
+  const ssrMode = ctx ? Boolean(ctx) : typeof window === 'undefined'; // Disables forceFetch on the server (so queries are only run once)
   const headers = {
     'x-hasura-admin-secret': process.env.GRAPHQL_SECRET
   };
@@ -66,13 +69,22 @@ function createApolloClient(state: NormalizedCacheObject) {
   return new ApolloClient({ ssrMode, link, cache: initCache(state) });
 }
 
-export default function initApolloClient(state?: NormalizedCacheObject) {
+/**
+ * Always creates a new apollo client on the server
+ * Creates or reuses apollo client in the browser.
+ * @param  {NormalizedCacheObject} initialState
+ * @param  {IContext} ctx
+ */
+export default function initApolloClient(
+  state?: NormalizedCacheObject,
+  ctx?: IContext
+) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
-  if (typeof window === 'undefined') return createApolloClient(state);
+  if (typeof window === 'undefined') return createApolloClient(state, ctx);
 
   // Reuse client on the client-side
-  if (!apolloClient) apolloClient = createApolloClient(state);
+  if (!apolloClient) apolloClient = createApolloClient(state, ctx);
 
   return apolloClient;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withHasuraSSR } from 'vilicando-hasura';
+import { withHasura } from 'vilicando-hasura';
 import {
   useUsersQuery,
   useUpdateUserMutation,
@@ -10,7 +10,7 @@ import {
 } from '@graphql';
 import { useFela } from 'vilicando-core';
 
-function StartPage() {
+function WithoutSsrPage() {
   const { css } = useFela();
 
   const [users, { loading }] = useUsersQuery();
@@ -22,7 +22,7 @@ function StartPage() {
   return (
     <>
       <h2 className={css({ marginBottom: 0 })}>Our employees</h2>
-      <h4 className={css({ marginTop: 0 })}>...also visible on ssr!</h4>
+      <h4 className={css({ marginTop: 0 })}>...only visible on client!</h4>
 
       {loading ? (
         <p>Lade...</p>
@@ -74,4 +74,4 @@ function StartPage() {
   );
 }
 
-export default withHasuraSSR(StartPage);
+export default withHasura({ ssr: false })(WithoutSsrPage);
