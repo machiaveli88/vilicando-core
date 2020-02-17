@@ -10,17 +10,8 @@ interface IWithCore {
 }
 
 module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
-  if (!nextConfig) {
-    if (props.webpack) {
-      nextConfig = { ...props };
-      props = {};
-    } else {
-      nextConfig = {};
-    }
-  }
-
-  const { aliases = ['components', 'pages'] } = props;
-  const { webpack, dir, ...rest } = nextConfig;
+  const { aliases = ['components', 'pages'], ..._props } = props;
+  const { webpack, dir, ...rest } = nextConfig || { ..._props };
 
   return withOffline({
     webpack(config: any, options: any) {

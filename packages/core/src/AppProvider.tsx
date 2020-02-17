@@ -53,6 +53,7 @@ interface IConfig {
   shortName?: string;
   description?: string;
   logo?: string; // path to logo (in public-folder)
+  logo_light?: string; // path to logo for dark bg (in public-folder)
   loader?: string; // path to loader-image (in public-folder)
   isPWA?: boolean;
   manifest?: IManifest;
