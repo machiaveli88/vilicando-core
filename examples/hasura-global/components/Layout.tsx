@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFela, useConfig, Link } from 'vilicando-core';
+import { useFela, useConfig } from 'vilicando-core';
 
 interface ILayout {
   children: React.ReactNode | Array<React.ReactNode>;

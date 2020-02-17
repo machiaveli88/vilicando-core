@@ -362,7 +362,7 @@
       "horizontalSm": "calc(8px - 1px)",
       "vertical": {
         "base": "round(calc((32px - 14px * 1.5715) / 2 * 10) / 10 - 1px)",
-        "lg": "round(calc((40px - calc(14px + 2px) * 1.5715) / 2 * 10) /10 - 1px)",
+        "lg": "calc((40px - calc(14px + 2px) * 1.5715) / 2 * 10) /10 - 1px",
         "sm": "round(calc((24px - 14px * 1.5715) / 2 * 10) /10 - 1px)"
       }
     },
