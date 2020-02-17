@@ -156,7 +156,10 @@ const getNestedTypes = (theme: object | number | string) => {
         typeof theme[key] === 'object'
           ? `'${key}'?: ${getNestedTypes(theme[key])},`
           : `'${key}'?: ${
-              typeof theme[key] === 'number' ? 'number | string' : 'string'
+              typeof theme[key] === 'number' ||
+              `${parseInt(theme[key])}px` === theme[key]
+                ? 'number | string'
+                : 'string'
             },`)
   );
 

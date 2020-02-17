@@ -29,18 +29,28 @@ export interface IAntdTheme {
   ant?: { prefix?: string };
   avatar?: {
     bg?: string;
-    border?: { radius?: string };
+    border?: { radius?: number | string };
     color?: string;
-    font?: { size?: { base?: string; lg?: string; sm?: string } };
-    size?: { base?: string; lg?: string; sm?: string };
+    font?: {
+      size?: {
+        base?: number | string;
+        lg?: number | string;
+        sm?: number | string;
+      };
+    };
+    size?: {
+      base?: number | string;
+      lg?: number | string;
+      sm?: number | string;
+    };
   };
   back?: { top?: { bg?: string; color?: string; hover?: { bg?: string } } };
   background?: { color?: { base?: string; light?: string } };
   badge?: {
-    dot?: { size?: string };
-    font?: { size?: string; weight?: string };
-    height?: string;
-    status?: { size?: string };
+    dot?: { size?: number | string };
+    font?: { size?: number | string; weight?: string };
+    height?: number | string;
+    status?: { size?: number | string };
     text?: { color?: string };
   };
   black?: string;
@@ -60,26 +70,30 @@ export interface IAntdTheme {
   body?: { background?: string };
   border?: {
     color?: { base?: string; inverse?: string; split?: string };
-    radius?: { base?: string; sm?: string };
+    radius?: { base?: number | string; sm?: number | string };
     style?: { base?: string };
-    width?: { base?: string };
+    width?: { base?: number | string };
   };
   box?: { shadow?: { base?: string } };
   breadcrumb?: {
     base?: { color?: string };
-    font?: { size?: string };
-    icon?: { font?: { size?: string } };
+    font?: { size?: number | string };
+    icon?: { font?: { size?: number | string } };
     last?: { item?: { color?: string } };
     link?: { color?: string; colorHover?: string };
     separator?: { color?: string; margin?: string };
   };
   btn?: {
     border?: {
-      radius?: { base?: string; sm?: string };
+      radius?: { base?: number | string; sm?: number | string };
       style?: string;
-      width?: string;
+      width?: number | string;
     };
-    circle?: { size?: string; sizeLg?: string; sizeSm?: string };
+    circle?: {
+      size?: number | string;
+      sizeLg?: number | string;
+      sizeSm?: number | string;
+    };
     danger?: { bg?: string; border?: string; color?: string };
     default?: {
       bg?: string;
@@ -88,14 +102,25 @@ export interface IAntdTheme {
       ghost?: { bg?: string; border?: string; color?: string };
     };
     disable?: { bg?: string; border?: string; color?: string };
-    font?: { size?: { lg?: string; sm?: string }; weight?: number | string };
+    font?: {
+      size?: { lg?: string; sm?: number | string };
+      weight?: number | string;
+    };
     group?: { border?: string };
-    height?: { base?: string; lg?: string; sm?: string };
+    height?: {
+      base?: number | string;
+      lg?: number | string;
+      sm?: number | string;
+    };
     link?: { ghost?: { color?: string } };
     padding?: { horizontal?: { base?: string; lg?: string; sm?: string } };
     primary?: { bg?: string; color?: string; shadow?: string };
     shadow?: string;
-    square?: { size?: string; sizeLg?: string; sizeSm?: string };
+    square?: {
+      size?: number | string;
+      sizeLg?: number | string;
+      sizeSm?: number | string;
+    };
     text?: { shadow?: string };
   };
   calendar?: {
@@ -108,49 +133,55 @@ export interface IAntdTheme {
   card?: {
     actions?: { background?: string };
     background?: string;
-    head?: { background?: string; color?: string; padding?: string };
-    inner?: { head?: { padding?: string } };
-    padding?: { base?: string };
-    radius?: string;
+    head?: { background?: string; color?: string; padding?: number | string };
+    inner?: { head?: { padding?: number | string } };
+    padding?: { base?: number | string };
+    radius?: number | string;
     shadow?: string;
     skeleton?: { bg?: string };
   };
   carousel?: {
-    dot?: { active?: { width?: string }; height?: string; width?: string };
+    dot?: {
+      active?: { width?: number | string };
+      height?: number | string;
+      width?: number | string;
+    };
   };
   cascader?: {
     bg?: string;
     dropdown?: {
-      edge?: { child?: { vertical?: { padding?: string } } };
-      font?: { size?: string };
-      line?: { height?: string };
-      vertical?: { padding?: string };
+      edge?: { child?: { vertical?: { padding?: number | string } } };
+      font?: { size?: number | string };
+      line?: { height?: number | string };
+      vertical?: { padding?: number | string };
     };
     item?: { selected?: { bg?: string } };
     menu?: { bg?: string; border?: { color?: { split?: string } } };
   };
   checkbox?: {
-    border?: { width?: string };
+    border?: { width?: number | string };
     check?: { bg?: string; color?: string };
     color?: string;
-    size?: string;
+    size?: number | string;
   };
   code?: { family?: string };
   collapse?: {
-    content?: { bg?: string; padding?: string };
-    header?: { bg?: string; padding?: string; paddingExtra?: string };
-    panel?: { border?: { radius?: string } };
+    content?: { bg?: string; padding?: number | string };
+    header?: { bg?: string; padding?: string; paddingExtra?: number | string };
+    panel?: { border?: { radius?: number | string } };
   };
   comment?: {
     action?: { color?: string; hover?: { color?: string } };
     author?: { name?: { color?: string }; time?: { color?: string } };
     bg?: string;
-    font?: { size?: { base?: string; sm?: string } };
-    nest?: { indent?: string };
+    font?: { size?: { base?: number | string; sm?: number | string } };
+    nest?: { indent?: number | string };
     padding?: { base?: string };
   };
   component?: { background?: string };
-  control?: { padding?: { horizontal?: string; horizontalSm?: string } };
+  control?: {
+    padding?: { horizontal?: number | string; horizontalSm?: number | string };
+  };
   cyan?: {
     '1'?: string;
     '2'?: string;
@@ -168,17 +199,19 @@ export interface IAntdTheme {
   disabled?: { bg?: string; color?: string; colorDark?: string };
   drawer?: {
     bg?: string;
-    body?: { padding?: string };
-    footer?: { padding?: { horizontal?: string; vertical?: string } };
+    body?: { padding?: number | string };
+    footer?: {
+      padding?: { horizontal?: number | string; vertical?: number | string };
+    };
     header?: { padding?: string };
   };
   dropdown?: {
-    edge?: { child?: { vertical?: { padding?: string } } };
-    font?: { size?: string };
-    line?: { height?: string };
+    edge?: { child?: { vertical?: { padding?: number | string } } };
+    font?: { size?: number | string };
+    line?: { height?: number | string };
     menu?: { bg?: string; submenu?: { disabled?: { bg?: string } } };
     selected?: { color?: string };
-    vertical?: { padding?: string };
+    vertical?: { padding?: number | string };
   };
   ease?: {
     base?: { in?: string; out?: string };
@@ -195,22 +228,24 @@ export interface IAntdTheme {
     outCirc?: string;
     outQuint?: string;
   };
-  empty?: { font?: { size?: string } };
+  empty?: { font?: { size?: number | string } };
   error?: { color?: string };
   font?: {
     family?: string;
     feature?: { settings?: { base?: string } };
-    size?: { base?: string; lg?: string; sm?: string };
+    size?: { base?: number | string; lg?: string; sm?: number | string };
     variant?: { base?: string };
   };
   form?: {
     error?: { input?: { bg?: string } };
     item?: {
       label?: {
-        colon?: { margin?: { left?: string; right?: string } };
-        font?: { size?: string };
+        colon?: {
+          margin?: { left?: number | string; right?: number | string };
+        };
+        font?: { size?: number | string };
       };
-      margin?: { bottom?: string };
+      margin?: { bottom?: number | string };
       trailing?: { colon?: string };
     };
     vertical?: { label?: { margin?: number | string; padding?: string } };
@@ -275,7 +310,11 @@ export interface IAntdTheme {
     border?: { color?: string };
     color?: string;
     disabled?: { bg?: string };
-    height?: { base?: string; lg?: string; sm?: string };
+    height?: {
+      base?: number | string;
+      lg?: number | string;
+      sm?: number | string;
+    };
     hover?: { border?: { color?: string } };
     icon?: { color?: string; hover?: { color?: string } };
     number?: {
@@ -305,7 +344,7 @@ export interface IAntdTheme {
     header?: {
       background?: string;
       color?: string;
-      height?: string;
+      height?: number | string;
       padding?: string;
     };
     sider?: { background?: string; backgroundLight?: string };
@@ -314,9 +353,9 @@ export interface IAntdTheme {
       backgroundLight?: string;
       color?: string;
       colorLight?: string;
-      height?: string;
+      height?: number | string;
     };
-    zero?: { trigger?: { height?: string; width?: string } };
+    zero?: { trigger?: { height?: number | string; width?: number | string } };
   };
   lime?: {
     '1'?: string;
@@ -339,14 +378,14 @@ export interface IAntdTheme {
     hover?: { color?: string; decoration?: string };
   };
   list?: {
-    empty?: { text?: { padding?: string } };
+    empty?: { text?: { padding?: number | string } };
     footer?: { background?: string };
     header?: { background?: string };
     item?: {
       meta?: {
-        avatar?: { margin?: { right?: string } };
-        margin?: { bottom?: string };
-        title?: { margin?: { bottom?: string } };
+        avatar?: { margin?: { right?: number | string } };
+        margin?: { bottom?: number | string };
+        title?: { margin?: { bottom?: number | string } };
       };
       padding?: string;
     };
@@ -369,7 +408,7 @@ export interface IAntdTheme {
   };
   menu?: {
     bg?: string;
-    collapsed?: { width?: string };
+    collapsed?: { width?: number | string };
     dark?: {
       arrow?: { color?: string };
       bg?: string;
@@ -382,27 +421,27 @@ export interface IAntdTheme {
       submenu?: { bg?: string };
     };
     highlight?: { color?: string };
-    icon?: { size?: string; sizeLg?: string };
-    inline?: { toplevel?: { item?: { height?: string } } };
+    icon?: { size?: number | string; sizeLg?: string };
+    inline?: { toplevel?: { item?: { height?: number | string } } };
     item?: {
-      active?: { bg?: string; border?: { width?: string } };
-      boundary?: { margin?: string };
+      active?: { bg?: string; border?: { width?: number | string } };
+      boundary?: { margin?: number | string };
       color?: string;
-      font?: { size?: string };
+      font?: { size?: number | string };
       group?: { title?: { color?: string } };
-      height?: string;
-      vertical?: { margin?: string };
+      height?: number | string;
+      vertical?: { margin?: number | string };
     };
     popup?: { bg?: string };
   };
   message?: { notice?: { content?: { bg?: string; padding?: string } } };
   modal?: {
-    body?: { padding?: string };
+    body?: { padding?: number | string };
     content?: { bg?: string };
     footer?: {
       bg?: string;
       border?: { color?: { split?: string } };
-      padding?: { horizontal?: string; vertical?: string };
+      padding?: { horizontal?: number | string; vertical?: number | string };
     };
     header?: { bg?: string; border?: { color?: { split?: string } } };
     heading?: { color?: string };
@@ -426,16 +465,21 @@ export interface IAntdTheme {
   outline?: {
     blur?: { size?: number | string };
     color?: string;
-    width?: string;
+    width?: number | string;
   };
-  padding?: { lg?: string; md?: string; sm?: string; xs?: string };
+  padding?: {
+    lg?: number | string;
+    md?: number | string;
+    sm?: number | string;
+    xs?: number | string;
+  };
   page?: {
     header?: {
       back?: { color?: string };
       ghost?: { bg?: string };
-      padding?: string;
-      paddingBreadcrumb?: string;
-      paddingVertical?: string;
+      padding?: number | string;
+      paddingBreadcrumb?: number | string;
+      paddingVertical?: number | string;
     };
   };
   pagination?: {
@@ -445,8 +489,8 @@ export interface IAntdTheme {
       bgActive?: string;
       disabled?: { bg?: { active?: string }; color?: { active?: string } };
       link?: { bg?: string };
-      size?: string;
-      sizeSm?: string;
+      size?: number | string;
+      sizeSm?: number | string;
     };
   };
   picker?: {
@@ -477,12 +521,16 @@ export interface IAntdTheme {
     base?: string;
   };
   popover?: {
-    arrow?: { color?: string; outer?: { color?: string }; width?: string };
+    arrow?: {
+      color?: string;
+      outer?: { color?: string };
+      width?: number | string;
+    };
     background?: string;
     bg?: string;
     color?: string;
     distance?: string;
-    min?: { width?: string };
+    min?: { width?: number | string };
   };
   preset?: { colors?: string };
   primary?: {
@@ -502,7 +550,7 @@ export interface IAntdTheme {
   processing?: { color?: string };
   progress?: {
     default?: { color?: string };
-    radius?: string;
+    radius?: number | string;
     remaining?: { color?: string };
     steps?: { item?: { bg?: string } };
     text?: { color?: string };
@@ -530,7 +578,7 @@ export interface IAntdTheme {
     };
     disabled?: { button?: { checked?: { bg?: string; color?: string } } };
     dot?: { color?: string; disabled?: { color?: string } };
-    size?: string;
+    size?: number | string;
   };
   radtio?: { solid?: { checked?: { color?: string } } };
   rate?: { star?: { bg?: string; color?: string } };
@@ -548,23 +596,23 @@ export interface IAntdTheme {
     base?: string;
   };
   screen?: {
-    lg?: string;
+    lg?: number | string;
     lgMax?: string;
-    lgMin?: string;
-    md?: string;
+    lgMin?: number | string;
+    md?: number | string;
     mdMax?: string;
-    mdMin?: string;
-    sm?: string;
+    mdMin?: number | string;
+    sm?: number | string;
     smMax?: string;
-    smMin?: string;
-    xl?: string;
+    smMin?: number | string;
+    xl?: number | string;
     xlMax?: string;
-    xlMin?: string;
-    xs?: string;
+    xlMin?: number | string;
+    xs?: number | string;
     xsMax?: string;
-    xsMin?: string;
-    xxl?: string;
-    xxlMin?: string;
+    xsMin?: number | string;
+    xxl?: number | string;
+    xxlMin?: number | string;
   };
   select?: {
     background?: string;
@@ -572,9 +620,9 @@ export interface IAntdTheme {
     clear?: { background?: string };
     dropdown?: {
       bg?: string;
-      font?: { size?: string };
-      line?: { height?: string };
-      vertical?: { padding?: string };
+      font?: { size?: number | string };
+      line?: { height?: number | string };
+      vertical?: { padding?: number | string };
     };
     item?: {
       active?: { bg?: string };
@@ -594,7 +642,7 @@ export interface IAntdTheme {
     dot?: { border?: { color?: string; colorActive?: string } };
     handle?: {
       background?: { color?: string };
-      border?: { width?: string };
+      border?: { width?: number | string };
       color?: string;
       colorFocus?: string;
       colorFocusShadow?: string;
@@ -606,12 +654,18 @@ export interface IAntdTheme {
     rail?: { background?: { color?: string; colorHover?: string } };
     track?: { background?: { color?: string; colorHover?: string } };
   };
-  spin?: { dot?: { size?: string; sizeLg?: string; sizeSm?: string } };
+  spin?: {
+    dot?: {
+      size?: number | string;
+      sizeLg?: number | string;
+      sizeSm?: number | string;
+    };
+  };
   statistic?: {
-    content?: { font?: { size?: string } };
+    content?: { font?: { size?: number | string } };
     font?: { family?: string };
-    title?: { font?: { size?: string } };
-    unit?: { font?: { size?: string } };
+    title?: { font?: { size?: number | string } };
+    unit?: { font?: { size?: number | string } };
   };
   steps?: { nav?: { arrow?: { color?: string } } };
   success?: { color?: string };
@@ -619,19 +673,19 @@ export interface IAntdTheme {
     bg?: string;
     color?: string;
     disabled?: { opacity?: string };
-    height?: string;
-    min?: { width?: string };
+    height?: number | string;
+    min?: { width?: number | string };
     shadow?: { color?: string };
     sm?: {
       checked?: { margin?: { left?: string } };
-      height?: string;
-      min?: { width?: string };
+      height?: number | string;
+      min?: { width?: number | string };
     };
   };
   table?: {
     bg?: string;
     body?: { selected?: { sort?: { bg?: string } }; sort?: { bg?: string } };
-    border?: { radius?: { base?: string } };
+    border?: { radius?: { base?: number | string } };
     expanded?: { row?: { bg?: string } };
     filter?: { btns?: { bg?: string }; dropdown?: { bg?: string } };
     footer?: { bg?: string; color?: string };
@@ -642,7 +696,7 @@ export interface IAntdTheme {
       filter?: { active?: { bg?: string } };
       sort?: { active?: { bg?: string }; bg?: string };
     };
-    padding?: { horizontal?: string; vertical?: string };
+    padding?: { horizontal?: number | string; vertical?: number | string };
     row?: { hover?: { bg?: string } };
     selected?: {
       row?: { bg?: string; color?: string; hover?: { bg?: string } };
@@ -653,9 +707,9 @@ export interface IAntdTheme {
     bar?: { margin?: string };
     card?: {
       active?: { color?: string };
-      gutter?: string;
+      gutter?: number | string;
       head?: { background?: string };
-      height?: string;
+      height?: number | string;
       tab?: { active?: { border?: { top?: string } } };
     };
     highlight?: { color?: string };
@@ -668,11 +722,20 @@ export interface IAntdTheme {
     };
     hover?: { color?: string };
     ink?: { bar?: { color?: string } };
-    scrolling?: { size?: string };
-    title?: { font?: { size?: string; sizeLg?: string; sizeSm?: string } };
+    scrolling?: { size?: number | string };
+    title?: {
+      font?: {
+        size?: number | string;
+        sizeLg?: string;
+        sizeSm?: number | string;
+      };
+    };
     vertical?: { margin?: string; padding?: string };
   };
-  tag?: { default?: { bg?: string; color?: string }; font?: { size?: string } };
+  tag?: {
+    default?: { bg?: string; color?: string };
+    font?: { size?: number | string };
+  };
   text?: {
     color?: string;
     colorDark?: string;
@@ -684,29 +747,29 @@ export interface IAntdTheme {
   theme?: string;
   timeline?: {
     color?: string;
-    dot?: { bg?: string; border?: { width?: string }; color?: string };
-    item?: { padding?: { bottom?: string } };
-    width?: string;
+    dot?: { bg?: string; border?: { width?: number | string }; color?: string };
+    item?: { padding?: { bottom?: number | string } };
+    width?: number | string;
   };
   tooltip?: {
-    arrow?: { color?: string; width?: string };
+    arrow?: { color?: string; width?: number | string };
     bg?: string;
     color?: string;
     distance?: string;
-    max?: { width?: string };
+    max?: { width?: number | string };
   };
   transfer?: {
     disabled?: { bg?: string };
-    header?: { height?: string };
+    header?: { height?: number | string };
     item?: { hover?: { bg?: string } };
-    list?: { height?: string };
+    list?: { height?: number | string };
   };
   tree?: {
     bg?: string;
-    child?: { padding?: string };
+    child?: { padding?: number | string };
     directory?: { selected?: { bg?: string; color?: string } };
     node?: { hover?: { bg?: string }; selected?: { bg?: string } };
-    title?: { height?: string };
+    title?: { height?: number | string };
   };
   typography?: {
     title?: {
@@ -729,7 +792,7 @@ export interface IAntdTheme {
     base?: string;
   };
   warning?: { color?: string };
-  wave?: { animation?: { width?: string } };
+  wave?: { animation?: { width?: number | string } };
   white?: string;
   yellow?: {
     '1'?: string;
