@@ -33,7 +33,7 @@
     "subscriptions-transport-ws": "0.9.16"
   },
   "devDependencies": {
-    "@types/fs-extra": "8.0.1"
+    "@types/fs-extra": "8.1.0"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",
