@@ -26,6 +26,10 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
     ...overwrite,
     ...modifyVars
   });
+  Object.keys(modifyVars).forEach(key => {
+    if (typeof modifyVars[key] === 'number' && !~key.indexOf('line-height'))
+      modifyVars[key] = modifyVars[key] + 'px';
+  });
   // see also in AntdProvider!
   manipulateObj(modifyVars, 'padding-xs', 'spacing-xs');
   manipulateObj(modifyVars, 'padding-sm', 'spacing-sm');

@@ -141,6 +141,15 @@ function parseTheme(_theme: object) {
   replaceLessVars(theme);
   replaceLessColors(theme);
 
+  Object.keys(theme).forEach(key => {
+    if (
+      typeof theme[key] === 'string' &&
+      !~key.indexOf('line-height') &&
+      `${parseInt(theme[key])}px` === theme[key]
+    )
+      theme[key] = parseInt(theme[key]);
+  });
+
   const newTheme = {};
   Object.keys(theme).forEach(key => _setWith(newTheme, key, theme[key]));
 
