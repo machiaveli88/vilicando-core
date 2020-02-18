@@ -1,16 +1,16 @@
 import * as React from 'react';
-import Spinner from './Spinner';
+import Spinner, { ISpinner } from './Spinner';
 import { Drawer as AntdDrawer } from 'antd';
 import { DrawerProps } from 'antd/lib/drawer';
 import useFela from '../useFela';
+import 'antd/lib/drawer/style/index.less';
 
 interface IDrawer extends DrawerProps {
   children?: React.ReactNode;
   loading?: boolean;
   footer?: React.ReactNode | Array<React.ReactNode>;
 }
-interface IDrawerContent {
-  children?: React.ReactNode;
+interface IDrawerContent extends ISpinner {
   loading?: boolean;
 }
 interface IDrawerFooter {
@@ -34,6 +34,8 @@ function Drawer({ children, className, visible, loading, ...rest }: IDrawer) {
               border: 0,
               boxShadow: theme.shadow[2],
               height: theme.layout.header.height,
+              paddingX: theme.spacing.xl,
+              paddingY: theme.spacing.lg,
               '> .ant-drawer-title': {
                 color: theme.primary.base,
                 textTransform: 'uppercase',
@@ -50,22 +52,33 @@ function Drawer({ children, className, visible, loading, ...rest }: IDrawer) {
         className
       )}
     >
-      {visible &&
-        children /* sorgt für unmount damit autoFocus immer funktioniert! */}
+      {visible /* sorgt für unmount damit autoFocus immer funktioniert! */ &&
+        React.Children.map(children, child =>
+          React.isValidElement(child)
+            ? React.cloneElement(child, { loading })
+            : child
+        )}
     </AntdDrawer>
   );
 }
 
-function DrawerContent({ children, loading }: IDrawerContent) {
+function DrawerContent({
+  className,
+  loading,
+  spinning,
+  ...rest
+}: IDrawerContent) {
   const { css, theme } = useFela();
 
   return (
     <Spinner
-      loading={loading}
-      className={css({ flexGrow: 1, padding: theme.spacing.md })}
-    >
-      {children}
-    </Spinner>
+      {...rest}
+      spinning={loading || spinning || false}
+      className={css(
+        { flexGrow: 1, paddingX: theme.spacing.xl, paddingY: theme.spacing.lg },
+        className
+      )}
+    />
   );
 }
 
@@ -77,8 +90,8 @@ function DrawerFooter({ children }: IDrawerFooter) {
       className={css({
         boxShadow: theme.shadow[1].up,
         width: '100%',
-        paddingX: theme.spacing.md,
-        paddingY: theme.spacing.sm,
+        paddingX: theme.spacing.xl,
+        paddingY: theme.spacing.md,
         textAlign: 'right',
         '> button': {
           marginLeft: theme.spacing.xs

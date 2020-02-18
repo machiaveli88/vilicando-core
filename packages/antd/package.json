@@ -1,6 +1,6 @@
 {
   "name": "vilicando-antd",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",

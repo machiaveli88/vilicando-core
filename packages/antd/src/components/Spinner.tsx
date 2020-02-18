@@ -1,23 +1,22 @@
 import * as React from 'react';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
+import { SpinProps } from 'antd/lib/spin';
 import useFela from '../useFela';
+import 'antd/lib/spin/style/index.less';
 
-interface ISpinner {
+export interface ISpinner extends SpinProps {
   children?: React.ReactNode;
-  className?: string;
-  loading?: boolean;
 }
 
-function Spinner({ children, className, loading }: ISpinner) {
+function Spinner({ children, className, ...rest }: ISpinner) {
   const { css } = useFela();
 
   return (
     <Spin
-      spinning={loading}
-      indicator={<LoadingOutlined spin />}
-      tip="Lade Inhalt..."
+      indicator={<LoadingOutlined />}
       size="large"
+      {...rest}
       wrapperClassName={css({ height: '100%' }, className)}
       className={css({ maxHeight: 'inherit !important' })}
     >
