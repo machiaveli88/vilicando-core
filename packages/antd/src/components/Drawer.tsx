@@ -34,12 +34,13 @@ function Drawer({ children, className, visible, loading, ...rest }: IDrawer) {
               border: 0,
               boxShadow: theme.shadow[2],
               height: theme.layout.header.height,
-              paddingX: theme.spacing.xl,
+              paddingLeft: theme.spacing.xl,
+              paddingRight: 56,
               paddingY: theme.spacing.lg,
               '> .ant-drawer-title': {
                 color: theme.primary.base,
                 textTransform: 'uppercase',
-                fontFamily: 'Comfortaa, cursive'
+                ellipsis: true
               }
             },
             '& .ant-drawer-body': {
