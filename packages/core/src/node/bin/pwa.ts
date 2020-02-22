@@ -45,7 +45,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
         description,
         display: 'standalone',
         background_color: theme?.primary?.base,
-        theme_color: theme?.background?.color?.base || theme?.primary?.base,
+        theme_color: theme?.app?.background || theme?.primary?.base,
         ...manifest
       };
       writeFileSync(manifestPath, JSON.stringify(data), 'utf8');

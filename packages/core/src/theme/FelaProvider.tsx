@@ -9,7 +9,6 @@ import { merge } from 'lodash';
 import defaultRenderer from './defaultRenderer';
 import defaultTheme from './theme.json';
 import { ITheme } from './types';
-import Head from 'next/head';
 
 export interface IFelaProvider<T = {}>
   extends Omit<ThemeProviderProps, 'theme'> {
@@ -37,13 +36,13 @@ export default function FelaProvider({
     );
     renderer.renderStatic(
       {
-        backgroundColor: _theme.background.color.base
+        backgroundColor: _theme.app.background
       },
       'body'
     );
     renderer.renderStatic(
       {
-        backgroundColor: _theme.background.color.light
+        backgroundColor: _theme.app.foreground
       },
       '#__next'
     );
@@ -76,71 +75,9 @@ export default function FelaProvider({
     return _theme;
   }, [renderer, theme]);
 
-  const fontFamilies = React.useMemo(() => {
-    const stringifiedTheme = JSON.stringify(_theme);
-    const families: Array<string> = [];
-
-    if (!!~stringifiedTheme.indexOf('Open Sans')) families.push('Open Sans');
-    if (!!~stringifiedTheme.indexOf('Roboto')) families.push('Roboto');
-
-    return families;
-  }, [_theme]);
-
-  // only on csr
-  React.useEffect(() => {
-    const fonts = JSON.parse(sessionStorage.getItem('fonts'));
-
-    if (fonts) {
-      // If the font had been loaded before
-      // Just active the font immediately
-      document.documentElement.classList.add('wf-active');
-      Object.keys(fonts).forEach(key =>
-        document.documentElement.classList.add(`wf-${fonts[key]}-active`)
-      );
-    }
-
-    import('webfontloader').then(WebFont => {
-      const families = [...fontFamilies];
-
-      if (families.length) {
-        families.push('&display=swap');
-
-        WebFont.load({
-          google: { families },
-          timeout: 3000,
-          active: () =>
-            document.documentElement.classList.remove(
-              'wf-displayswap-n4-inactive'
-            ),
-          fontactive: (familyName: string, fvd: string) => {
-            const fonts = JSON.parse(sessionStorage.getItem('fonts')) || {};
-            fonts[familyName] =
-              familyName.replace(' ', '').toLowerCase() + '-' + fvd;
-
-            sessionStorage.setItem('fonts', JSON.stringify(fonts));
-          }
-        });
-      }
-    });
-  }, [fontFamilies]);
-
   return (
     <RendererProvider renderer={renderer}>
-      <>
-        <Head>
-          {typeof window === 'undefined' &&
-            fontFamilies.map((font, i) => (
-              <link
-                key={i}
-                href={`https://fonts.googleapis.com/css?family=${encodeURI(
-                  font
-                )}`}
-                rel="stylesheet"
-              />
-            ))}
-        </Head>
-        <ThemeProvider theme={_theme} {...props} />
-      </>
+      <ThemeProvider theme={_theme} {...props} />
     </RendererProvider>
   );
 }
