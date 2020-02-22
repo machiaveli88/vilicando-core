@@ -1,18 +1,16 @@
 import namedKeys from 'fela-plugin-named-keys';
 import { IStyle } from 'fela';
 import theme from './theme.json';
-
-const _parseInt = (value: string | number) =>
-  typeof value === 'string' ? parseInt(value) : value;
+import { parseInt } from '../utils';
 
 const sizes = {
-  extraLarge: _parseInt(theme.screen.xxl),
-  huge: _parseInt(theme.screen.xl),
-  large: _parseInt(theme.screen.lg),
-  medium: _parseInt(theme.screen.md),
-  small: _parseInt(theme.screen.sm),
-  mini: _parseInt(theme.screen.xs),
-  tiny: _parseInt(theme.screen.xxs)
+  extraLarge: parseInt(theme.screen.xxl),
+  huge: parseInt(theme.screen.xl),
+  large: parseInt(theme.screen.lg),
+  medium: parseInt(theme.screen.md),
+  small: parseInt(theme.screen.sm),
+  mini: parseInt(theme.screen.xs),
+  tiny: parseInt(theme.screen.xxs)
 };
 
 export interface INamedKeys<T = IStyle> {

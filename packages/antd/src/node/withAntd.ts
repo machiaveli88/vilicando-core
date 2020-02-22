@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 // @ts-ignore todo: remove
 import withLess from '@zeit/next-less';
+import antdTheme from '../theme.json';
 import overwrite from '../overwrite.json';
 import { flattenObject } from '../utils';
+import { theme as defaultTheme } from 'vilicando-core';
 
 const manipulateObj = (obj: object, antd: string, origin: string) => {
   if (obj[antd] || obj[origin]) {
@@ -23,11 +25,17 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
 
   const { lessLoaderOptions, webpack, ...rest } = nextConfig;
   modifyVars = flattenObject({
+    ...antdTheme,
+    ...defaultTheme,
     ...overwrite,
     ...modifyVars
   });
+  // add 'px' to numbers, except of line-heights
   Object.keys(modifyVars).forEach(key => {
-    if (typeof modifyVars[key] === 'number' && !~key.indexOf('line-height'))
+    if (
+      typeof modifyVars[key] === 'number' &&
+      !(key.indexOf('line-height') === 0 || ~key.indexOf('-line-height'))
+    )
       modifyVars[key] = modifyVars[key] + 'px';
   });
   // see also in AntdProvider!

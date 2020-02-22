@@ -1,6 +1,6 @@
 {
   "name": "vilicando-hasura",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -20,7 +20,7 @@
     "@graphql-codegen/typescript": "1.12.2",
     "@graphql-codegen/typescript-operations": "1.12.2",
     "@graphql-codegen/typescript-react-apollo": "1.12.2",
-    "apollo": "2.22.1",
+    "apollo": "2.23.0",
     "apollo-cache-inmemory": "1.6.5",
     "apollo-cache-persist": "0.1.1",
     "apollo-client": "2.6.8",

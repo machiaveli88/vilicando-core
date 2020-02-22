@@ -4,6 +4,7 @@ import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import tinycolor from 'tinycolor2';
 import { setWith, get } from 'lodash';
+import { evaluate } from 'mathjs';
 import { flattenObject, diffObject, colorPalette } from '../../utils';
 
 const antd = require.resolve('antd');
@@ -36,18 +37,51 @@ const _setWith = (newTheme: {}, key: string, value: any) =>
     return nsValue || {};
   });
 
+const replaceLessVars = (theme: object) => {
+  const origin = { ...theme };
+
+  Object.keys(theme).forEach(key => {
+    if (typeof theme[key] === 'string') {
+      // @var +- something (if NOT ceil())
+      if (!~theme[key].indexOf('ceil('))
+        theme[key] = theme[key].replace(
+          /\(?@[a-z0-9]+(-[a-z0-9]*)* [+\-*] (.+)\w\)?/g,
+          (match: string) => `calc(${match})`
+        );
+
+      // @var
+      theme[key] = theme[key].replace(
+        /@\{?[a-z0-9]+(-[a-z0-9]*)*\}?/g,
+        (match: string) => theme[match.replace(/@\{?/g, '').replace(/\}?/g, '')]
+      );
+
+      // string => int
+      if (`${parseFloat(theme[key])}` === theme[key])
+        theme[key] = parseFloat(theme[key]);
+    }
+  });
+
+  // detect and replace nested vars
+  const stringifiedTheme = JSON.stringify(theme);
+  if (
+    stringifiedTheme.indexOf('@') >= 0 &&
+    JSON.stringify(origin) !== stringifiedTheme
+  )
+    replaceLessVars(theme);
+};
+
 const replaceLessColors = (theme: object) => {
   const origin = { ...theme };
 
   Object.keys(theme).forEach(key => {
     if (typeof theme[key] === 'string') {
       // hsv()
-      theme[key] = theme[key].replace(/hsv\(.+\)/g, (match: string) =>
+      theme[key] = theme[key].replace(/hsv\([^)]+\)/g, (match: string) =>
         tinycolor(match).toRgbString()
       );
 
       // hsl()
-      theme[key] = theme[key].replace(/hsl\(.+\)/g, (match: string) =>
+      theme[key] = theme[key].replace(/hsl\([^)]+\)/g, (match: string) =>
         tinycolor(match).toRgbString()
       );
 
@@ -96,39 +130,6 @@ const replaceLessColors = (theme: object) => {
     replaceLessColors(theme);
 };
 
-const replaceLessVars = (theme: object) => {
-  const origin = { ...theme };
-
-  Object.keys(theme).forEach(key => {
-    if (typeof theme[key] === 'string') {
-      // @var +- something (if NOT ceil())
-      if (!~theme[key].indexOf('ceil('))
-        theme[key] = theme[key].replace(
-          /\(?@[a-z0-9]+(-[a-z0-9]*)* [+\-*] (.+)\w\)?/g,
-          (match: string) => `calc(${match})`
-        );
-
-      // @var
-      theme[key] = theme[key].replace(
-        /@\{?[a-z0-9]+(-[a-z0-9]*)*\}?/g,
-        (match: string) => theme[match.replace(/@\{?/g, '').replace(/\}?/g, '')]
-      );
-
-      // string => int
-      if (`${parseInt(theme[key])}` === theme[key])
-        theme[key] = parseInt(theme[key]);
-    }
-  });
-
-  // detect and replace nested vars
-  const stringifiedTheme = JSON.stringify(theme);
-  if (
-    stringifiedTheme.indexOf('@') >= 0 &&
-    JSON.stringify(origin) !== stringifiedTheme
-  )
-    replaceLessVars(theme);
-};
-
 function parseTheme(_theme: object) {
   // sort and remove linebreaks
   const theme = {};
@@ -142,9 +143,24 @@ function parseTheme(_theme: object) {
   replaceLessColors(theme);
 
   Object.keys(theme).forEach(key => {
+    // resolve calc()
+    if (typeof theme[key] === 'string' && ~theme[key].indexOf('calc'))
+      try {
+        theme[key] = Math.round(
+          evaluate(
+            theme[key]
+              .replace(/calc(\((?:(?!calc).)*\))*/g, '$1')
+              .replace(/px/g, '')
+          )
+        );
+      } catch {
+        console.log('calc failed', theme[key]);
+      }
+
+    // parse px-values to int
     if (
       typeof theme[key] === 'string' &&
-      !~key.indexOf('line-height') &&
+      !(key.indexOf('line-height') === 0 || ~key.indexOf('-line-height')) &&
       `${parseInt(theme[key])}px` === theme[key]
     )
       theme[key] = parseInt(theme[key]);

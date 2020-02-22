@@ -1,14 +1,12 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Button } from 'antd';
-import { useFela, Drawer } from 'vilicando-antd';
+import { useFela } from 'vilicando-antd';
 import { times } from 'lodash';
 
 const { Header, Content, Footer } = Layout;
 
 function StartPage() {
   const { css, theme } = useFela();
-  const [visible, setVisible] = React.useState<boolean>(true);
-  const onClose = React.useCallback(() => setVisible(false), []);
 
   return (
     <Layout>
@@ -17,7 +15,7 @@ function StartPage() {
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['2']}
-          className={css({ lineHeight: theme.layout.header.height })}
+          className={css({ lineHeight: `${theme.layout.header.height}px` })}
         >
           <Menu.Item key="1">Link 1</Menu.Item>
           <Menu.Item key="2">Active Link 2</Menu.Item>
@@ -37,29 +35,6 @@ function StartPage() {
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
-
-        <Drawer
-          title="Lorem ipsum dolor sit amet"
-          visible={visible}
-          onClose={onClose}
-        >
-          <Drawer.Content>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-            no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </Drawer.Content>
-          <Drawer.Footer>
-            <Button type="primary" onClick={onClose}>
-              Close
-            </Button>
-          </Drawer.Footer>
-        </Drawer>
 
         <div
           className={css({

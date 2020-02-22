@@ -15,7 +15,11 @@ interface IProgress {
 
 function Progress({ children, color }: IProgress) {
   const { theme, renderer } = useFela();
-  const _color = color || theme.secondary.base;
+  const _color = color || theme.app.progress.color || theme.secondary.base;
+  const _size =
+    typeof theme.app.progress.size === 'number'
+      ? `${theme.app.progress.size}px`
+      : theme.app.progress.size;
 
   const keyframe = (): TRuleProps => ({
     '0%': {
@@ -42,7 +46,7 @@ function Progress({ children, color }: IProgress) {
       left: 0;
 
       width: 100%;
-      height: 2px;
+      height: ${_size};
     }
 
     /* Fancy blur effect */
@@ -72,7 +76,7 @@ function Progress({ children, color }: IProgress) {
       height: 18px;
       box-sizing: border-box;
 
-      border: solid 2px transparent;
+      border: solid ${_size} transparent;
       border-top-color: ${_color};
       border-left-color: ${_color};
       border-radius: 50%;

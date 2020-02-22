@@ -34,12 +34,21 @@ export default function FelaProvider({
       },
       'html,body'
     );
-    renderer.renderStatic(
-      {
-        backgroundColor: _theme.app.background
-      },
-      'body'
-    );
+    if (typeof _theme.app.background !== 'string')
+      renderer.renderStatic(
+        {
+          background: `linear-gradient(180deg, ${_theme.app.background.top} 50%, ${_theme.app.background.bottom} 50%)`,
+          backgroundColor: _theme.app.background.top
+        },
+        'body'
+      );
+    else
+      renderer.renderStatic(
+        {
+          backgroundColor: _theme.app.background
+        },
+        'body'
+      );
     renderer.renderStatic(
       {
         backgroundColor: _theme.app.foreground

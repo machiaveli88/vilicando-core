@@ -1,7 +1,7 @@
 import tinycolor from 'tinycolor2';
 
 export const flattenObject = (obj: object, prefix = '') =>
-  Object.keys(obj).reduce((acc, k) => {
+  Object.keys(obj || {}).reduce((acc, k) => {
     const pre = prefix.length ? prefix + '-' : '';
 
     if (typeof obj[k] === 'object')

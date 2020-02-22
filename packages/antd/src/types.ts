@@ -103,7 +103,7 @@ export interface IAntdTheme {
     };
     disable?: { bg?: string; border?: string; color?: string };
     font?: {
-      size?: { lg?: string; sm?: number | string };
+      size?: { lg?: number | string; sm?: number | string };
       weight?: number | string;
     };
     group?: { border?: string };
@@ -113,7 +113,13 @@ export interface IAntdTheme {
       sm?: number | string;
     };
     link?: { ghost?: { color?: string } };
-    padding?: { horizontal?: { base?: string; lg?: string; sm?: string } };
+    padding?: {
+      horizontal?: {
+        base?: number | string;
+        lg?: number | string;
+        sm?: number | string;
+      };
+    };
     primary?: { bg?: string; color?: string; shadow?: string };
     shadow?: string;
     square?: {
@@ -233,7 +239,11 @@ export interface IAntdTheme {
   font?: {
     family?: string;
     feature?: { settings?: { base?: string } };
-    size?: { base?: number | string; lg?: string; sm?: number | string };
+    size?: {
+      base?: number | string;
+      lg?: number | string;
+      sm?: number | string;
+    };
     variant?: { base?: string };
   };
   form?: {
@@ -292,10 +302,10 @@ export interface IAntdTheme {
   };
   grid?: { columns?: number | string; gutter?: { width?: number | string } };
   heading?: {
-    '1'?: { size?: string };
-    '2'?: { size?: string };
-    '3'?: { size?: string };
-    '4'?: { size?: string };
+    '1'?: { size?: number | string };
+    '2'?: { size?: number | string };
+    '3'?: { size?: number | string };
+    '4'?: { size?: number | string };
     color?: string;
     colorDark?: string;
   };
@@ -328,11 +338,15 @@ export interface IAntdTheme {
     };
     outline?: { offset?: string };
     padding?: {
-      horizontal?: string;
-      horizontalBase?: string;
-      horizontalLg?: string;
-      horizontalSm?: string;
-      vertical?: { base?: string; lg?: string; sm?: string };
+      horizontal?: number | string;
+      horizontalBase?: number | string;
+      horizontalLg?: number | string;
+      horizontalSm?: number | string;
+      vertical?: {
+        base?: number | string;
+        lg?: number | string;
+        sm?: number | string;
+      };
     };
     placeholder?: { color?: string };
   };
@@ -370,7 +384,7 @@ export interface IAntdTheme {
     '10'?: string;
     base?: string;
   };
-  line?: { height?: { base?: string } };
+  line?: { height?: { base?: number | string } };
   link?: {
     active?: { color?: string };
     color?: string;
@@ -421,7 +435,7 @@ export interface IAntdTheme {
       submenu?: { bg?: string };
     };
     highlight?: { color?: string };
-    icon?: { size?: number | string; sizeLg?: string };
+    icon?: { size?: number | string; sizeLg?: number | string };
     inline?: { toplevel?: { item?: { height?: number | string } } };
     item?: {
       active?: { bg?: string; border?: { width?: number | string } };
@@ -529,7 +543,7 @@ export interface IAntdTheme {
     background?: string;
     bg?: string;
     color?: string;
-    distance?: string;
+    distance?: number | string;
     min?: { width?: number | string };
   };
   preset?: { colors?: string };
@@ -597,19 +611,19 @@ export interface IAntdTheme {
   };
   screen?: {
     lg?: number | string;
-    lgMax?: string;
+    lgMax?: number | string;
     lgMin?: number | string;
     md?: number | string;
-    mdMax?: string;
+    mdMax?: number | string;
     mdMin?: number | string;
     sm?: number | string;
-    smMax?: string;
+    smMax?: number | string;
     smMin?: number | string;
     xl?: number | string;
-    xlMax?: string;
+    xlMax?: number | string;
     xlMin?: number | string;
     xs?: number | string;
-    xsMax?: string;
+    xsMax?: number | string;
     xsMin?: number | string;
     xxl?: number | string;
     xxlMin?: number | string;
@@ -672,12 +686,12 @@ export interface IAntdTheme {
   switch?: {
     bg?: string;
     color?: string;
-    disabled?: { opacity?: string };
+    disabled?: { opacity?: number | string };
     height?: number | string;
     min?: { width?: number | string };
     shadow?: { color?: string };
     sm?: {
-      checked?: { margin?: { left?: string } };
+      checked?: { margin?: { left?: number | string } };
       height?: number | string;
       min?: { width?: number | string };
     };
@@ -726,7 +740,7 @@ export interface IAntdTheme {
     title?: {
       font?: {
         size?: number | string;
-        sizeLg?: string;
+        sizeLg?: number | string;
         sizeSm?: number | string;
       };
     };
@@ -755,7 +769,7 @@ export interface IAntdTheme {
     arrow?: { color?: string; width?: number | string };
     bg?: string;
     color?: string;
-    distance?: string;
+    distance?: number | string;
     max?: { width?: number | string };
   };
   transfer?: {

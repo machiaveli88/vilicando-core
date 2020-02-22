@@ -26,8 +26,8 @@ function AntdProvider({
   const baseTheme = React.useMemo(
     () =>
       merge<ITheme, IAntdTheme, Partial<IAntdTheme>>(
-        defaultTheme,
         antdTheme,
+        defaultTheme,
         overwrite
       ),
     []
@@ -41,10 +41,6 @@ function AntdProvider({
     newTheme.spacing.md = theme?.spacing?.md || newTheme.padding.md;
     newTheme.spacing.lg = theme?.spacing?.lg || newTheme.padding.lg;
     newTheme.font.size.md = theme?.font?.size?.md || newTheme.font.size.base;
-    newTheme.heading[5].size =
-      theme?.heading?.[5]?.size || `calc(${newTheme.font.size.base} * 1.312)`;
-    newTheme.heading[6].size =
-      theme?.heading?.[6]?.size || `calc(${newTheme.font.size.base} * 1.125)`;
     newTheme.primary.base = theme?.primary?.base || newTheme.primary.color;
 
     const changedColors = {};

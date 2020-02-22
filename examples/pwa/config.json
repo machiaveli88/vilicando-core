@@ -5,6 +5,9 @@
   "logo": "logo.svg",
   "theme": {
     "primary": { "base": "#f44336" },
-    "background": { "color": { "base": "#f44336", "light": "#ffffff" } }
+    "app": {
+      "background": { "top": "#f44336", "bottom": "#ffffff" },
+      "foreground": "#ffffff"
+    }
   }
 }

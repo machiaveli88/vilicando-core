@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.5.20",
+  "version": "0.5.21",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -42,18 +42,17 @@
     "push.js": "1.0.12",
     "pwa-asset-generator": "2.2.1",
     "react-cookie": "^4.0.3",
-    "react-fela": "11.1.2",
-    "webfontloader": "^1.6.28"
+    "react-fela": "11.1.2"
   },
   "devDependencies": {
     "@types/dotenv": "8.2.0",
     "@types/next": "9.0.0",
     "@types/nprogress": "0.2.0",
-    "@types/react": "16.9.21",
+    "@types/react": "16.9.22",
     "@types/react-dom": "16.9.5",
     "@types/webfontloader": "^1.6.29",
     "@types/webpack": "4.41.6",
-    "typescript": "3.7.5"
+    "typescript": "3.8.2"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",

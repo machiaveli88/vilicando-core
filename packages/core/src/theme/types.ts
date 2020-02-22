@@ -1,4 +1,13 @@
 export interface ITheme {
+  app?: {
+    background?: string | { top: string; bottom: string };
+    foreground?: string;
+    progress?: {
+      color?: string;
+      size?: string | number;
+    };
+  };
+
   screen?: {
     lg?: string | number;
     md?: string | number;
@@ -61,6 +70,9 @@ export interface ITheme {
       decoration?: string;
     };
   };
+
+  black?: string;
+  white?: string;
 
   primary?: {
     '1'?: string;
@@ -285,8 +297,4 @@ export interface ITheme {
     '10'?: string;
     base?: string;
   };
-
-  background?: { color?: { base?: string; light?: string } };
-  black?: string;
-  white?: string;
 }
