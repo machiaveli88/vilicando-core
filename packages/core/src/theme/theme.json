@@ -1,6 +1,6 @@
 {
   "app": {
-    "background": { "top": "#f44336", "bottom": "#ffffff" },
+    "background": "#ffffff",
     "foreground": "#ffffff",
     "progress": {
       "color": "#f44336",

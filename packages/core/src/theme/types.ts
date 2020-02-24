@@ -1,6 +1,6 @@
 export interface ITheme {
   app?: {
-    background?: string | { top: string; bottom: string };
+    background?: string;
     foreground?: string;
     progress?: {
       color?: string;

@@ -36,12 +36,18 @@ function AntdProvider({
   const parsedTheme = React.useMemo(() => {
     const newTheme = merge(baseTheme, theme);
     // see also in withAntd!
-    newTheme.spacing.xs = theme?.spacing?.xs || newTheme.padding.xs;
-    newTheme.spacing.sm = theme?.spacing?.sm || newTheme.padding.sm;
-    newTheme.spacing.md = theme?.spacing?.md || newTheme.padding.md;
-    newTheme.spacing.lg = theme?.spacing?.lg || newTheme.padding.lg;
-    newTheme.font.size.md = theme?.font?.size?.md || newTheme.font.size.base;
-    newTheme.primary.base = theme?.primary?.base || newTheme.primary.color;
+    newTheme.spacing.xs =
+      theme?.spacing?.xs || newTheme.spacing.xs || newTheme.padding.xs;
+    newTheme.spacing.sm =
+      theme?.spacing?.sm || newTheme.spacing.sm || newTheme.padding.sm;
+    newTheme.spacing.md =
+      theme?.spacing?.md || newTheme.spacing.md || newTheme.padding.md;
+    newTheme.spacing.lg =
+      theme?.spacing?.lg || newTheme.spacing.lg || newTheme.padding.lg;
+    newTheme.font.size.md =
+      theme?.font?.size?.md || newTheme.font.size.md || newTheme.font.size.base;
+    newTheme.primary.base =
+      theme?.primary?.base || newTheme.primary.base || newTheme.primary.color;
 
     const changedColors = {};
     const colors = newTheme.preset.colors.replace(/ /g, '').split(',');

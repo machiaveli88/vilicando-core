@@ -1,16 +1,25 @@
 #!/usr/bin/env node
 // @ts-ignore todo: remove
 import withLess from '@zeit/next-less';
-import antdTheme from '../theme.json';
 import overwrite from '../overwrite.json';
 import { flattenObject } from '../utils';
 import { theme as defaultTheme } from 'vilicando-core';
+import { merge } from 'lodash';
 
-const manipulateObj = (obj: object, antd: string, origin: string) => {
-  if (obj[antd] || obj[origin]) {
-    obj[antd] = obj[antd] || obj[origin];
-    delete obj[origin];
-  }
+const manipulateObj = (
+  theme: object,
+  overwrite: object,
+  antdKey: string,
+  originKey: string
+) => {
+  theme[antdKey] =
+    overwrite[originKey] ||
+    overwrite[antdKey] ||
+    theme[originKey] ||
+    theme[antdKey];
+
+  if (theme[originKey]) delete theme[originKey];
+  if (overwrite[originKey]) delete overwrite[originKey];
 };
 
 module.exports = (modifyVars: any = {}, nextConfig: any) => {
@@ -24,12 +33,17 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
   }
 
   const { lessLoaderOptions, webpack, ...rest } = nextConfig;
-  modifyVars = flattenObject({
-    ...antdTheme,
-    ...defaultTheme,
-    ...overwrite,
-    ...modifyVars
-  });
+  // see also in AntdProvider!
+  const theme = flattenObject(merge(defaultTheme, overwrite));
+  const _modifyVars = flattenObject(modifyVars);
+  manipulateObj(theme, _modifyVars, 'padding-xs', 'spacing-xs');
+  manipulateObj(theme, _modifyVars, 'padding-sm', 'spacing-sm');
+  manipulateObj(theme, _modifyVars, 'padding-md', 'spacing-md');
+  manipulateObj(theme, _modifyVars, 'padding-lg', 'spacing-lg');
+  manipulateObj(theme, _modifyVars, 'font-size-base', 'font-size-md');
+  manipulateObj(theme, _modifyVars, 'primary-color', 'primary-base');
+  modifyVars = { ...theme, ..._modifyVars };
+
   // add 'px' to numbers, except of line-heights
   Object.keys(modifyVars).forEach(key => {
     if (
@@ -38,13 +52,6 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
     )
       modifyVars[key] = modifyVars[key] + 'px';
   });
-  // see also in AntdProvider!
-  manipulateObj(modifyVars, 'padding-xs', 'spacing-xs');
-  manipulateObj(modifyVars, 'padding-sm', 'spacing-sm');
-  manipulateObj(modifyVars, 'padding-md', 'spacing-md');
-  manipulateObj(modifyVars, 'padding-lg', 'spacing-lg');
-  manipulateObj(modifyVars, 'font-size-base', 'font-size-md');
-  manipulateObj(modifyVars, 'primary-color', 'primary-base');
 
   return withLess({
     extractCssChunksOptions: { orderWarning: false },

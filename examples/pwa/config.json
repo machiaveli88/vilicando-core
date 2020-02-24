@@ -6,7 +6,7 @@
   "theme": {
     "primary": { "base": "#f44336" },
     "app": {
-      "background": { "top": "#f44336", "bottom": "#ffffff" },
+      "background": "#ffffff",
       "foreground": "#ffffff"
     }
   }
