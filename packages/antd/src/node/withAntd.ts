@@ -5,6 +5,8 @@ import overwrite from '../overwrite.json';
 import { flattenObject } from '../utils';
 import { theme as defaultTheme } from 'vilicando-core';
 import { merge } from 'lodash';
+// @ts-ignore todo: remove
+import FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
 
 const manipulateObj = (
   theme: object,
@@ -83,6 +85,12 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
           use: 'null-loader'
         });
       }
+
+      config.plugins.push(
+        new FilterWarningsPlugin({
+          exclude: /mini-css-extract-plugin[^]*Conflicting order between:/
+        })
+      );
 
       if (typeof webpack === 'function') {
         return webpack(config, options);

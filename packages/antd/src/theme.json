@@ -748,7 +748,7 @@
     "footer": { "bg": "rgb(250, 250, 250)", "color": "rgba(0, 0, 0, 0.85)" },
     "header": {
       "bg": "rgb(250, 250, 250)",
-      "bgSm": "transparent",
+      "bgSm": "#fff",
       "color": "rgba(0, 0, 0, 0.85)",
       "filter": {
         "active": { "bg": "darken(darken(rgb(250, 250, 250), 3%), 5%)" }

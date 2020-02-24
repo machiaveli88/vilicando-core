@@ -1,6 +1,6 @@
 {
   "name": "vilicando-antd",
-  "version": "0.2.11",
+  "version": "0.2.13",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -18,11 +18,12 @@
   "dependencies": {
     "@ant-design/icons": "4.0.0-alpha.19",
     "@zeit/next-less": "1.0.1",
-    "antd": "4.0.0-rc.5",
+    "antd": "4.0.0-rc.6",
     "less": "3.11.1",
     "lodash": "4.17.15",
     "null-loader": "3.0.0",
-    "tinycolor2": "1.4.1"
+    "tinycolor2": "1.4.1",
+    "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "devDependencies": {
     "@types/antd": "1.0.0",
