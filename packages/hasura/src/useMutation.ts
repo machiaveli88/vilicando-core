@@ -16,14 +16,17 @@ import {
 } from 'graphql';
 import { merge, uniqueId } from 'lodash';
 
+type TReturning = { __typename?: string; id?: string };
 type TData = Partial<
   {
     __typename: 'mutation_root';
   } & {
-    [x: string]: {
-      __typename?: string;
-      returning: Array<{ __typename?: string; id?: string }>;
-    } | null;
+    [x: string]:
+      | {
+          __typename?: string;
+          returning: Array<TReturning>;
+        }
+      | any; // if any => null | 'mutation_root': Property '__typename' is incompatible with index signature. Type '"mutation_root"' is not assignable to type '{ __typename?: string; returning: { __typename?: string; id?: string; }[]; }'.
   }
 >;
 
@@ -100,14 +103,10 @@ export default function useMutation<
               returning: items.map(item => Object.assign(item, vars))
             }
           } as IData),
-        update: (
-          cache,
-          {
-            data: {
-              [__name]: { returning }
-            }
-          }
-        ) => {
+        update: (cache, { data }) => {
+          const returning =
+            typeof data?.[__name] === 'object' ? data?.[__name]?.returning : [];
+
           if (updateQuery)
             (Array.isArray(updateQuery) ? updateQuery : [updateQuery]).forEach(
               ({ query, variables }) => {
@@ -121,7 +120,7 @@ export default function useMutation<
                   [__typename]: [...cacheData[__typename]]
                 };
 
-                returning.forEach(item => {
+                returning.forEach((item: TReturning) => {
                   const index = cacheData[__typename].findIndex(
                     ({ id }: { id: string }) => id === item.id
                   );
