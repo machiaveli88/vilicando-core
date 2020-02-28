@@ -18,4 +18,11 @@ export {
   IUseFela,
   createRenderer
 } from './theme';
-export { defaultLocale, isDoubleTap, notify, parseInt } from './utils';
+export {
+  defaultLocale,
+  isDoubleTap,
+  notify,
+  parseInt,
+  useForm,
+  usePosition
+} from './utils';
