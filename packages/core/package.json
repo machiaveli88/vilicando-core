@@ -41,7 +41,6 @@
     "nprogress": "0.2.0",
     "push.js": "1.0.12",
     "pwa-asset-generator": "2.2.2",
-    "react-cookie": "^4.0.3",
     "react-fela": "11.1.2"
   },
   "devDependencies": {
