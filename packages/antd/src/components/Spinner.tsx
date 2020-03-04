@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 import { SpinProps } from 'antd/lib/spin';
 import useFela from '../useFela';
-import 'antd/lib/spin/style/index.less';
+// import 'antd/lib/spin/style/index.less';
 
 export interface ISpinner extends SpinProps {
   children?: React.ReactNode;

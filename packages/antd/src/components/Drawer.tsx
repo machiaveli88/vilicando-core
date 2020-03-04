@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import Spinner, { ISpinner } from './Spinner';
 import { Drawer as AntdDrawer } from 'antd';
 import { DrawerProps } from 'antd/lib/drawer';
 import useFela from '../useFela';
-import 'antd/lib/drawer/style/index.less';
+// import 'antd/lib/drawer/style/index.less';
 
 interface IDrawer extends DrawerProps {
   children?: React.ReactNode;
@@ -35,11 +35,13 @@ function Drawer({ children, className, visible, loading, ...rest }: IDrawer) {
               boxShadow: theme.shadow[2],
               height: theme.layout.header.height,
               paddingLeft: theme.spacing.xl,
-              paddingRight: 56,
-              paddingY: theme.spacing.lg,
+              paddingRight: theme.layout.header.height,
+              paddingY: 0,
               '> .ant-drawer-title': {
                 color: theme.primary.base,
                 textTransform: 'uppercase',
+                fontFamily: 'Comfortaa, cursive',
+                lineHeight: `${theme.layout.header.height}px`,
                 ellipsis: true
               }
             },
@@ -53,12 +55,11 @@ function Drawer({ children, className, visible, loading, ...rest }: IDrawer) {
         className
       )}
     >
-      {visible /* sorgt für unmount damit autoFocus immer funktioniert! */ &&
-        React.Children.map(children, child =>
-          React.isValidElement(child)
-            ? React.cloneElement(child, { loading })
-            : child
-        )}
+      {React.Children.map(children, child =>
+        React.isValidElement(child)
+          ? React.cloneElement(child, { loading })
+          : child
+      )}
     </AntdDrawer>
   );
 }
@@ -96,6 +97,9 @@ function DrawerFooter({ children }: IDrawerFooter) {
         textAlign: 'right',
         '> button': {
           marginLeft: theme.spacing.xs
+        },
+        ifMiniDown: {
+          paddingBottom: theme.spacing.xxl
         }
       })}
     >
