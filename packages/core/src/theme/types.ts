@@ -2,6 +2,9 @@ export interface ITheme {
   app?: {
     background?: string;
     foreground?: string;
+    logo?: {
+      background?: string;
+    };
     progress?: {
       color?: string;
       size?: string | number;

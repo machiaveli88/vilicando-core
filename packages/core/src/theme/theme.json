@@ -2,6 +2,9 @@
   "app": {
     "background": "#ffffff",
     "foreground": "#ffffff",
+    "logo": {
+      "background": "#f44336"
+    },
     "progress": {
       "color": "#f44336",
       "size": 2
