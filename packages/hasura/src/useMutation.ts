@@ -76,14 +76,22 @@ export default function useMutation<
     );
 
   return [
-    (_item: any, _options?: MutationFunctionOptions<IData, IVariables>) => {
-      const items = (Array.isArray(_item) ? _item : [_item]).map(item => ({
-        __typename,
-        id: uniqueId(),
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-        ...item
-      }));
+    (item: any, _options?: MutationFunctionOptions<IData, IVariables>) => {
+      const items = (Array.isArray(item) ? item : [item]).map(x => {
+        // replace "undefined" with "null" to prevent "Missing field active in ..."-warning
+        const _x = {};
+        Object.keys(x).forEach(
+          key => (_x[key] = x[key] === undefined ? null : x[key])
+        );
+
+        return {
+          __typename,
+          id: uniqueId(),
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          ..._x
+        };
+      });
 
       let { variables, updateQuery, ...options } = _options || {};
       const _variables = {};

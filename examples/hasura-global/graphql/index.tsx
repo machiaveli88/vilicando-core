@@ -13,6 +13,18 @@ export type Scalars = {
   timestamptz: any;
 };
 
+export type TBooleanComparisonExp = {
+  _eq?: Maybe<Scalars['Boolean']>;
+  _gt?: Maybe<Scalars['Boolean']>;
+  _gte?: Maybe<Scalars['Boolean']>;
+  _in?: Maybe<Array<Scalars['Boolean']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['Boolean']>;
+  _lte?: Maybe<Scalars['Boolean']>;
+  _neq?: Maybe<Scalars['Boolean']>;
+  _nin?: Maybe<Array<Scalars['Boolean']>>;
+};
+
 export type TGroup = {
   __typename?: 'group';
   id: Scalars['uuid'];
@@ -697,6 +709,7 @@ export type TTimestamptzComparisonExp = {
 
 export type TUser = {
   __typename?: 'user';
+  active: Scalars['Boolean'];
   created_at: Scalars['timestamptz'];
   groups: Array<TGroupUsers>;
   groups_aggregate: TGroupUsersAggregate;
@@ -754,6 +767,7 @@ export type TUserBoolExp = {
   _and?: Maybe<Array<Maybe<TUserBoolExp>>>;
   _not?: Maybe<TUserBoolExp>;
   _or?: Maybe<Array<Maybe<TUserBoolExp>>>;
+  active?: Maybe<TBooleanComparisonExp>;
   created_at?: Maybe<TTimestamptzComparisonExp>;
   groups?: Maybe<TGroupUsersBoolExp>;
   id?: Maybe<TUuidComparisonExp>;
@@ -766,6 +780,7 @@ export enum TUserConstraint {
 }
 
 export type TUserInsertInput = {
+  active?: Maybe<Scalars['Boolean']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   groups?: Maybe<TGroupUsersArrRelInsertInput>;
   id?: Maybe<Scalars['uuid']>;
@@ -817,6 +832,7 @@ export type TUserOnConflict = {
 };
 
 export type TUserOrderBy = {
+  active?: Maybe<TOrderBy>;
   created_at?: Maybe<TOrderBy>;
   groups_aggregate?: Maybe<TGroupUsersAggregateOrderBy>;
   id?: Maybe<TOrderBy>;
@@ -825,6 +841,7 @@ export type TUserOrderBy = {
 };
 
 export enum TUserSelectColumn {
+  Active = 'active',
   CreatedAt = 'created_at',
   Id = 'id',
   Name = 'name',
@@ -832,6 +849,7 @@ export enum TUserSelectColumn {
 }
 
 export type TUserSetInput = {
+  active?: Maybe<Scalars['Boolean']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
@@ -839,6 +857,7 @@ export type TUserSetInput = {
 };
 
 export enum TUserUpdateColumn {
+  Active = 'active',
   CreatedAt = 'created_at',
   Id = 'id',
   Name = 'name',
@@ -859,7 +878,7 @@ export type TUuidComparisonExp = {
 
 export type TUserFragmentFragment = { __typename: 'user' } & Pick<
   TUser,
-  'id' | 'name' | 'created_at' | 'updated_at'
+  'id' | 'name' | 'active' | 'created_at' | 'updated_at'
 >;
 
 export type TUsersQueryVariables = {};
@@ -930,6 +949,7 @@ export const UserFragmentFragmentDoc = gql`
     __typename
     id
     name
+    active
     created_at
     updated_at
   }

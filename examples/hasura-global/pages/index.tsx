@@ -52,7 +52,7 @@ function StartPage() {
         onKeyDown={e => {
           if (e.key === 'Enter')
             insertUser(
-              { name: e.currentTarget.value },
+              { name: e.currentTarget.value, active: undefined },
               { updateQuery: { query: UsersDocument } }
             );
         }}
