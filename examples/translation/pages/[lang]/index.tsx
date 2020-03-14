@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from '../../translations';
+import { useLanguage } from '@translation';
 
 function StartPage() {
   const { HEADER, TEXT } = useLanguage();

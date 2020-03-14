@@ -154,7 +154,7 @@ function parseTheme(_theme: object) {
           )
         );
       } catch {
-        console.log('calc failed', theme[key]);
+        console.error('calc failed', theme[key]);
       }
 
     // parse px-values to int

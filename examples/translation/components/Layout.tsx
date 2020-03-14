@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFela, useConfig, Link } from 'vilicando-core';
-import { useLanguage } from '../translations';
+import { useLanguage } from '@translation';
 
 interface ILayout {
   children: React.ReactNode | Array<React.ReactNode>;

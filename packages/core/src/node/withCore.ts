@@ -10,7 +10,7 @@ interface IWithCore {
 }
 
 module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
-  const { aliases = ['components', 'pages'], ..._props } = props;
+  const { aliases = ['components', 'pages', 'translation'], ..._props } = props;
   const { webpack, dir, ...rest } = nextConfig || { ..._props };
 
   return withOffline({
@@ -18,7 +18,7 @@ module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
       const dirname = dir || process.cwd();
 
       aliases.forEach((alias: string) => {
-        config.resolve.alias[`@${alias}`] = join(dirname, `${alias}/`);
+        config.resolve.alias[`@${alias}`] = join(dirname, `${alias}`);
       });
 
       config.plugins.push(new EnvironmentPlugin(getEnv()));

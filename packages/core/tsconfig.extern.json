@@ -18,7 +18,8 @@
     "outDir": "",
     "paths": {
       "@components": ["components"],
-      "@pages": ["pages"]
+      "@pages": ["pages"],
+      "@translation": ["translation"]
     },
     "preserveConstEnums": true,
     "removeComments": false,
