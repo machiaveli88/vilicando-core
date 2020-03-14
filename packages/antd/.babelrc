@@ -1,5 +1,4 @@
 {
-  "extends": "vilicando-core/.babelrc",
   "plugins": [
     [
       "import",
