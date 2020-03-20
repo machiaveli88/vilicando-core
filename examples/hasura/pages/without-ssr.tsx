@@ -8,11 +8,8 @@ import {
   useUpdateAllUserMutation,
   UsersDocument
 } from '@graphql';
-import { useFela } from 'vilicando-core';
 
 function WithoutSsrPage() {
-  const { css } = useFela();
-
   const [users, { loading }] = useUsersQuery();
   const [updateUser] = useUpdateUserMutation();
   const [deleteUser] = useDeleteUserMutation();
@@ -21,8 +18,8 @@ function WithoutSsrPage() {
 
   return (
     <>
-      <h2 className={css({ marginBottom: 0 })}>Our employees</h2>
-      <h4 className={css({ marginTop: 0 })}>...only visible on client!</h4>
+      <h2>Our employees</h2>
+      <h4>...only visible on client!</h4>
 
       {loading ? (
         <p>Lade...</p>

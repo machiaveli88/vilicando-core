@@ -15,6 +15,7 @@
     "example:hasura-global": "cd examples/hasura-global && yarn dev",
     "example:pwa": "cd examples/pwa && yarn dev",
     "example:ssr": "cd examples/ssr && yarn dev",
+    "example:styled-jsx": "cd examples/styled-jsx && yarn dev",
     "example:theming": "cd examples/theming && yarn dev",
     "example:title": "cd examples/title && yarn dev",
     "example:translation": "cd examples/translation && yarn dev",

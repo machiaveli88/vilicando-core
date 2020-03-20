@@ -2,6 +2,7 @@ import React from 'react';
 import { App, AppProvider } from 'vilicando-core';
 import { Layout } from '@components';
 import config from '../config.json';
+import { ThemeProvider } from '@theme';
 
 export default class CustomApp extends App {
   render() {
@@ -9,9 +10,11 @@ export default class CustomApp extends App {
 
     return (
       <AppProvider {...config}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ThemeProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
       </AppProvider>
     );
   }

@@ -1,63 +1,75 @@
 import React from 'react';
-import { useFela, useConfig, Link } from 'vilicando-core';
+import { useConfig } from 'vilicando-core';
+import { useTheme } from '@theme';
 
-interface ILayout {
+interface IComponentWithChildren {
   children: React.ReactNode | Array<React.ReactNode>;
 }
 
-function Layout({ children }: ILayout) {
-  const { css, theme } = useFela();
-  const { name } = useConfig();
+function Header({ children }: IComponentWithChildren) {
+  const theme = useTheme();
 
   return (
-    <div
-      className={css({
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100%',
-        alignItems: 'center'
-      })}
-    >
-      <div
-        className={css({
-          backgroundColor: theme.primary.base,
-          padding: theme.spacing.md,
-          textAlign: 'center',
-          width: '100%'
-        })}
-      >
-        <h2 className={css({ color: theme.white, margin: 0 })}>{name}</h2>
+    <>
+      <div>
+        <h2>{children}</h2>
       </div>
-
-      <div
-        className={css({
-          width: '75%',
-          minWidth: theme.screen.xxs,
-          maxWidth: theme.screen.md,
-          display: 'flex',
-          justifyContent: 'space-between'
-        })}
-      >
-        <div>{children}</div>
-
-        <div>
-          <h3>Navigation</h3>
-          <ul>
-            <li>
-              <Link href="/without-ssr">
-                <a>Data only on client visible</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a>Data also on ssr visible</a>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      <style jsx>
+        {`
+          div {
+            background-color: ${theme.primary.base};
+            padding: ${theme.spacing.md};
+            text-align: center;
+            width: 100%;
+          }
+          h2 {
+            color: ${theme.white};
+            margin: 0;
+          }
+        `}
+      </style>
+    </>
   );
 }
 
-export default Layout;
+function Content({ children }: IComponentWithChildren) {
+  const theme = useTheme();
+
+  return (
+    <>
+      <div>{children}</div>
+      <style jsx>
+        {`
+          div {
+            width: 75%;
+            min-width: ${theme.screen.xxs};
+            max-width: ${theme.screen.md};
+          }
+        `}
+      </style>
+    </>
+  );
+}
+
+export default function Layout({ children }: IComponentWithChildren) {
+  const { name } = useConfig();
+
+  return (
+    <>
+      <div>
+        <Header>{name}</Header>
+        <Content>{children}</Content>
+      </div>
+
+      <style jsx>
+        {`
+          div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        `}
+      </style>
+    </>
+  );
+}

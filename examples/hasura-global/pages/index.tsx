@@ -7,11 +7,8 @@ import {
   useUpdateAllUserMutation,
   UsersDocument
 } from '@graphql';
-import { useFela } from 'vilicando-core';
 
 function StartPage() {
-  const { css } = useFela();
-
   const [users, { loading }] = useUsersQuery();
   const [updateUser] = useUpdateUserMutation();
   const [deleteUser] = useDeleteUserMutation();
@@ -20,8 +17,8 @@ function StartPage() {
 
   return (
     <>
-      <h2 className={css({ marginBottom: 0 })}>Our employees</h2>
-      <h4 className={css({ marginTop: 0 })}>...only visible on client!</h4>
+      <h2>Our employees</h2>
+      <h4>...only visible on client!</h4>
 
       <p>Hasura can also be used globally, but then does not support SSR.</p>
 

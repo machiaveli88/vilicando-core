@@ -1,14 +1,6 @@
-export { default as FelaProvider, IFelaProvider } from './FelaProvider';
-export {
-  default as useFela,
-  useFelaBase,
-  IStyleExtended,
-  IUseFela
-} from './useFela';
 export { ITheme } from './types';
-export { default as createRenderer } from './createRenderer';
-export { default as defaultRenderer } from './defaultRenderer';
+export { default as themeController } from './ThemeProvider';
 
-// export { default as theme } from './theme.json'; => doesn't work!
+// export { default as theme } from './theme.json'; => doesn't work! see https://github.com/webpack/webpack/issues/6700
 import _theme from './theme.json';
 export const theme = _theme;

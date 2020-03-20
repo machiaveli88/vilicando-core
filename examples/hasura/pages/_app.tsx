@@ -1,20 +1,22 @@
 import React from 'react';
 import { App, AppProvider } from 'vilicando-core';
-import { Layout } from '@components';
+import { Layout, Navigation } from '@components';
+import { ThemeProvider } from '@theme';
 import config from '../config.json';
 
-class CustomApp extends App {
+export default class CustomApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
     return (
       <AppProvider {...config}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ThemeProvider>
+          <Layout>
+            <Component {...pageProps} />
+            <Navigation />
+          </Layout>
+        </ThemeProvider>
       </AppProvider>
     );
   }
 }
-
-export default CustomApp;

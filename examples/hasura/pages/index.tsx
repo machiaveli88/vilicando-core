@@ -7,12 +7,9 @@ import {
   useUpdateAllUserMutation,
   UsersDocument
 } from '@graphql';
-import { useFela } from 'vilicando-core';
 import { withHasura } from 'vilicando-hasura';
 
 function StartPage() {
-  const { css } = useFela();
-
   const [users, { loading }] = useUsersQuery();
   const [updateUser] = useUpdateUserMutation();
   const [deleteUser] = useDeleteUserMutation();
@@ -21,7 +18,7 @@ function StartPage() {
 
   return (
     <>
-      <h2 className={css({ marginBottom: 0 })}>Our employees</h2>
+      <h2>Our employees</h2>
 
       {loading ? (
         <p>Lade...</p>

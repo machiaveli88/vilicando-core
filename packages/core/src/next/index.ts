@@ -1,7 +1,8 @@
 export { default as App } from 'next/app';
 export { default as Body } from './Body';
 export { default as dynamic } from './dynamic';
-export { default as Document, DocumentContext } from './Document';
+export * from 'next/document';
+export { default as Document } from 'next/document';
 export { Html, Head } from 'next/document';
 export * from 'next/link';
 export { default as Link } from 'next/link';

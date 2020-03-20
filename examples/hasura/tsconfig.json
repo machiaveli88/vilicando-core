@@ -5,7 +5,8 @@
     "paths": {
       "@components": ["components"],
       "@graphql": ["graphql"],
-      "@pages": ["pages"]
+      "@pages": ["pages"],
+      "@theme": ["theme"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

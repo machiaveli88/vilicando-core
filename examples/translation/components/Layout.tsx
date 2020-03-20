@@ -1,61 +1,75 @@
 import React from 'react';
-import { useFela, useConfig, Link } from 'vilicando-core';
-import { useLanguage } from '@translation';
+import { useConfig } from 'vilicando-core';
+import { useTheme } from '@theme';
 
-interface ILayout {
+interface IComponentWithChildren {
   children: React.ReactNode | Array<React.ReactNode>;
 }
 
-function Layout({ children }: ILayout) {
-  const { css, theme } = useFela();
-  const { name } = useConfig();
-  const { LANGUAGES } = useLanguage();
+function Header({ children }: IComponentWithChildren) {
+  const theme = useTheme();
 
   return (
-    <div
-      className={css({
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100%',
-        alignItems: 'center'
-      })}
-    >
-      <div
-        className={css({
-          backgroundColor: theme.primary.base,
-          padding: theme.spacing.md,
-          textAlign: 'center',
-          width: '100%'
-        })}
-      >
-        <h2 className={css({ color: theme.white, margin: 0 })}>{name}</h2>
+    <>
+      <div>
+        <h2>{children}</h2>
       </div>
-
-      <div
-        className={css({
-          width: '75%',
-          minWidth: theme.screen.xxs,
-          maxWidth: theme.screen.md
-        })}
-      >
-        <h3>Navigation</h3>
-        <ul>
-          <li>
-            <Link href="/?lang=de" as="/de">
-              <a>{LANGUAGES.GERMAN}</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/?lang=en" as="/en">
-              <a>{LANGUAGES.ENGLISH}</a>
-            </Link>
-          </li>
-        </ul>
-
-        {children}
-      </div>
-    </div>
+      <style jsx>
+        {`
+          div {
+            background-color: ${theme.primary.base};
+            padding: ${theme.spacing.md};
+            text-align: center;
+            width: 100%;
+          }
+          h2 {
+            color: ${theme.white};
+            margin: 0;
+          }
+        `}
+      </style>
+    </>
   );
 }
 
-export default Layout;
+function Content({ children }: IComponentWithChildren) {
+  const theme = useTheme();
+
+  return (
+    <>
+      <div>{children}</div>
+      <style jsx>
+        {`
+          div {
+            width: 75%;
+            min-width: ${theme.screen.xxs};
+            max-width: ${theme.screen.md};
+          }
+        `}
+      </style>
+    </>
+  );
+}
+
+export default function Layout({ children }: IComponentWithChildren) {
+  const { name } = useConfig();
+
+  return (
+    <>
+      <div>
+        <Header>{name}</Header>
+        <Content>{children}</Content>
+      </div>
+
+      <style jsx>
+        {`
+          div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        `}
+      </style>
+    </>
+  );
+}

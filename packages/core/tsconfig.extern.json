@@ -19,6 +19,7 @@
     "paths": {
       "@components": ["components"],
       "@pages": ["pages"],
+      "@theme": ["theme"],
       "@translation": ["translation"]
     },
     "preserveConstEnums": true,
