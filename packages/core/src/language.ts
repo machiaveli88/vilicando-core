@@ -1,7 +1,7 @@
-import { useLocale, TLocale } from './LocaleProvider';
+import { useLocale } from './LocaleProvider';
 
 export default function language<T>(
-  defaultLocale: TLocale,
+  defaultLocale: string,
   defaultLocaleData: T
 ) {
   const _locales: { [k: string]: T } = {};
@@ -10,7 +10,7 @@ export default function language<T>(
   const controller = {
     defaultLocale,
     defaultLocaleData,
-    add: (locale: string, localeData?: T) => {
+    set: (locale: string, localeData: T) => {
       _locales[locale] = localeData;
 
       return controller;

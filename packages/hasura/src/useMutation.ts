@@ -99,7 +99,7 @@ export default function useMutation<
         ({ variable }: VariableDefinitionNode) =>
           (_variables[variable.name.value] = items[0][variable.name.value])
       );
-      variables = merge(_variables, variables);
+      variables = merge({}, _variables, variables);
 
       return update({
         variables,

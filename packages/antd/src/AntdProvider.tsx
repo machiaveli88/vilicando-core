@@ -11,7 +11,6 @@ import {
 import antdTheme from './theme.json';
 import overwrite from './overwrite.json';
 import { IAntdTheme } from './types';
-import { ITheme } from 'vilicando-core';
 import { merge } from 'lodash';
 import { RendererProvider } from 'react-fela';
 import { colorPalette } from './utils';
@@ -24,17 +23,12 @@ function AntdProvider({
   const { locale } = useLocale();
 
   const baseTheme = React.useMemo(
-    () =>
-      merge<ITheme, IAntdTheme, Partial<IAntdTheme>>(
-        antdTheme,
-        defaultTheme,
-        overwrite
-      ),
+    () => merge({}, antdTheme, defaultTheme, overwrite),
     []
   );
 
   const parsedTheme = React.useMemo(() => {
-    const newTheme = merge(baseTheme, theme);
+    const newTheme = merge({}, baseTheme, theme);
     // see also in withAntd!
     newTheme.spacing.xs =
       theme?.spacing?.xs || newTheme.spacing.xs || newTheme.padding.xs;

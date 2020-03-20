@@ -3,13 +3,11 @@ import moment from 'moment';
 import { defaultLocale } from './utils';
 import 'moment/locale/de';
 
-export type TLocale = 'en' | 'de';
-
 export interface ILocale {
-  locale?: TLocale;
+  locale?: string;
 }
 interface ILocaleContext extends ILocale {
-  setLocale?: (locale: TLocale) => void;
+  setLocale?: (locale: string) => void;
 }
 interface ILocaleProvider extends ILocale {
   children: React.ReactNode | Array<React.ReactNode>;
@@ -25,7 +23,7 @@ export default function LocaleProvider({
   locale: l = defaultLocale,
   children
 }: ILocaleProvider) {
-  const [locale, setLocale] = React.useState<TLocale>(l);
+  const [locale, setLocale] = React.useState<string>(l);
 
   React.useEffect(() => setLocale(l), [l]);
 
