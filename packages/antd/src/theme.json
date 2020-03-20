@@ -496,7 +496,12 @@
     "10": "#612500",
     "base": "#fa8c16"
   },
-  "outline": { "blur": { "size": 0 }, "color": "#1890ff", "width": 2 },
+  "outline": {
+    "blur": { "size": 0 },
+    "color": "#1890ff",
+    "fade": "20%",
+    "width": 2
+  },
   "padding": { "lg": 24, "md": 16, "sm": 12, "xs": 8 },
   "page": {
     "header": {
@@ -704,7 +709,7 @@
       "border": { "width": 2 },
       "color": "#91d5ff",
       "colorFocus": "rgb(126, 193, 255)",
-      "colorFocusShadow": "rgba(24, 144, 255, 0.2)",
+      "colorFocusShadow": "rgba(24, 144, 255, 0.12)",
       "colorHover": "#69c0ff",
       "colorTooltip": { "open": "#1890ff" },
       "shadow": 0
@@ -746,7 +751,7 @@
     "bg": "#fff",
     "body": {
       "selected": { "sort": { "bg": "#e6f7ff" } },
-      "sort": { "bg": "rgba(0, 0, 0, 0.01)" }
+      "sort": { "bg": "#fafafa" }
     },
     "border": { "radius": { "base": 2 } },
     "expand": { "icon": { "bg": "#fff" } },
@@ -755,7 +760,7 @@
     "footer": { "bg": "rgb(250, 250, 250)", "color": "rgba(0, 0, 0, 0.85)" },
     "header": {
       "bg": "rgb(250, 250, 250)",
-      "bgSm": "#fff",
+      "bgSm": "rgb(250, 250, 250)",
       "color": "rgba(0, 0, 0, 0.85)",
       "filter": {
         "active": { "bg": "darken(darken(rgb(250, 250, 250), 3%), 5%)" }

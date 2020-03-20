@@ -16,9 +16,9 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "@ant-design/icons": "4.0.2",
+    "@ant-design/icons": "4.0.3",
     "@zeit/next-less": "1.0.1",
-    "antd": "4.0.2",
+    "antd": "4.0.3",
     "less": "3.11.1",
     "lodash": "4.17.15",
     "null-loader": "3.0.0",

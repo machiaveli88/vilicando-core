@@ -480,6 +480,7 @@ export interface IAntdTheme {
   outline?: {
     blur?: { size?: number | string };
     color?: string;
+    fade?: string;
     width?: number | string;
   };
   padding?: {
