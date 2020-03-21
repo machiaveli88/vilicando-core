@@ -10,6 +10,7 @@
     "example:antd": "cd examples/antd && yarn dev",
     "example:basic": "cd examples/basic && yarn dev",
     "example:env": "cd examples/env && yarn dev",
+    "example:fela": "cd examples/fela && yarn dev",
     "example:form": "cd examples/form && yarn dev",
     "example:hasura": "cd examples/hasura && yarn dev",
     "example:hasura-global": "cd examples/hasura-global && yarn dev",
