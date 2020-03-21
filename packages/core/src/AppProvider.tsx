@@ -84,9 +84,7 @@ export default function AppProvider({
         {!!description && (
           <meta name="description" content={description}></meta>
         )}
-
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-        <meta httpEquiv="Content-Language" content="de" />
 
         {!!logo && (
           <>

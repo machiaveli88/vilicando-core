@@ -1,6 +1,6 @@
-import { language } from 'vilicando-core';
+import { languageController } from 'vilicando-core';
 
-const LocaleData = language('de', {
+const LocaleData = languageController('de', {
   LANGUAGES: {
     GERMAN: 'Deutsch',
     ENGLISH: 'Englisch'

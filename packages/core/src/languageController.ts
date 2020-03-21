@@ -1,6 +1,6 @@
 import { useLocale } from './LocaleProvider';
 
-export default function language<T>(
+export default function languageController<T>(
   defaultLocale: string,
   defaultLocaleData: T
 ) {
