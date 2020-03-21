@@ -15,7 +15,7 @@ function StartPage() {
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['2']}
-          className={css({ lineHeight: `${theme.layout.header.height}px` })}
+          className={css({ lineHeight: theme.layout.header.height })}
         >
           <Menu.Item key="1">Link 1</Menu.Item>
           <Menu.Item key="2">Active Link 2</Menu.Item>

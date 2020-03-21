@@ -13,8 +13,8 @@ function Content({ children, active, onClick }: any) {
       <style jsx>{`
         div {
           display: block;
-          margin-bottom: ${theme.spacing.sm}px;
-          padding: ${theme.spacing.sm}px;
+          margin-bottom: ${theme.spacing.sm};
+          padding: ${theme.spacing.sm};
           color: ${theme.secondary.base};
           background-color: ${theme.primary.base};
           cursor: pointer;
@@ -67,11 +67,8 @@ function StartPage() {
           font-weight: bold;
           color: ${theme.primary.base};
         }
-        h1 {
-          color: ${theme.primary.base};
-        }
         h3 {
-          margin-bottom: ${theme.spacing.xs}px;
+          margin-bottom: ${theme.spacing.xs};
         }
       `}</style>
     </>

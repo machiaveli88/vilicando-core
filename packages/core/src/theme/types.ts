@@ -7,28 +7,28 @@ export interface ITheme {
     };
     progress?: {
       color?: string;
-      size?: string | number;
+      size?: string;
     };
   };
 
   screen?: {
-    lg?: string | number;
-    md?: string | number;
-    sm?: string | number;
-    xl?: string | number;
-    xs?: string | number;
-    xxl?: string | number;
-    xxs?: string | number;
+    lg?: string;
+    md?: string;
+    sm?: string;
+    xl?: string;
+    xs?: string;
+    xxl?: string;
+    xxs?: string;
   };
 
   spacing?: {
-    lg?: string | number;
-    md?: string | number;
-    sm?: string | number;
-    xl?: string | number;
-    xs?: string | number;
-    xxl?: string | number;
-    xxs?: string | number;
+    lg?: string;
+    md?: string;
+    sm?: string;
+    xl?: string;
+    xs?: string;
+    xxl?: string;
+    xxs?: string;
   };
 
   shadow?: {
@@ -45,19 +45,19 @@ export interface ITheme {
   font?: {
     family?: string;
     size?: {
-      lg?: string | number;
-      md?: string | number;
-      sm?: string | number;
+      lg?: string;
+      md?: string;
+      sm?: string;
     };
   };
 
   heading?: {
-    '1'?: { size?: string | number };
-    '2'?: { size?: string | number };
-    '3'?: { size?: string | number };
-    '4'?: { size?: string | number };
-    '5'?: { size?: string | number };
-    '6'?: { size?: string | number };
+    '1'?: { size?: string };
+    '2'?: { size?: string };
+    '3'?: { size?: string };
+    '4'?: { size?: string };
+    '5'?: { size?: string };
+    '6'?: { size?: string };
     color?: string;
   };
 

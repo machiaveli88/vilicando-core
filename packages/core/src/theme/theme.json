@@ -7,28 +7,28 @@
     },
     "progress": {
       "color": "#f44336",
-      "size": 2
+      "size": "2px"
     }
   },
 
   "screen": {
-    "xxl": 1600,
-    "xl": 1200,
-    "lg": 992,
-    "md": 768,
-    "sm": 576,
-    "xs": 480,
-    "xxs": 360
+    "xxl": "1600px",
+    "xl": "1200px",
+    "lg": "992px",
+    "md": "768px",
+    "sm": "576px",
+    "xs": "480px",
+    "xxs": "360px"
   },
 
   "spacing": {
-    "xxl": 48,
-    "xl": 32,
-    "lg": 24,
-    "md": 16,
-    "sm": 12,
-    "xs": 8,
-    "xxs": 4
+    "xxl": "48px",
+    "xl": "32px",
+    "lg": "24px",
+    "md": "16px",
+    "sm": "12px",
+    "xs": "8px",
+    "xxs": "4px"
   },
 
   "shadow": {
@@ -50,20 +50,20 @@
   "font": {
     "family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'",
     "size": {
-      "lg": 18,
-      "md": 16,
-      "sm": 12
+      "lg": "18px",
+      "md": "16px",
+      "sm": "12px"
     }
   },
 
   "heading": {
     "color": "#f44336",
-    "1": { "size": 38 },
-    "2": { "size": 30 },
-    "3": { "size": 24 },
-    "4": { "size": 20 },
-    "5": { "size": 18 },
-    "6": { "size": 16 }
+    "1": { "size": "38px" },
+    "2": { "size": "30px" },
+    "3": { "size": "24px" },
+    "4": { "size": "20px" },
+    "5": { "size": "18px" },
+    "6": { "size": "16px" }
   },
 
   "link": {
