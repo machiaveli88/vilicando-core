@@ -23,18 +23,12 @@
     "fela-plugin-unit": "11.2.0",
     "fela-plugin-validator": "11.2.0",
     "fela-preset-web": "11.2.0",
-    "nprogress": "0.2.0",
     "react-fela": "11.2.0"
-  },
-  "devDependencies": {
-    "@types/next": "9.0.0",
-    "@types/nprogress": "0.2.0",
-    "typescript": "3.8.3"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",
     "react-dom": ">= 16.9.0",
     "typescript": ">= 3.7.4",
-    "vilicando-core": "*"
+    "vilicando-core": "1.0.0-alpha.0"
   }
 }
