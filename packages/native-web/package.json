@@ -1,0 +1,31 @@
+{
+  "name": "vilicando-native-web",
+  "version": "1.0.0-alpha.0",
+  "license": "ISC",
+  "private": false,
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "server.js",
+    ".babelrc"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "up": "yarn upgrade-interactive --latest && yarn check"
+  },
+  "dependencies": {
+    "react-native": "^0.61.5",
+    "react-native-web": "^0.12.2"
+  },
+  "devDependencies": {
+    "@types/react-native": "^0.61.23",
+    "babel-plugin-react-native-web": "^0.12.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.9.0",
+    "react-dom": ">= 16.9.0",
+    "typescript": ">= 3.7.4",
+    "vilicando-core": "1.0.0-alpha.0"
+  }
+}
