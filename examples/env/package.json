@@ -15,6 +15,6 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "typescript": "3.8.3",
-    "vilicando-core": "*"
+    "vilicando-core": "1.0.0-alpha.0"
   }
 }
