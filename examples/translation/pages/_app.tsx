@@ -1,5 +1,5 @@
 import React from 'react';
-import { App, AppProvider, withRouter } from 'vilicando-core';
+import { App, AppProvider, withRouter, resolveLocale } from 'vilicando-core';
 import { Layout, Navigation } from '@components';
 import config from '../config.json';
 import { ThemeProvider } from '@theme';
@@ -12,7 +12,7 @@ class CustomApp extends App {
     } = router;
 
     return (
-      <AppProvider {...config} locale={lang as string}>
+      <AppProvider {...config} locale={resolveLocale(lang)}>
         <ThemeProvider>
           <Layout>
             <Component {...pageProps} />
