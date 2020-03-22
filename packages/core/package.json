@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "0.5.24",
+  "version": "1.0.0-alpha.0",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -35,9 +35,9 @@
     "@types/dotenv": "8.2.0",
     "@types/next": "9.0.0",
     "@types/nprogress": "0.2.0",
-    "@types/react": "16.9.23",
+    "@types/react": "16.9.25",
     "@types/react-dom": "16.9.5",
-    "@types/webpack": "4.41.7",
+    "@types/webpack": "4.41.8",
     "typescript": "3.8.3"
   },
   "peerDependencies": {
