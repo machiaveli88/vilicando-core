@@ -3,7 +3,7 @@
 import withLess from '@zeit/next-less';
 import overwrite from '../overwrite.json';
 import { flattenObject } from '../utils';
-import { theme as defaultTheme } from 'vilicando-core';
+import { theme as baseTheme } from 'vilicando-core';
 import { merge } from 'lodash';
 // @ts-ignore todo: remove
 import FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
@@ -35,8 +35,7 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
   }
 
   const { lessLoaderOptions, webpack, ...rest } = nextConfig;
-  // see also in AntdProvider!
-  const theme = flattenObject(merge(defaultTheme, overwrite));
+  const theme = flattenObject(merge({}, baseTheme, overwrite));
   const _modifyVars = flattenObject(modifyVars);
   manipulateObj(theme, _modifyVars, 'padding-xs', 'spacing-xs');
   manipulateObj(theme, _modifyVars, 'padding-sm', 'spacing-sm');
@@ -45,15 +44,6 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
   manipulateObj(theme, _modifyVars, 'font-size-base', 'font-size-md');
   manipulateObj(theme, _modifyVars, 'primary-color', 'primary-base');
   modifyVars = { ...theme, ..._modifyVars };
-
-  // add 'px' to numbers, except of line-heights
-  Object.keys(modifyVars).forEach(key => {
-    if (
-      typeof modifyVars[key] === 'number' &&
-      !(key.indexOf('line-height') === 0 || ~key.indexOf('-line-height'))
-    )
-      modifyVars[key] = modifyVars[key] + 'px';
-  });
 
   return withLess({
     extractCssChunksOptions: { orderWarning: false },

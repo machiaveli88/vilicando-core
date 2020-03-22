@@ -1,0 +1,5 @@
+{
+  "primary": { "base": "#00bcd4" },
+  "secondary": { "base": "#9c27b0" },
+  "heading": { "color": "#00bcd4" }
+}

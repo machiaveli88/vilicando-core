@@ -3,12 +3,12 @@
     "danger": { "border": "transparent" },
     "default": { "color": "#f44336", "border": "transparent" },
     "disable": { "border": "transparent" },
-    "height": { "base": 36, "lg": 42, "sm": 32 },
+    "height": { "base": "36px", "lg": "42px", "sm": "32px" },
     "padding": {
       "horizontal": {
-        "base": 24,
-        "lg": 24,
-        "sm": 16
+        "base": "24px",
+        "lg": "24px",
+        "sm": "16px"
       }
     },
     "primary": { "shadow": "none" },
@@ -17,8 +17,8 @@
   },
   "input": {
     "border": { "color": "transparent" },
-    "padding": { "horizontal": 15 }
+    "padding": { "horizontal": "15px" }
   },
-  "layout": { "header": { "height": 56 } },
+  "layout": { "header": { "height": "56px" } },
   "select": { "border": { "color": "transparent" } }
 }

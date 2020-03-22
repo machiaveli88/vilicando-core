@@ -156,14 +156,6 @@ function parseTheme(_theme: object) {
       } catch {
         console.error('calc failed', theme[key]);
       }
-
-    // parse px-values to int
-    if (
-      typeof theme[key] === 'string' &&
-      !(key.indexOf('line-height') === 0 || ~key.indexOf('-line-height')) &&
-      `${parseInt(theme[key])}px` === theme[key]
-    )
-      theme[key] = parseInt(theme[key]);
   });
 
   const newTheme = {};
@@ -182,7 +174,7 @@ const getNestedTypes = (theme: object | number | string) => {
           ? `'${key}'?: ${getNestedTypes(theme[key])},`
           : `'${key}'?: ${
               typeof theme[key] === 'number' ||
-              `${parseInt(theme[key])}px` === theme[key]
+              parseInt(theme[key]) === theme[key]
                 ? 'number | string'
                 : 'string'
             },`)
