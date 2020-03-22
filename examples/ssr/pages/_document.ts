@@ -1,3 +1,3 @@
-import { Document } from 'vilicando-core';
+import { Document } from 'vilicando-fela';
 
 export default Document;

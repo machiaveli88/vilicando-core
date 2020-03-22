@@ -4,10 +4,6 @@
     "foreground": "#ffffff",
     "logo": {
       "background": "#f44336"
-    },
-    "progress": {
-      "color": "#f44336",
-      "size": "2px"
     }
   },
 
@@ -32,12 +28,7 @@
   },
 
   "shadow": {
-    "1": {
-      "down": "0 0 12px rgba(0, 0, 0, 0.09)",
-      "left": "0 0 12px rgba(0, 0, 0, 0.09)",
-      "right": "0 0 12px rgba(0, 0, 0, 0.09)",
-      "up": "0 0 12px rgba(0, 0, 0, 0.09)"
-    },
+    "1": "0 0 12px rgba(0, 0, 0, 0.09)",
     "2": "0 0 12px rgba(0, 0, 0, 0.12)"
   },
 

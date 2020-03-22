@@ -1,5 +1,6 @@
 import React from 'react';
-import { Loader, dynamic } from 'vilicando-core';
+import { dynamic } from 'vilicando-core';
+import { Loader } from 'vilicando-fela';
 
 const Content = dynamic(
   Promise.all([

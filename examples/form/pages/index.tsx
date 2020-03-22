@@ -1,10 +1,8 @@
 import React from 'react';
 import { useForm, notify } from 'vilicando-core';
 import { Form, Input, Button } from 'antd';
-import { useFela } from 'vilicando-antd';
 
 function StartPage() {
-  const { css } = useFela();
   const [loading, setLoading] = React.useState(false);
 
   const { values, errors, handleChange, handleBlur, handleSubmit } = useForm(
@@ -87,7 +85,6 @@ function StartPage() {
             onClick={handleSubmit}
             loading={loading}
             disabled={!values.email || !values.password}
-            className={css({ width: 200 })}
           >
             Submit
           </Button>

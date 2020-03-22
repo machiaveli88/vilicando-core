@@ -35,8 +35,25 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
   }
 
   const { lessLoaderOptions, webpack, ...rest } = nextConfig;
-  const theme = flattenObject(merge({}, baseTheme, overwrite));
+  const theme = flattenObject(
+    merge(
+      {},
+      baseTheme,
+      {
+        shadow: {
+          '1': {
+            down: baseTheme.shadow[1],
+            left: baseTheme.shadow[1],
+            right: baseTheme.shadow[1],
+            up: baseTheme.shadow[1]
+          }
+        }
+      },
+      overwrite
+    )
+  );
   const _modifyVars = flattenObject(modifyVars);
+
   manipulateObj(theme, _modifyVars, 'padding-xs', 'spacing-xs');
   manipulateObj(theme, _modifyVars, 'padding-sm', 'spacing-sm');
   manipulateObj(theme, _modifyVars, 'padding-md', 'spacing-md');

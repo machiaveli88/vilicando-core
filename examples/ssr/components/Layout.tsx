@@ -1,5 +1,6 @@
 import React from 'react';
-import { useFela, useConfig, Link } from 'vilicando-core';
+import { useConfig } from 'vilicando-core';
+import { useFela } from '@theme';
 
 interface ILayout {
   children: React.ReactNode | Array<React.ReactNode>;
@@ -14,7 +15,6 @@ function Layout({ children }: ILayout) {
       className={css({
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100%',
         alignItems: 'center'
       })}
     >
@@ -36,31 +36,6 @@ function Layout({ children }: ILayout) {
           maxWidth: theme.screen.md
         })}
       >
-        <h3>Navigation</h3>
-        <ul>
-          <li>
-            <Link href="/">
-              <a>Start</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/with-lazy-loading">
-              <a>With lazy-loading</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/without-ssr">
-              <a>Without SSR</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/with-custom-ssr">
-              <a>With custom SSR</a>
-            </Link>
-          </li>
-        </ul>
-
-        <h3>Content</h3>
         {children}
       </div>
     </div>

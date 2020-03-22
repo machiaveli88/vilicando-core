@@ -1,3 +1,3 @@
-import { themeController } from 'vilicando-core';
+import { themeController } from 'vilicando-fela';
 
-export const { useTheme, ThemeProvider } = themeController();
+export const { useFela, useThemeContext, ThemeProvider } = themeController();

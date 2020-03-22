@@ -5,10 +5,6 @@ export interface ITheme {
     logo?: {
       background?: string;
     };
-    progress?: {
-      color?: string;
-      size?: string;
-    };
   };
 
   screen?: {
@@ -32,7 +28,7 @@ export interface ITheme {
   };
 
   shadow?: {
-    '1'?: { down?: string; left?: string; right?: string; up?: string };
+    '1'?: string;
     '2'?: string;
   };
 
