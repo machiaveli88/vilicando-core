@@ -1,6 +1,6 @@
 {
   "name": "vilicando",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
@@ -41,7 +41,7 @@
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "2.5.1",
     "lerna": "^3.20.2",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   }
