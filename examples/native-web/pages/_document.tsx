@@ -3,7 +3,7 @@ import {
   Main,
   NextScript,
   Document,
-  DocumentContext,
+  DocumentContext
 } from 'vilicando-core';
 import React from 'react';
 import { AppRegistry } from 'react-native';
@@ -25,7 +25,7 @@ export default class MyDocument extends Document {
     const page = renderPage();
     const styles = [
       <style dangerouslySetInnerHTML={{ __html: normalizeNextElements }} />,
-      getStyleElement(),
+      getStyleElement()
     ];
     return { ...page, styles: React.Children.toArray(styles) };
   }
