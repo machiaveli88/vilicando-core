@@ -11,7 +11,7 @@ const { GRAPHQL_HTTP, GRAPHQL_SECRET } = getEnv();
 const codegen = async ({
   '--url': url = GRAPHQL_HTTP,
   '--secret': secret = GRAPHQL_SECRET,
-  '--watch': watch = false
+  '--watch': watch = false,
 }) =>
   !url
     ? null
@@ -23,10 +23,10 @@ const codegen = async ({
                 headers: !secret
                   ? {}
                   : {
-                      'x-hasura-admin-secret': secret
-                    }
-              }
-            }
+                      'x-hasura-admin-secret': secret,
+                    },
+              },
+            },
           ],
           documents: './graphql/*.{tsx,ts}',
           generates: {
@@ -34,7 +34,7 @@ const codegen = async ({
               plugins: [
                 'typescript',
                 'typescript-operations',
-                'typescript-react-apollo'
+                'typescript-react-apollo',
               ],
               config: {
                 withHOC: false,
@@ -45,10 +45,10 @@ const codegen = async ({
                 typesPrefix: 'T',
                 namingConvention: {
                   typeNames: 'change-case#pascalCase',
-                  transformUnderscore: true
-                }
-              }
-            }
+                  transformUnderscore: true,
+                },
+              },
+            },
           },
           overwrite: true,
           watch,
@@ -60,11 +60,11 @@ const codegen = async ({
             afterOneFileWrite: [],
             afterAllFileWrite: [
               'vilicando-hasura addReturnType',
-              'prettier --write'
+              'prettier --write',
             ],
             beforeOneFileWrite: [],
-            beforeAllFileWrite: []
-          }
+            beforeAllFileWrite: [],
+          },
         },
         true
       );
@@ -109,8 +109,8 @@ const addReturnType = async () => {
 const scripts: {
   [command: string]: () => Promise<(argv?: object) => void>;
 } = {
-  codegen: async () => new Promise(res => res(codegen)),
-  addReturnType: async () => new Promise(res => res(addReturnType))
+  codegen: async () => new Promise((res) => res(codegen)),
+  addReturnType: async () => new Promise((res) => res(addReturnType)),
 };
 
 runScript(
@@ -124,7 +124,7 @@ runScript(
     // Aliases
     '-u': '--url',
     '-s': '--secret',
-    '-w': '--watch'
+    '-w': '--watch',
   },
   'codegen'
 );

@@ -33,9 +33,9 @@ export default ({ ssr = true }: IWithHasura = {}) => (PageComponent: any) => {
 
   // Set the correct displayName in development
   if (process.env.NODE_ENV !== 'production')
-    WithHasura.displayName = `withHasura(${PageComponent.displayName ||
-      PageComponent.name ||
-      'Component'})`;
+    WithHasura.displayName = `withHasura(${
+      PageComponent.displayName || PageComponent.name || 'Component'
+    })`;
 
   WithHasura.getInitialProps = getInitialProps(
     PageComponent.getInitialProps,

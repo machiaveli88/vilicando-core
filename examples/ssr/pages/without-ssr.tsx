@@ -5,11 +5,11 @@ import { Loader } from 'vilicando-fela';
 const Content = dynamic(
   Promise.all([
     import('@components').then(({ Content }) => Content),
-    new Promise(resolve => setTimeout(resolve, 600))
+    new Promise((resolve) => setTimeout(resolve, 600)),
   ]).then(([mod]) => mod),
   {
     loading: () => <Loader text="Loading content..." />,
-    ssr: false
+    ssr: false,
   }
 );
 

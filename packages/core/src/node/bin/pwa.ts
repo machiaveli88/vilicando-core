@@ -25,7 +25,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
     logo,
     theme, // todo: <= existiert nicht mehr!
     isPWA,
-    manifest = {}
+    manifest = {},
   } = config || {};
 
   if (
@@ -46,7 +46,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
         display: 'standalone',
         background_color: theme?.app?.logo?.background || theme?.primary?.base,
         theme_color: theme?.app?.background || theme?.primary?.base,
-        ...manifest
+        ...manifest,
       };
       writeFileSync(manifestPath, JSON.stringify(data), 'utf8');
       console.info('  ✔ manifest.json created!');
@@ -58,7 +58,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
         manifest: manifestPath,
         iconOnly: true,
         favicon: true,
-        log: false
+        log: false,
       });
       // icons generieren
       await generateImages(logoPath, imagesDir, {
@@ -67,7 +67,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
         scrape: false,
         manifest: manifestPath,
         iconOnly: true,
-        log: false
+        log: false,
       });
       // splashscreens generieren
       if (isPWA)
@@ -78,7 +78,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
           manifest: manifestPath,
           splashOnly: true,
           favicon: true,
-          log: false
+          log: false,
         });
 
       // todo: safari-pinned-tab.svg generieren

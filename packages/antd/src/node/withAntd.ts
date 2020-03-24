@@ -42,25 +42,25 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
       {
         border: {
           color: {
-            base: baseTheme.border?.[0].color
+            base: baseTheme.border?.[0].color,
           },
           radius: baseTheme.border?.[0].radius,
           style: baseTheme.border?.[0].style,
-          width: baseTheme.border?.[0].width
+          width: baseTheme.border?.[0].width,
         },
         shadow: {
           '1': {
             down: baseTheme.shadow?.[0],
             left: baseTheme.shadow?.[0],
             right: baseTheme.shadow?.[0],
-            up: baseTheme.shadow?.[0]
+            up: baseTheme.shadow?.[0],
           },
-          '2': baseTheme.shadow?.[1]
+          '2': baseTheme.shadow?.[1],
         },
         success: { color: baseTheme.success.base },
         error: { color: baseTheme.error.base },
         info: { color: baseTheme.info.base },
-        warning: { color: baseTheme.warning.base }
+        warning: { color: baseTheme.warning.base },
       },
       overwrite
     )
@@ -80,7 +80,7 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
     lessLoaderOptions: {
       javascriptEnabled: true,
       modifyVars,
-      ...lessLoaderOptions
+      ...lessLoaderOptions,
     },
     webpack: (config: any, options: any) => {
       const { isServer } = options;
@@ -97,18 +97,18 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
               callback();
             }
           },
-          ...(typeof origExternals[0] === 'function' ? [] : origExternals)
+          ...(typeof origExternals[0] === 'function' ? [] : origExternals),
         ];
 
         config.module.rules.unshift({
           test: antStyles,
-          use: 'null-loader'
+          use: 'null-loader',
         });
       }
 
       config.plugins.push(
         new FilterWarningsPlugin({
-          exclude: /mini-css-extract-plugin[^]*Conflicting order between:/
+          exclude: /mini-css-extract-plugin[^]*Conflicting order between:/,
         })
       );
 
@@ -118,6 +118,6 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
 
       return config;
     },
-    ...rest
+    ...rest,
   });
 };

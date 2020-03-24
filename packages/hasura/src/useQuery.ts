@@ -51,17 +51,17 @@ export default function useQuery<
               stack,
               networkError: null,
               extraInfo: null,
-              graphQLErrors: null
+              graphQLErrors: null,
             })
           : {},
       updateQuery: (previousQueryResult, { subscriptionData }) =>
-        subscriptionData.data || previousQueryResult
+        subscriptionData.data || previousQueryResult,
     });
   }, [_document, definitionIndex, onError, skip, subscribeToMore, variables]);
 
   // extract items from returned data
   const dataObject = data || {};
-  const key = Object.keys(dataObject).filter(x => x !== '__typename')[0];
+  const key = Object.keys(dataObject).filter((x) => x !== '__typename')[0];
   const items =
     !dataObject[key] || Array.isArray(dataObject[key])
       ? dataObject[key] || []

@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexGrow: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   text: {
     alignItems: 'center',
     fontSize: 24,
-    marginBottom: 24
+    marginBottom: 24,
   },
   link: {
-    color: 'blue'
-  }
+    color: 'blue',
+  },
 });

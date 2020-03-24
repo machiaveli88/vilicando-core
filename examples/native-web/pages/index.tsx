@@ -32,18 +32,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'center',
-    backgroundColor: 'lightgray'
+    backgroundColor: 'lightgray',
   },
   link: {
-    color: 'blue'
+    color: 'blue',
   },
   textContainer: {
     alignItems: 'center',
-    marginTop: 16
+    marginTop: 16,
   },
   text: {
     alignItems: 'center',
     fontSize: 24,
-    marginBottom: 24
-  }
+    marginBottom: 24,
+  },
 });

@@ -15,7 +15,7 @@ function Layout({ children }: ILayout) {
       className={css({
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
       })}
     >
       <div
@@ -23,7 +23,7 @@ function Layout({ children }: ILayout) {
           backgroundColor: theme.primary.base,
           padding: theme.spacing.md,
           textAlign: 'center',
-          width: '100%'
+          width: '100%',
         })}
       >
         <h2 className={css({ color: theme.text, margin: 0 })}>{name}</h2>
@@ -33,7 +33,7 @@ function Layout({ children }: ILayout) {
         className={css({
           width: '75%',
           minWidth: theme.screen.xxs,
-          maxWidth: theme.screen.md
+          maxWidth: theme.screen.md,
         })}
       >
         {children}

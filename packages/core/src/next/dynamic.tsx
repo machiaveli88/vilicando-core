@@ -5,7 +5,7 @@ interface IDynamicOptions<P = {}> extends DynamicOptions<P> {
   onSSR?: ({
     error,
     isLoading,
-    pastDelay
+    pastDelay,
   }: {
     error?: Error | null;
     isLoading?: boolean;
@@ -34,9 +34,9 @@ function dynamicWithSSR<P = {}>(
   return dynamic(
     loading || onSSR
       ? {
-          loading: props => (isSSR && onSSR ? onSSR : loading)(props),
+          loading: (props) => (isSSR && onSSR ? onSSR : loading)(props),
           ssr: !onSSR,
-          ...rest
+          ...rest,
         }
       : options
   );

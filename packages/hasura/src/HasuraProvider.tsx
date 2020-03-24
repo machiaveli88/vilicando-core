@@ -13,7 +13,7 @@ interface IHasuraProvider {
 export default ({
   children,
   state,
-  client = initApolloClient(state)
+  client = initApolloClient(state),
 }: IHasuraProvider) => (
   <ApolloProvider client={client}>{children}</ApolloProvider>
 );

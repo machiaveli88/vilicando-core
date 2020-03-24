@@ -20,31 +20,31 @@ export default () =>
   customProperty({
     size: (size: number | string) => ({
       width: size,
-      height: size
+      height: size,
     }),
     paddingX: (padding: number | string) => ({
       paddingLeft: padding,
-      paddingRight: padding
+      paddingRight: padding,
     }),
     paddingY: (padding: number | string) => ({
       paddingTop: padding,
-      paddingBottom: padding
+      paddingBottom: padding,
     }),
     marginX: (margin: number | string) => ({
       marginLeft: margin,
-      marginRight: margin
+      marginRight: margin,
     }),
     marginY: (margin: number | string) => ({
       marginTop: margin,
-      marginBottom: margin
+      marginBottom: margin,
     }),
     borderX: (border: string) => ({
       borderLeft: border,
-      borderRight: border
+      borderRight: border,
     }),
     borderY: (border: string) => ({
       borderTop: border,
-      borderBottom: border
+      borderBottom: border,
     }),
     ellipsis: (ellipsis: boolean) =>
       !!ellipsis
@@ -52,7 +52,7 @@ export default () =>
             whiteSpace: 'nowrap',
             overflowX: 'hidden',
             textOverflow: 'ellipsis',
-            maxWidth: ellipsis === true ? '100%' : ellipsis
+            maxWidth: ellipsis === true ? '100%' : ellipsis,
           }
         : {},
     clearfix: (clearfix: boolean) =>
@@ -63,8 +63,8 @@ export default () =>
               clear: 'both',
               display: 'block',
               visibility: 'hidden',
-              height: 0
-            }
+              height: 0,
+            },
           }
         : {},
     center: (center: boolean) =>
@@ -73,7 +73,7 @@ export default () =>
             position: 'absolute',
             top: '50%',
             left: '50%',
-            transform: 'translate(-50%, -50%)'
+            transform: 'translate(-50%, -50%)',
           }
         : {},
     centerX: (center: boolean) =>
@@ -81,7 +81,7 @@ export default () =>
         ? {
             position: 'absolute',
             left: '50%',
-            transform: 'translateX(-50%)'
+            transform: 'translateX(-50%)',
           }
         : {},
     centerY: (center: boolean) =>
@@ -89,12 +89,12 @@ export default () =>
         ? {
             position: 'absolute',
             top: '50%',
-            transform: 'translateY(-50%)'
+            transform: 'translateY(-50%)',
           }
         : {},
     flexWidth: (width: number | string) => ({
       maxWidth: width,
       minWidth: width,
-      width
-    })
+      width,
+    }),
   });

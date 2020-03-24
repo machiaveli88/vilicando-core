@@ -24,7 +24,7 @@
     "feature": "echo \"Name: \" && read name && git checkout -b feature-$name master",
     "lint": "yarn prettier && eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
     "merge": "name=\"$(git branch | grep \\* | cut -d ' ' -f2)\" && git checkout master && git merge $name --no-ff -m \"Merge $name\" && git branch -d $name && git push origin master",
-    "prettier": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\"",
+    "prettier": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,less}\"",
     "pub": "lerna publish",
     "theme": "cd packages/antd && yarn theme && cd ../.. && yarn lint",
     "up": "yarn upgrade-interactive --latest",
@@ -35,14 +35,14 @@
     "examples/*"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "2.24.0",
-    "@typescript-eslint/parser": "2.24.0",
+    "@typescript-eslint/eslint-plugin": "2.25.0",
+    "@typescript-eslint/parser": "2.25.0",
     "babel-eslint": "10.1.0",
     "eslint": "6.8.0",
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "2.5.1",
     "lerna": "^3.20.2",
-    "prettier": "^2.0.1",
+    "prettier": "^2.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   }

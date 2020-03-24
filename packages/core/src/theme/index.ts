@@ -4,7 +4,7 @@ export {
   IThemeController,
   IThemeProvider,
   TThemeIn,
-  TThemeOut
+  TThemeOut,
 } from './themeController';
 
 // export { default as theme } from './theme.json'; => doesn't work! see https://github.com/webpack/webpack/issues/6700

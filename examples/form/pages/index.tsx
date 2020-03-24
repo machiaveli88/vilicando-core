@@ -7,11 +7,11 @@ function StartPage() {
 
   const { values, errors, handleChange, handleBlur, handleSubmit } = useForm(
     { email: '', password: '', password2: '' },
-    value => {
+    (value) => {
       setLoading(true);
       notify(
         Object.keys(value)
-          .map(key => `${key}: ${value[key]}`)
+          .map((key) => `${key}: ${value[key]}`)
           .join(', ')
       );
       console.log('results', value);
@@ -33,7 +33,7 @@ function StartPage() {
       password2: (errors, value, values) => {
         if (values.password !== value)
           errors.push({ message: 'Must be same as password' });
-      }
+      },
     }
   );
 
