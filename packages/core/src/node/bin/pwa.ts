@@ -23,7 +23,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
     shortName: short_name,
     description,
     logo,
-    theme,
+    theme, // todo: <= existiert nicht mehr!
     isPWA,
     manifest = {}
   } = config || {};

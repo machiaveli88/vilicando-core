@@ -40,14 +40,27 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
       {},
       baseTheme,
       {
+        border: {
+          color: {
+            base: baseTheme.border?.[0].color
+          },
+          radius: baseTheme.border?.[0].radius,
+          style: baseTheme.border?.[0].style,
+          width: baseTheme.border?.[0].width
+        },
         shadow: {
           '1': {
-            down: baseTheme.shadow[1],
-            left: baseTheme.shadow[1],
-            right: baseTheme.shadow[1],
-            up: baseTheme.shadow[1]
-          }
-        }
+            down: baseTheme.shadow?.[0],
+            left: baseTheme.shadow?.[0],
+            right: baseTheme.shadow?.[0],
+            up: baseTheme.shadow?.[0]
+          },
+          '2': baseTheme.shadow?.[1]
+        },
+        success: { color: baseTheme.success.base },
+        error: { color: baseTheme.error.base },
+        info: { color: baseTheme.info.base },
+        warning: { color: baseTheme.warning.base }
       },
       overwrite
     )

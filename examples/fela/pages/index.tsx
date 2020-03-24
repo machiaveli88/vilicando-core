@@ -16,7 +16,7 @@ function Content({ children, active, onClick }: any) {
         cursor: 'pointer',
         border: `1px solid ${theme.primary.base}`,
         fontWeight: 'bold',
-        textShadow: `0 0 2px ${theme.shadow}`,
+        textShadow: `0 0 2px ${theme.highlight}`,
         onHover: {
           borderColor: theme.secondary.base
         }

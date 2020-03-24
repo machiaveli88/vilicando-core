@@ -1,10 +1,27 @@
+type TBorder = {
+  color?: string;
+  radius?: string;
+  style?: string;
+  width?: string;
+};
+type TColor = {
+  '1'?: string;
+  '2'?: string;
+  '3'?: string;
+  '4'?: string;
+  '5'?: string;
+  '6'?: string;
+  '7'?: string;
+  '8'?: string;
+  '9'?: string;
+  '10'?: string;
+  base?: string;
+};
+
 export interface ITheme {
   app?: {
     background?: string;
     foreground?: string;
-    logo?: {
-      background?: string;
-    };
   };
 
   screen?: {
@@ -27,10 +44,9 @@ export interface ITheme {
     xxs?: string;
   };
 
-  shadow?: {
-    '1'?: string;
-    '2'?: string;
-  };
+  shadow?: Array<string>;
+
+  border?: TBorder;
 
   ease?: {
     in?: string;
@@ -73,227 +89,24 @@ export interface ITheme {
   black?: string;
   white?: string;
 
-  primary?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  secondary?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  grey?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  blue?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  purple?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  cyan?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  green?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  magenta?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  pink?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  red?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  orange?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  volcano?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  yellow?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  geekblue?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  lime?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
-
-  gold?: {
-    '1'?: string;
-    '2'?: string;
-    '3'?: string;
-    '4'?: string;
-    '5'?: string;
-    '6'?: string;
-    '7'?: string;
-    '8'?: string;
-    '9'?: string;
-    '10'?: string;
-    base?: string;
-  };
+  primary?: TColor;
+  secondary?: TColor;
+  success?: TColor;
+  error?: TColor;
+  info?: TColor;
+  warning?: TColor;
+  grey?: TColor;
+  blue?: TColor;
+  purple?: TColor;
+  cyan?: TColor;
+  green?: TColor;
+  magenta?: TColor;
+  pink?: TColor;
+  red?: TColor;
+  orange?: TColor;
+  volcano?: TColor;
+  yellow?: TColor;
+  geekblue?: TColor;
+  lime?: TColor;
+  gold?: TColor;
 }
