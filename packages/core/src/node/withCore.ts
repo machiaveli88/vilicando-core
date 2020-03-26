@@ -11,7 +11,15 @@ interface IWithCore {
 
 module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
   const {
-    aliases = ['components', 'pages', 'theme', 'translation'],
+    aliases = [
+      'assets',
+      'components',
+      'graphql',
+      'pages',
+      'theme',
+      'translation',
+      'utils',
+    ],
     ..._props
   } = props;
   const { webpack, dir, ...rest } = nextConfig || { ..._props };

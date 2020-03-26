@@ -17,10 +17,13 @@
     "noUnusedParameters": false,
     "outDir": "",
     "paths": {
+      "@assets": ["assets"],
       "@components": ["components"],
+      "@graphql": ["graphql"],
       "@pages": ["pages"],
       "@theme": ["theme"],
-      "@translation": ["translation"]
+      "@translation": ["translation"],
+      "@utils": ["utils"]
     },
     "preserveConstEnums": true,
     "removeComments": false,
