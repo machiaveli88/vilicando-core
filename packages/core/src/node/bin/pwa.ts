@@ -3,6 +3,7 @@ import { join } from 'path';
 import { generateImages } from 'pwa-asset-generator';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { IManifest } from '../../AppProvider';
+import chalk from 'chalk';
 
 const publicDir = join(process.cwd(), 'public');
 const imagesDir = join(publicDir, 'images');
@@ -16,7 +17,9 @@ export const pwa = async ({ '--skip': skip = false }) => {
     (JSON.parse(readFileSync(configPath, 'utf8')) || {});
   if (!config)
     console.info(
-      '  ✘ no config.json found! It is recommended to use a config.json!'
+      `  ${chalk.red(
+        '✘'
+      )} no config.json found! It is recommended to use a config.json!`
     );
   const {
     name,
@@ -49,7 +52,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
         ...manifest,
       };
       writeFileSync(manifestPath, JSON.stringify(data), 'utf8');
-      console.info('  ✔ manifest.json created!');
+      console.info(`  ${chalk.green('✔')} manifest.json created!`);
 
       // favicon generieren
       await generateImages(logoPath, imagesDir, {
@@ -92,16 +95,16 @@ export const pwa = async ({ '--skip': skip = false }) => {
         ),
         'utf8'
       );
-      console.info('  ✔ safari-pinned-tab.svg generated!');
+      console.info(`  ${chalk.green('✔')} safari-pinned-tab.svg generated!`);
     } else
       console.info(
-        '  ✘ logo has to be .svg, to create automatically safari-pinned-tab.svg!'
+        `  ${chalk.red('✘')} logo has to be .svg, to create automatically safari-pinned-tab.svg!`
       ); */
 
       // todo:
       // Idee: Skript wird automatisch aufgerufen, schaut ob ein Logo vorhanden ist, wenn ja schaut es ob alle icons + manifest vorhanden sind, wenn nein wird Skript ausgeführt (ansonsten nur wenn explizit aufgerufen!!!)!
 
-      console.info('  ✔ pwa-assets generated!');
-    } else console.info('  ✘ no logo found!');
+      console.info(`  ${chalk.green('✔')} pwa-assets generated!`);
+    } else console.info(`  ${chalk.red('✘')} no logo found!`);
   }
 };

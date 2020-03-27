@@ -2,6 +2,7 @@
 import { join } from 'path';
 import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'fs';
 import { config, parse, DotenvParseOutput } from 'dotenv';
+import chalk from 'chalk';
 
 export const copyFiles = (
   buildDir: string,
@@ -9,7 +10,7 @@ export const copyFiles = (
   serverDist: string
 ) => {
   mkdirSync(buildDir, { recursive: true });
-  console.info('  ✔ Folder created');
+  console.info(`  ${chalk.green('✔')} Folder created`);
 
   const data = readFileSync(serverSrc, 'utf8').replace(
     '"./',
@@ -17,7 +18,7 @@ export const copyFiles = (
   );
   writeFileSync(serverDist, data, 'utf8');
 
-  console.info('  ✔ Files copied');
+  console.info(`  ${chalk.green('✔')} Files copied`);
 };
 
 export const setEnv = () => {
