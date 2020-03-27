@@ -14,6 +14,7 @@
     "example:form": "cd examples/form && yarn dev",
     "example:hasura": "cd examples/hasura && yarn dev",
     "example:hasura-global": "cd examples/hasura-global && yarn dev",
+    "example:lambda": "cd examples/lambda && yarn dev",
     "example:native-web": "cd examples/native-web && yarn dev",
     "example:pwa": "cd examples/pwa && yarn dev",
     "example:ssr": "cd examples/ssr && yarn dev",

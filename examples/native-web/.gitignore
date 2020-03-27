@@ -56,4 +56,5 @@ dist/
 
 # next
 .next
+.lambda
 out

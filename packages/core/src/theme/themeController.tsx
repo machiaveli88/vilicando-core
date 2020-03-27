@@ -123,6 +123,11 @@ export default function themeController<T>(
             color: ${themeVars.link.active.color};
             text-decoration: ${themeVars.link.active.decoration};
           }
+          code {
+            background-color: ${themeVars.primary[1]};
+            padding-left: ${themeVars.spacing.xxs};
+            padding-right: ${themeVars.spacing.xxs};
+          }
         `}
             </style>
           </Head>

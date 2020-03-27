@@ -12,7 +12,9 @@ const serverDist = join(buildDir, 'server.js');
 
 export const build = () => {
   copyFiles(buildDir, serverSrc, serverDist);
-  execSync(`vilicando-core pwa -s && next build`, { stdio: 'inherit' });
+  execSync(`vilicando-core pwa -s && vilicando-core lambda -b && next build`, {
+    stdio: 'inherit',
+  });
 };
 
 export const dev = ({ '--dev': dev = true, '--port': port = PORT || 3000 }) =>
