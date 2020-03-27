@@ -1,9 +1,9 @@
-import React from 'react';
-import { ApolloClient } from 'apollo-client';
-import { NormalizedCacheObject } from 'apollo-cache-inmemory';
-import HasuraProvider from './HasuraProvider';
-import getInitialProps from './getInitialProps';
-import initApolloClient from './apolloClient';
+import React from "react";
+import { ApolloClient } from "apollo-client";
+import { NormalizedCacheObject } from "apollo-cache-inmemory";
+import HasuraProvider from "./HasuraProvider";
+import getInitialProps from "./getInitialProps";
+import initApolloClient from "./apolloClient";
 
 // see https://github.com/zeit/next.js/pull/10451
 
@@ -32,9 +32,9 @@ export default ({ ssr = true }: IWithHasura = {}) => (PageComponent: any) => {
   };
 
   // Set the correct displayName in development
-  if (process.env.NODE_ENV !== 'production')
+  if (process.env.NODE_ENV !== "production")
     WithHasura.displayName = `withHasura(${
-      PageComponent.displayName || PageComponent.name || 'Component'
+      PageComponent.displayName || PageComponent.name || "Component"
     })`;
 
   WithHasura.getInitialProps = getInitialProps(

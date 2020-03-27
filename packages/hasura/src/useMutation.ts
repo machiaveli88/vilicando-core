@@ -1,25 +1,25 @@
 import {
   useMutation as _useMutation,
   MutationHookOptions,
-} from '@apollo/react-hooks';
+} from "@apollo/react-hooks";
 import {
   OperationVariables,
   MutationFunctionOptions as _MutationFunctionOptions,
   MutationResult,
-} from '@apollo/react-common';
+} from "@apollo/react-common";
 import {
   DocumentNode,
   VariableDefinitionNode,
   DefinitionNode,
   SelectionNode,
   ExecutionResult,
-} from 'graphql';
-import { merge, uniqueId } from 'lodash';
+} from "graphql";
+import { merge, uniqueId } from "lodash";
 
 type TReturning = { __typename?: string; id?: string };
 type TData = Partial<
   {
-    __typename: 'mutation_root';
+    __typename: "mutation_root";
   } & {
     [x: string]:
       | {
@@ -58,17 +58,17 @@ export default function useMutation<
   // get types & Co
   const _document = JSON.parse(JSON.stringify(document));
   const definition = _document.definitions.find(
-    ({ kind }: DefinitionNode) => kind === 'OperationDefinition'
+    ({ kind }: DefinitionNode) => kind === "OperationDefinition"
   );
   const { selections } = definition.selectionSet;
   const __name: string = selections[0].name.value; // z.B. update_user
-  const [__typename, __type] = __name.split('_').reverse(); // z.B. [user, update]
+  const [__typename, __type] = __name.split("_").reverse(); // z.B. [user, update]
 
   // warn if more than one mutation
   if (
     selections.filter(
       (selection: SelectionNode) =>
-        'name' in selection && selection.name.value !== '__typename'
+        "name" in selection && selection.name.value !== "__typename"
     ).length > 1
   )
     console.warn(
@@ -105,7 +105,7 @@ export default function useMutation<
         variables,
         optimisticResponse: (vars: {} | IVariables) =>
           ({
-            __typename: 'mutation_root',
+            __typename: "mutation_root",
             [__name]: {
               __typename: `${__typename}_mutation_response`,
               returning: items.map((item) => Object.assign(item, vars)),
@@ -113,7 +113,7 @@ export default function useMutation<
           } as IData),
         update: (cache, { data }) => {
           const returning =
-            typeof data?.[__name] === 'object' ? data?.[__name]?.returning : [];
+            typeof data?.[__name] === "object" ? data?.[__name]?.returning : [];
 
           if (updateQuery)
             (Array.isArray(updateQuery) ? updateQuery : [updateQuery]).forEach(
@@ -134,7 +134,7 @@ export default function useMutation<
                   );
 
                   if (~index)
-                    if (__type === 'delete') data[__typename].splice(index, 1);
+                    if (__type === "delete") data[__typename].splice(index, 1);
                     else
                       data[__typename][index] = Object.assign(
                         data[__typename][index],
@@ -149,9 +149,9 @@ export default function useMutation<
                 });
               }
             );
-          else if (__type === 'insert' && updateQuery !== false)
+          else if (__type === "insert" && updateQuery !== false)
             console.warn(
-              'updateQuery should be set on insert-mutations, otherwise set updateQuery to false to disable this warning!'
+              "updateQuery should be set on insert-mutations, otherwise set updateQuery to false to disable this warning!"
             );
         },
         ...options,

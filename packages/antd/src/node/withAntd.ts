@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // @ts-ignore todo: remove
-import withLess from '@zeit/next-less';
-import overwrite from '../overwrite.json';
-import { flattenObject } from '../utils';
-import { theme as baseTheme } from 'vilicando-core';
-import { merge } from 'lodash';
+import withLess from "@zeit/next-less";
+import overwrite from "../overwrite.json";
+import { flattenObject } from "../utils";
+import { theme as baseTheme } from "vilicando-core";
+import { merge } from "lodash";
 // @ts-ignore todo: remove
-import FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
+import FilterWarningsPlugin from "webpack-filter-warnings-plugin";
 
 const manipulateObj = (
   theme: object,
@@ -49,13 +49,13 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
           width: baseTheme.border?.[0].width,
         },
         shadow: {
-          '1': {
+          "1": {
             down: baseTheme.shadow?.[0],
             left: baseTheme.shadow?.[0],
             right: baseTheme.shadow?.[0],
             up: baseTheme.shadow?.[0],
           },
-          '2': baseTheme.shadow?.[1],
+          "2": baseTheme.shadow?.[1],
         },
         success: { color: baseTheme.success.base },
         error: { color: baseTheme.error.base },
@@ -67,12 +67,12 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
   );
   const _modifyVars = flattenObject(modifyVars);
 
-  manipulateObj(theme, _modifyVars, 'padding-xs', 'spacing-xs');
-  manipulateObj(theme, _modifyVars, 'padding-sm', 'spacing-sm');
-  manipulateObj(theme, _modifyVars, 'padding-md', 'spacing-md');
-  manipulateObj(theme, _modifyVars, 'padding-lg', 'spacing-lg');
-  manipulateObj(theme, _modifyVars, 'font-size-base', 'font-size-md');
-  manipulateObj(theme, _modifyVars, 'primary-color', 'primary-base');
+  manipulateObj(theme, _modifyVars, "padding-xs", "spacing-xs");
+  manipulateObj(theme, _modifyVars, "padding-sm", "spacing-sm");
+  manipulateObj(theme, _modifyVars, "padding-md", "spacing-md");
+  manipulateObj(theme, _modifyVars, "padding-lg", "spacing-lg");
+  manipulateObj(theme, _modifyVars, "font-size-base", "font-size-md");
+  manipulateObj(theme, _modifyVars, "primary-color", "primary-base");
   modifyVars = { ...theme, ..._modifyVars };
 
   return withLess({
@@ -91,18 +91,18 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
         config.externals = [
           (context: any, request: any, callback: any) => {
             if (request.match(antStyles)) return callback();
-            if (typeof origExternals[0] === 'function') {
+            if (typeof origExternals[0] === "function") {
               origExternals[0](context, request, callback);
             } else {
               callback();
             }
           },
-          ...(typeof origExternals[0] === 'function' ? [] : origExternals),
+          ...(typeof origExternals[0] === "function" ? [] : origExternals),
         ];
 
         config.module.rules.unshift({
           test: antStyles,
-          use: 'null-loader',
+          use: "null-loader",
         });
       }
 
@@ -112,7 +112,7 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
         })
       );
 
-      if (typeof webpack === 'function') {
+      if (typeof webpack === "function") {
         return webpack(config, options);
       }
 

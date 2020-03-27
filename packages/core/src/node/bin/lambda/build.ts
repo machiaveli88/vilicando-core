@@ -1,9 +1,9 @@
-import { join, resolve } from 'path';
-import { readdirSync } from 'fs';
-import webpack from 'webpack';
+import { join, resolve } from "path";
+import { readdirSync } from "fs";
+import webpack from "webpack";
 
 const test = /\.(m?js|ts)?$/;
-const testFilePattern = '\\.(test|spec)\\.?';
+const testFilePattern = "\\.(test|spec)\\.?";
 const exclude = new RegExp(
   `(node_modules|bower_components|${testFilePattern})`
 );
@@ -11,7 +11,7 @@ const exclude = new RegExp(
 function getFiles(dir: string): Array<string> {
   const dirents = readdirSync(dir, { withFileTypes: true });
 
-  const files = dirents.map(dirent => {
+  const files = dirents.map((dirent) => {
     const res = resolve(dir, dirent.name);
 
     return dirent.isDirectory() ? getFiles(res) : res;
@@ -38,13 +38,13 @@ function webpackConfig(srcDir: string, destDir: string) {
   }
 
   // Keep the same NODE_ENV if it was specified
-  const nodeEnv = process.env.NODE_ENV || 'production';
+  const nodeEnv = process.env.NODE_ENV || "production";
 
   const webpackConfig = {
-    mode: 'development' as const,
+    mode: "development" as const,
     resolve: {
-      extensions: ['.wasm', '.mjs', '.js', '.json', '.ts'],
-      mainFields: ['module', 'main']
+      extensions: [".wasm", ".mjs", ".js", ".json", ".ts"],
+      mainFields: ["module", "main"],
     },
     module: {
       rules: [
@@ -52,41 +52,41 @@ function webpackConfig(srcDir: string, destDir: string) {
           test,
           exclude,
           use: {
-            loader: require.resolve('babel-loader'),
+            loader: require.resolve("babel-loader"),
             options: {
               cacheDirectory: true,
-              presets: ['next/babel']
-            }
-          }
-        }
-      ]
+              presets: ["next/babel"],
+            },
+          },
+        },
+      ],
     },
     context: srcPath,
     entry: {},
-    target: 'node' as const,
+    target: "node" as const,
     plugins: [new webpack.IgnorePlugin(/vertx/)],
     output: {
       path: destPath,
-      filename: '[name].js',
-      libraryTarget: 'commonjs' as const
+      filename: "[name].js",
+      libraryTarget: "commonjs" as const,
     },
     optimization: {
-      nodeEnv
+      nodeEnv,
     },
     stats: {
-      colors: true
-    }
+      colors: true,
+    },
   };
 
   getFiles(srcPath)
-    .filter(file => !file.match(exclude))
-    .map(file => file.replace(srcPath, ''))
+    .filter((file) => !file.match(exclude))
+    .map((file) => file.replace(srcPath, ""))
     .forEach((file: string) => {
       if (file.match(test)) {
-        const name = file.replace(test, '');
+        const name = file.replace(test, "");
 
         if (!name.match(new RegExp(testFilePattern))) {
-          webpackConfig.entry[name] = './' + file;
+          webpackConfig.entry[name] = "./" + file;
         }
       }
     });
@@ -105,7 +105,7 @@ function webpackConfig(srcDir: string, destDir: string) {
   return webpackConfig;
 }
 
-export default function(
+export default function (
   srcDir: string,
   destDir: string,
   cb: (err: any, stats: any) => void

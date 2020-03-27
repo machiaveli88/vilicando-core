@@ -1,7 +1,7 @@
-import React from 'react';
-import LocaleProvider, { ILocale } from './LocaleProvider';
-import PWAProvider from './PWAProvider';
-import Head from 'next/head';
+import React from "react";
+import LocaleProvider, { ILocale } from "./LocaleProvider";
+import PWAProvider from "./PWAProvider";
+import Head from "next/head";
 
 export interface IManifest {
   name?: string;
@@ -10,32 +10,32 @@ export interface IManifest {
     src: string;
     sizes: string;
     type?:
-      | 'image/apng'
-      | 'image/bmp'
-      | 'image/gif'
-      | 'image/x-icon'
-      | 'image/jpeg'
-      | 'image/png'
-      | 'image/svg+xml'
-      | 'image/tiff'
-      | 'image/webp';
+      | "image/apng"
+      | "image/bmp"
+      | "image/gif"
+      | "image/x-icon"
+      | "image/jpeg"
+      | "image/png"
+      | "image/svg+xml"
+      | "image/tiff"
+      | "image/webp";
   }>;
   start_url?: string;
   background_color?: string; // backgroundColor of splashscreen
-  display?: 'fullscreen' | 'standalone' | 'minimal-ui' | 'browser';
+  display?: "fullscreen" | "standalone" | "minimal-ui" | "browser";
   orientation?:
-    | 'any'
-    | 'natural'
-    | 'landscape'
-    | 'landscape-primary'
-    | 'landscape-secondary'
-    | 'portrait'
-    | 'portrait-primary'
-    | 'portrait-secondary';
+    | "any"
+    | "natural"
+    | "landscape"
+    | "landscape-primary"
+    | "landscape-secondary"
+    | "portrait"
+    | "portrait-primary"
+    | "portrait-secondary";
   scope?: string;
   theme_color?: string; // color of toolbar
   description?: string;
-  dir?: 'ltr' | 'rtl' | 'auto'; // text-direction of name/short_name
+  dir?: "ltr" | "rtl" | "auto"; // text-direction of name/short_name
   lang?: string; // language, e.g. "en-US"
   prefer_related_applications?: boolean;
   related_applications?: Array<{

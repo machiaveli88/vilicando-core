@@ -1,16 +1,16 @@
-import { IStyle } from 'fela';
+import { IStyle } from "fela";
 import {
   useFela as useFelaBase,
   StyleFunction,
   FelaHookProps,
-} from 'react-fela';
-import { ITheme } from 'vilicando-core';
-import { ICustomProperty } from './customProperty';
-import { INamedKeys } from './namedKeys';
-import { IFriendlyPseudoClass } from './friendlyPseudoClass';
+} from "react-fela";
+import { ITheme } from "vilicando-core";
+import { ICustomProperty } from "./customProperty";
+import { INamedKeys } from "./namedKeys";
+import { IFriendlyPseudoClass } from "./friendlyPseudoClass";
 
 export interface IStyleExtended
-  extends Omit<IStyle, 'nested'>,
+  extends Omit<IStyle, "nested">,
     ICustomProperty,
     INamedKeys<IStyleExtended>,
     IFriendlyPseudoClass<IStyleExtended> {
@@ -18,7 +18,7 @@ export interface IStyleExtended
 }
 
 export interface IUseFela<T = {}, P = {}>
-  extends Omit<FelaHookProps<T, P>, 'css'> {
+  extends Omit<FelaHookProps<T, P>, "css"> {
   css: (
     css: IStyleExtended | StyleFunction<T, P>,
     className?: string

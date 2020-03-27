@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-import build from './build';
-import install from './install';
-import serve from './serve';
-import { join } from 'path';
-import chalk from 'chalk';
-import { removeSync, copySync } from 'fs-extra';
+import build from "./build";
+import install from "./install";
+import serve from "./serve";
+import { join } from "path";
+import chalk from "chalk";
+import { removeSync, copySync } from "fs-extra";
 // import { exec, execSync } from 'child_process';
 
 // build up on https://github.com/netlify/netlify-lambda
@@ -14,19 +14,19 @@ import { removeSync, copySync } from 'fs-extra';
 // todo: /graphql Beispiel geht nicht => liegt wohl an webpack, mit Typescript gehts!
 
 export const lambda = async ({
-  '--src': srcDir = 'functions',
-  '---dest': destDir = '.lambda',
-  '--port': port = 9000,
-  '--timeout': timeout = 10,
-  '--url': urlPrefix = '.netlify/functions',
-  '--build': buildOnly = false,
+  "--src": srcDir = "functions",
+  "---dest": destDir = ".lambda",
+  "--port": port = 9000,
+  "--timeout": timeout = 10,
+  "--url": urlPrefix = ".netlify/functions",
+  "--build": buildOnly = false,
 }) => {
   const srcPath = join(process.cwd(), srcDir);
   const destPath = join(process.cwd(), destDir);
 
   // remove previous .lambda-folder
   removeSync(destPath);
-  console.info(`  ${chalk.green('✔')} .lambda-folder removed!`);
+  console.info(`  ${chalk.green("✔")} .lambda-folder removed!`);
 
   // install dependecies
   await install(srcDir).catch((err: any) => {
@@ -36,9 +36,9 @@ export const lambda = async ({
 
   // copy everything except .ts-files to dest-Folder
   copySync(srcPath, destPath, {
-    filter: (src: string) => !src.includes('.ts'),
+    filter: (src: string) => !src.includes(".ts"),
   });
-  console.info(`  ${chalk.green('✔')} assets copied!`);
+  console.info(`  ${chalk.green("✔")} assets copied!`);
 
   let server: any;
   build(srcDir, destDir, (err, stats) => {

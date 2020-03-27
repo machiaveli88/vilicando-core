@@ -1,5 +1,5 @@
-import friendlyPseudoClass from 'fela-plugin-friendly-pseudo-class';
-import { IStyle } from 'fela';
+import friendlyPseudoClass from "fela-plugin-friendly-pseudo-class";
+import { IStyle } from "fela";
 
 export interface IFriendlyPseudoClass<T = IStyle> {
   /**

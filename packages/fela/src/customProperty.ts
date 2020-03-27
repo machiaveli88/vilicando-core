@@ -1,4 +1,4 @@
-import customProperty from 'fela-plugin-custom-property';
+import customProperty from "fela-plugin-custom-property";
 
 export interface ICustomProperty {
   size?: number | string;
@@ -49,20 +49,20 @@ export default () =>
     ellipsis: (ellipsis: boolean) =>
       !!ellipsis
         ? {
-            whiteSpace: 'nowrap',
-            overflowX: 'hidden',
-            textOverflow: 'ellipsis',
-            maxWidth: ellipsis === true ? '100%' : ellipsis,
+            whiteSpace: "nowrap",
+            overflowX: "hidden",
+            textOverflow: "ellipsis",
+            maxWidth: ellipsis === true ? "100%" : ellipsis,
           }
         : {},
     clearfix: (clearfix: boolean) =>
       clearfix === true
         ? {
-            ':after': {
+            ":after": {
               content: '""',
-              clear: 'both',
-              display: 'block',
-              visibility: 'hidden',
+              clear: "both",
+              display: "block",
+              visibility: "hidden",
               height: 0,
             },
           }
@@ -70,26 +70,26 @@ export default () =>
     center: (center: boolean) =>
       center === true
         ? {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }
         : {},
     centerX: (center: boolean) =>
       center === true
         ? {
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
           }
         : {},
     centerY: (center: boolean) =>
       center === true
         ? {
-            position: 'absolute',
-            top: '50%',
-            transform: 'translateY(-50%)',
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
           }
         : {},
     flexWidth: (width: number | string) => ({

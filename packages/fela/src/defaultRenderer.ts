@@ -1,3 +1,3 @@
-import createRenderer from './createRenderer';
+import createRenderer from "./createRenderer";
 
 export default createRenderer({});

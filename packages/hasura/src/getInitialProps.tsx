@@ -1,6 +1,6 @@
-import React from 'react';
-import initContext, { IContext } from './initContext';
-import App, { AppContext } from 'next/app';
+import React from "react";
+import initContext, { IContext } from "./initContext";
+import App, { AppContext } from "next/app";
 
 export default (getInitialProps: any, ssr: boolean) => async (
   ctx: IContext
@@ -17,14 +17,14 @@ export default (getInitialProps: any, ssr: boolean) => async (
   }
 
   // Only on the server:
-  if (typeof window === 'undefined')
+  if (typeof window === "undefined")
     if (res && res.finished)
       // When redirecting, the response is finished.
       // No point in continuing to render
       return pageProps;
     else if (ssr && AppTree)
       try {
-        const { getDataFromTree } = await import('@apollo/react-ssr');
+        const { getDataFromTree } = await import("@apollo/react-ssr");
 
         // Since AppComponents and PageComponents have different context types
         // we need to modify their props a little.
@@ -45,7 +45,7 @@ export default (getInitialProps: any, ssr: boolean) => async (
         // Prevent Apollo Client GraphQL errors from crashing SSR.
         // Handle them in components via the data.error prop:
         // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
-        console.error('Error while running `getDataFromTree`', error);
+        console.error("Error while running `getDataFromTree`", error);
       }
 
   return {

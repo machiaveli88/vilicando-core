@@ -1,1 +1,1 @@
-module.exports = require('./lib/node/withNativeWeb');
+module.exports = require("./lib/node/withNativeWeb");

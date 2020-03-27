@@ -15,7 +15,7 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "react-native": "^0.61.5",
+    "react-native": "^0.62.0",
     "react-native-web": "^0.12.2"
   },
   "devDependencies": {

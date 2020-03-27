@@ -1,5 +1,5 @@
-import React from 'react';
-import dynamic, { DynamicOptions } from 'next/dynamic';
+import React from "react";
+import dynamic, { DynamicOptions } from "next/dynamic";
 
 interface IDynamicOptions<P = {}> extends DynamicOptions<P> {
   onSSR?: ({
@@ -21,15 +21,15 @@ function dynamicWithSSR<P = {}>(
   if (dynamicOptions instanceof Promise) {
     options.loader = () => dynamicOptions;
     // Support for having import as a function, eg: dynamic(() => import('../hello-world'))
-  } else if (typeof dynamicOptions === 'function') {
+  } else if (typeof dynamicOptions === "function") {
     options.loader = dynamicOptions;
     // Support for having first argument being options, eg: dynamic({loader: import('../hello-world')})
-  } else if (typeof dynamicOptions === 'object') {
+  } else if (typeof dynamicOptions === "object") {
     options = { ...dynamicOptions };
   }
 
   const { loading, onSSR, ...rest } = options;
-  const isSSR = typeof window === 'undefined';
+  const isSSR = typeof window === "undefined";
 
   return dynamic(
     loading || onSSR

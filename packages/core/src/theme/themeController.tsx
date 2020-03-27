@@ -1,8 +1,8 @@
-import React from 'react';
-import { ITheme as IDefaultTheme } from './types';
-import baseTheme from './theme.json';
-import { merge } from 'lodash';
-import Head from 'next/head';
+import React from "react";
+import { ITheme as IDefaultTheme } from "./types";
+import baseTheme from "./theme.json";
+import { merge } from "lodash";
+import Head from "next/head";
 
 export type TThemeIn<T, OptT = {}> = Partial<IDefaultTheme & T & OptT>;
 export type TThemeOut<T> = Partial<IDefaultTheme & T>;
@@ -24,15 +24,15 @@ export interface IThemeController<T> {
   ThemeProvider: ({ children, theme }: IThemeProvider) => JSX.Element;
 }
 
-const defaultSetTheme = () => console.warn('ThemeProvider not found!');
+const defaultSetTheme = () => console.warn("ThemeProvider not found!");
 
 export default function themeController<T>(
   nameOrVars?: string | TThemeIn<T>,
   vars?: TThemeIn<T>
 ): IThemeController<T> {
-  let defaultTheme = 'default';
+  let defaultTheme = "default";
   let defaultThemeVars = vars;
-  if (typeof nameOrVars === 'string') defaultTheme = nameOrVars as string;
+  if (typeof nameOrVars === "string") defaultTheme = nameOrVars as string;
   else defaultThemeVars = nameOrVars;
 
   const defaultContext: TThemeContext = [defaultTheme, defaultSetTheme];

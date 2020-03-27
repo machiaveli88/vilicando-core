@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // @ts-ignore
-import withOffline from 'next-offline';
-import { join } from 'path';
-import { EnvironmentPlugin } from 'webpack';
-import { getEnv } from './utils';
+import withOffline from "next-offline";
+import { join } from "path";
+import { EnvironmentPlugin } from "webpack";
+import { getEnv } from "./utils";
 
 interface IWithCore {
   aliases?: Array<string>;
@@ -12,13 +12,13 @@ interface IWithCore {
 module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
   const {
     aliases = [
-      'assets',
-      'components',
-      'graphql',
-      'pages',
-      'theme',
-      'translation',
-      'utils',
+      "assets",
+      "components",
+      "graphql",
+      "pages",
+      "theme",
+      "translation",
+      "utils",
     ],
     ..._props
   } = props;
@@ -36,10 +36,10 @@ module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
 
       config.module.rules.push({
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ["@svgr/webpack"],
       });
 
-      if (typeof webpack === 'function') {
+      if (typeof webpack === "function") {
         return webpack(config, options);
       }
 

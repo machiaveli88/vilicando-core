@@ -5,16 +5,16 @@ type TBorder = {
   width?: string;
 };
 type TColor = {
-  '1'?: string;
-  '2'?: string;
-  '3'?: string;
-  '4'?: string;
-  '5'?: string;
-  '6'?: string;
-  '7'?: string;
-  '8'?: string;
-  '9'?: string;
-  '10'?: string;
+  "1"?: string;
+  "2"?: string;
+  "3"?: string;
+  "4"?: string;
+  "5"?: string;
+  "6"?: string;
+  "7"?: string;
+  "8"?: string;
+  "9"?: string;
+  "10"?: string;
   base?: string;
 };
 
@@ -64,12 +64,12 @@ export interface ITheme {
   };
 
   heading?: {
-    '1'?: { size?: string };
-    '2'?: { size?: string };
-    '3'?: { size?: string };
-    '4'?: { size?: string };
-    '5'?: { size?: string };
-    '6'?: { size?: string };
+    "1"?: { size?: string };
+    "2"?: { size?: string };
+    "3"?: { size?: string };
+    "4"?: { size?: string };
+    "5"?: { size?: string };
+    "6"?: { size?: string };
     color?: string;
   };
 

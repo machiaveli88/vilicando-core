@@ -1,6 +1,6 @@
-import namedKeys from 'fela-plugin-named-keys';
-import { IStyle } from 'fela';
-import { theme, parseInt } from 'vilicando-core';
+import namedKeys from "fela-plugin-named-keys";
+import { IStyle } from "fela";
+import { theme, parseInt } from "vilicando-core";
 
 const sizes = {
   extraLarge: parseInt(theme.screen.xxl),
@@ -83,6 +83,6 @@ export default () =>
     }px) and (min-width: ${sizes.tiny}px)`,
     ifTiny: `@media only screen and (max-width: ${sizes.tiny - 1}px)`,
     // Screen-orientation
-    ifLandscape: '@media only screen and (orientation:landscape)',
-    ifPortrait: '@media only screen and (orientation:portrait)',
+    ifLandscape: "@media only screen and (orientation:landscape)",
+    ifPortrait: "@media only screen and (orientation:portrait)",
   });

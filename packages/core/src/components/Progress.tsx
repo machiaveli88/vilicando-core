@@ -1,17 +1,17 @@
-import React from 'react';
-import NProgress from 'nprogress';
-import { Router } from '../next';
-import Head from 'next/head';
+import React from "react";
+import NProgress from "nprogress";
+import { Router } from "../next";
+import Head from "next/head";
 
-Router.events.on('routeChangeStart', NProgress.start);
-Router.events.on('routeChangeComplete', NProgress.done);
-Router.events.on('routeChangeError', NProgress.done);
+Router.events.on("routeChangeStart", NProgress.start);
+Router.events.on("routeChangeComplete", NProgress.done);
+Router.events.on("routeChangeError", NProgress.done);
 
 interface IProgress {
   color?: string;
 }
 
-function Progress({ color = 'white' }: IProgress) {
+function Progress({ color = "white" }: IProgress) {
   return (
     <Head>
       <style>{`

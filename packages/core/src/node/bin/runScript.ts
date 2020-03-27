@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-import arg from 'arg';
-import { CONFIG_FILE } from 'next/dist/next-server/lib/constants';
-import { watchFile } from 'fs';
+import arg from "arg";
+import { CONFIG_FILE } from "next/dist/next-server/lib/constants";
+import { watchFile } from "fs";
 
 export default (
   scripts: {
     [command: string]: () => Promise<(argv?: object) => void>;
   },
   args: arg.Spec,
-  defaultScript: string = 'dev'
+  defaultScript: string = "dev"
 ) => {
   const { _: commands, ..._args } = arg(args, {
     permissive: true,
@@ -18,7 +18,7 @@ export default (
 
   /* SCRIPT */
 
-  ['react', 'react-dom'].forEach((dependency) => {
+  ["react", "react-dom"].forEach((dependency) => {
     try {
       require.resolve(dependency);
     } catch (err) {
@@ -28,11 +28,11 @@ export default (
     }
   });
 
-  if (!foundCommand && !_args['--help']) {
-    console.warn('Command not found, run `vilicando-core --help` for help!');
+  if (!foundCommand && !_args["--help"]) {
+    console.warn("Command not found, run `vilicando-core --help` for help!");
     process.exit(0);
-  } else if (_args['--help']) {
-    console.warn('No help found!');
+  } else if (_args["--help"]) {
+    console.warn("No help found!");
     process.exit(0);
   }
   scripts[command]()
@@ -40,7 +40,7 @@ export default (
     .catch((err) => console.error(err));
 
   // watch config in dev-mode
-  if (command === 'dev') {
+  if (command === "dev") {
     watchFile(`${process.cwd()}/${CONFIG_FILE}`, (cur: any, prev: any) => {
       if (cur.size > 0 || prev.size > 0) {
         console.warn(

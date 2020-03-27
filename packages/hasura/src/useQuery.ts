@@ -1,7 +1,7 @@
-import React from 'react';
-import { useQuery as _useQuery, QueryHookOptions } from '@apollo/react-hooks';
-import { DocumentNode, DefinitionNode, SelectionNode } from 'graphql';
-import { OperationVariables, QueryResult } from '@apollo/react-common';
+import React from "react";
+import { useQuery as _useQuery, QueryHookOptions } from "@apollo/react-hooks";
+import { DocumentNode, DefinitionNode, SelectionNode } from "graphql";
+import { OperationVariables, QueryResult } from "@apollo/react-common";
 
 export default function useQuery<
   IData,
@@ -20,12 +20,12 @@ export default function useQuery<
 
   const _document = JSON.parse(JSON.stringify(document));
   const definitionIndex = _document.definitions.findIndex(
-    ({ kind }: DefinitionNode) => kind === 'OperationDefinition'
+    ({ kind }: DefinitionNode) => kind === "OperationDefinition"
   );
   if (
     _document.definitions[definitionIndex].selectionSet.selections.filter(
       (selection: SelectionNode) =>
-        'name' in selection && selection.name.value !== '__typename'
+        "name" in selection && selection.name.value !== "__typename"
     ).length > 1
   )
     console.warn(
@@ -35,7 +35,7 @@ export default function useQuery<
   React.useEffect(() => {
     if (skip) return undefined;
 
-    _document.definitions[definitionIndex].operation = 'subscription';
+    _document.definitions[definitionIndex].operation = "subscription";
     _document.definitions[
       definitionIndex
     ].name.value = `sub_${_document.definitions[definitionIndex].name.value}`;
@@ -61,7 +61,7 @@ export default function useQuery<
 
   // extract items from returned data
   const dataObject = data || {};
-  const key = Object.keys(dataObject).filter((x) => x !== '__typename')[0];
+  const key = Object.keys(dataObject).filter((x) => x !== "__typename")[0];
   const items =
     !dataObject[key] || Array.isArray(dataObject[key])
       ? dataObject[key] || []

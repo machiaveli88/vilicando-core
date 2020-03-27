@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // todo: => move to Core!
 
@@ -15,7 +15,7 @@ interface IPosition extends Partial<Coordinates> {
 function usePosition(
   settings: IPositionOptions = {
     watch: true,
-    fields: ['latitude', 'longitude'],
+    fields: ["latitude", "longitude"],
     enableHighAccuracy: true,
     timeout: Infinity,
     maximumAge: 0,
@@ -54,7 +54,7 @@ function usePosition(
     const geo = navigator.geolocation;
 
     if (!geo) {
-      setPosition({ ...position, error: 'Geolocation is not supported' });
+      setPosition({ ...position, error: "Geolocation is not supported" });
       return undefined;
     }
 

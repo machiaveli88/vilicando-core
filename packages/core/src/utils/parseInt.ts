@@ -1,2 +1,2 @@
 export default (value: string | number): number =>
-  typeof value === 'string' ? parseInt(value) : value;
+  typeof value === "string" ? parseInt(value) : value;

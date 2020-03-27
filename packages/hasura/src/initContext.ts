@@ -1,8 +1,8 @@
-import { NextPageContext } from 'next';
-import { AppContext as NextAppContext } from 'next/app';
-import initApolloClient from './apolloClient';
-import { ApolloClient } from 'apollo-client';
-import { NormalizedCacheObject } from 'apollo-cache-inmemory';
+import { NextPageContext } from "next";
+import { AppContext as NextAppContext } from "next/app";
+import initApolloClient from "./apolloClient";
+import { ApolloClient } from "apollo-client";
+import { NormalizedCacheObject } from "apollo-cache-inmemory";
 
 interface ICtx extends NextPageContext {
   apolloClient: ApolloClient<NormalizedCacheObject>;
@@ -14,7 +14,7 @@ interface IExtend extends ICtx {
 }
 
 interface PageContext extends NextPageContext, IExtend {}
-interface AppContext extends Omit<NextAppContext, 'ctx'>, IExtend {}
+interface AppContext extends Omit<NextAppContext, "ctx">, IExtend {}
 
 export type IContext = PageContext | AppContext;
 
@@ -29,10 +29,10 @@ export default function initContext(ctx: IContext) {
 
   // We consider installing `withApollo({ ssr: true })` on global App level
   // as antipattern since it disables project wide Automatic Static Optimization.
-  if (process.env.NODE_ENV === 'development' && inAppContext)
+  if (process.env.NODE_ENV === "development" && inAppContext)
     console.warn(
-      'Warning: You have opted-out of Automatic Static Optimization due to `withApollo` in `pages/_app`.\n' +
-        'Read more: https://err.sh/next.js/opt-out-auto-static-optimization\n'
+      "Warning: You have opted-out of Automatic Static Optimization due to `withApollo` in `pages/_app`.\n" +
+        "Read more: https://err.sh/next.js/opt-out-auto-static-optimization\n"
     );
 
   // Initialize ApolloClient if not already done

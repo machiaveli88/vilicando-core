@@ -1,24 +1,24 @@
 #!/usr/bin/env node
-import { join } from 'path';
-import { generateImages } from 'pwa-asset-generator';
-import { existsSync, readFileSync, writeFileSync } from 'fs';
-import { IManifest } from '../../AppProvider';
-import chalk from 'chalk';
+import { join } from "path";
+import { generateImages } from "pwa-asset-generator";
+import { existsSync, readFileSync, writeFileSync } from "fs";
+import { IManifest } from "../../AppProvider";
+import chalk from "chalk";
 
-const publicDir = join(process.cwd(), 'public');
-const imagesDir = join(publicDir, 'images');
-const configPath = join(process.cwd(), 'config.json');
-const manifestPath = join(publicDir, 'manifest.json');
-const pwaExampleAssetPath = join(imagesDir, 'apple-splash-640-1136.png');
+const publicDir = join(process.cwd(), "public");
+const imagesDir = join(publicDir, "images");
+const configPath = join(process.cwd(), "config.json");
+const manifestPath = join(publicDir, "manifest.json");
+const pwaExampleAssetPath = join(imagesDir, "apple-splash-640-1136.png");
 
-export const pwa = async ({ '--skip': skip = false }) => {
+export const pwa = async ({ "--skip": skip = false }) => {
   const config =
     existsSync(configPath) &&
-    (JSON.parse(readFileSync(configPath, 'utf8')) || {});
+    (JSON.parse(readFileSync(configPath, "utf8")) || {});
   if (!config)
     console.info(
       `  ${chalk.red(
-        '✘'
+        "✘"
       )} no config.json found! It is recommended to use a config.json!`
     );
   const {
@@ -46,13 +46,13 @@ export const pwa = async ({ '--skip': skip = false }) => {
         name,
         short_name,
         description,
-        display: 'standalone',
+        display: "standalone",
         background_color: theme?.app?.logo?.background || theme?.primary?.base,
         theme_color: theme?.app?.background || theme?.primary?.base,
         ...manifest,
       };
-      writeFileSync(manifestPath, JSON.stringify(data), 'utf8');
-      console.info(`  ${chalk.green('✔')} manifest.json created!`);
+      writeFileSync(manifestPath, JSON.stringify(data), "utf8");
+      console.info(`  ${chalk.green("✔")} manifest.json created!`);
 
       // favicon generieren
       await generateImages(logoPath, imagesDir, {
@@ -104,7 +104,7 @@ export const pwa = async ({ '--skip': skip = false }) => {
       // todo:
       // Idee: Skript wird automatisch aufgerufen, schaut ob ein Logo vorhanden ist, wenn ja schaut es ob alle icons + manifest vorhanden sind, wenn nein wird Skript ausgeführt (ansonsten nur wenn explizit aufgerufen!!!)!
 
-      console.info(`  ${chalk.green('✔')} pwa-assets generated!`);
-    } else console.info(`  ${chalk.red('✘')} no logo found!`);
+      console.info(`  ${chalk.green("✔")} pwa-assets generated!`);
+    } else console.info(`  ${chalk.red("✘")} no logo found!`);
   }
 };

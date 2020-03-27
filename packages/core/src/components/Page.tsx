@@ -1,6 +1,6 @@
-import React from 'react';
-import { Title } from '../next';
-import { useConfig } from '../AppProvider';
+import React from "react";
+import { Title } from "../next";
+import { useConfig } from "../AppProvider";
 
 interface IPage {
   children?: React.ReactNode | Array<React.ReactNode>;

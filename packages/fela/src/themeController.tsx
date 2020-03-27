@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   themeController as baseThemeController,
   IThemeController,
   IThemeProvider,
   TThemeIn,
   TThemeOut,
-} from 'vilicando-core';
-import FelaProvider from './FelaProvider';
-import useFelaBase, { IUseFela } from './useFela';
+} from "vilicando-core";
+import FelaProvider from "./FelaProvider";
+import useFelaBase, { IUseFela } from "./useFela";
 
 interface IFelaThemeController<T, P> extends IThemeController<T> {
   useFela: (props?: P) => IUseFela<TThemeOut<T>, P>;

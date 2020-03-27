@@ -1,4 +1,4 @@
-import { useLocale, TLocale } from './LocaleProvider';
+import { useLocale, TLocale } from "./LocaleProvider";
 
 export default function languageController<T>(
   defaultLocale: TLocale,

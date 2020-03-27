@@ -3,8 +3,8 @@ import {
   DocumentContext,
   DocumentInitialProps,
   Main,
-} from 'vilicando-core';
-import { AppRegistry } from 'react-native';
+} from "vilicando-core";
+import { AppRegistry } from "react-native";
 
 export default abstract class Document extends NextDocument {
   static async getInitialProps(
@@ -13,7 +13,7 @@ export default abstract class Document extends NextDocument {
     const initialProps = await NextDocument.getInitialProps(props);
 
     // todo: name => variable!
-    AppRegistry.registerComponent('name', () => Main);
+    AppRegistry.registerComponent("name", () => Main);
     // @ts-ignore
     const { getStyleElement } = AppRegistry.getApplication(config.name);
 

@@ -1,7 +1,7 @@
-import React from 'react';
-import { TRuleProps } from 'fela';
-import useFela from '../useFela';
-import { useConfig } from 'vilicando-core';
+import React from "react";
+import { TRuleProps } from "fela";
+import useFela from "../useFela";
+import { useConfig } from "vilicando-core";
 
 export interface IComponentLoader {
   children?: React.ReactNode | Array<React.ReactNode>;
@@ -22,24 +22,24 @@ export default function Loader({
     (!!logo && <img src={`/${logo}`} alt="logo" />);
 
   const pulseRingKeyframe = (): TRuleProps => ({
-    '0%': {
-      transform: 'scale(.33)',
+    "0%": {
+      transform: "scale(.33)",
     },
-    '80%, 100%': {
+    "80%, 100%": {
       opacity: 0,
     },
   });
   const pulseRing = renderer.renderKeyframe(pulseRingKeyframe, {});
 
   const pulseDotKeyframe = (): TRuleProps => ({
-    '0%': {
-      transform: 'scale(.8)',
+    "0%": {
+      transform: "scale(.8)",
     },
-    '50%': {
-      transform: 'scale(1)',
+    "50%": {
+      transform: "scale(1)",
     },
-    '100%': {
-      transform: 'scale(.8)',
+    "100%": {
+      transform: "scale(.8)",
     },
   });
   const pulseDot = renderer.renderKeyframe(pulseDotKeyframe, {});
@@ -52,8 +52,8 @@ export default function Loader({
           bottom: 0,
           left: 0,
           margin: 0,
-          position: 'fixed',
-          pointerEvents: 'none',
+          position: "fixed",
+          pointerEvents: "none",
           right: 0,
           top: 0,
           background: `linear-gradient(135deg, ${theme.primary.base} 0%,${theme.primary[8]} 100%)`,
@@ -62,12 +62,12 @@ export default function Loader({
       >
         <div
           className={css({
-            position: 'absolute',
-            left: '50%',
-            top: '50%',
+            position: "absolute",
+            left: "50%",
+            top: "50%",
             height: size * 3,
             width: size * 3,
-            display: 'block',
+            display: "block",
             marginLeft: -size * 1.5,
             marginTop: -size * 1.5,
             borderRadius: size * 1.5,
@@ -78,12 +78,12 @@ export default function Loader({
         {!!content && (
           <div
             className={css({
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
+              position: "absolute",
+              left: "50%",
+              top: "50%",
               height: size,
               width: size,
-              display: 'block',
+              display: "block",
               marginLeft: -size * 0.5,
               marginTop: -size * 0.5,
               backgroundColor: theme.white,
@@ -95,7 +95,7 @@ export default function Loader({
             <div
               className={css({
                 center: true,
-                '> *': {
+                "> *": {
                   width: size,
                   height: size,
                 },
@@ -108,13 +108,13 @@ export default function Loader({
         {!!text && (
           <div
             className={css({
-              position: 'absolute',
+              position: "absolute",
               left: 0,
               bottom: 0,
-              width: '100%',
-              textAlign: 'center',
-              display: 'block',
-              color: 'white',
+              width: "100%",
+              textAlign: "center",
+              display: "block",
+              color: "white",
               fontFamily: theme.font.family,
               fontSize: theme.font.size.lg,
               paddingY: theme.spacing.xl,

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import { join } from 'path';
-import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'fs';
-import { config, parse, DotenvParseOutput } from 'dotenv';
-import chalk from 'chalk';
+import { join } from "path";
+import { existsSync, readFileSync, mkdirSync, writeFileSync } from "fs";
+import { config, parse, DotenvParseOutput } from "dotenv";
+import chalk from "chalk";
 
 export const copyFiles = (
   buildDir: string,
@@ -10,19 +10,19 @@ export const copyFiles = (
   serverDist: string
 ) => {
   mkdirSync(buildDir, { recursive: true });
-  console.info(`  ${chalk.green('✔')} Folder created`);
+  console.info(`  ${chalk.green("✔")} Folder created`);
 
-  const data = readFileSync(serverSrc, 'utf8').replace(
+  const data = readFileSync(serverSrc, "utf8").replace(
     '"./',
     '"vilicando-core/lib/node/'
   );
-  writeFileSync(serverDist, data, 'utf8');
+  writeFileSync(serverDist, data, "utf8");
 
-  console.info(`  ${chalk.green('✔')} Files copied`);
+  console.info(`  ${chalk.green("✔")} Files copied`);
 };
 
 export const setEnv = () => {
-  const envPath = join(process.cwd(), '.env');
+  const envPath = join(process.cwd(), ".env");
   if (existsSync(envPath)) {
     config({ path: envPath });
     if (process.env.EXTENDS) {
@@ -34,9 +34,9 @@ export const setEnv = () => {
 
 export const getEnv = (): DotenvParseOutput => {
   let env: DotenvParseOutput = {};
-  const envPath = join(process.cwd(), '.env');
+  const envPath = join(process.cwd(), ".env");
   if (existsSync(envPath)) {
-    env = parse(readFileSync(join(process.cwd(), '.env')));
+    env = parse(readFileSync(join(process.cwd(), ".env")));
     if (env.EXTENDS) {
       const customEnvPath = join(process.cwd(), env.EXTENDS);
       if (existsSync(customEnvPath)) {

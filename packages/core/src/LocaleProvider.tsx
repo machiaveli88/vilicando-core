@@ -1,7 +1,7 @@
-import React from 'react';
-import moment from 'moment';
+import React from "react";
+import moment from "moment";
 
-export type TLocale = 'de-DE' | 'en-US' | 'es-ES';
+export type TLocale = "de-DE" | "en-US" | "es-ES";
 export interface ILocale {
   locale?: TLocale;
 }
@@ -11,17 +11,17 @@ interface ILocaleProvider extends ILocale {
 }
 
 const locales: { [key: string]: TLocale } = {
-  de: 'de-DE',
-  'de-DE': 'de-DE',
-  en: 'en-US',
-  'en-US': 'en-US',
-  es: 'es-ES',
-  'es-ES': 'es-ES',
+  de: "de-DE",
+  "de-DE": "de-DE",
+  en: "en-US",
+  "en-US": "en-US",
+  es: "es-ES",
+  "es-ES": "es-ES",
 };
 export const resolveLocale = (locale: string | Array<string>): TLocale =>
-  (!Array.isArray(locale) ? locales[locale] : undefined) || 'en-US';
+  (!Array.isArray(locale) ? locales[locale] : undefined) || "en-US";
 
-const _navigator = (typeof window === 'undefined' ? {} : navigator) as any;
+const _navigator = (typeof window === "undefined" ? {} : navigator) as any;
 const defaultLocale = resolveLocale(
   _navigator.languages && _navigator.languages.length
     ? _navigator.languages[0]
@@ -30,7 +30,7 @@ const defaultLocale = resolveLocale(
         _navigator.browserLanguage
 );
 
-const defaultSetLocale = () => console.warn('LocaleProvider not found!');
+const defaultSetLocale = () => console.warn("LocaleProvider not found!");
 const defaultContext: TLocaleContext = [defaultLocale, defaultSetLocale];
 const LocaleContext = React.createContext<TLocaleContext>(defaultContext);
 

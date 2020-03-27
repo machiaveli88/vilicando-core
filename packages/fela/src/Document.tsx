@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   Document as NextDocument,
   DocumentContext as NextDocumentContext,
   DocumentInitialProps,
-} from 'vilicando-core';
-import { IRenderer } from 'fela';
-import { renderToSheetList } from 'fela-dom';
-import defaultRenderer from './defaultRenderer';
+} from "vilicando-core";
+import { IRenderer } from "fela";
+import { renderToSheetList } from "fela-dom";
+import defaultRenderer from "./defaultRenderer";
 
 export interface DocumentContext extends NextDocumentContext {
   renderer?: IRenderer;

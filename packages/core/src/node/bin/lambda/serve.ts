@@ -1,19 +1,19 @@
 #!/usr/bin/env node
-import express from 'express';
-import bodyParser from 'body-parser';
+import express from "express";
+import bodyParser from "body-parser";
 // @ts-ignore
-import expressLogging from 'express-logging';
-import queryString from 'querystring';
-import path from 'path';
-import fs from 'fs';
-import jwtDecode from 'jwt-decode';
-import chalk from 'chalk';
+import expressLogging from "express-logging";
+import queryString from "querystring";
+import path from "path";
+import fs from "fs";
+import jwtDecode from "jwt-decode";
+import chalk from "chalk";
 
 function handleErr(err: any, response: any) {
   response.statusCode = 500;
-  response.write('Function invocation failed: ' + err.toString());
+  response.write("Function invocation failed: " + err.toString());
   response.end();
-  console.log('Error during invocation: ', err);
+  console.log("Error during invocation: ", err);
   return;
 }
 
@@ -47,13 +47,13 @@ function createCallback(response: any) {
     if (lambdaResponse.body) {
       response.write(
         lambdaResponse.isBase64Encoded
-          ? Buffer.from(lambdaResponse.body, 'base64')
+          ? Buffer.from(lambdaResponse.body, "base64")
           : lambdaResponse.body
       );
     } else {
       if (
         response.statusCode !== 204 &&
-        process.env.CONTEXT !== 'production' &&
+        process.env.CONTEXT !== "production" &&
         !process.env.SILENCE_EMPTY_LAMBDA_WARNING
       )
         console.log(
@@ -67,14 +67,14 @@ function createCallback(response: any) {
 
 function promiseCallback(promise: any, callback: any) {
   if (!promise) return;
-  if (typeof promise.then !== 'function') return;
-  if (typeof callback !== 'function') return;
+  if (typeof promise.then !== "function") return;
+  if (typeof callback !== "function") return;
 
   return promise.then(
-    function(data: any) {
+    function (data: any) {
       callback(null, data);
     },
-    function(err: any) {
+    function (err: any) {
       callback(err, null);
     }
   );
@@ -82,18 +82,18 @@ function promiseCallback(promise: any, callback: any) {
 
 function buildClientContext(headers: any) {
   // inject a client context based on auth header https://github.com/netlify/netlify-lambda/pull/57
-  if (!headers['authorization']) return undefined;
+  if (!headers["authorization"]) return undefined;
 
-  const parts = headers['authorization'].split(' ');
-  if (parts.length !== 2 || parts[0] !== 'Bearer') return undefined;
+  const parts = headers["authorization"].split(" ");
+  if (parts.length !== 2 || parts[0] !== "Bearer") return undefined;
 
   try {
     return {
       identity: {
-        url: 'NETLIFY_LAMBDA_LOCALLY_EMULATED_IDENTITY_URL',
-        token: 'NETLIFY_LAMBDA_LOCALLY_EMULATED_IDENTITY_TOKEN'
+        url: "NETLIFY_LAMBDA_LOCALLY_EMULATED_IDENTITY_URL",
+        token: "NETLIFY_LAMBDA_LOCALLY_EMULATED_IDENTITY_TOKEN",
       },
-      user: jwtDecode(parts[1])
+      user: jwtDecode(parts[1]),
     };
   } catch (e) {
     return undefined; // Ignore errors - bearer token is not a JWT, probably not intended for us
@@ -101,17 +101,17 @@ function buildClientContext(headers: any) {
 }
 
 function createHandler(dir: string, timeout: number, urlPrefix: string) {
-  return function(request: any, response: any) {
+  return function (request: any, response: any) {
     // handle proxies without path re-writes (http-servr)
-    const cleanPath = request.path.replace(urlPrefix, '');
+    const cleanPath = request.path.replace(urlPrefix, "");
 
-    const func = cleanPath.split('/').filter((e: any) => !!e)[0];
-    if (typeof func === 'undefined') {
+    const func = cleanPath.split("/").filter((e: any) => !!e)[0];
+    if (typeof func === "undefined") {
       console.error(
         `Something went wrong and the function path derived from ${cleanPath} (raw form: ${request.path}) was undefined. Please doublecheck your function naming and toml configuration.`
       );
     }
-    if (typeof dir === 'undefined') {
+    if (typeof dir === "undefined") {
       console.error(
         `Something went wrong and the function directory ${dir} was undefined. Please doublecheck your toml configuration.`
       );
@@ -131,7 +131,7 @@ function createHandler(dir: string, timeout: number, urlPrefix: string) {
 
     const isBase64 =
       request.body &&
-      !(request.headers['content-type'] || '').match(
+      !(request.headers["content-type"] || "").match(
         /text|application|multipart\/form-data/
       );
     const lambdaRequest = {
@@ -140,9 +140,9 @@ function createHandler(dir: string, timeout: number, urlPrefix: string) {
       queryStringParameters: queryString.parse(request.url.split(/\?(.+)/)[1]),
       headers: request.headers,
       body: isBase64
-        ? Buffer.from(request.body.toString(), 'utf8').toString('base64')
+        ? Buffer.from(request.body.toString(), "utf8").toString("base64")
         : request.body,
-      isBase64Encoded: isBase64
+      isBase64Encoded: isBase64,
     };
 
     const callback = createCallback(response);
@@ -157,18 +157,18 @@ function createHandler(dir: string, timeout: number, urlPrefix: string) {
 
     Promise.race([
       promiseCallback(promise, callback),
-      new Promise(function(resolve) {
-        invocationTimeoutRef = setTimeout(function() {
+      new Promise(function (resolve) {
+        invocationTimeoutRef = setTimeout(function () {
           handleInvocationTimeout(response, timeout);
           resolve();
         }, timeout * 1000);
-      })
+      }),
     ]).then(
-      result => {
+      (result) => {
         clearTimeout(invocationTimeoutRef);
         return result; // not used, but writing this to avoid future footguns
       },
-      err => {
+      (err) => {
         clearTimeout(invocationTimeoutRef);
         throw err;
       }
@@ -183,32 +183,32 @@ export default (
   urlPrefix: string
 ) => {
   const app = express();
-  app.use(bodyParser.raw({ limit: '6mb' }));
-  app.use(bodyParser.text({ limit: '6mb', type: '*/*' }));
+  app.use(bodyParser.raw({ limit: "6mb" }));
+  app.use(bodyParser.text({ limit: "6mb", type: "*/*" }));
   app.use(
     expressLogging(console, {
-      blacklist: ['/favicon.ico']
+      blacklist: ["/favicon.ico"],
     })
   );
 
-  app.get('/favicon.ico', (req, res) => res.status(204).end());
-  app.get('/', (req, res) =>
+  app.get("/favicon.ico", (req, res) => res.status(204).end());
+  app.get("/", (req, res) =>
     res
       .status(404)
       .send(
         `You have requested the root of http://localhost:${port}. This is likely a mistake. vilicando-lambda serves functions at http://localhost:${port}/${urlPrefix}/your-function-name; please fix your code.`
       )
   );
-  app.all('*', createHandler(dir, timeout, urlPrefix));
+  app.all("*", createHandler(dir, timeout, urlPrefix));
 
   app.listen(port, (err: any) => {
     if (err) {
-      console.error(`  ${chalk.red('✘')} Unable to start lambda server: `, err);
+      console.error(`  ${chalk.red("✘")} Unable to start lambda server: `, err);
       process.exit(1);
     }
 
     console.info(
-      `  ${chalk.magenta('►')} Lambda server is listening on ${port}`
+      `  ${chalk.magenta("►")} Lambda server is listening on ${port}`
     );
   });
 
@@ -216,6 +216,6 @@ export default (
     clearCache: (chunk: any) =>
       delete require.cache[
         require.resolve(path.join(process.cwd(), dir, chunk))
-      ]
+      ],
   };
 };
