@@ -1,3 +1,3 @@
-# hasura-example
+# hasura-global-example
 
-Run the following code in this directory: `COMPOSE_PROJECT_NAME=vilicando-gql docker-compose up -d` or `yarn docker`
+See `hasura-example` to set up hasura!
