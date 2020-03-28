@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "module": "commonjs",
     "target": "es6",

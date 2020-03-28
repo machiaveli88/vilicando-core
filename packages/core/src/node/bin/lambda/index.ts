@@ -4,7 +4,7 @@ import serve from "./serve";
 import { join } from "path";
 import chalk from "chalk";
 import { removeSync, copySync, existsSync, watch } from "fs-extra";
-import { exec, ExecException } from "child_process";
+import { exec, execSync, ExecException } from "child_process";
 
 const getError = (err: ExecException) => {
   if (err) {
@@ -17,7 +17,6 @@ const getError = (err: ExecException) => {
 
 // todo: schauen ob netlify.toml => Vars daraus nehmen
 // todo: env-Vars ermöglichen!
-// todo: /graphql Beispiel geht nicht => liegt wohl an webpack, mit Typescript gehts!
 
 export const lambda = async ({
   "--src": srcDir = "functions",
@@ -49,16 +48,14 @@ export const lambda = async ({
     console.info(`  ${chalk.green("✔")} tsconfig.json created!`);
   }
 
-  // start tsc-watcher
-  exec(
-    `tsc --project ${srcPath} -w`,
-    { encoding: "utf8", cwd: srcPath },
-    getError
-  );
-
-  // start server and clear cache if some .js-file changes
+  // start server, watcher and clear cache if some .js-file changes
   if (!buildOnly) {
     const server = serve(port, destDir, timeout, urlPrefix);
+    exec(
+      "tsc --emitDecoratorMetadata --watch",
+      { encoding: "utf8", cwd: srcPath },
+      getError
+    );
     watch(
       destPath,
       { encoding: "utf8", recursive: true, persistent: true },
@@ -69,5 +66,9 @@ export const lambda = async ({
         }
       }
     );
+  } else {
+    // transpile tsc
+    execSync("tsc", { encoding: "utf8", cwd: srcPath });
+    console.info(`  ${chalk.green("✔")} typescript-files transpiled!`);
   }
 };
