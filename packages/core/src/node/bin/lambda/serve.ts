@@ -138,11 +138,11 @@ function createHandler(dir: string, timeout: number, urlPrefix: string) {
         }, timeout * 1000);
       }),
     ]).then(
-      result => {
+      (result) => {
         clearTimeout(invocationTimeoutRef);
         return result; // not used, but writing this to avoid future footguns
       },
-      err => {
+      (err) => {
         clearTimeout(invocationTimeoutRef);
         throw err;
       }
