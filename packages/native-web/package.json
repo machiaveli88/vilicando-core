@@ -19,7 +19,7 @@
     "react-native-web": "^0.12.2"
   },
   "devDependencies": {
-    "@types/react-native": "^0.61.23",
+    "@types/react-native": "^0.62.0",
     "babel-plugin-react-native-web": "^0.12.2"
   },
   "peerDependencies": {

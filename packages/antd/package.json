@@ -16,7 +16,7 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "@ant-design/icons": "4.0.3",
+    "@ant-design/icons": "4.0.4",
     "@zeit/next-less": "1.0.1",
     "antd": "4.0.4",
     "babel-plugin-import": "1.13.0",
