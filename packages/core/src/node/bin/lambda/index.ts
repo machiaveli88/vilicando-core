@@ -1,11 +1,17 @@
 #!/usr/bin/env node
-import build from "./build";
 import install from "./install";
 import serve from "./serve";
 import { join } from "path";
 import chalk from "chalk";
-import { removeSync, copySync } from "fs-extra";
-// import { exec, execSync } from 'child_process';
+import { removeSync, copySync, existsSync, watch } from "fs-extra";
+import { exec, ExecException } from "child_process";
+
+const getError = (err: ExecException) => {
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+};
 
 // build up on https://github.com/netlify/netlify-lambda
 
@@ -23,43 +29,45 @@ export const lambda = async ({
 }) => {
   const srcPath = join(process.cwd(), srcDir);
   const destPath = join(process.cwd(), destDir);
-
-  // remove previous .lambda-folder
-  removeSync(destPath);
-  console.info(`  ${chalk.green("✔")} .lambda-folder removed!`);
+  const srcTsconfig = join(__dirname, "../../../..", "tsconfig.lambda.json");
+  const destTsconfig = join(srcPath, "tsconfig.json");
 
   // install dependecies
-  await install(srcDir).catch((err: any) => {
-    console.error(err);
-    process.exit(1);
-  });
+  await install(srcDir).catch(getError);
 
-  // copy everything except .ts-files to dest-Folder
+  // remove previous .lambda-folder & copy everything except .ts-files to dest-Folder
+  removeSync(destPath);
   copySync(srcPath, destPath, {
-    filter: (src: string) => !src.includes(".ts"),
+    filter: (src: string) =>
+      !src.includes(".ts") && src !== join(srcPath, "tsconfig.json"),
   });
   console.info(`  ${chalk.green("✔")} assets copied!`);
 
-  let server: any;
-  build(srcDir, destDir, (err, stats) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    // console.log(stats.toString(stats.compilation.options.stats));
+  // transpile .ts-files
+  if (!existsSync(destTsconfig)) {
+    copySync(srcTsconfig, destTsconfig);
+    console.info(`  ${chalk.green("✔")} tsconfig.json created!`);
+  }
 
-    if (!buildOnly) {
-      if (!server) server = serve(port, destDir, timeout, urlPrefix);
-      stats.compilation.chunks.forEach((chunk: any) =>
-        server.clearCache(chunk.name || chunk.id.toString())
-      );
-    }
-  });
-
-  // build and move .ts-files
-  /* exec(
-    `tsc ${srcPath}\/**\/*.ts -m "CommonJS" -t "ES6" --outDir ${destPath} --skipLibCheck -w`,
-    { encoding: 'utf8' }
+  // start tsc-watcher
+  exec(
+    `tsc --project ${srcPath} -w`,
+    { encoding: "utf8", cwd: srcPath },
+    getError
   );
-  serve(port, destDir, timeout, urlPrefix); */
+
+  // start server and clear cache if some .js-file changes
+  if (!buildOnly) {
+    const server = serve(port, destDir, timeout, urlPrefix);
+    watch(
+      destPath,
+      { encoding: "utf8", recursive: true, persistent: true },
+      (event: string, file: string) => {
+        if (file.includes(".js")) {
+          console.log(`[ ${chalk.yellow(event)} ] ${file}`);
+          server.clearCache(`/${file}`);
+        }
+      }
+    );
+  }
 };

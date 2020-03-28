@@ -12,7 +12,7 @@ export default async function (dir: string) {
   await foldersWithDeps
     .map((fnFolder) => fnFolder.substring(0, fnFolder.indexOf("package.json")))
     .forEach((folder) => {
-      execSync("yarn", { cwd: join(directory, folder) });
+      execSync("yarn", { cwd: join(directory, folder) /* stdio: "inherit" */ });
       console.info(`  ${chalk.green("✔")} ${folder} dependencies installed`);
     });
 }

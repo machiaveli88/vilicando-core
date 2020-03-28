@@ -4,16 +4,15 @@ import bodyParser from "body-parser";
 // @ts-ignore
 import expressLogging from "express-logging";
 import queryString from "querystring";
-import path from "path";
-import fs from "fs";
-import jwtDecode from "jwt-decode";
+import { join } from "path";
+import { existsSync } from "fs";
 import chalk from "chalk";
 
 function handleErr(err: any, response: any) {
   response.statusCode = 500;
   response.write("Function invocation failed: " + err.toString());
   response.end();
-  console.log("Error during invocation: ", err);
+  console.error("Error during invocation: ", err);
   return;
 }
 
@@ -21,7 +20,7 @@ function handleInvocationTimeout(response: any, timeout: any) {
   response.statusCode = 500;
   response.write(`Function invocation took longer than ${timeout} seconds.`);
   response.end();
-  console.log(
+  console.warn(
     `Your lambda function took longer than ${timeout} seconds to finish.
 If you need a longer execution time, you can increase the timeout using the -t or --timeout flag.
 Please note that default function invocation is 10 seconds, check our documentation for more information (https://www.netlify.com/docs/functions/#custom-deployment-options).
@@ -56,7 +55,7 @@ function createCallback(response: any) {
         process.env.CONTEXT !== "production" &&
         !process.env.SILENCE_EMPTY_LAMBDA_WARNING
       )
-        console.log(
+        console.warn(
           `Your lambda function didn't return a body, which may be a mistake. Check our Usage docs for examples (https://github.com/netlify/netlify-lambda#usage). 
           If this is intentional, you can silence this warning by setting process.env.SILENCE_EMPTY_LAMBDA_WARNING to a truthy value or process.env.CONTEXT to 'production'`
         );
@@ -80,26 +79,6 @@ function promiseCallback(promise: any, callback: any) {
   );
 }
 
-function buildClientContext(headers: any) {
-  // inject a client context based on auth header https://github.com/netlify/netlify-lambda/pull/57
-  if (!headers["authorization"]) return undefined;
-
-  const parts = headers["authorization"].split(" ");
-  if (parts.length !== 2 || parts[0] !== "Bearer") return undefined;
-
-  try {
-    return {
-      identity: {
-        url: "NETLIFY_LAMBDA_LOCALLY_EMULATED_IDENTITY_URL",
-        token: "NETLIFY_LAMBDA_LOCALLY_EMULATED_IDENTITY_TOKEN",
-      },
-      user: jwtDecode(parts[1]),
-    };
-  } catch (e) {
-    return undefined; // Ignore errors - bearer token is not a JWT, probably not intended for us
-  }
-}
-
 function createHandler(dir: string, timeout: number, urlPrefix: string) {
   return function (request: any, response: any) {
     // handle proxies without path re-writes (http-servr)
@@ -117,9 +96,9 @@ function createHandler(dir: string, timeout: number, urlPrefix: string) {
       );
     }
     let module: string;
-    if (fs.existsSync(path.join(process.cwd(), dir, func, `${func}.js`)))
-      module = path.join(process.cwd(), dir, func, func);
-    else module = path.join(process.cwd(), dir, func);
+    if (existsSync(join(process.cwd(), dir, func, `${func}.js`)))
+      module = join(process.cwd(), dir, func, func);
+    else module = join(process.cwd(), dir, func);
 
     let handler;
     try {
@@ -146,12 +125,7 @@ function createHandler(dir: string, timeout: number, urlPrefix: string) {
     };
 
     const callback = createCallback(response);
-
-    const promise = handler.handler(
-      lambdaRequest,
-      { clientContext: buildClientContext(request.headers) || {} },
-      callback
-    );
+    const promise = handler.handler(lambdaRequest, {}, callback);
 
     let invocationTimeoutRef: any = null;
 
@@ -164,11 +138,11 @@ function createHandler(dir: string, timeout: number, urlPrefix: string) {
         }, timeout * 1000);
       }),
     ]).then(
-      (result) => {
+      result => {
         clearTimeout(invocationTimeoutRef);
         return result; // not used, but writing this to avoid future footguns
       },
-      (err) => {
+      err => {
         clearTimeout(invocationTimeoutRef);
         throw err;
       }
@@ -214,8 +188,6 @@ export default (
 
   return {
     clearCache: (chunk: any) =>
-      delete require.cache[
-        require.resolve(path.join(process.cwd(), dir, chunk))
-      ],
+      delete require.cache[require.resolve(join(process.cwd(), dir, chunk))],
   };
 };

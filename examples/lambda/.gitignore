@@ -58,3 +58,5 @@ dist/
 .next
 .lambda
 out
+
+functions/tsconfig.json
