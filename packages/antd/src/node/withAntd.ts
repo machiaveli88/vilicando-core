@@ -42,11 +42,11 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
       {
         border: {
           color: {
-            base: baseTheme.border?.[0].color,
+            base: baseTheme.border?.color,
           },
-          radius: baseTheme.border?.[0].radius,
-          style: baseTheme.border?.[0].style,
-          width: baseTheme.border?.[0].width,
+          radius: baseTheme.border?.radius,
+          style: baseTheme.border?.style,
+          width: baseTheme.border?.width,
         },
         shadow: {
           "1": {
