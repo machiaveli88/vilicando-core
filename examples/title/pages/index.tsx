@@ -1,5 +1,5 @@
-import React from 'react';
-import { Page } from 'vilicando-core';
+import React from "react";
+import { Page } from "vilicando-core";
 
 function StartPage() {
   return (

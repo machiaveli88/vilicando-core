@@ -1,5 +1,5 @@
-import React from 'react';
-import { Layout, Menu, Breadcrumb, Button, Row, Col } from 'antd';
+import React from "react";
+import { Layout, Menu, Breadcrumb, Button, Row, Col } from "antd";
 
 const { Header, Content, Footer } = Layout;
 
@@ -9,7 +9,7 @@ function StartPage() {
       <Header>
         <Row justify="center">
           <Col span={12}>
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
               <Menu.Item key="1">Link 1</Menu.Item>
               <Menu.Item key="2">Active Link 2</Menu.Item>
               <Menu.Item key="3">Link 3</Menu.Item>

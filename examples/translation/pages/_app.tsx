@@ -1,8 +1,8 @@
-import React from 'react';
-import { App, AppProvider, withRouter, resolveLocale } from 'vilicando-core';
-import { Layout, Navigation } from '@components';
-import config from '../config.json';
-import { ThemeProvider } from '@theme';
+import React from "react";
+import { App, AppProvider, withRouter, resolveLocale } from "vilicando-core";
+import { Layout, Navigation } from "@components";
+import config from "../config.json";
+import { ThemeProvider } from "@theme";
 
 class CustomApp extends App {
   render() {

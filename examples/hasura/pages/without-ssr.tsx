@@ -1,5 +1,5 @@
-import React from 'react';
-import { withHasura } from 'vilicando-hasura';
+import React from "react";
+import { withHasura } from "vilicando-hasura";
 import {
   useUsersQuery,
   useUpdateUserMutation,
@@ -7,7 +7,7 @@ import {
   useInsertUserMutation,
   useUpdateAllUserMutation,
   UsersDocument,
-} from '@graphql';
+} from "@graphql";
 
 function WithoutSsrPage() {
   const [users, { loading }] = useUsersQuery();
@@ -46,7 +46,7 @@ function WithoutSsrPage() {
         placeholder="New employee"
         type="text"
         onKeyDown={(e) => {
-          if (e.key === 'Enter')
+          if (e.key === "Enter")
             insertUser(
               { name: e.currentTarget.value },
               { updateQuery: { query: UsersDocument } }
@@ -58,7 +58,7 @@ function WithoutSsrPage() {
         placeholder="Update all"
         type="text"
         onKeyDown={(e) => {
-          if (e.key === 'Enter')
+          if (e.key === "Enter")
             updateAllUser(
               users.map((user) => ({
                 ...user,

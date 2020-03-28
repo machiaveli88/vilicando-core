@@ -1,9 +1,9 @@
-import React from 'react';
-import { App, AppProvider } from 'vilicando-core';
-import { HasuraProvider } from 'vilicando-hasura';
-import { Layout } from '@components';
-import { ThemeProvider } from '@theme';
-import config from '../config.json';
+import React from "react";
+import { App, AppProvider } from "vilicando-core";
+import { HasuraProvider } from "vilicando-hasura";
+import { Layout } from "@components";
+import { ThemeProvider } from "@theme";
+import config from "../config.json";
 
 class CustomApp extends App {
   render() {

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'vilicando-core';
+import React from "react";
+import { Link } from "vilicando-core";
 
 export default function Navigation() {
   return (

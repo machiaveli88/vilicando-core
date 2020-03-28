@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   useUsersQuery,
   useUpdateUserMutation,
@@ -6,7 +6,7 @@ import {
   useInsertUserMutation,
   useUpdateAllUserMutation,
   UsersDocument,
-} from '@graphql';
+} from "@graphql";
 
 function StartPage() {
   const [users, { loading }] = useUsersQuery();
@@ -47,7 +47,7 @@ function StartPage() {
         placeholder="New employee"
         type="text"
         onKeyDown={(e) => {
-          if (e.key === 'Enter')
+          if (e.key === "Enter")
             insertUser(
               { name: e.currentTarget.value, active: undefined },
               { updateQuery: { query: UsersDocument } }
@@ -59,7 +59,7 @@ function StartPage() {
         placeholder="Update all"
         type="text"
         onKeyDown={(e) => {
-          if (e.key === 'Enter')
+          if (e.key === "Enter")
             updateAllUser(
               users.map((user) => ({
                 ...user,

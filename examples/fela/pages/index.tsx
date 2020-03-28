@@ -1,5 +1,5 @@
-import React from 'react';
-import { colors, useFela, useThemeContext, ThemeProvider } from '@theme';
+import React from "react";
+import { colors, useFela, useThemeContext, ThemeProvider } from "@theme";
 
 function Content({ children, active, onClick }: any) {
   const { css, theme } = useFela();
@@ -8,23 +8,23 @@ function Content({ children, active, onClick }: any) {
     <div
       onClick={onClick}
       className={css({
-        display: 'block',
+        display: "block",
         marginBottom: theme.spacing.sm,
         padding: theme.spacing.sm,
         color: theme.secondary.base,
         backgroundColor: theme.primary.base,
-        cursor: 'pointer',
+        cursor: "pointer",
         border: `1px solid ${theme.primary.base}`,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         textShadow: `0 0 2px ${theme.highlight}`,
         onHover: {
           borderColor: theme.secondary.base,
         },
       })}
     >
-      {children}-theme{' '}
+      {children}-theme{" "}
       {!!active && (
-        <span className={css({ float: 'right', fontWeight: 'bold' })}>
+        <span className={css({ float: "right", fontWeight: "bold" })}>
           active
         </span>
       )}
@@ -41,7 +41,7 @@ function StartPage() {
       <h1>Hello World</h1>
       <p>
         <span
-          className={css({ fontWeight: 'bold', color: theme.primary.base })}
+          className={css({ fontWeight: "bold", color: theme.primary.base })}
         >
           Lorem ipsum dolor sit amet
         </span>

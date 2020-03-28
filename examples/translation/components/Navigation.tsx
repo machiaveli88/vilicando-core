@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'vilicando-core';
-import { useLanguage } from '@translation';
+import React from "react";
+import { Link } from "vilicando-core";
+import { useLanguage } from "@translation";
 
 export default function Navigation() {
   const { LANGUAGES } = useLanguage();

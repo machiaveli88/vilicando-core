@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { StyleSheet, Text, View, Linking } from 'react-native';
+import * as React from "react";
+import { StyleSheet, Text, View, Linking } from "react-native";
 
 export default () => (
   <View style={styles.container}>
@@ -10,7 +10,7 @@ export default () => (
     <Text
       style={styles.link}
       accessibilityRole="link"
-      onPress={() => Linking.canOpenURL('/').then(() => Linking.openURL('/'))}
+      onPress={() => Linking.canOpenURL("/").then(() => Linking.openURL("/"))}
     >
       Go Back
     </Text>
@@ -19,16 +19,16 @@ export default () => (
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    alignItems: "center",
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   text: {
-    alignItems: 'center',
+    alignItems: "center",
     fontSize: 24,
     marginBottom: 24,
   },
   link: {
-    color: 'blue',
+    color: "blue",
   },
 });

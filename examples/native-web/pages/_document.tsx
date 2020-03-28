@@ -4,10 +4,10 @@ import {
   NextScript,
   Document,
   DocumentContext,
-} from 'vilicando-core';
-import React from 'react';
-import { AppRegistry } from 'react-native';
-import config from '../config.json';
+} from "vilicando-core";
+import React from "react";
+import { AppRegistry } from "react-native";
+import config from "../config.json";
 // Force Next-generated DOM elements to fill their parent's height
 const normalizeNextElements = `
   #__next {
@@ -32,11 +32,11 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html style={{ height: '100%' }}>
+      <html style={{ height: "100%" }}>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        <body style={{ height: '100%', overflow: 'hidden' }}>
+        <body style={{ height: "100%", overflow: "hidden" }}>
           <Main />
           <NextScript />
         </body>

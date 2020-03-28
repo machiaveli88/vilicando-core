@@ -1,6 +1,6 @@
-import React from 'react';
-import { useConfig } from 'vilicando-core';
-import { useTheme } from '@theme';
+import React from "react";
+import { useConfig } from "vilicando-core";
+import { useTheme } from "@theme";
 
 interface IComponentWithChildren {
   children: React.ReactNode | Array<React.ReactNode>;

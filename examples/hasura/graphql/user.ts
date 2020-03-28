@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 const FRAGMENT_USER = gql`
   fragment UserFragment on user {

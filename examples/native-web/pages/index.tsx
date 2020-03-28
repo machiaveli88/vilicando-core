@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { StyleSheet, Text, View, Linking } from 'react-native';
+import * as React from "react";
+import { StyleSheet, Text, View, Linking } from "react-native";
 
 export default function App() {
-  const url = '/alternate';
+  const url = "/alternate";
 
   return (
     <View style={styles.container}>
@@ -29,20 +29,20 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    alignItems: "center",
     flexGrow: 1,
-    justifyContent: 'center',
-    backgroundColor: 'lightgray',
+    justifyContent: "center",
+    backgroundColor: "lightgray",
   },
   link: {
-    color: 'blue',
+    color: "blue",
   },
   textContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 16,
   },
   text: {
-    alignItems: 'center',
+    alignItems: "center",
     fontSize: 24,
     marginBottom: 24,
   },

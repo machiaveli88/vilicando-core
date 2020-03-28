@@ -1,5 +1,5 @@
-const server = require('vilicando-core/server');
+const server = require("vilicando-core/server");
 
 module.exports = server({
-  aliases: ['components', 'graphql', 'pages', 'theme'],
+  aliases: ["components", "graphql", "pages", "theme"],
 });

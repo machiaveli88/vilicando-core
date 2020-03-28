@@ -1,5 +1,5 @@
-import React from 'react';
-import { colors, useThemeContext, useTheme, ThemeProvider } from '@theme';
+import React from "react";
+import { colors, useThemeContext, useTheme, ThemeProvider } from "@theme";
 
 function Content({ children, active, onClick }: any) {
   const theme = useTheme();

@@ -1,4 +1,4 @@
-import { APIGatewayEvent, Callback, Context, Handler } from 'aws-lambda';
+import { APIGatewayEvent, Callback, Context, Handler } from "aws-lambda";
 
 interface HelloResponse {
   statusCode: number;

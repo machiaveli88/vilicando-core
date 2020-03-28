@@ -1,5 +1,5 @@
-import { ApolloServer, gql } from 'apollo-server-lambda';
-import RandomUser from './random-user';
+import { ApolloServer, gql } from "apollo-server-lambda";
+import RandomUser from "./random-user";
 // example from: https://medium.com/yld-engineering-blog/easier-graphql-wrappers-for-your-rest-apis-1410b0b5446d
 
 const typeDefs = gql`

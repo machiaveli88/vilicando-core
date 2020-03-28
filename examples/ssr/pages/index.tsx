@@ -1,5 +1,5 @@
-import React from 'react';
-import { Content } from '@components';
+import React from "react";
+import { Content } from "@components";
 
 function StartPage() {
   return (

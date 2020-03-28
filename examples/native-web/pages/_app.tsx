@@ -1,7 +1,7 @@
-import React from 'react';
-import { App, AppProvider } from 'vilicando-core';
-import { ThemeProvider } from '@theme';
-import config from '../config.json';
+import React from "react";
+import { App, AppProvider } from "vilicando-core";
+import { ThemeProvider } from "@theme";
+import config from "../config.json";
 
 export default class CustomApp extends App {
   render() {
