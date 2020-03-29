@@ -40,7 +40,7 @@ const _setWith = (newTheme: {}, key: string, value: any) =>
 const replaceLessVars = (theme: object) => {
   const origin = { ...theme };
 
-  Object.keys(theme).forEach((key) => {
+  Object.keys(theme).forEach(key => {
     if (typeof theme[key] === "string") {
       // @var +- something (if NOT ceil())
       if (!~theme[key].indexOf("ceil("))
@@ -73,7 +73,7 @@ const replaceLessVars = (theme: object) => {
 const replaceLessColors = (theme: object) => {
   const origin = { ...theme };
 
-  Object.keys(theme).forEach((key) => {
+  Object.keys(theme).forEach(key => {
     if (typeof theme[key] === "string") {
       // hsv()
       theme[key] = theme[key].replace(/hsv\([^)]+\)/g, (match: string) =>
@@ -98,7 +98,9 @@ const replaceLessColors = (theme: object) => {
       theme[key] = theme[key].replace(
         /tint\(([^,]+),([^,)]+)\)/g,
         (match: string, color: string, weight: string) =>
-          tinycolor(color).lighten(parseInt(weight)).toRgbString()
+          tinycolor(color)
+            .lighten(parseInt(weight))
+            .toRgbString()
       );
 
       // colorPalette
@@ -134,13 +136,13 @@ function parseTheme(_theme: object) {
   Object.keys(_theme)
     .sort()
     .forEach(
-      (key) => (theme[key] = _theme[key].replace(/((\r\n|\n|\r)( )*)/gm, ""))
+      key => (theme[key] = _theme[key].replace(/((\r\n|\n|\r)( )*)/gm, ""))
     );
 
   replaceLessVars(theme);
   replaceLessColors(theme);
 
-  Object.keys(theme).forEach((key) => {
+  Object.keys(theme).forEach(key => {
     // resolve calc()
     if (typeof theme[key] === "string" && ~theme[key].indexOf("calc"))
       try {
@@ -157,7 +159,7 @@ function parseTheme(_theme: object) {
   });
 
   const newTheme = {};
-  Object.keys(theme).forEach((key) => _setWith(newTheme, key, theme[key]));
+  Object.keys(theme).forEach(key => _setWith(newTheme, key, theme[key]));
 
   return newTheme;
 }
@@ -166,7 +168,7 @@ const getNestedTypes = (theme: object | number | string) => {
   let obj = "";
 
   Object.keys(theme).forEach(
-    (key) =>
+    key =>
       (obj +=
         typeof theme[key] === "object"
           ? `'${key}'?: ${getNestedTypes(theme[key])},`
@@ -184,11 +186,11 @@ const getNestedTypes = (theme: object | number | string) => {
 if (existsSync(lessPath)) {
   const lessFile = readFileSync(lessPath, "utf8");
   let theme = lessToJs(lessFile, {
-    stripPrefix: true,
+    stripPrefix: true
   });
   const colorsFile = readFileSync(colorsPath, "utf8");
   const colors = lessToJs(colorsFile, {
-    stripPrefix: true,
+    stripPrefix: true
   });
   theme = parseTheme(Object.assign(theme, colors));
 
@@ -198,7 +200,7 @@ if (existsSync(lessPath)) {
     flattenObject(theme)
   );
   const differences = {};
-  Object.keys(_differences).forEach((key) => {
+  Object.keys(_differences).forEach(key => {
     if (_differences[key].type !== "unchanged")
       differences[key] = _differences[key];
   });

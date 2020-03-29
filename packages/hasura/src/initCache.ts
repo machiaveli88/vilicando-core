@@ -10,7 +10,7 @@ export default function initCache(state: NormalizedCacheObject = {}) {
       cache,
       storage: window.localStorage as PersistentStorage<
         PersistedData<NormalizedCacheObject>
-      >,
+      >
     });
   }
 

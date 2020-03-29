@@ -3,7 +3,6 @@
   "version": "1.0.0-alpha.2",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap",
     "build": "yarn build:core && lerna run build --stream --parallel",
     "build:core": "cd packages/core && yarn build",
     "dev": "yarn build:core && lerna run build:watch --stream --parallel",
@@ -22,9 +21,7 @@
     "example:theming": "cd examples/theming && yarn dev",
     "example:title": "cd examples/title && yarn dev",
     "example:translation": "cd examples/translation && yarn dev",
-    "feature": "echo \"Name: \" && read name && git checkout -b feature-$name master",
     "lint": "yarn prettier && eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
-    "merge": "name=\"$(git branch | grep \\* | cut -d ' ' -f2)\" && git checkout master && git merge $name --no-ff -m \"Merge $name\" && git branch -d $name && git push origin master",
     "prettier": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,less}\"",
     "pub": "lerna publish",
     "theme": "cd packages/antd && yarn theme && cd ../.. && yarn lint",

@@ -27,8 +27,8 @@ export default ({ plugins = [] }: ICreateRenderer) => {
       friendlyPseudoClass(),
       validator(),
       ...webPreset,
-      ...plugins,
-    ],
+      ...plugins
+    ]
   });
 
   return renderer;

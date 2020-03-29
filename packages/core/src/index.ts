@@ -8,5 +8,5 @@ export {
   default as LocaleProvider,
   useLocale,
   resolveLocale,
-  TLocale,
+  TLocale
 } from "./LocaleProvider";

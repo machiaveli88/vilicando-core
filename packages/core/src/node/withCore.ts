@@ -18,7 +18,7 @@ module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
       "pages",
       "theme",
       "translation",
-      "utils",
+      "utils"
     ],
     ..._props
   } = props;
@@ -36,7 +36,7 @@ module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
 
       config.module.rules.push({
         test: /\.svg$/,
-        use: ["@svgr/webpack"],
+        use: ["@svgr/webpack"]
       });
 
       if (typeof webpack === "function") {
@@ -46,6 +46,6 @@ module.exports = (props: IWithCore | any = {}, nextConfig: any) => {
       return config;
     },
     dir,
-    ...rest,
+    ...rest
   });
 };

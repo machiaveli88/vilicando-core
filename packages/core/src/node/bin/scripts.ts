@@ -13,7 +13,7 @@ const serverDist = join(buildDir, "server.js");
 export const build = () => {
   copyFiles(buildDir, serverSrc, serverDist);
   execSync(`vilicando-core pwa -s && vilicando-core lambda -b && next build`, {
-    stdio: "inherit",
+    stdio: "inherit"
   });
 };
 
@@ -27,7 +27,7 @@ export const dev = ({ "--dev": dev = true, "--port": port = PORT || 3000 }) =>
           dev ? "development" : "production"
         } node '${serverSrc}'`,
     {
-      stdio: "inherit",
+      stdio: "inherit"
     }
   );
 
@@ -38,7 +38,7 @@ export const exportStatic = () => {
 
 export const start = ({
   "--dev": dev = false,
-  "--port": port = PORT || 3000,
+  "--port": port = PORT || 3000
 }) =>
   execSync(
     port
@@ -49,7 +49,7 @@ export const start = ({
           dev ? "development" : "production"
         } node '${serverDist}'`,
     {
-      stdio: "inherit",
+      stdio: "inherit"
     }
   );
 

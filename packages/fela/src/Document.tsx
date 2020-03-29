@@ -2,7 +2,7 @@ import React from "react";
 import {
   Document as NextDocument,
   DocumentContext as NextDocumentContext,
-  DocumentInitialProps,
+  DocumentInitialProps
 } from "vilicando-core";
 import { IRenderer } from "fela";
 import { renderToSheetList } from "fela-dom";
@@ -21,12 +21,12 @@ export default abstract class Document extends NextDocument {
     const initialProps = await NextDocument.getInitialProps({
       renderPage: () =>
         renderPage({
-          enhanceApp: (App) => (props) => (
+          enhanceApp: App => props => (
             // @ts-ignore
             <App {...props} renderer={renderer} />
-          ),
+          )
         }),
-      ...rest,
+      ...rest
     });
 
     return {
@@ -42,7 +42,7 @@ export default abstract class Document extends NextDocument {
           key={`${type}-${media}`}
           media={media}
         />
-      )),
+      ))
     };
   }
 }

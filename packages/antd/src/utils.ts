@@ -42,7 +42,7 @@ export const diffObject = (obj1: object, obj2: object) => {
     return {
       type: compareValues(obj1, obj2),
       previous: obj1,
-      now: obj2,
+      now: obj2
     };
 
   const diff = {};
@@ -134,6 +134,6 @@ export const colorPalette = (color: string, index: number) => {
   return tinycolor({
     h: getHue(hsv, i, isLight),
     s: getSaturation(hsv, i, isLight),
-    v: getValue(hsv, i, isLight),
+    v: getValue(hsv, i, isLight)
   }).toHexString();
 };

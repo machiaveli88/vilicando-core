@@ -5,7 +5,7 @@ import {
   useDeleteUserMutation,
   useInsertUserMutation,
   useUpdateAllUserMutation,
-  UsersDocument,
+  UsersDocument
 } from "@graphql";
 import { withHasura } from "vilicando-hasura";
 
@@ -24,11 +24,11 @@ function StartPage() {
         <p>Lade...</p>
       ) : (
         <ul>
-          {users.map((user) => (
+          {users.map(user => (
             <li key={user.id}>
               <input
                 value={user.name}
-                onChange={(e) =>
+                onChange={e =>
                   updateUser({ ...user, name: e.currentTarget.value })
                 }
               />
@@ -44,7 +44,7 @@ function StartPage() {
       <input
         placeholder="New employee"
         type="text"
-        onKeyDown={(e) => {
+        onKeyDown={e => {
           if (e.key === "Enter")
             insertUser(
               { name: e.currentTarget.value, active: undefined },
@@ -56,12 +56,12 @@ function StartPage() {
       <input
         placeholder="Update all"
         type="text"
-        onKeyDown={(e) => {
+        onKeyDown={e => {
           if (e.key === "Enter")
             updateAllUser(
-              users.map((user) => ({
+              users.map(user => ({
                 ...user,
-                name: e.currentTarget.value,
+                name: e.currentTarget.value
               }))
             );
         }}

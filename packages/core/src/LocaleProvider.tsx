@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 
 export type TLocale = "de-DE" | "en-US" | "es-ES";
 export interface ILocale {
@@ -16,7 +15,7 @@ const locales: { [key: string]: TLocale } = {
   en: "en-US",
   "en-US": "en-US",
   es: "es-ES",
-  "es-ES": "es-ES",
+  "es-ES": "es-ES"
 };
 export const resolveLocale = (locale: string | Array<string>): TLocale =>
   (!Array.isArray(locale) ? locales[locale] : undefined) || "en-US";
@@ -40,13 +39,9 @@ export function useLocale() {
 
 export default function LocaleProvider({
   locale: _locale,
-  children,
+  children
 }: ILocaleProvider) {
   const [locale, setLocale] = React.useState<TLocale>(_locale || defaultLocale);
-
-  React.useEffect(() => {
-    moment.locale(locale);
-  }, [locale]);
 
   return (
     <LocaleContext.Provider value={[_locale || locale, setLocale]}>

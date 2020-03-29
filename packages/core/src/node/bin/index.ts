@@ -11,7 +11,7 @@ const scripts: {
   lambda: async () => await import("./lambda").then(({ lambda }) => lambda),
   pwa: async () => await import("./pwa").then(({ pwa }) => pwa),
   start: async () => await import("./scripts").then(({ start }) => start),
-  up: async () => await import("./scripts").then(({ up }) => up),
+  up: async () => await import("./scripts").then(({ up }) => up)
 };
 
 runScript(scripts, {
@@ -33,5 +33,5 @@ runScript(scripts, {
   "-d": "--dev",
   "-l": "--latest",
   "-s": "--skip",
-  "-b": "--build",
+  "-b": "--build"
 });

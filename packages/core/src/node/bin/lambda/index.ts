@@ -24,7 +24,7 @@ export const lambda = async ({
   "--port": port = 9000,
   "--timeout": timeout = 10,
   "--url": urlPrefix = ".netlify/functions",
-  "--build": buildOnly = false,
+  "--build": buildOnly = false
 }) => {
   const srcPath = join(process.cwd(), srcDir);
   const destPath = join(process.cwd(), destDir);
@@ -38,7 +38,7 @@ export const lambda = async ({
   removeSync(destPath);
   copySync(srcPath, destPath, {
     filter: (src: string) =>
-      !src.includes(".ts") && src !== join(srcPath, "tsconfig.json"),
+      !src.includes(".ts") && src !== join(srcPath, "tsconfig.json")
   });
   console.info(`  ${chalk.green("✔")} assets copied!`);
 

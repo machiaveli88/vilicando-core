@@ -2,7 +2,7 @@ import {
   Document as NextDocument,
   DocumentContext,
   DocumentInitialProps,
-  Main,
+  Main
 } from "vilicando-core";
 import { AppRegistry } from "react-native";
 

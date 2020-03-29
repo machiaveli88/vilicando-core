@@ -8,7 +8,7 @@ class CustomApp extends App {
   render() {
     const { Component, pageProps, router } = this.props;
     const {
-      query: { lang },
+      query: { lang }
     } = router;
 
     return (

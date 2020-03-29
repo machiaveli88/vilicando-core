@@ -52,16 +52,16 @@ const resolvers = {
     getUser: async (_: any, { gender }: any, { dataSources }: any) =>
       dataSources.RandomUser.getUser(gender),
     getUsers: async (_: any, { people, gender }: any, { dataSources }: any) =>
-      dataSources.RandomUser.getUsers(people, gender),
-  },
+      dataSources.RandomUser.getUsers(people, gender)
+  }
 };
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   dataSources: () => ({
-    RandomUser: new RandomUser(),
-  }),
+    RandomUser: new RandomUser()
+  })
 });
 
 export const handler = server.createHandler();

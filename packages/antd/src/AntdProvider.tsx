@@ -5,12 +5,13 @@ import es_ES from "antd/lib/locale-provider/es_ES";
 import ConfigProvider from "antd/lib/config-provider";
 import { useLocale } from "vilicando-core";
 import { Locale } from "antd/lib/locale-provider";
+import moment from "moment";
 
 // todo: TLocale instead of string
 const locales: { [k: string]: Locale } = {
   "de-DE": de_DE,
   "en-US": en_US,
-  "es-ES": es_ES,
+  "es-ES": es_ES
 };
 
 interface IAntdProvider {
@@ -19,6 +20,10 @@ interface IAntdProvider {
 
 function AntdProvider({ children }: IAntdProvider) {
   const [locale] = useLocale();
+
+  React.useEffect(() => {
+    moment.locale(locale);
+  }, [locale]);
 
   return (
     <ConfigProvider locale={locales[locale] || en_US}>

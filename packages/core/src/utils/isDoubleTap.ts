@@ -1,13 +1,13 @@
 const dblTouchTapMaxDelay = 300;
 let latestTouchTap: { time: number; target: any } = {
   time: 0,
-  target: null,
+  target: null
 };
 
 export default (event: any) => {
   const touchTap = {
     time: new Date().getTime(),
-    target: event.currentTarget,
+    target: event.currentTarget
   };
   const isFastDblTouchTap =
     touchTap.target === latestTouchTap.target &&

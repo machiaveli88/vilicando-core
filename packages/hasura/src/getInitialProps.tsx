@@ -54,6 +54,6 @@ export default (getInitialProps: any, ssr: boolean) => async (
     apolloState: apolloClient.cache.extract(),
     // Provide the client for ssr. As soon as this payload
     // gets JSON.stringified it will remove itself.
-    apolloClient: ctx.apolloClient,
+    apolloClient: ctx.apolloClient
   };
 };

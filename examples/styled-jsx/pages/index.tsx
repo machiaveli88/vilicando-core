@@ -54,7 +54,7 @@ function StartPage() {
       </p>
 
       <h3>Themes</h3>
-      {colors.map((key) => (
+      {colors.map(key => (
         <ThemeProvider theme={key} key={key}>
           <Content active={key === activeTheme} onClick={() => setTheme(key)}>
             {key}

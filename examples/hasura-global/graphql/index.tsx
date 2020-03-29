@@ -88,7 +88,7 @@ export type TGroupBoolExp = {
 };
 
 export enum TGroupConstraint {
-  GroupPkey = "group_pkey",
+  GroupPkey = "group_pkey"
 }
 
 export type TGroupInsertInput = {
@@ -140,7 +140,7 @@ export type TGroupOrderBy = {
 
 export enum TGroupSelectColumn {
   Id = "id",
-  Name = "name",
+  Name = "name"
 }
 
 export type TGroupSetInput = {
@@ -150,7 +150,7 @@ export type TGroupSetInput = {
 
 export enum TGroupUpdateColumn {
   Id = "id",
-  Name = "name",
+  Name = "name"
 }
 
 export type TGroupUsers = {
@@ -199,7 +199,7 @@ export type TGroupUsersBoolExp = {
 };
 
 export enum TGroupUsersConstraint {
-  GroupUsersPkey = "group_users_pkey",
+  GroupUsersPkey = "group_users_pkey"
 }
 
 export type TGroupUsersInsertInput = {
@@ -238,7 +238,7 @@ export type TGroupUsersOrderBy = {
 export enum TGroupUsersSelectColumn {
   GroupId = "group_id",
   Id = "id",
-  UserId = "user_id",
+  UserId = "user_id"
 }
 
 export type TGroupUsersSetInput = {
@@ -250,7 +250,7 @@ export type TGroupUsersSetInput = {
 export enum TGroupUsersUpdateColumn {
   GroupId = "group_id",
   Id = "id",
-  UserId = "user_id",
+  UserId = "user_id"
 }
 
 export type TMutationRoot = {
@@ -331,7 +331,7 @@ export enum TOrderBy {
   AscNullsLast = "asc_nulls_last",
   Desc = "desc",
   DescNullsFirst = "desc_nulls_first",
-  DescNullsLast = "desc_nulls_last",
+  DescNullsLast = "desc_nulls_last"
 }
 
 export type TQueryRoot = {
@@ -596,7 +596,7 @@ export type TTaskBoolExp = {
 };
 
 export enum TTaskConstraint {
-  TaskPkey = "task_pkey",
+  TaskPkey = "task_pkey"
 }
 
 export type TTaskInsertInput = {
@@ -674,7 +674,7 @@ export enum TTaskSelectColumn {
   Id = "id",
   Note = "note",
   Title = "title",
-  UpdatedAt = "updated_at",
+  UpdatedAt = "updated_at"
 }
 
 export type TTaskSetInput = {
@@ -692,7 +692,7 @@ export enum TTaskUpdateColumn {
   Id = "id",
   Note = "note",
   Title = "title",
-  UpdatedAt = "updated_at",
+  UpdatedAt = "updated_at"
 }
 
 export type TTimestamptzComparisonExp = {
@@ -776,7 +776,7 @@ export type TUserBoolExp = {
 };
 
 export enum TUserConstraint {
-  UserPkey = "user_pkey",
+  UserPkey = "user_pkey"
 }
 
 export type TUserInsertInput = {
@@ -845,7 +845,7 @@ export enum TUserSelectColumn {
   CreatedAt = "created_at",
   Id = "id",
   Name = "name",
-  UpdatedAt = "updated_at",
+  UpdatedAt = "updated_at"
 }
 
 export type TUserSetInput = {
@@ -861,7 +861,7 @@ export enum TUserUpdateColumn {
   CreatedAt = "created_at",
   Id = "id",
   Name = "name",
-  UpdatedAt = "updated_at",
+  UpdatedAt = "updated_at"
 }
 
 export type TUuidComparisonExp = {
