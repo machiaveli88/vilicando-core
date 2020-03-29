@@ -17,10 +17,10 @@
     "aws-lambda": "^1.0.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "typescript": "3.8.3",
     "vilicando-core": "1.0.0-alpha.5"
   },
   "devDependencies": {
-    "@types/fs-extra": "^8.1.0"
+    "@types/fs-extra": "^8.1.0",
+    "typescript": "3.8.3"
   }
 }
