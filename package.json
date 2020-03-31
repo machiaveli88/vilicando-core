@@ -1,6 +1,6 @@
 {
   "name": "vilicando",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.9",
   "private": true,
   "scripts": {
     "build": "yarn build:core && lerna run build --stream --parallel",
