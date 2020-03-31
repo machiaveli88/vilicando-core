@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "vilicando-example-title",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.10",
   "license": "ISC",
   "scripts": {
     "build": "vilicando-core build",
