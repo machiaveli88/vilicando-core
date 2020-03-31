@@ -1,6 +1,6 @@
 {
   "name": "vilicando-native-web",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.8",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -18,19 +18,17 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
-    "@types/react-native": "^0.62.1",
-    "babel-plugin-react-native-web": "^0.12.2",
-    "babel-preset-expo": "~8.1.0",
+    "@types/react-native": "0.62.1",
+    "babel-plugin-react-native-web": "~0.11.7",
+    "babel-preset-expo": "8.1.0",
     "expo": "~36.0.0",
-    "react-native-web": "~0.12.2"
+    "react-native-web": "~0.11.7"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",
     "react-dom": ">= 16.9.0",
-    "react-native": "*",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "typescript": ">= 3.7.4",
-    "vilicando-core": ">= 1.0.0-alpha.5"
+    "vilicando-core": ">= 1.0.0-alpha.6"
   }
 }
