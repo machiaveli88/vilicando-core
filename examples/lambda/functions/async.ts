@@ -14,13 +14,13 @@ export async function handler(event: any, context: Context) {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ msg: data.value })
+      body: JSON.stringify({ msg: data.value }),
     };
   } catch (err) {
     console.error(err); // output to netlify function log
     return {
       statusCode: 500,
-      body: JSON.stringify({ msg: err.message }) // Could be a custom message or object i.e. JSON.stringify(err)
+      body: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
     };
   }
 }

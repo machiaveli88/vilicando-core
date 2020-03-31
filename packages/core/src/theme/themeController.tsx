@@ -52,7 +52,7 @@ export default function themeController<T>(
   function ThemeProvider({
     children,
     theme: _theme,
-    setTheme: _setTheme
+    setTheme: _setTheme,
   }: IThemeProvider) {
     const [theme, setTheme] = React.useState<string>(_theme || defaultTheme);
     const themeVars = useTheme(_theme || theme);
@@ -150,7 +150,7 @@ export default function themeController<T>(
     get: (theme?: string) => themes[theme] || themes[defaultTheme],
     useThemeContext,
     useTheme,
-    ThemeProvider
+    ThemeProvider,
   };
 
   return controller;

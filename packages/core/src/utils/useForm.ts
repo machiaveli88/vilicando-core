@@ -51,12 +51,12 @@ export default function useForm<T>(
           setInputs(+new Date());
         }
       },
-      handleChange: function<T2>(
+      handleChange: function <T2>(
         field: keyof T,
         selector?: (event: T2) => any
       ): (e: T2) => void {
         if (!changeHandlers[field])
-          changeHandlers[field] = function(event) {
+          changeHandlers[field] = function (event) {
             let value;
             if (selector) {
               value = selector(event);
@@ -74,7 +74,7 @@ export default function useForm<T>(
       },
       handleBlur: (field: keyof T) => {
         if (!blurHandlers[field])
-          blurHandlers[field] = function() {
+          blurHandlers[field] = function () {
             const validator = onValidate && onValidate[field];
             if (validator) {
               const err: TError[] = [];
@@ -90,7 +90,7 @@ export default function useForm<T>(
           };
 
         return blurHandlers[field];
-      }
+      },
     };
   }, [values.current]);
 
@@ -100,6 +100,6 @@ export default function useForm<T>(
     handleChange,
     values: values.current,
     errors: errors.current,
-    touched: touched.current
+    touched: touched.current,
   };
 }

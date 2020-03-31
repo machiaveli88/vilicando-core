@@ -17,25 +17,25 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
   // use it to extract auth headers (ctx.req) or similar.
   const ssrMode = ctx ? Boolean(ctx) : typeof window === "undefined"; // Disables forceFetch on the server (so queries are only run once)
   const headers = {
-    "x-hasura-admin-secret": process.env.GRAPHQL_SECRET
+    "x-hasura-admin-secret": process.env.GRAPHQL_SECRET,
   };
   const http = !!process.env.GRAPHQL_HTTP && {
     uri: process.env.GRAPHQL_HTTP,
-    headers
+    headers,
   };
   const ws = !!process.env.GRAPHQL_WS && {
     uri: process.env.GRAPHQL_WS,
     options: {
       reconnect: true,
       connectionParams: {
-        headers
-      }
-    }
+        headers,
+      },
+    },
   };
 
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors)
-      graphQLErrors.map(err =>
+      graphQLErrors.map((err) =>
         console.error(`[GraphQL error]: Message: ${err.message}`)
       );
 
@@ -47,7 +47,7 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
       ? [
           errorLink,
           new RetryLink({ attempts: { max: Infinity } }),
-          new HttpLink({ credentials: "same-origin", fetch, ...http })
+          new HttpLink({ credentials: "same-origin", fetch, ...http }),
         ]
       : [errorLink]
   );

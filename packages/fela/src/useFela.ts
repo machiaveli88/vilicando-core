@@ -2,7 +2,7 @@ import { IStyle } from "fela";
 import {
   useFela as useFelaBase,
   StyleFunction,
-  FelaHookProps
+  FelaHookProps,
 } from "react-fela";
 import { ITheme } from "vilicando-core";
 import { ICustomProperty } from "./customProperty";
@@ -30,6 +30,6 @@ export default function useFela<T = ITheme, P = {}>(props?: P): IUseFela<T, P> {
 
   return {
     css: (s, cn) => (cn ? `${css(s)} ${cn}` : css(s)),
-    ...rest
+    ...rest,
   };
 }

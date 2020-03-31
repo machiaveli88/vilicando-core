@@ -18,7 +18,7 @@ function usePosition(
     fields: ["latitude", "longitude"],
     enableHighAccuracy: true,
     timeout: Infinity,
-    maximumAge: 0
+    maximumAge: 0,
   }
 ): IPosition {
   const [position, setPosition] = React.useState<IPosition>({});
@@ -39,7 +39,7 @@ function usePosition(
           latitude: coords.latitude,
           longitude: coords.longitude,
           speed: coords.speed,
-          timestamp
+          timestamp,
         });
     },
     [fields]

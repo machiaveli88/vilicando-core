@@ -11,7 +11,7 @@ import moment from "moment";
 const locales: { [k: string]: Locale } = {
   "de-DE": de_DE,
   "en-US": en_US,
-  "es-ES": es_ES
+  "es-ES": es_ES,
 };
 
 interface IAntdProvider {

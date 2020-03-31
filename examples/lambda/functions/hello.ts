@@ -15,8 +15,8 @@ const handler: Handler = (
     statusCode: 200,
     body: JSON.stringify({
       msg: `Hello world ${Math.floor(Math.random() * 10)}`,
-      params
-    })
+      params,
+    }),
   };
 
   callback(undefined, response);

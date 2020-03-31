@@ -20,11 +20,11 @@
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@babel/runtime": "^7.0.0",
-    "@types/react-native": "^0.62.0",
-    "babel-plugin-react-native-web": "^0.11.0",
+    "@types/react-native": "^0.62.1",
+    "babel-plugin-react-native-web": "^0.12.2",
     "babel-preset-expo": "~8.1.0",
     "expo": "~36.0.0",
-    "react-native-web": "~0.11.0"
+    "react-native-web": "~0.12.2"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",

@@ -11,14 +11,14 @@ export default (
   defaultScript: string = "dev"
 ) => {
   const { _: commands, ..._args } = arg(args, {
-    permissive: true
+    permissive: true,
   });
   const command = commands[0] || defaultScript;
   const foundCommand = Boolean(scripts[command]);
 
   /* SCRIPT */
 
-  ["react", "react-dom"].forEach(dependency => {
+  ["react", "react-dom"].forEach((dependency) => {
     try {
       require.resolve(dependency);
     } catch (err) {
@@ -36,8 +36,8 @@ export default (
     process.exit(0);
   }
   scripts[command]()
-    .then(exec => exec(_args))
-    .catch(err => console.error(err));
+    .then((exec) => exec(_args))
+    .catch((err) => console.error(err));
 
   // watch config in dev-mode
   if (command === "dev") {

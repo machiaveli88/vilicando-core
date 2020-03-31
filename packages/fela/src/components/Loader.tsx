@@ -12,7 +12,7 @@ export interface IComponentLoader {
 export default function Loader({
   size = 250,
   children,
-  text
+  text,
 }: IComponentLoader) {
   const { css, theme, renderer } = useFela();
   const { loader, logo } = useConfig();
@@ -23,24 +23,24 @@ export default function Loader({
 
   const pulseRingKeyframe = (): TRuleProps => ({
     "0%": {
-      transform: "scale(.33)"
+      transform: "scale(.33)",
     },
     "80%, 100%": {
-      opacity: 0
-    }
+      opacity: 0,
+    },
   });
   const pulseRing = renderer.renderKeyframe(pulseRingKeyframe, {});
 
   const pulseDotKeyframe = (): TRuleProps => ({
     "0%": {
-      transform: "scale(.8)"
+      transform: "scale(.8)",
     },
     "50%": {
-      transform: "scale(1)"
+      transform: "scale(1)",
     },
     "100%": {
-      transform: "scale(.8)"
-    }
+      transform: "scale(.8)",
+    },
   });
   const pulseDot = renderer.renderKeyframe(pulseDotKeyframe, {});
 
@@ -57,7 +57,7 @@ export default function Loader({
           right: 0,
           top: 0,
           background: `linear-gradient(135deg, ${theme.primary.base} 0%,${theme.primary[8]} 100%)`,
-          zIndex: 1030
+          zIndex: 1030,
         })}
       >
         <div
@@ -72,7 +72,7 @@ export default function Loader({
             marginTop: -size * 1.5,
             borderRadius: size * 1.5,
             backgroundColor: theme.primary.base,
-            animation: `${pulseRing} 1.25s ${theme.ease.out} infinite`
+            animation: `${pulseRing} 1.25s ${theme.ease.out} infinite`,
           })}
         />
         {!!content && (
@@ -89,7 +89,7 @@ export default function Loader({
               backgroundColor: theme.white,
               borderRadius: size * 0.5,
               boxShadow: theme.shadow[2],
-              animation: `${pulseDot} 1.25s ${theme.ease.inOut} -.4s infinite`
+              animation: `${pulseDot} 1.25s ${theme.ease.inOut} -.4s infinite`,
             })}
           >
             <div
@@ -97,8 +97,8 @@ export default function Loader({
                 center: true,
                 "> *": {
                   width: size,
-                  height: size
-                }
+                  height: size,
+                },
               })}
             >
               {content}
@@ -117,7 +117,7 @@ export default function Loader({
               color: "white",
               fontFamily: theme.font.family,
               fontSize: theme.font.size.lg,
-              paddingY: theme.spacing.xl
+              paddingY: theme.spacing.xl,
             })}
           >
             {text}

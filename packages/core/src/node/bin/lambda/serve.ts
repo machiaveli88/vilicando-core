@@ -70,17 +70,17 @@ function promiseCallback(promise: any, callback: any) {
   if (typeof callback !== "function") return;
 
   return promise.then(
-    function(data: any) {
+    function (data: any) {
       callback(null, data);
     },
-    function(err: any) {
+    function (err: any) {
       callback(err, null);
     }
   );
 }
 
 function createHandler(dir: string, timeout: number, urlPrefix: string) {
-  return function(request: any, response: any) {
+  return function (request: any, response: any) {
     // handle proxies without path re-writes (http-servr)
     const cleanPath = request.path.replace(urlPrefix, "");
 
@@ -121,7 +121,7 @@ function createHandler(dir: string, timeout: number, urlPrefix: string) {
       body: isBase64
         ? Buffer.from(request.body.toString(), "utf8").toString("base64")
         : request.body,
-      isBase64Encoded: isBase64
+      isBase64Encoded: isBase64,
     };
 
     const callback = createCallback(response);
@@ -131,18 +131,18 @@ function createHandler(dir: string, timeout: number, urlPrefix: string) {
 
     Promise.race([
       promiseCallback(promise, callback),
-      new Promise(function(resolve) {
-        invocationTimeoutRef = setTimeout(function() {
+      new Promise(function (resolve) {
+        invocationTimeoutRef = setTimeout(function () {
           handleInvocationTimeout(response, timeout);
           resolve();
         }, timeout * 1000);
-      })
+      }),
     ]).then(
-      result => {
+      (result) => {
         clearTimeout(invocationTimeoutRef);
         return result; // not used, but writing this to avoid future footguns
       },
-      err => {
+      (err) => {
         clearTimeout(invocationTimeoutRef);
         throw err;
       }
@@ -161,7 +161,7 @@ export default (
   app.use(bodyParser.text({ limit: "6mb", type: "*/*" }));
   app.use(
     expressLogging(console, {
-      blacklist: ["/favicon.ico"]
+      blacklist: ["/favicon.ico"],
     })
   );
 
@@ -188,6 +188,6 @@ export default (
 
   return {
     clearCache: (chunk: any) =>
-      delete require.cache[require.resolve(join(process.cwd(), dir, chunk))]
+      delete require.cache[require.resolve(join(process.cwd(), dir, chunk))],
   };
 };

@@ -1,18 +1,18 @@
 import {
   useMutation as _useMutation,
-  MutationHookOptions
+  MutationHookOptions,
 } from "@apollo/react-hooks";
 import {
   OperationVariables,
   MutationFunctionOptions as _MutationFunctionOptions,
-  MutationResult
+  MutationResult,
 } from "@apollo/react-common";
 import {
   DocumentNode,
   VariableDefinitionNode,
   DefinitionNode,
   SelectionNode,
-  ExecutionResult
+  ExecutionResult,
 } from "graphql";
 import { merge, uniqueId } from "lodash";
 
@@ -77,11 +77,11 @@ export default function useMutation<
 
   return [
     (item: any, _options?: MutationFunctionOptions<IData, IVariables>) => {
-      const items = (Array.isArray(item) ? item : [item]).map(x => {
+      const items = (Array.isArray(item) ? item : [item]).map((x) => {
         // replace "undefined" with "null" to prevent "Missing field active in ..."-warning
         const _x = {};
         Object.keys(x).forEach(
-          key => (_x[key] = x[key] === undefined ? null : x[key])
+          (key) => (_x[key] = x[key] === undefined ? null : x[key])
         );
 
         return {
@@ -89,7 +89,7 @@ export default function useMutation<
           id: uniqueId(),
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
-          ..._x
+          ..._x,
         };
       });
 
@@ -108,8 +108,8 @@ export default function useMutation<
             __typename: "mutation_root",
             [__name]: {
               __typename: `${__typename}_mutation_response`,
-              returning: items.map(item => Object.assign(item, vars))
-            }
+              returning: items.map((item) => Object.assign(item, vars)),
+            },
           } as IData),
         update: (cache, { data }) => {
           const returning =
@@ -120,12 +120,12 @@ export default function useMutation<
               ({ query, variables }) => {
                 const cacheData = cache.readQuery({
                   query,
-                  variables
+                  variables,
                 }) as object;
 
                 const data = {
                   ...cacheData,
-                  [__typename]: [...cacheData[__typename]]
+                  [__typename]: [...cacheData[__typename]],
                 };
 
                 returning.forEach((item: TReturning) => {
@@ -145,7 +145,7 @@ export default function useMutation<
 
                 cache.writeQuery({
                   query,
-                  data
+                  data,
                 });
               }
             );
@@ -154,9 +154,9 @@ export default function useMutation<
               "updateQuery should be set on insert-mutations, otherwise set updateQuery to false to disable this warning!"
             );
         },
-        ...options
+        ...options,
       });
     },
-    result
+    result,
   ];
 }

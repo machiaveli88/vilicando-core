@@ -20,7 +20,7 @@ export default function languageController<T>(
       const [locale] = useLocale();
 
       return controller.get(locale);
-    }
+    },
   };
 
   return controller;

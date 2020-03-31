@@ -2,7 +2,7 @@ import React from "react";
 import {
   ThemeProvider,
   RendererProvider,
-  ThemeProviderProps
+  ThemeProviderProps,
 } from "react-fela";
 import { IRenderer } from "fela";
 import defaultRenderer from "./defaultRenderer";

@@ -4,7 +4,7 @@ import {
   IThemeController,
   IThemeProvider,
   TThemeIn,
-  TThemeOut
+  TThemeOut,
 } from "vilicando-core";
 import FelaProvider from "./FelaProvider";
 import useFelaBase, { IUseFela } from "./useFela";
@@ -27,7 +27,7 @@ export default function themeController<T, P = {}>(
   function ThemeProvider({
     children,
     theme: _theme,
-    setTheme: _setTheme
+    setTheme: _setTheme,
   }: IThemeProvider) {
     const [theme, setTheme] = React.useState<string>(_theme || defaultTheme);
     const themeVars = useTheme(_theme || theme);
