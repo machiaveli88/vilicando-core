@@ -24,12 +24,15 @@ export const lambda = async ({
   "--port": port = 9000,
   "--timeout": timeout = 10,
   "--url": urlPrefix = ".netlify/functions",
-  "--build": buildOnly = false
+  "--build": buildOnly = false,
 }) => {
   const srcPath = join(process.cwd(), srcDir);
   const destPath = join(process.cwd(), destDir);
   const srcTsconfig = join(__dirname, "../../../..", "tsconfig.lambda.json");
   const destTsconfig = join(srcPath, "tsconfig.json");
+
+  // only if there is a functions-folder
+  if (!existsSync(srcDir)) return;
 
   // install dependecies
   await install(srcDir).catch(getError);
@@ -38,11 +41,11 @@ export const lambda = async ({
   removeSync(destPath);
   copySync(srcPath, destPath, {
     filter: (src: string) =>
-      !src.includes(".ts") && src !== join(srcPath, "tsconfig.json")
+      !src.includes(".ts") && src !== join(srcPath, "tsconfig.json"),
   });
   console.info(`  ${chalk.green("✔")} assets copied!`);
 
-  // transpile .ts-files
+  // copy tsconfig.json, if not there
   if (!existsSync(destTsconfig)) {
     copySync(srcTsconfig, destTsconfig);
     console.info(`  ${chalk.green("✔")} tsconfig.json created!`);
