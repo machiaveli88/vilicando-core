@@ -1,1 +1,1 @@
-{ "extends": "vilicando-native-web/babelrc-native.json" }
+{ "presets": ["module:metro-react-native-babel-preset"] }

@@ -1,6 +1,18 @@
 {
-  "extends": "vilicando-native-web/tsconfig.extern.json",
   "compilerOptions": {
-    "baseUrl": "."
-  }
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-native",
+    "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components": ["components"],
+      "@theme": ["theme"],
+      "@views": ["views"]
+    }
+  },
+  "include": ["**/*"]
 }
