@@ -1,0 +1,19 @@
+{
+  "name": "Native Example App",
+  "displayName": "with-react-native",
+  "expo": {
+    "name": "Native Example App",
+    "slug": "native",
+    "privacy": "unlisted",
+    "sdkVersion": "36.0.0",
+    "platforms": ["ios", "android", "web"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}

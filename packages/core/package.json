@@ -9,6 +9,7 @@
   "files": [
     "lib",
     "server.js",
+    "theme.js",
     "tsconfig.extern.json",
     "tsconfig.lambda.json",
     ".babelrc"

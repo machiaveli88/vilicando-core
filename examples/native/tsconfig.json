@@ -1,0 +1,6 @@
+{
+  "extends": "vilicando-native-web/tsconfig.extern.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "vilicando-example-native",
+  "version": "1.0.0-alpha.5",
+  "license": "ISC",
+  "scripts": {
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "dev": "expo start",
+    "clean": "cd ios && rm -rf build/ && pod install"
+  },
+  "dependencies": {
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "vilicando-core": "1.0.0-alpha.5",
+    "vilicando-native-web": "1.0.0-alpha.3"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
+  }
+}

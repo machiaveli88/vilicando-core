@@ -1,10 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, Linking } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useTheme } from "@theme";
 
-export default function Start() {
+export default function Start({ onClick }: any) {
   const styles = useStyles();
-  const url = "/alternate";
 
   return (
     <View style={styles.container}>
@@ -12,11 +11,7 @@ export default function Start() {
         React Native
       </Text>
 
-      <Text
-        style={styles.link}
-        accessibilityRole="link"
-        onPress={() => Linking.canOpenURL(url).then(() => Linking.openURL(url))}
-      >
+      <Text style={styles.link} accessibilityRole="link" onPress={onClick}>
         A universal link
       </Text>
 
