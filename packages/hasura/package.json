@@ -5,6 +5,7 @@
   "private": false,
   "main": "lib/index.js",
   "bin": "lib/node/bin.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],

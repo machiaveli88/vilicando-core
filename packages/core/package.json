@@ -49,13 +49,5 @@
     "react": ">= 16.9.0",
     "react-dom": ">= 16.9.0",
     "typescript": ">= 3.7.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/machiaveli88/vilicando-core.git"
-  },
-  "bugs": {
-    "url": "https://github.com/machiaveli88/vilicando-core/issues"
-  },
-  "homepage": "https://github.com/machiaveli88/vilicando-core#readme"
+  }
 }

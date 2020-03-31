@@ -44,5 +44,13 @@
     "prettier": "^2.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/machiaveli88/vilicando-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/machiaveli88/vilicando-core/issues"
+  },
+  "homepage": "https://github.com/machiaveli88/vilicando-core#readme"
 }
