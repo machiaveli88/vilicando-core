@@ -1,3 +1,3 @@
-import { themeController } from "vilicando-core/theme";
+import { themeController } from "vilicando-theme";
 
 export const { useTheme, ThemeProvider } = themeController();
