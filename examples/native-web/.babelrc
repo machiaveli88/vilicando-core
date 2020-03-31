@@ -1,1 +1,1 @@
-{ "extends": "vilicando-native-web/.babelrc" }
+{ "extends": "vilicando-native-web/babelrc-native-web.json" }
