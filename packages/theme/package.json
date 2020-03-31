@@ -1,0 +1,26 @@
+{
+  "name": "vilicando-theme",
+  "version": "1.0.0-alpha.8",
+  "license": "ISC",
+  "private": false,
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "up": "yarn upgrade-interactive --latest && yarn check"
+  },
+  "dependencies": {
+    "lodash": "4.17.15"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.149"
+  },
+  "peerDependencies": {
+    "react": ">= 16.9.0",
+    "react-dom": ">= 16.9.0",
+    "typescript": ">= 3.7.4"
+  }
+}

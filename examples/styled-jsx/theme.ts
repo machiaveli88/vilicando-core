@@ -7,10 +7,10 @@ const themes = themeController({
   primary: { base: "#00bcd4" },
   secondary: { base: "#9c27b0" },
   heading: { color: "#00bcd4" },
-  text: "rgba(0, 0, 0, 0.87)" as string,
-  shadow: "rgba(255, 255, 255, 1)" as string,
+  shadow: ["rgba(255, 255, 255, 1)"],
+  text: "rgba(0, 0, 0, 0.87)", // own prop!
 });
-colors.forEach((_color) => {
+colors.forEach(_color => {
   const color = theme[_color].base;
   const complement = tinycolor(color).complement().toRgbString();
 
@@ -21,9 +21,11 @@ colors.forEach((_color) => {
     text: tinycolor(color).isLight()
       ? "rgba(0, 0, 0, 0.87)"
       : "rgba(255, 255, 255, 1)",
-    shadow: !tinycolor(color).isLight()
-      ? "rgba(0, 0, 0, 0.87)"
-      : "rgba(255, 255, 255, 1)",
+    shadow: [
+      !tinycolor(color).isLight()
+        ? "rgba(0, 0, 0, 0.87)"
+        : "rgba(255, 255, 255, 1)",
+    ],
   });
 });
 
