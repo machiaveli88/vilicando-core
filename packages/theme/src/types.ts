@@ -1,8 +1,8 @@
 type TBorder = {
   color?: string;
-  radius?: string;
+  radius?: string | number;
   style?: string;
-  width?: string;
+  width?: string | number;
 };
 type TColor = {
   "1"?: string;
@@ -25,23 +25,23 @@ export interface ITheme {
   };
 
   screen?: {
-    lg?: string;
-    md?: string;
-    sm?: string;
-    xl?: string;
-    xs?: string;
-    xxl?: string;
-    xxs?: string;
+    lg?: string | number;
+    md?: string | number;
+    sm?: string | number;
+    xl?: string | number;
+    xs?: string | number;
+    xxl?: string | number;
+    xxs?: string | number;
   };
 
   spacing?: {
-    lg?: string;
-    md?: string;
-    sm?: string;
-    xl?: string;
-    xs?: string;
-    xxl?: string;
-    xxs?: string;
+    lg?: string | number;
+    md?: string | number;
+    sm?: string | number;
+    xl?: string | number;
+    xs?: string | number;
+    xxl?: string | number;
+    xxs?: string | number;
   };
 
   shadow?: Array<string>;
@@ -57,19 +57,19 @@ export interface ITheme {
   font?: {
     family?: string;
     size?: {
-      lg?: string;
-      md?: string;
-      sm?: string;
+      lg?: string | number;
+      md?: string | number;
+      sm?: string | number;
     };
   };
 
   heading?: {
-    "1"?: { size?: string };
-    "2"?: { size?: string };
-    "3"?: { size?: string };
-    "4"?: { size?: string };
-    "5"?: { size?: string };
-    "6"?: { size?: string };
+    "1"?: { size?: string | number };
+    "2"?: { size?: string | number };
+    "3"?: { size?: string | number };
+    "4"?: { size?: string | number };
+    "5"?: { size?: string | number };
+    "6"?: { size?: string | number };
     color?: string;
   };
 

@@ -57,23 +57,30 @@ module.exports = (modifyVars: any = {}, nextConfig: any) => {
           },
           "2": baseTheme.shadow?.[1],
         },
-        success: { color: baseTheme.success.base },
-        error: { color: baseTheme.error.base },
-        info: { color: baseTheme.info.base },
-        warning: { color: baseTheme.warning.base },
       },
       overwrite
     )
   );
-  const _modifyVars = flattenObject(modifyVars);
 
+  const _modifyVars = flattenObject(modifyVars);
   manipulateObj(theme, _modifyVars, "padding-xs", "spacing-xs");
   manipulateObj(theme, _modifyVars, "padding-sm", "spacing-sm");
   manipulateObj(theme, _modifyVars, "padding-md", "spacing-md");
   manipulateObj(theme, _modifyVars, "padding-lg", "spacing-lg");
   manipulateObj(theme, _modifyVars, "font-size-base", "font-size-md");
   manipulateObj(theme, _modifyVars, "primary-color", "primary-base");
+  manipulateObj(theme, _modifyVars, "success-color", "success-base");
+  manipulateObj(theme, _modifyVars, "error-color", "error-base");
+  manipulateObj(theme, _modifyVars, "info-color", "info-base");
+  manipulateObj(theme, _modifyVars, "warning-color", "warning-base");
   modifyVars = { ...theme, ..._modifyVars };
+  Object.keys(modifyVars).forEach(
+    key =>
+      (modifyVars[key] =
+        typeof modifyVars[key] === "number"
+          ? `${modifyVars[key]}px`
+          : modifyVars[key])
+  );
 
   return withLess({
     extractCssChunksOptions: { orderWarning: false },
