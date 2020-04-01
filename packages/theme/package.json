@@ -14,10 +14,8 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
+    "@types/lodash": "4.14.149",
     "lodash": "4.17.15"
-  },
-  "devDependencies": {
-    "@types/lodash": "4.14.149"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",

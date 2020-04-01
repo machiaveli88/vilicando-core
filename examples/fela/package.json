@@ -14,8 +14,8 @@
   "dependencies": {
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "vilicando-core": "1.0.0-alpha.6",
-    "vilicando-fela": "1.0.0-alpha.2"
+    "vilicando-core": "1.0.0-alpha.11",
+    "vilicando-fela": "1.0.0-alpha.11"
   },
   "devDependencies": {
     "typescript": "3.8.3"

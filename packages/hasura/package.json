@@ -21,7 +21,7 @@
     "@graphql-codegen/typescript": "1.13.1",
     "@graphql-codegen/typescript-operations": "1.13.1",
     "@graphql-codegen/typescript-react-apollo": "1.13.1",
-    "apollo": "2.25.0",
+    "apollo": "2.26.0",
     "apollo-cache-inmemory": "1.6.5",
     "apollo-cache-persist": "0.1.1",
     "apollo-client": "2.6.8",
