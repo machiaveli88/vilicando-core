@@ -3,8 +3,6 @@
   "version": "1.0.0-alpha.11",
   "license": "ISC",
   "private": false,
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "files": [
     "lib",
     "server.js",
