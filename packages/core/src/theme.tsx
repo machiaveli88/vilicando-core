@@ -32,8 +32,8 @@ export function themeController<T>(
                 body {
                   width: 100%;
                   height: 100%;
-                  font-family: ${themeVars.font.family};
-                  font-size: ${themeVars.font.size.md};
+                  font-family: ${themeVars.font.base.fontFamily};
+                  font-size: ${themeVars.font.base.fontSize};
                   color: ${themeVars.black};
                 }
                 body {
@@ -55,37 +55,37 @@ export function themeController<T>(
                 h4,
                 h5,
                 h6 {
-                  color: ${themeVars.heading.color};
+                  color: ${themeVars.heading.base.color};
                 }
                 h1 {
-                  font-size: ${themeVars.heading[1].size};
+                  font-size: ${themeVars.heading[1].fontSize};
                 }
                 h2 {
-                  font-size: ${themeVars.heading[2].size};
+                  font-size: ${themeVars.heading[2].fontSize};
                 }
                 h3 {
-                  font-size: ${themeVars.heading[3].size};
+                  font-size: ${themeVars.heading[3].fontSize};
                 }
                 h4 {
-                  font-size: ${themeVars.heading[4].size};
+                  font-size: ${themeVars.heading[4].fontSize};
                 }
                 h5 {
-                  font-size: ${themeVars.heading[5].size};
+                  font-size: ${themeVars.heading[5].fontSize};
                 }
                 h6 {
-                  font-size: ${themeVars.heading[6].size};
+                  font-size: ${themeVars.heading[6].fontSize};
                 }
                 a {
-                  color: ${themeVars.link.color};
-                  text-decoration: ${themeVars.link.decoration};
+                  color: ${themeVars.link.base.color};
+                  text-decoration: ${themeVars.link.base.textDecoration.toString()};
                 }
                 a:hover {
                   color: ${themeVars.link.hover.color};
-                  text-decoration: ${themeVars.link.hover.decoration};
+                  text-decoration: ${themeVars.link.hover.textDecoration.toString()};
                 }
                 a:active {
                   color: ${themeVars.link.active.color};
-                  text-decoration: ${themeVars.link.active.decoration};
+                  text-decoration: ${themeVars.link.active.textDecoration.toString()};
                 }
                 code {
                   background-color: ${themeVars.primary[1]};

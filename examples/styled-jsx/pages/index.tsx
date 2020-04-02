@@ -13,8 +13,8 @@ function Content({ children, active, onClick }: any) {
       <style jsx>{`
         div {
           display: block;
-          margin-bottom: ${theme.spacing.sm};
-          padding: ${theme.spacing.sm};
+          margin-bottom: ${theme.spacing.sm}px;
+          padding: ${theme.spacing.sm}px;
           color: ${theme.secondary.base};
           background-color: ${theme.primary.base};
           cursor: pointer;
@@ -54,7 +54,7 @@ function StartPage() {
       </p>
 
       <h3>Themes</h3>
-      {colors.map((key) => (
+      {colors.map(key => (
         <ThemeProvider theme={key} key={key}>
           <Content active={key === activeTheme} onClick={() => setTheme(key)}>
             {key}
@@ -68,7 +68,7 @@ function StartPage() {
           color: ${theme.primary.base};
         }
         h3 {
-          margin-bottom: ${theme.spacing.xs};
+          margin-bottom: ${theme.spacing.xs}px;
         }
       `}</style>
     </>

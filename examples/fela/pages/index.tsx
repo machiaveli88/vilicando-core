@@ -56,7 +56,7 @@ function StartPage() {
       </p>
 
       <h3 className={css({ marginBottom: theme.spacing.xs })}>Themes</h3>
-      {colors.map((key) => (
+      {colors.map(key => (
         <ThemeProvider theme={key} key={key}>
           <Content active={key === activeTheme} onClick={() => setTheme(key)}>
             {key}

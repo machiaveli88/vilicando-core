@@ -6,7 +6,7 @@ export const colors = ["yellow", "green", "red", "blue", "magenta", "volcano"];
 const themes = themeController({
   primary: { base: "#00bcd4" },
   secondary: { base: "#9c27b0" },
-  heading: { color: "#00bcd4" },
+  heading: { base: { color: "#00bcd4" } },
   shadow: ["rgba(255, 255, 255, 1)"],
   text: "rgba(0, 0, 0, 0.87)", // own prop!
 });
@@ -17,7 +17,7 @@ colors.forEach(_color => {
   themes.set(_color, {
     primary: { base: color },
     secondary: { base: complement },
-    heading: { color },
+    heading: { base: { color } },
     text: tinycolor(color).isLight()
       ? "rgba(0, 0, 0, 0.87)"
       : "rgba(255, 255, 255, 1)",

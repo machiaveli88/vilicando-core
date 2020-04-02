@@ -39,19 +39,19 @@ function useStyles() {
     },
     textContainer: {
       alignItems: "center",
-      marginTop: parseInt(theme.spacing.md),
+      marginTop: theme.spacing.md,
     },
     header: {
       alignItems: "center",
-      fontSize: parseInt(theme.heading[1].size),
+      fontSize: theme.heading[1].fontSize,
       color: theme.primary.base,
-      marginBottom: parseInt(theme.spacing.xl),
+      marginBottom: theme.spacing.xl,
     },
     text: {
       alignItems: "center",
-      fontSize: parseInt(theme.font.size.md),
+      fontSize: theme.font.base.fontSize,
       color: theme.grey.base,
-      marginBottom: parseInt(theme.spacing.md),
+      marginBottom: theme.spacing.md,
     },
   });
 }

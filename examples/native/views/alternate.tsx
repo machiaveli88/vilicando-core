@@ -29,8 +29,8 @@ function useStyles() {
     },
     text: {
       alignItems: "center",
-      fontSize: parseInt(theme.font.size.md),
-      marginBottom: parseInt(theme.spacing.md),
+      fontSize: theme.font.base.fontSize,
+      marginBottom: theme.spacing.md,
     },
     link: {
       color: theme.secondary.base,

@@ -18,7 +18,7 @@ function Header({ children }: IComponentWithChildren) {
         {`
           div {
             background-color: ${theme.primary.base};
-            padding: ${theme.spacing.md};
+            padding: ${theme.spacing.md}px;
             text-align: center;
             width: 100%;
           }
@@ -42,8 +42,8 @@ function Content({ children }: IComponentWithChildren) {
         {`
           div {
             width: 75%;
-            min-width: ${theme.screen.xxs};
-            max-width: ${theme.screen.md};
+            min-width: ${theme.screen.xxs}px;
+            max-width: ${theme.screen.md}px;
           }
         `}
       </style>

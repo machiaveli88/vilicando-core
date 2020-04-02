@@ -88,7 +88,7 @@ export default function Loader({
               marginTop: -size * 0.5,
               backgroundColor: theme.white,
               borderRadius: size * 0.5,
-              boxShadow: theme.shadow[2],
+              boxShadow: theme.boxShadow.base.toString(),
               animation: `${pulseDot} 1.25s ${theme.ease.inOut} -.4s infinite`,
             })}
           >
@@ -115,8 +115,8 @@ export default function Loader({
               textAlign: "center",
               display: "block",
               color: "white",
-              fontFamily: theme.font.family,
-              fontSize: theme.font.size.lg,
+              fontFamily: theme.font.lg.fontFamily,
+              fontSize: theme.font.lg.fontSize,
               paddingY: theme.spacing.xl,
             })}
           >

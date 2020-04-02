@@ -1,10 +1,58 @@
 import React from "react";
-import { ITheme as IDefaultTheme } from "./types";
-import baseTheme from "./theme.json";
+import { ITheme, TBorder, TBoxShadow, TTextShadow, TFont } from "./types";
+import baseTheme from "./theme";
 import { merge } from "lodash";
+import tinycolor from "tinycolor2";
 
-export type TThemeIn<T, OptT = {}> = Partial<IDefaultTheme & T & OptT>;
-export type TThemeOut<T> = Partial<IDefaultTheme & T>;
+const defaultSetTheme = () => console.warn("ThemeProvider not found!");
+
+function getThemeValues<T>(
+  values: { base?: T; [k: string]: T },
+  toObject: (val: T) => object = () => ({}),
+  toString: (val: T) => string = () => undefined
+) {
+  const _values = {};
+  Object.keys(values).forEach(key => {
+    _values[key] = {
+      ...values.base,
+      toObject: () => toObject(values[key]),
+      toString: () => toString(values[key]),
+      ...values[key],
+    };
+  });
+
+  return _values;
+}
+
+function getFonts(values: { base?: TFont; [k: string]: TFont }) {
+  const fonts = {};
+  Object.keys(values).forEach(font => {
+    const d = { ...values.base.textDecoration, ...values[font].textDecoration };
+
+    fonts[font] = {
+      ...values[font],
+      textDecoration: {
+        ...values.base.textDecoration,
+        toObject: () => ({
+          textDecorationLine: d.textDecorationLine,
+          textDecorationStyle: d.textDecorationStyle,
+          textDecorationColor: d.textDecorationColor,
+        }),
+        toString: () =>
+          `${d.textDecorationLine} ${d.textDecorationStyle} ${d.textDecorationColor}`,
+        ...values[font].textDecoration,
+      },
+    };
+  });
+
+  return getThemeValues<TFont>(fonts, ({ textDecoration, ...rest }) => ({
+    ...textDecoration.toObject(),
+    ...rest,
+  }));
+}
+
+export type TThemeIn<T, OptT = {}> = Partial<ITheme & T & OptT>;
+export type TThemeOut<T> = Partial<ITheme & T>;
 type TThemeContext = [string, React.Dispatch<React.SetStateAction<string>>];
 
 export interface IThemeProvider {
@@ -23,8 +71,6 @@ export interface IThemeController<T> {
   ThemeProvider: ({ children, theme }: IThemeProvider) => JSX.Element;
 }
 
-const defaultSetTheme = () => console.warn("ThemeProvider not found!");
-
 export default function themeController<T>(
   nameOrVars?: string | TThemeIn<T>,
   vars?: TThemeIn<T>
@@ -40,12 +86,72 @@ export default function themeController<T>(
   const themes: { [k: string]: TThemeIn<T> } = {};
   themes[defaultTheme] = merge({}, baseTheme, defaultThemeVars);
 
+  const set = (theme: string, themeVars: TThemeIn<T>) => {
+    themes[theme] = merge({}, themes[defaultTheme], themeVars);
+
+    return controller;
+  };
+  const get = (theme?: string): TThemeOut<T> => {
+    const t = themes[theme] || themes[defaultTheme];
+
+    const boxShadow = getThemeValues<TBoxShadow>(
+      t.boxShadow,
+      ({ color, offset, opacity, blur }) => ({
+        shadowColor: color,
+        shadowOffset: {
+          width: offset.x,
+          height: offset.y,
+        },
+        shadowOpacity: opacity,
+        shadowRadius: blur,
+      }),
+      ({ inset, color, offset, opacity, blur, spread }) =>
+        `${inset ? "inset " : ""}${offset.x}px ${
+          offset.x
+        }px ${blur}px ${spread}px ${tinycolor(color)
+          .setAlpha(opacity)
+          .toRgbString()}`
+    );
+    const textShadow = getThemeValues<TTextShadow>(
+      t.textShadow,
+      ({ color, offset, blur }) => ({
+        textShadowColor: color,
+        textShadowOffset: {
+          width: offset.x,
+          height: offset.y,
+        },
+        textShadowRadius: blur,
+      }),
+      ({ color, offset, blur }) =>
+        `${offset.x}px ${offset.x}px ${blur}px ${color}`
+    );
+    const border = getThemeValues<TBorder>(
+      t.border,
+      props => props,
+      ({ borderWidth, borderStyle, borderColor }) =>
+        `${borderWidth}px ${borderStyle} ${borderColor}`
+    );
+    const font = getFonts(t.font);
+    const heading = getFonts(t.heading);
+    const link = getFonts(t.link);
+
+    return {
+      ...t,
+      boxShadow,
+      textShadow,
+      border,
+      font,
+      heading,
+      link,
+    };
+  };
+
   const useThemeContext = (): TThemeContext => React.useContext(ThemeContext);
 
   const useTheme = (name?: string): TThemeOut<T> => {
     const [theme] = useThemeContext();
 
-    return themes[name] || themes[theme] || themes[defaultTheme];
+    return get(name || theme);
   };
 
   function ThemeProvider({
@@ -65,12 +171,8 @@ export default function themeController<T>(
   const controller = {
     defaultTheme,
     defaultThemeVars,
-    set: (theme: string, themeVars: TThemeIn<T>) => {
-      themes[theme] = merge({}, themes[defaultTheme], themeVars);
-
-      return controller;
-    },
-    get: (theme?: string) => themes[theme] || themes[defaultTheme],
+    set,
+    get,
     useThemeContext,
     useTheme,
     ThemeProvider,

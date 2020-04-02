@@ -1,10 +1,21 @@
-type TBorder = {
-  color?: string;
-  radius?: string | number;
-  style?: string;
-  width?: string | number;
+import { TextStyle, ViewStyle, ShadowStyleIOS, FlexStyle } from "react-native";
+
+// todo: TForm: { border, shadow, ... } für input, select, button, ...?
+// button.base, .danger, ...?
+
+export type TBorder = {
+  borderColor?: ViewStyle["borderColor"];
+  borderRadius?: ViewStyle["borderRadius"];
+  borderStyle?: ViewStyle["borderStyle"];
+  borderWidth?: ViewStyle["borderWidth"];
+  toString?: () => string;
+  toObject?: () => Pick<
+    ViewStyle,
+    "borderWidth" | "borderStyle" | "borderColor" | "borderRadius"
+  >;
 };
-type TColor = {
+
+export type TColor = {
   "1"?: string;
   "2"?: string;
   "3"?: string;
@@ -18,6 +29,79 @@ type TColor = {
   base?: string;
 };
 
+export type TFontDecoration = {
+  textDecorationLine?: TextStyle["textDecorationLine"];
+  textDecorationStyle?: TextStyle["textDecorationStyle"];
+  textDecorationColor?: TextStyle["textDecorationColor"];
+  toString?: () => string;
+  toObject?: () => Pick<
+    TextStyle,
+    "textDecorationLine" | "textDecorationStyle" | "textDecorationColor"
+  >;
+};
+export type TFont = {
+  color?: TextStyle["color"];
+  secondary?: TextStyle["color"];
+  inverse?: TextStyle["color"];
+  fontFamily?: TextStyle["fontFamily"];
+  textDecoration?: TFontDecoration;
+  textAlign?: TextStyle["textAlign"];
+  fontStyle?: TextStyle["fontStyle"];
+  fontWeight?: TextStyle["fontWeight"];
+  fontSize?: TextStyle["fontSize"];
+  letterSpacing?: TextStyle["letterSpacing"];
+  lineHeight?: TextStyle["lineHeight"]; // todo: bei withAntd kein px hinzufügen!
+  textTransform?: TextStyle["textTransform"];
+  toObject?: () => Pick<
+    TextStyle,
+    | "color"
+    | "fontFamily"
+    | "fontSize"
+    | "fontStyle"
+    | "fontWeight"
+    | "textAlign"
+    | "textDecorationLine"
+    | "textDecorationStyle"
+    | "textDecorationColor"
+    | "letterSpacing"
+    | "lineHeight"
+    | "textTransform"
+  >;
+};
+
+export type TInput = {
+  height?: number;
+  border?: TBorder;
+  font?: TFont;
+};
+
+export type TTextShadow = {
+  offset?: {
+    x: TextStyle["textShadowOffset"]["width"];
+    y: TextStyle["textShadowOffset"]["height"];
+  };
+  blur?: TextStyle["textShadowRadius"];
+  color?: TextStyle["textShadowColor"];
+  toString?: () => string;
+  toObject?: () => Pick<
+    TextStyle,
+    "textShadowColor" | "textShadowOffset" | "textShadowRadius"
+  >;
+};
+export type TBoxShadow = {
+  offset?: {
+    x: ShadowStyleIOS["shadowOffset"]["width"];
+    y: ShadowStyleIOS["shadowOffset"]["height"];
+  };
+  blur?: ShadowStyleIOS["shadowRadius"];
+  color?: ShadowStyleIOS["shadowColor"];
+  spread?: number;
+  inset?: boolean;
+  opacity?: ShadowStyleIOS["shadowOpacity"];
+  toString?: () => string;
+  toObject?: () => ShadowStyleIOS;
+};
+
 export interface ITheme {
   app?: {
     background?: string;
@@ -25,65 +109,65 @@ export interface ITheme {
   };
 
   screen?: {
-    lg?: string | number;
-    md?: string | number;
-    sm?: string | number;
-    xl?: string | number;
-    xs?: string | number;
-    xxl?: string | number;
-    xxs?: string | number;
+    lg?: FlexStyle["width"];
+    md?: FlexStyle["width"];
+    sm?: FlexStyle["width"];
+    xl?: FlexStyle["width"];
+    xs?: FlexStyle["width"];
+    xxl?: FlexStyle["width"];
+    xxs?: FlexStyle["width"];
   };
 
   spacing?: {
-    lg?: string | number;
-    md?: string | number;
-    sm?: string | number;
-    xl?: string | number;
-    xs?: string | number;
-    xxl?: string | number;
-    xxs?: string | number;
+    lg?: FlexStyle["padding"];
+    md?: FlexStyle["padding"];
+    sm?: FlexStyle["padding"];
+    xl?: FlexStyle["padding"];
+    xs?: FlexStyle["padding"];
+    xxl?: FlexStyle["padding"];
+    xxs?: FlexStyle["padding"];
   };
 
-  shadow?: Array<string>;
+  boxShadow?: { base?: TBoxShadow; [k: string]: TBoxShadow };
+  textShadow?: { base?: TTextShadow; [k: string]: TTextShadow };
+  border?: { base?: TBorder; [k: string]: TBorder };
+  font?: {
+    base?: TFont;
+    lg?: TFont;
+    md?: TFont;
+    sm?: TFont;
+    [k: string]: TFont;
+  };
+  heading?: {
+    base?: TFont;
+    1?: TFont;
+    2?: TFont;
+    3?: TFont;
+    4?: TFont;
+    5?: TFont;
+    6?: TFont;
+    [k: string]: TFont;
+  };
+  link?: {
+    base?: TFont;
+    hover?: TFont;
+    focus?: TFont;
+    active?: TFont;
+    [k: string]: TFont;
+  };
 
-  border?: TBorder;
+  input?: {
+    base?: TInput;
+    lg?: TInput;
+    md?: TInput;
+    sm?: TInput;
+    [k: string]: TInput;
+  };
 
   ease?: {
     in?: string;
     out?: string;
     inOut?: string;
-  };
-
-  font?: {
-    family?: string;
-    size?: {
-      lg?: string | number;
-      md?: string | number;
-      sm?: string | number;
-    };
-  };
-
-  heading?: {
-    "1"?: { size?: string | number };
-    "2"?: { size?: string | number };
-    "3"?: { size?: string | number };
-    "4"?: { size?: string | number };
-    "5"?: { size?: string | number };
-    "6"?: { size?: string | number };
-    color?: string;
-  };
-
-  link?: {
-    color?: string;
-    decoration?: string;
-    hover?: {
-      color?: string;
-      decoration?: string;
-    };
-    active?: {
-      color?: string;
-      decoration?: string;
-    };
   };
 
   black?: string;
