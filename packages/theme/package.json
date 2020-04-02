@@ -1,6 +1,6 @@
 {
   "name": "vilicando-theme",
-  "version": "1.0.0-alpha.12",
+  "version": "1.0.0-alpha.13",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
