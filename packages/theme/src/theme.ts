@@ -1,6 +1,8 @@
 import { ITheme } from "./types";
 
-const fontSizeBase = 16;
+const base = 16;
+const fontFamily =
+  "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'";
 const palette = {
   black: "rgba(22, 32, 38, 0.80)",
   white: "#fff",
@@ -268,8 +270,8 @@ const palette = {
 
 const theme: ITheme = {
   app: {
-    background: "#fff",
-    foreground: "#fff",
+    background: palette.white,
+    foreground: palette.white,
   },
 
   screen: {
@@ -283,13 +285,13 @@ const theme: ITheme = {
   },
 
   spacing: {
-    xxl: 48,
-    xl: 32,
-    lg: 24,
-    md: 16,
-    sm: 12,
-    xs: 8,
-    xxs: 4,
+    xxl: Math.floor((base / 8) * 24),
+    xl: Math.floor((base / 8) * 16),
+    lg: Math.floor((base / 8) * 12),
+    md: base,
+    sm: Math.floor((base / 8) * 6),
+    xs: Math.floor((base / 8) * 4),
+    xxs: Math.floor((base / 8) * 2),
   },
 
   boxShadow: {
@@ -331,8 +333,7 @@ const theme: ITheme = {
       color: palette.black,
       secondary: palette.grey.base,
       inverse: palette.white,
-      fontFamily:
-        "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'",
+      fontFamily,
       textDecoration: {
         textDecorationLine: "none",
         textDecorationStyle: "solid",
@@ -341,14 +342,14 @@ const theme: ITheme = {
       textAlign: "auto",
       fontStyle: "normal",
       fontWeight: "normal",
-      fontSize: fontSizeBase,
+      fontSize: base,
       letterSpacing: 0,
       lineHeight: 1.15,
       textTransform: "none",
     },
-    lg: { fontSize: Math.floor((fontSizeBase / 8) * 9) },
+    lg: { fontSize: Math.floor((base / 8) * 9) },
     md: {},
-    sm: { fontSize: Math.floor((fontSizeBase / 8) * 6) },
+    sm: { fontSize: Math.floor((base / 8) * 6) },
   },
 
   heading: {
@@ -356,8 +357,7 @@ const theme: ITheme = {
       color: palette.primary.base,
       secondary: palette.primary[4],
       inverse: palette.white,
-      fontFamily:
-        "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'",
+      fontFamily,
       textDecoration: {
         textDecorationLine: "none",
         textDecorationStyle: "solid",
@@ -366,17 +366,17 @@ const theme: ITheme = {
       textAlign: "auto",
       fontStyle: "normal",
       fontWeight: "bold",
-      fontSize: fontSizeBase,
+      fontSize: base,
       letterSpacing: 0,
       lineHeight: 1.15,
       textTransform: "none",
     },
-    "1": { fontSize: Math.floor((fontSizeBase / 8) * 19) },
-    "2": { fontSize: Math.floor((fontSizeBase / 8) * 15) },
-    "3": { fontSize: Math.floor((fontSizeBase / 8) * 12) },
-    "4": { fontSize: Math.floor((fontSizeBase / 8) * 10) },
-    "5": { fontSize: Math.floor((fontSizeBase / 8) * 9) },
-    "6": { fontSize: fontSizeBase },
+    "1": { fontSize: Math.floor((base / 8) * 19) },
+    "2": { fontSize: Math.floor((base / 8) * 15) },
+    "3": { fontSize: Math.floor((base / 8) * 12) },
+    "4": { fontSize: Math.floor((base / 8) * 10) },
+    "5": { fontSize: Math.floor((base / 8) * 9) },
+    "6": { fontSize: base },
   },
 
   link: {
@@ -384,8 +384,7 @@ const theme: ITheme = {
       color: palette.primary.base,
       secondary: palette.primary[4],
       inverse: palette.white,
-      fontFamily:
-        "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'",
+      fontFamily,
       textDecoration: {
         textDecorationLine: "none",
         textDecorationStyle: "solid",
@@ -394,7 +393,7 @@ const theme: ITheme = {
       textAlign: "auto",
       fontStyle: "normal",
       fontWeight: "normal",
-      fontSize: fontSizeBase,
+      fontSize: base,
       letterSpacing: 0,
       lineHeight: 1.15,
       textTransform: "none",
@@ -406,7 +405,7 @@ const theme: ITheme = {
 
   input: {
     base: {
-      height: 36,
+      height: Math.floor((base / 8) * 18),
       border: {
         borderColor: "transparent",
         borderRadius: 2,
@@ -417,8 +416,7 @@ const theme: ITheme = {
         color: palette.black,
         secondary: palette.grey.base,
         inverse: palette.white,
-        fontFamily:
-          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'",
+        fontFamily,
         textDecoration: {
           textDecorationLine: "none",
           textDecorationStyle: "solid",
@@ -427,15 +425,15 @@ const theme: ITheme = {
         textAlign: "auto",
         fontStyle: "normal",
         fontWeight: "normal",
-        fontSize: fontSizeBase,
+        fontSize: base,
         letterSpacing: 0,
         lineHeight: 1.15,
         textTransform: "none",
       },
     },
-    lg: { height: 42 },
+    lg: { height: Math.floor((base / 8) * 21) },
     md: {},
-    sm: { height: 32 },
+    sm: { height: Math.floor((base / 8) * 16) },
   },
 
   ease: {

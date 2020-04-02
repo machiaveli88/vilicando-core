@@ -25,7 +25,6 @@
     "lint": "yarn prettier && eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
     "prettier": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,less}\"",
     "pub": "lerna publish",
-    "theme": "cd packages/antd && yarn theme && cd ../.. && yarn lint",
     "up": "yarn upgrade-interactive --latest"
   },
   "workspaces": [

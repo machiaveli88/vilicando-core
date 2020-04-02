@@ -9,6 +9,9 @@ import Head from "next/head";
 
 export * from "vilicando-theme";
 
+const parsePx = (val: string | number) =>
+  typeof val === "number" ? `${val}px` : val;
+
 export function themeController<T>(
   nameOrVars?: string | TThemeIn<T>,
   vars?: TThemeIn<T>
@@ -33,8 +36,8 @@ export function themeController<T>(
                   width: 100%;
                   height: 100%;
                   font-family: ${themeVars.font.base.fontFamily};
-                  font-size: ${themeVars.font.base.fontSize};
-                  color: ${themeVars.black};
+                  font-size: ${parsePx(themeVars.font.base.fontSize)};
+                  color: ${themeVars.font.base.color};
                 }
                 body {
                   background-color: ${themeVars.app.background};
@@ -58,22 +61,22 @@ export function themeController<T>(
                   color: ${themeVars.heading.base.color};
                 }
                 h1 {
-                  font-size: ${themeVars.heading[1].fontSize};
+                  font-size: ${parsePx(themeVars.heading[1].fontSize)};
                 }
                 h2 {
-                  font-size: ${themeVars.heading[2].fontSize};
+                  font-size: ${parsePx(themeVars.heading[2].fontSize)};
                 }
                 h3 {
-                  font-size: ${themeVars.heading[3].fontSize};
+                  font-size: ${parsePx(themeVars.heading[3].fontSize)};
                 }
                 h4 {
-                  font-size: ${themeVars.heading[4].fontSize};
+                  font-size: ${parsePx(themeVars.heading[4].fontSize)};
                 }
                 h5 {
-                  font-size: ${themeVars.heading[5].fontSize};
+                  font-size: ${parsePx(themeVars.heading[5].fontSize)};
                 }
                 h6 {
-                  font-size: ${themeVars.heading[6].fontSize};
+                  font-size: ${parsePx(themeVars.heading[6].fontSize)};
                 }
                 a {
                   color: ${themeVars.link.base.color};

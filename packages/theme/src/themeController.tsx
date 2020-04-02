@@ -13,11 +13,12 @@ function getThemeValues<T>(
 ) {
   const _values = {};
   Object.keys(values).forEach(key => {
+    const base = merge({}, values.base, values[key]);
+
     _values[key] = {
-      ...values.base,
-      toObject: () => toObject(values[key]),
-      toString: () => toString(values[key]),
-      ...values[key],
+      ...base,
+      toObject: () => toObject(base),
+      toString: () => toString(base),
     };
   });
 
@@ -91,7 +92,7 @@ export default function themeController<T>(
 
     return controller;
   };
-  const get = (theme?: string): TThemeOut<T> => {
+  const get = (theme?: string) => {
     const t = themes[theme] || themes[defaultTheme];
 
     const boxShadow = getThemeValues<TBoxShadow>(
@@ -99,15 +100,15 @@ export default function themeController<T>(
       ({ color, offset, opacity, blur }) => ({
         shadowColor: color,
         shadowOffset: {
-          width: offset.x,
-          height: offset.y,
+          width: offset?.x,
+          height: offset?.y,
         },
         shadowOpacity: opacity,
         shadowRadius: blur,
       }),
       ({ inset, color, offset, opacity, blur, spread }) =>
-        `${inset ? "inset " : ""}${offset.x}px ${
-          offset.x
+        `${inset ? "inset " : ""}${offset?.x}px ${
+          offset?.y
         }px ${blur}px ${spread}px ${tinycolor(color)
           .setAlpha(opacity)
           .toRgbString()}`
@@ -117,13 +118,13 @@ export default function themeController<T>(
       ({ color, offset, blur }) => ({
         textShadowColor: color,
         textShadowOffset: {
-          width: offset.x,
-          height: offset.y,
+          width: offset?.x,
+          height: offset?.y,
         },
         textShadowRadius: blur,
       }),
       ({ color, offset, blur }) =>
-        `${offset.x}px ${offset.x}px ${blur}px ${color}`
+        `${offset?.x}px ${offset?.y}px ${blur}px ${color}`
     );
     const border = getThemeValues<TBorder>(
       t.border,
@@ -148,7 +149,7 @@ export default function themeController<T>(
 
   const useThemeContext = (): TThemeContext => React.useContext(ThemeContext);
 
-  const useTheme = (name?: string): TThemeOut<T> => {
+  const useTheme = (name?: string) => {
     const [theme] = useThemeContext();
 
     return get(name || theme);

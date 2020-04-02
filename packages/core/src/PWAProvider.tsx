@@ -11,10 +11,6 @@ export default ({ children }: IPWAProvider) => (
       <link rel="manifest" href="/manifest.json" />
       <meta httpEquiv="cleartype" content="on" />
       <meta
-        name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent"
-      />
-      <meta
         name="viewport"
         content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0,width=device-width"
       />
