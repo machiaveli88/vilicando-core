@@ -1,6 +1,6 @@
 {
   "name": "vilicando-core",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.12",
   "license": "ISC",
   "private": false,
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
     "nprogress": "0.2.0",
     "push.js": "1.0.12",
     "pwa-asset-generator": "2.3.0",
-    "vilicando-theme": "1.0.0-alpha.11"
+    "vilicando-theme": "1.0.0-alpha.12"
   },
   "devDependencies": {
     "@types/dotenv": "8.2.0",
