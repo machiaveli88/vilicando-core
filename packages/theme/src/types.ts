@@ -1,21 +1,49 @@
 import { TextStyle, ViewStyle, ShadowStyleIOS, FlexStyle } from "react-native";
 
-// todo: TForm: { border, shadow, ... } für input, select, button, ...?
-// button.base, .danger, ...?
+type DeepRequired<T> = T extends
+  | string
+  | number
+  | boolean
+  | bigint
+  | symbol
+  | undefined
+  | null
+  | Function
+  | Date
+  | Error
+  | RegExp
+  ? NonNullable<T>
+  : T extends Map<infer K, infer V>
+  ? Map<DeepRequired<K>, DeepRequired<V>>
+  : T extends ReadonlyMap<infer K, infer V>
+  ? ReadonlyMap<DeepRequired<K>, DeepRequired<V>>
+  : T extends WeakMap<infer K, infer V>
+  ? WeakMap<DeepRequired<K>, DeepRequired<V>>
+  : T extends Set<infer U>
+  ? Set<DeepRequired<U>>
+  : T extends ReadonlySet<infer U>
+  ? ReadonlySet<DeepRequired<U>>
+  : T extends WeakSet<infer U>
+  ? WeakSet<DeepRequired<U>>
+  : T extends Promise<infer U>
+  ? Promise<DeepRequired<U>>
+  : T extends {}
+  ? { [K in keyof T]-?: DeepRequired<T[K]> }
+  : NonNullable<T>;
+
+export type TThemeIn<T = {}> = ITheme & T;
+export type TThemeOut<T = {}> = DeepRequired<ITheme & T>;
 
 export type TBorder = {
+  borderWidth?: ViewStyle["borderWidth"];
+  borderStyle?: ViewStyle["borderStyle"];
   borderColor?: ViewStyle["borderColor"];
   borderRadius?: ViewStyle["borderRadius"];
-  borderStyle?: ViewStyle["borderStyle"];
-  borderWidth?: ViewStyle["borderWidth"];
-  toString?: () => string;
-  toObject?: () => Pick<
-    ViewStyle,
-    "borderWidth" | "borderStyle" | "borderColor" | "borderRadius"
-  >;
 };
 
-export type TColor = {
+type TColor = {
+  base?: string;
+  text?: string;
   "1"?: string;
   "2"?: string;
   "3"?: string;
@@ -26,80 +54,67 @@ export type TColor = {
   "8"?: string;
   "9"?: string;
   "10"?: string;
-  base?: string;
+  [k: string]: string;
+};
+type TPalette = {
+  primary?: TColor;
+  secondary?: TColor;
+  success?: TColor;
+  error?: TColor;
+  info?: TColor;
+  warning?: TColor;
+  grey?: TColor;
+  blue?: TColor;
+  purple?: TColor;
+  cyan?: TColor;
+  green?: TColor;
+  magenta?: TColor;
+  pink?: TColor;
+  red?: TColor;
+  orange?: TColor;
+  volcano?: TColor;
+  yellow?: TColor;
+  geekblue?: TColor;
+  lime?: TColor;
+  gold?: TColor;
+
+  [k: string]: TColor;
 };
 
-export type TFontDecoration = {
+export type TFont = {
+  color?: TextStyle["color"];
+  fontFamily?: TextStyle["fontFamily"];
+  fontSize?: TextStyle["fontSize"];
+  fontStyle?: TextStyle["fontStyle"];
+  fontWeight?: TextStyle["fontWeight"];
+  textAlign?: TextStyle["textAlign"];
   textDecorationLine?: TextStyle["textDecorationLine"];
   textDecorationStyle?: TextStyle["textDecorationStyle"];
   textDecorationColor?: TextStyle["textDecorationColor"];
-  toString?: () => string;
-  toObject?: () => Pick<
-    TextStyle,
-    "textDecorationLine" | "textDecorationStyle" | "textDecorationColor"
-  >;
-};
-export type TFont = {
-  color?: TextStyle["color"];
-  secondary?: TextStyle["color"];
-  inverse?: TextStyle["color"];
-  fontFamily?: TextStyle["fontFamily"];
-  textDecoration?: TFontDecoration;
-  textAlign?: TextStyle["textAlign"];
-  fontStyle?: TextStyle["fontStyle"];
-  fontWeight?: TextStyle["fontWeight"];
-  fontSize?: TextStyle["fontSize"];
   letterSpacing?: TextStyle["letterSpacing"];
-  lineHeight?: TextStyle["lineHeight"]; // todo: bei withAntd kein px hinzufügen!
+  lineHeight?: TextStyle["lineHeight"];
   textTransform?: TextStyle["textTransform"];
-  toObject?: () => Pick<
-    TextStyle,
-    | "color"
-    | "fontFamily"
-    | "fontSize"
-    | "fontStyle"
-    | "fontWeight"
-    | "textAlign"
-    | "textDecorationLine"
-    | "textDecorationStyle"
-    | "textDecorationColor"
-    | "letterSpacing"
-    | "lineHeight"
-    | "textTransform"
-  >;
 };
 
-export type TInput = {
-  height?: number;
-  border?: TBorder;
-  font?: TFont;
-};
+// export type TInput = {
+//   height?: number;
+//   border?: TBorder;
+//   // todo: spacing?
+//   // todo: boxShadow?
+//   // todo: textShadow?
+//   font?: TFont; // todo: nested beachten (sogar doppelt, wegen fontDeco)
+// };
 
 export type TTextShadow = {
-  offset?: {
-    x: TextStyle["textShadowOffset"]["width"];
-    y: TextStyle["textShadowOffset"]["height"];
-  };
-  blur?: TextStyle["textShadowRadius"];
-  color?: TextStyle["textShadowColor"];
-  toString?: () => string;
-  toObject?: () => Pick<
-    TextStyle,
-    "textShadowColor" | "textShadowOffset" | "textShadowRadius"
-  >;
+  textShadowOffset?: TextStyle["textShadowOffset"];
+  textShadowRadius?: TextStyle["textShadowRadius"];
+  textShadowColor?: TextStyle["textShadowColor"];
 };
 export type TBoxShadow = {
-  offset?: {
-    x: ShadowStyleIOS["shadowOffset"]["width"];
-    y: ShadowStyleIOS["shadowOffset"]["height"];
-  };
-  blur?: ShadowStyleIOS["shadowRadius"];
-  color?: ShadowStyleIOS["shadowColor"];
-  spread?: number;
-  inset?: boolean;
-  opacity?: ShadowStyleIOS["shadowOpacity"];
-  toString?: () => string;
-  toObject?: () => ShadowStyleIOS;
+  shadowColor?: ShadowStyleIOS["shadowColor"];
+  shadowOffset?: ShadowStyleIOS["shadowOffset"];
+  shadowOpacity?: ShadowStyleIOS["shadowOpacity"];
+  shadowRadius?: ShadowStyleIOS["shadowRadius"];
 };
 
 export interface ITheme {
@@ -128,7 +143,14 @@ export interface ITheme {
     xxs?: FlexStyle["padding"];
   };
 
-  boxShadow?: { base?: TBoxShadow; [k: string]: TBoxShadow };
+  boxShadow?: {
+    base?: TBoxShadow;
+    1?: TBoxShadow;
+    2?: TBoxShadow;
+    3?: TBoxShadow;
+    // todo: elevation??? für android, siehe /Users/machiaveli88/Server/ex1f/packages/ui/src/shadow.ts
+    [k: string]: TBoxShadow;
+  };
   textShadow?: { base?: TTextShadow; [k: string]: TTextShadow };
   border?: { base?: TBorder; [k: string]: TBorder };
   font?: {
@@ -138,6 +160,8 @@ export interface ITheme {
     sm?: TFont;
     [k: string]: TFont;
   };
+
+  /* HTML-Elements */
   heading?: {
     base?: TFont;
     1?: TFont;
@@ -155,14 +179,20 @@ export interface ITheme {
     active?: TFont;
     [k: string]: TFont;
   };
-
-  input?: {
-    base?: TInput;
-    lg?: TInput;
-    md?: TInput;
-    sm?: TInput;
-    [k: string]: TInput;
-  };
+  // input?: {
+  //   base?: TInput;
+  //   hover?: TInput;
+  //   focus?: TInput;
+  //   active?: TInput;
+  //   [k: string]: TInput;
+  // }
+  // btn?: {
+  //   base?: TInput;
+  //   hover?: TInput;
+  //   focus?: TInput;
+  //   active?: TInput;
+  //   [k: string]: TInput;
+  // }
 
   ease?: {
     in?: string;
@@ -172,25 +202,5 @@ export interface ITheme {
 
   black?: string;
   white?: string;
-
-  primary?: TColor;
-  secondary?: TColor;
-  success?: TColor;
-  error?: TColor;
-  info?: TColor;
-  warning?: TColor;
-  grey?: TColor;
-  blue?: TColor;
-  purple?: TColor;
-  cyan?: TColor;
-  green?: TColor;
-  magenta?: TColor;
-  pink?: TColor;
-  red?: TColor;
-  orange?: TColor;
-  volcano?: TColor;
-  yellow?: TColor;
-  geekblue?: TColor;
-  lime?: TColor;
-  gold?: TColor;
+  palette?: TPalette;
 }

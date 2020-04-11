@@ -15,15 +15,15 @@ function Content({ children, active, onClick }: any) {
           display: block;
           margin-bottom: ${theme.spacing.sm}px;
           padding: ${theme.spacing.sm}px;
-          color: ${theme.secondary.base};
-          background-color: ${theme.primary.base};
+          color: ${theme.palette.secondary.base};
+          background-color: ${theme.palette.primary.base};
           cursor: pointer;
-          border: 1px solid ${theme.primary.base};
+          border: 1px solid ${theme.palette.primary.base};
           font-weight: bold;
           text-shadow: 0 0 2px ${theme.shadow};
         }
         div:hover {
-          border-color: ${theme.secondary.base};
+          border-color: ${theme.palette.secondary.base};
         }
         span {
           float: right;
@@ -54,7 +54,7 @@ function StartPage() {
       </p>
 
       <h3>Themes</h3>
-      {colors.map(key => (
+      {colors.map((key) => (
         <ThemeProvider theme={key} key={key}>
           <Content active={key === activeTheme} onClick={() => setTheme(key)}>
             {key}
@@ -65,7 +65,7 @@ function StartPage() {
       <style jsx>{`
         span {
           font-weight: bold;
-          color: ${theme.primary.base};
+          color: ${theme.palette.primary.base};
         }
         h3 {
           margin-bottom: ${theme.spacing.xs}px;

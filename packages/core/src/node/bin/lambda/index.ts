@@ -64,7 +64,7 @@ export const lambda = async ({
       { encoding: "utf8", recursive: true, persistent: true },
       (event: string, file: string) => {
         if (file.includes(".js")) {
-          console.log(`[ ${chalk.yellow(event)} ] ${file}`);
+          console.info(`[ ${chalk.yellow(event)} ] ${file}`);
           server.clearCache(`/${file}`);
         }
       }

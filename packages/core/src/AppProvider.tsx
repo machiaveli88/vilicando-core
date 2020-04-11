@@ -119,7 +119,8 @@ export default function AppProvider({
         )}
 
         {/* Normalize */}
-        <style>{`
+        <style>
+          {`
           html {
             line-height: 1.15;
             -ms-text-size-adjust: 100%;
@@ -308,6 +309,13 @@ export default function AppProvider({
           }
           [hidden] {
             display: none;
+          }
+          `}
+        </style>
+        {/* Improvements */}
+        <style>{`
+          *, *::before, *::after {
+            box-sizing: border-box;
           }
         `}</style>
       </Head>

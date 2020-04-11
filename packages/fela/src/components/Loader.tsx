@@ -56,7 +56,7 @@ export default function Loader({
           pointerEvents: "none",
           right: 0,
           top: 0,
-          background: `linear-gradient(135deg, ${theme.primary.base} 0%,${theme.primary[8]} 100%)`,
+          background: `linear-gradient(135deg, ${theme.palette.primary.base} 0%,${theme.palette.primary[8]} 100%)`,
           zIndex: 1030,
         })}
       >
@@ -71,7 +71,7 @@ export default function Loader({
             marginLeft: -size * 1.5,
             marginTop: -size * 1.5,
             borderRadius: size * 1.5,
-            backgroundColor: theme.primary.base,
+            backgroundColor: theme.palette.primary.base,
             animation: `${pulseRing} 1.25s ${theme.ease.out} infinite`,
           })}
         />

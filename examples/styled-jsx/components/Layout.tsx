@@ -17,7 +17,7 @@ function Header({ children }: IComponentWithChildren) {
       <style jsx>
         {`
           div {
-            background-color: ${theme.primary.base};
+            background-color: ${theme.palette.primary.base};
             padding: ${theme.spacing.md}px;
             text-align: center;
             width: 100%;

@@ -20,7 +20,7 @@ function Layout({ children }: ILayout) {
     >
       <div
         className={css({
-          backgroundColor: theme.primary.base,
+          backgroundColor: theme.palette.primary.base,
           padding: theme.spacing.md,
           textAlign: "center",
           width: "100%",

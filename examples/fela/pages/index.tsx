@@ -11,14 +11,14 @@ function Content({ children, active, onClick }: any) {
         display: "block",
         marginBottom: theme.spacing.sm,
         padding: theme.spacing.sm,
-        color: theme.secondary.base,
-        backgroundColor: theme.primary.base,
+        color: theme.palette.secondary.base,
+        backgroundColor: theme.palette.primary.base,
         cursor: "pointer",
-        border: `1px solid ${theme.primary.base}`,
+        border: `1px solid ${theme.palette.primary.base}`,
         fontWeight: "bold",
         textShadow: `0 0 2px ${theme.highlight}`,
         onHover: {
-          borderColor: theme.secondary.base,
+          borderColor: theme.palette.secondary.base,
         },
       })}
     >
@@ -41,7 +41,10 @@ function StartPage() {
       <h1>Hello World</h1>
       <p>
         <span
-          className={css({ fontWeight: "bold", color: theme.primary.base })}
+          className={css({
+            fontWeight: "bold",
+            color: theme.palette.primary.base,
+          })}
         >
           Lorem ipsum dolor sit amet
         </span>
@@ -56,7 +59,7 @@ function StartPage() {
       </p>
 
       <h3 className={css({ marginBottom: theme.spacing.xs })}>Themes</h3>
-      {colors.map(key => (
+      {colors.map((key) => (
         <ThemeProvider theme={key} key={key}>
           <Content active={key === activeTheme} onClick={() => setTheme(key)}>
             {key}

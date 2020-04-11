@@ -1,11 +1,13 @@
-import { ITheme } from "./types";
+import { TThemeOut } from "./types";
 
-const base = 16;
-const fontFamily =
-  "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'";
-const palette = {
+const getBase = (scale: number) => Math.floor(baseSize * scale);
+
+const baseSize: number = 16;
+const baseTextColors = {
   black: "rgba(22, 32, 38, 0.80)",
   white: "#fff",
+};
+const baseColors = {
   primary: {
     "1": "#ffebee",
     "2": "#ffcdd2",
@@ -18,6 +20,7 @@ const palette = {
     "9": "#c62828",
     "10": "#b71c1c",
     base: "#f44336",
+    text: baseTextColors.white,
   },
   secondary: {
     "1": "#fff8e1",
@@ -31,6 +34,7 @@ const palette = {
     "9": "#ff8f00",
     "10": "#ff6f00",
     base: "#ffc107",
+    text: baseTextColors.white,
   },
   success: {
     "1": "#e8f5e9",
@@ -44,6 +48,7 @@ const palette = {
     "9": "#2e7d32",
     "10": "#1b5e20",
     base: "#4caf50",
+    text: baseTextColors.white,
   },
   error: {
     "1": "#ffebee",
@@ -57,6 +62,7 @@ const palette = {
     "9": "#c62828",
     "10": "#b71c1c",
     base: "#f44336",
+    text: baseTextColors.white,
   },
   info: {
     "1": "#e3f2fd",
@@ -70,6 +76,7 @@ const palette = {
     "9": "#1565c0",
     "10": "#0d47a1",
     base: "#2196f3",
+    text: baseTextColors.white,
   },
   warning: {
     "1": "#fff8e1",
@@ -83,6 +90,7 @@ const palette = {
     "9": "#ff8f00",
     "10": "#ff6f00",
     base: "#ffc107",
+    text: baseTextColors.white,
   },
   grey: {
     "1": "#f8f9fa",
@@ -96,6 +104,7 @@ const palette = {
     "9": "#343a40",
     "10": "#212529",
     base: "#adb5bd",
+    text: baseTextColors.white,
   },
   blue: {
     "1": "#e3f2fd",
@@ -109,6 +118,7 @@ const palette = {
     "9": "#1565c0",
     "10": "#0d47a1",
     base: "#2196f3",
+    text: baseTextColors.white,
   },
   purple: {
     "1": "#f3e5f5",
@@ -122,6 +132,7 @@ const palette = {
     "9": "#6a1b9a",
     "10": "#4a148c",
     base: "#9c27b0",
+    text: baseTextColors.white,
   },
   cyan: {
     "1": "#e0f7fa",
@@ -135,6 +146,7 @@ const palette = {
     "9": "#00838f",
     "10": "#006064",
     base: "#00bcd4",
+    text: baseTextColors.white,
   },
   green: {
     "1": "#e8f5e9",
@@ -148,6 +160,7 @@ const palette = {
     "9": "#2e7d32",
     "10": "#1b5e20",
     base: "#4caf50",
+    text: baseTextColors.white,
   },
   magenta: {
     "1": "#fce4ec",
@@ -161,6 +174,7 @@ const palette = {
     "9": "#ad1457",
     "10": "#880e4f",
     base: "#e91e63",
+    text: baseTextColors.white,
   },
   pink: {
     "1": "#fce4ec",
@@ -174,6 +188,7 @@ const palette = {
     "9": "#ad1457",
     "10": "#880e4f",
     base: "#e91e63",
+    text: baseTextColors.white,
   },
   red: {
     "1": "#ffebee",
@@ -187,6 +202,7 @@ const palette = {
     "9": "#c62828",
     "10": "#b71c1c",
     base: "#f44336",
+    text: baseTextColors.white,
   },
   orange: {
     "1": "#fff3e0",
@@ -200,6 +216,7 @@ const palette = {
     "9": "#ef6c00",
     "10": "#e65100",
     base: "#ff9800",
+    text: baseTextColors.white,
   },
   yellow: {
     "1": "#fffde7",
@@ -213,6 +230,7 @@ const palette = {
     "9": "#f9a825",
     "10": "#f57f17",
     base: "#ffeb3b",
+    text: baseTextColors.white,
   },
   volcano: {
     "1": "#fbe9e7",
@@ -226,6 +244,7 @@ const palette = {
     "9": "#d84315",
     "10": "#bf360c",
     base: "#ff5722",
+    text: baseTextColors.white,
   },
   geekblue: {
     "1": "#e8eaf6",
@@ -239,6 +258,7 @@ const palette = {
     "9": "#283593",
     "10": "#1a237e",
     base: "#3f51b5",
+    text: baseTextColors.white,
   },
   lime: {
     "1": "#f9fbe7",
@@ -252,6 +272,7 @@ const palette = {
     "9": "#9e9d24",
     "10": "#827717",
     base: "#cddc39",
+    text: baseTextColors.white,
   },
   gold: {
     "1": "#fff8e1",
@@ -265,13 +286,48 @@ const palette = {
     "9": "#ff8f00",
     "10": "#ff6f00",
     base: "#ffc107",
+    text: baseTextColors.white,
   },
 };
+const baseShadow = {
+  shadowColor: baseTextColors.black,
+  shadowOffset: {
+    width: 0,
+    height: 0,
+  },
+  shadowOpacity: 0.16,
+  shadowRadius: getBase(1 / 2),
+};
+const baseFont = {
+  color: baseTextColors.black,
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'",
+  textDecorationLine: "none",
+  textDecorationStyle: "solid",
+  textDecorationColor: baseTextColors.black,
+  textAlign: "left",
+  fontStyle: "normal",
+  fontWeight: "normal",
+  fontSize: baseSize,
+  letterSpacing: 0,
+  lineHeight: 1.15,
+  textTransform: "none",
+} as const;
+const baseHeading = {
+  ...baseFont,
+  color: baseColors.primary.base,
+  fontWeight: "500",
+  fontSize: getBase(14 / 8),
+} as const;
+const baseLink = {
+  ...baseFont,
+  color: baseColors.primary.base,
+};
 
-const theme: ITheme = {
+const theme: TThemeOut = {
   app: {
-    background: palette.white,
-    foreground: palette.white,
+    background: baseTextColors.white,
+    foreground: baseTextColors.white,
   },
 
   screen: {
@@ -285,43 +341,44 @@ const theme: ITheme = {
   },
 
   spacing: {
-    xxl: Math.floor((base / 8) * 24),
-    xl: Math.floor((base / 8) * 16),
-    lg: Math.floor((base / 8) * 12),
-    md: base,
-    sm: Math.floor((base / 8) * 6),
-    xs: Math.floor((base / 8) * 4),
-    xxs: Math.floor((base / 8) * 2),
+    xxl: getBase(4), // 48
+    xl: getBase(3), // 32
+    lg: getBase(3 / 2), // 24
+    md: baseSize, // 16
+    sm: getBase(3 / 4), // 12
+    xs: getBase(1 / 2), // 8
+    xxs: getBase(1 / 4), // 4
   },
 
   boxShadow: {
-    base: {
-      offset: {
-        x: 0,
-        y: 0,
-      },
-      blur: 12,
-      color: palette.black,
-      spread: 0,
-      inset: false,
-      opacity: 0.16,
+    base: baseShadow,
+    1: {
+      ...baseShadow,
+      shadowOpacity: 0.12,
+      shadowRadius: getBase(1 / 4),
+    },
+    2: baseShadow,
+    3: {
+      ...baseShadow,
+      shadowOpacity: 0.24,
+      shadowRadius: getBase(3 / 4),
     },
   },
 
   textShadow: {
     base: {
-      offset: {
-        x: 0,
-        y: 0,
+      textShadowColor: baseTextColors.black,
+      textShadowOffset: {
+        width: 0,
+        height: 0,
       },
-      blur: 12,
-      color: palette.black,
+      textShadowRadius: 12,
     },
   },
 
   border: {
     base: {
-      borderColor: palette.grey.base,
+      borderColor: baseColors.grey.base,
       borderRadius: 2,
       borderStyle: "solid",
       borderWidth: 1,
@@ -329,83 +386,32 @@ const theme: ITheme = {
   },
 
   font: {
-    base: {
-      color: palette.black,
-      secondary: palette.grey.base,
-      inverse: palette.white,
-      fontFamily,
-      textDecoration: {
-        textDecorationLine: "none",
-        textDecorationStyle: "solid",
-        textDecorationColor: palette.black,
-      },
-      textAlign: "auto",
-      fontStyle: "normal",
-      fontWeight: "normal",
-      fontSize: base,
-      letterSpacing: 0,
-      lineHeight: 1.15,
-      textTransform: "none",
-    },
-    lg: { fontSize: Math.floor((base / 8) * 9) },
-    md: {},
-    sm: { fontSize: Math.floor((base / 8) * 6) },
+    base: baseFont,
+    lg: { ...baseFont, fontSize: getBase(9 / 8) },
+    md: baseFont,
+    sm: { ...baseFont, fontSize: getBase(3 / 4) },
   },
 
   heading: {
-    base: {
-      color: palette.primary.base,
-      secondary: palette.primary[4],
-      inverse: palette.white,
-      fontFamily,
-      textDecoration: {
-        textDecorationLine: "none",
-        textDecorationStyle: "solid",
-        textDecorationColor: palette.primary.base,
-      },
-      textAlign: "auto",
-      fontStyle: "normal",
-      fontWeight: "bold",
-      fontSize: base,
-      letterSpacing: 0,
-      lineHeight: 1.15,
-      textTransform: "none",
-    },
-    "1": { fontSize: Math.floor((base / 8) * 19) },
-    "2": { fontSize: Math.floor((base / 8) * 15) },
-    "3": { fontSize: Math.floor((base / 8) * 12) },
-    "4": { fontSize: Math.floor((base / 8) * 10) },
-    "5": { fontSize: Math.floor((base / 8) * 9) },
-    "6": { fontSize: base },
+    base: baseHeading,
+    "1": { ...baseHeading, fontSize: getBase(16 / 8) },
+    "2": baseHeading,
+    "3": { ...baseHeading, fontSize: getBase(12 / 8) },
+    "4": { ...baseHeading, fontSize: getBase(10 / 8) },
+    "5": { ...baseHeading, fontSize: getBase(9 / 8) },
+    "6": { ...baseHeading, fontSize: baseSize },
   },
 
   link: {
-    base: {
-      color: palette.primary.base,
-      secondary: palette.primary[4],
-      inverse: palette.white,
-      fontFamily,
-      textDecoration: {
-        textDecorationLine: "none",
-        textDecorationStyle: "solid",
-        textDecorationColor: palette.primary.base,
-      },
-      textAlign: "auto",
-      fontStyle: "normal",
-      fontWeight: "normal",
-      fontSize: base,
-      letterSpacing: 0,
-      lineHeight: 1.15,
-      textTransform: "none",
-    },
-    hover: { color: palette.primary[4] },
-    focus: { color: palette.primary[6] },
-    active: { color: palette.primary[6] },
+    base: baseLink,
+    hover: { ...baseLink, color: baseColors.primary[4] },
+    focus: { ...baseLink, color: baseColors.primary[6] },
+    active: { ...baseLink, color: baseColors.primary[6] },
   },
 
-  input: {
+  /* input: {
     base: {
-      height: Math.floor((base / 8) * 18),
+      height: getBase(9 / 4),
       border: {
         borderColor: "transparent",
         borderRadius: 2,
@@ -413,28 +419,28 @@ const theme: ITheme = {
         borderWidth: 0,
       },
       font: {
-        color: palette.black,
-        secondary: palette.grey.base,
-        inverse: palette.white,
-        fontFamily,
+        color: baseColors.black,
+        secondary: baseColors.grey.base,
+        inverse: baseColors.white,
+        fontFamily: baseFontFamily,
         textDecoration: {
           textDecorationLine: "none",
           textDecorationStyle: "solid",
-          textDecorationColor: palette.black,
+          textDecorationColor: baseColors.black,
         },
         textAlign: "auto",
         fontStyle: "normal",
         fontWeight: "normal",
-        fontSize: base,
+        fontSize: baseSize,
         letterSpacing: 0,
         lineHeight: 1.15,
         textTransform: "none",
       },
     },
-    lg: { height: Math.floor((base / 8) * 21) },
+    lg: { height: getBase(21 / 8) },
     md: {},
-    sm: { height: Math.floor((base / 8) * 16) },
-  },
+    sm: { height: getBase(2) },
+  }, */
 
   ease: {
     in: "cubic-bezier(0.55, 0.055, 0.675, 0.19)",
@@ -442,7 +448,8 @@ const theme: ITheme = {
     inOut: "cubic-bezier(0.645, 0.045, 0.355, 1)",
   },
 
-  ...palette,
+  ...baseTextColors,
+  palette: baseColors,
 };
 
 export default theme;

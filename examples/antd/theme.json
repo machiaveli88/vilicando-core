@@ -1,9 +1,0 @@
-{
-  "primary": { "base": "#00bcd4" },
-  "secondary": { "base": "#9c27b0" },
-  "heading": { "base": { "color": "#00bcd4" } },
-  "antd": {
-    "CUSTOM_ANTD_VAR": "=>antd/lib/style/themes/default.less",
-    "CUSTOM_ANTD_COLOR": "=>antd/lib/style/themes/colors.less"
-  }
-}

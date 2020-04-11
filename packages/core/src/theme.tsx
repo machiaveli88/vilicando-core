@@ -1,6 +1,7 @@
 import React from "react";
 import {
   themeController as _themeController,
+  TFont,
   TThemeIn,
   IThemeController,
   IThemeProvider,
@@ -12,12 +13,32 @@ export * from "vilicando-theme";
 const parsePx = (val: string | number) =>
   typeof val === "number" ? `${val}px` : val;
 
+const getFont = (theme: TFont) => `
+  color: ${theme.color};
+  font-family: ${theme.fontFamily};
+  font-size: ${parsePx(theme.fontSize)};
+  font-style: ${theme.fontStyle};
+  font-weight: ${theme.fontWeight};
+  text-align: ${theme.textAlign};
+  text-decoration-line: ${theme.textDecorationLine};
+  text-decoration-style: ${theme.textDecorationStyle};
+  text-decoration-color: ${theme.textDecorationColor};
+  text-transform: ${theme.textTransform};
+  letter-spacing: ${parsePx(theme.letterSpacing)};
+  line-height: ${theme.lineHeight};
+`;
+
 export function themeController<T>(
   nameOrVars?: string | TThemeIn<T>,
   vars?: TThemeIn<T>
 ): IThemeController<T> {
-  const tcVars = _themeController(nameOrVars, vars);
-  const { defaultTheme, ThemeProvider, useTheme, useThemeContext } = tcVars;
+  const {
+    defaultTheme,
+    ThemeProvider,
+    useTheme,
+    useThemeContext,
+    ...rest
+  } = _themeController(nameOrVars, vars);
 
   function CoreThemeProvider(props: IThemeProvider) {
     const { theme: _theme, setTheme: _setTheme } = props;
@@ -41,6 +62,7 @@ export function themeController<T>(
                 }
                 body {
                   background-color: ${themeVars.app.background};
+                  ${getFont(themeVars.font.base)}
                 }
                 #__next {
                   width: 100%;
@@ -52,46 +74,38 @@ export function themeController<T>(
                 #__next > * {
                   flex-grow: 1;
                 }
-                h1,
-                h2,
-                h3,
-                h4,
-                h5,
-                h6 {
-                  color: ${themeVars.heading.base.color};
-                }
                 h1 {
-                  font-size: ${parsePx(themeVars.heading[1].fontSize)};
+                  ${getFont(themeVars.heading[1])}
                 }
                 h2 {
-                  font-size: ${parsePx(themeVars.heading[2].fontSize)};
+                  ${getFont(themeVars.heading[2])}
                 }
                 h3 {
-                  font-size: ${parsePx(themeVars.heading[3].fontSize)};
+                  ${getFont(themeVars.heading[3])}
                 }
                 h4 {
-                  font-size: ${parsePx(themeVars.heading[4].fontSize)};
+                  ${getFont(themeVars.heading[4])}
                 }
                 h5 {
-                  font-size: ${parsePx(themeVars.heading[5].fontSize)};
+                  ${getFont(themeVars.heading[5])}
                 }
                 h6 {
-                  font-size: ${parsePx(themeVars.heading[6].fontSize)};
+                  ${getFont(themeVars.heading[6])}
                 }
                 a {
-                  color: ${themeVars.link.base.color};
-                  text-decoration: ${themeVars.link.base.textDecoration.toString()};
+                  ${getFont(themeVars.link.base)}
                 }
                 a:hover {
-                  color: ${themeVars.link.hover.color};
-                  text-decoration: ${themeVars.link.hover.textDecoration.toString()};
+                  ${getFont(themeVars.link.hover)}
                 }
                 a:active {
-                  color: ${themeVars.link.active.color};
-                  text-decoration: ${themeVars.link.active.textDecoration.toString()};
+                  ${getFont(themeVars.link.active)}
+                }
+                a:focus {
+                  ${getFont(themeVars.link.focus)}
                 }
                 code {
-                  background-color: ${themeVars.primary[1]};
+                  background-color: ${themeVars.palette.primary[1]};
                   padding-left: ${themeVars.spacing.xxs};
                   padding-right: ${themeVars.spacing.xxs};
                 }
@@ -108,5 +122,11 @@ export function themeController<T>(
     );
   }
 
-  return { ...tcVars, ThemeProvider: CoreThemeProvider };
+  return {
+    defaultTheme,
+    useTheme,
+    useThemeContext,
+    ...rest,
+    ThemeProvider: CoreThemeProvider,
+  };
 }

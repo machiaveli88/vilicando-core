@@ -47,8 +47,8 @@ export const pwa = async ({ "--skip": skip = false }) => {
         short_name,
         description,
         display: "standalone",
-        // background_color: theme?.app?.logo?.background || theme?.primary?.base,
-        // theme_color: theme?.app?.background || theme?.primary?.base,
+        // background_color: theme?.app?.logo?.background || theme?.palette.primary?.base,
+        // theme_color: theme?.app?.background || theme?.palette.primary?.base,
         ...manifest,
       };
       writeFileSync(manifestPath, JSON.stringify(data), "utf8");

@@ -33,7 +33,7 @@ function useStyles() {
       marginBottom: theme.spacing.md,
     },
     link: {
-      color: theme.secondary.base,
+      color: theme.palette.secondary.base,
     },
   });
 }

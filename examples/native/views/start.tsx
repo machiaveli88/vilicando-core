@@ -32,10 +32,10 @@ function useStyles() {
       alignItems: "center",
       flexGrow: 1,
       justifyContent: "center",
-      backgroundColor: theme.primary[1],
+      backgroundColor: theme.palette.primary[1],
     },
     link: {
-      color: theme.secondary.base,
+      color: theme.palette.secondary.base,
     },
     textContainer: {
       alignItems: "center",
@@ -44,13 +44,13 @@ function useStyles() {
     header: {
       alignItems: "center",
       fontSize: theme.heading[1].fontSize,
-      color: theme.primary.base,
+      color: theme.palette.primary.base,
       marginBottom: theme.spacing.xl,
     },
     text: {
       alignItems: "center",
       fontSize: theme.font.base.fontSize,
-      color: theme.grey.base,
+      color: theme.palette.grey.base,
       marginBottom: theme.spacing.md,
     },
   });

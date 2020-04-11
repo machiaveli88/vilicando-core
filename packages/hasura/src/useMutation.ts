@@ -50,7 +50,7 @@ export default function useMutation<
   (
     item: any,
     options?: MutationFunctionOptions<IData, IVariables>
-  ) => Promise<ExecutionResult<IData>>,
+  ) => Promise<ExecutionResult>,
   MutationResult<IData>
 ] {
   const [update, result] = _useMutation<IData, IVariables>(document, options);
