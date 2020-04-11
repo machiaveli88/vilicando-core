@@ -372,7 +372,7 @@ const theme: TThemeOut = {
         width: 0,
         height: 0,
       },
-      textShadowRadius: 12,
+      textShadowRadius: 2,
     },
   },
 

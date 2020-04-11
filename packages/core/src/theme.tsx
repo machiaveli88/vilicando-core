@@ -13,19 +13,19 @@ export * from "vilicando-theme";
 const parsePx = (val: string | number) =>
   typeof val === "number" ? `${val}px` : val;
 
-const getFont = (theme: TFont) => `
-  color: ${theme.color};
-  font-family: ${theme.fontFamily};
-  font-size: ${parsePx(theme.fontSize)};
-  font-style: ${theme.fontStyle};
-  font-weight: ${theme.fontWeight};
-  text-align: ${theme.textAlign};
-  text-decoration-line: ${theme.textDecorationLine};
-  text-decoration-style: ${theme.textDecorationStyle};
-  text-decoration-color: ${theme.textDecorationColor};
-  text-transform: ${theme.textTransform};
-  letter-spacing: ${parsePx(theme.letterSpacing)};
-  line-height: ${theme.lineHeight};
+const getFont = (font: TFont) => `
+  color: ${font.color};
+  font-family: ${font.fontFamily};
+  font-size: ${parsePx(font.fontSize)};
+  font-style: ${font.fontStyle};
+  font-weight: ${font.fontWeight};
+  text-align: ${font.textAlign};
+  text-decoration-line: ${font.textDecorationLine};
+  text-decoration-style: ${font.textDecorationStyle};
+  text-decoration-color: ${font.textDecorationColor};
+  text-transform: ${font.textTransform};
+  letter-spacing: ${parsePx(font.letterSpacing)};
+  line-height: ${font.lineHeight};
 `;
 
 export function themeController<T>(

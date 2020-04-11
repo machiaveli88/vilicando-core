@@ -17,12 +17,11 @@ function getThemeValues<T>(
   values: { [k: string]: T },
   defaultValues: { [k: string]: Required<T> },
   toString?: (val: T) => string
-): { base: Required<T>; [k: string]: Required<T> } {
-  const base = merge({}, defaultValues.base, values?.base);
-  const _values = { base };
+): { [k: string]: Required<T> } {
+  const _values = {};
 
   Object.keys(merge({}, values, defaultValues)).forEach((key) => {
-    _values[key] = merge({}, base, values?.[key]);
+    _values[key] = merge({}, defaultValues?.[key], values?.[key]);
     if (toString) _values[key].toString = () => toString(_values[key]);
   });
 
