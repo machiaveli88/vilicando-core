@@ -20,7 +20,7 @@
     "tinycolor2": "1.4.1"
   },
   "devDependencies": {
-    "@types/react-native": "0.62.1"
+    "@types/react-native": "0.62.2"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",
