@@ -14,7 +14,9 @@ const handler: Handler = (
   const response: HelloResponse = {
     statusCode: 200,
     body: JSON.stringify({
-      msg: `Hello world ${Math.floor(Math.random() * 10)}`,
+      msg: `Hello ${process.env.NAME || "world"} ${Math.floor(
+        Math.random() * 10
+      )}`,
       params,
     }),
   };
