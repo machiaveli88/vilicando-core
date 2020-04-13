@@ -30,8 +30,8 @@ const getError = (err: ExecException) => {
 export const lambda = async ({
   "--src": srcDir = LAMBDA_SRC || "functions",
   "---dest": destDir = LAMBDA_DEST || ".lambda",
-  "--port": port = LAMBDA_PORT || 9000,
-  "--timeout": timeout = LAMBDA_TIMEOUT || 10,
+  "--port": port = parseInt(LAMBDA_PORT) || 9000,
+  "--timeout": timeout = parseInt(LAMBDA_TIMEOUT) || 10,
   "--url": urlPrefix = LAMBDA_URL || ".netlify/functions",
   "--build": buildOnly = false,
 }) => {
