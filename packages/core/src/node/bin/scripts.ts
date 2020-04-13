@@ -2,9 +2,16 @@
 import { execSync } from "child_process";
 import { join } from "path";
 import { copyFiles, getEnv } from "../utils";
+import chalk from "chalk";
 
 // read env
 const { PORT } = getEnv();
+const env = getEnv();
+const envKeys = Object.keys(env);
+if (envKeys.length) {
+  console.log(chalk.grey("  env-file detected!"));
+  envKeys.forEach((e) => console.log(`  [${chalk.grey(e)}]: ${env[e]}`));
+}
 
 const buildDir = join(process.cwd(), ".next");
 const serverSrc = join(__dirname, "../server.js");

@@ -5,6 +5,15 @@ import { join } from "path";
 import chalk from "chalk";
 import { removeSync, copySync, existsSync, watch } from "fs-extra";
 import { exec, execSync, ExecException } from "child_process";
+import { getEnv } from "../../utils";
+
+const {
+  LAMBDA_SRC,
+  LAMBDA_DEST,
+  LAMBDA_PORT,
+  LAMBDA_TIMEOUT,
+  LAMBDA_URL,
+} = getEnv();
 
 const getError = (err: ExecException) => {
   if (err) {
@@ -19,11 +28,11 @@ const getError = (err: ExecException) => {
 // todo: env-Vars ermöglichen!
 
 export const lambda = async ({
-  "--src": srcDir = "functions",
-  "---dest": destDir = ".lambda",
-  "--port": port = 9000,
-  "--timeout": timeout = 10,
-  "--url": urlPrefix = ".netlify/functions",
+  "--src": srcDir = LAMBDA_SRC || "functions",
+  "---dest": destDir = LAMBDA_DEST || ".lambda",
+  "--port": port = LAMBDA_PORT || 9000,
+  "--timeout": timeout = LAMBDA_TIMEOUT || 10,
+  "--url": urlPrefix = LAMBDA_URL || ".netlify/functions",
   "--build": buildOnly = false,
 }) => {
   const srcPath = join(process.cwd(), srcDir);
