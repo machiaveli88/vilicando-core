@@ -1,6 +1,7 @@
 {
+  "extends": "vilicando-core/tsconfig.extern.json",
   "compilerOptions": {
-    "skipLibCheck": true,
+    "noEmit": false,
     "module": "commonjs",
     "target": "es6",
     "outDir": "../.lambda",
