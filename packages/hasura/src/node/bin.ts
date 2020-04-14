@@ -6,11 +6,11 @@ import { generate as _generate } from "@graphql-codegen/cli";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 
 // read env
-const { GRAPHQL_HTTP, GRAPHQL_SECRET } = getEnv();
+const { HASURA_HTTP, HASURA_SECRET } = getEnv();
 
 const codegen = async ({
-  "--url": url = GRAPHQL_HTTP,
-  "--secret": secret = GRAPHQL_SECRET,
+  "--url": url = HASURA_HTTP,
+  "--secret": secret = HASURA_SECRET,
   "--watch": watch = false,
 }) =>
   !url

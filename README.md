@@ -28,16 +28,16 @@ Based on [hasura](https://hasura.io).
 See example for more usage.
 Please set the following .env-vars to enable full hasura/graphql support:
 
-- `GRAPHQL_HTTP:` url for graphql
-- `GRAPHQL_WS:` url for websocket
-- `GRAPHQL_SECRET:` hasura admin secret
+- `HASURA_HTTP:` url for graphql
+- `HASURA_WS:` url for websocket
+- `HASURA_SECRET:` hasura admin secret
 
 ## Environment Variables
 
 - `EXTENDS` - vilicando-core - extend your env
-- `GRAPHQL_HTTP:` - vilicando-hasura - url for graphql
-- `GRAPHQL_WS:` - vilicando-hasura - url for websocket
-- `GRAPHQL_SECRET:` - vilicando-hasura - hasura admin secret
+- `HASURA_HTTP:` - vilicando-hasura - url for graphql
+- `HASURA_WS:` - vilicando-hasura - url for websocket
+- `HASURA_SECRET:` - vilicando-hasura - hasura admin secret
 
 ## Roadmap
 

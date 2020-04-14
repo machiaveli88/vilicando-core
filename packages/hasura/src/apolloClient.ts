@@ -17,14 +17,14 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
   // use it to extract auth headers (ctx.req) or similar.
   const ssrMode = ctx ? Boolean(ctx) : typeof window === "undefined"; // Disables forceFetch on the server (so queries are only run once)
   const headers = {
-    "x-hasura-admin-secret": process.env.GRAPHQL_SECRET,
+    "x-hasura-admin-secret": process.env.HASURA_SECRET,
   };
-  const http = !!process.env.GRAPHQL_HTTP && {
-    uri: process.env.GRAPHQL_HTTP,
+  const http = !!process.env.HASURA_HTTP && {
+    uri: process.env.HASURA_HTTP,
     headers,
   };
-  const ws = !!process.env.GRAPHQL_WS && {
-    uri: process.env.GRAPHQL_WS,
+  const ws = !!process.env.HASURA_WS && {
+    uri: process.env.HASURA_WS,
     options: {
       reconnect: true,
       connectionParams: {

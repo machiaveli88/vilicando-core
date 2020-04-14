@@ -9,7 +9,7 @@ const { PORT } = getEnv();
 const env = getEnv();
 const envKeys = Object.keys(env);
 if (envKeys.length) {
-  console.log(chalk.grey("  env-file detected!"));
+  console.info(chalk.grey("  env-file detected!"));
   envKeys.forEach((e) => console.log(`  [${chalk.grey(e)}]: ${env[e]}`));
 }
 
