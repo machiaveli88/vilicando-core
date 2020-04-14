@@ -1,9 +1,64 @@
 import React from "react";
+import { useTheme } from "@theme";
+import fetch from "isomorphic-unfetch";
 
 function StartPage() {
+  const theme = useTheme();
+  const [content, setContent] = React.useState("Loading...");
+
+  const getChuck = React.useCallback(async () => {
+    setContent("Loading...");
+
+    try {
+      const response = await fetch(
+        "http://localhost:9000/.netlify/functions/chuck"
+      );
+
+      if (response.ok) {
+        const { msg } = await response.json();
+        setContent(msg);
+      } else throw Error("Can't reach enpoint!");
+    } catch (error) {
+      console.error(
+        "You have an error in your code or there are Network issues.",
+        error
+      );
+
+      setContent("No content found. Maybe you forgot to run 'yarn lambda'?");
+    }
+  }, []);
+
+  React.useEffect(() => {
+    getChuck();
+  }, []);
+
   return (
     <>
-      <h1>Hello World</h1>
+      <h1>Fetch Chuck Norris sayings</h1>
+      <div>
+        {content}
+        <button onClick={getChuck}>run again</button>
+        <style jsx>
+          {`
+            div {
+              background-color: ${theme.palette.primary[1]};
+              padding: ${theme.spacing.md}px;
+              text-align: center;
+              width: 100%;
+              position: relative;
+            }
+            button {
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              background-color: ${theme.palette.primary.base};
+              border-color: ${theme.palette.primary.base};
+              color: ${theme.palette.primary.text};
+            }
+          `}
+        </style>
+      </div>
+      <h3>How it works?</h3>
       <p>
         Use <code>vilicando-core lambda</code> to run lambda-functions from your
         functions-directory.

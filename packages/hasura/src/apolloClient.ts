@@ -16,9 +16,11 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
   // The `ctx` (NextPageContext) will only be present on the server.
   // use it to extract auth headers (ctx.req) or similar.
   const ssrMode = ctx ? Boolean(ctx) : typeof window === "undefined"; // Disables forceFetch on the server (so queries are only run once)
-  const headers = {
-    "x-hasura-admin-secret": process.env.HASURA_SECRET,
-  };
+  const headers = process.env.HASURA_SECRET
+    ? {
+        "x-hasura-admin-secret": process.env.HASURA_SECRET,
+      }
+    : {};
   const http = !!process.env.HASURA_HTTP && {
     uri: process.env.HASURA_HTTP,
     headers,
@@ -51,6 +53,14 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
         ]
       : [errorLink]
   );
+
+  const authMiddleware = new ApolloLink((operation, forward) => {
+    // add the authorization to the headers
+    operation.setContext({
+      headers: {
+        authorization: getToken()
+      }
+    });
 
   if (!ssrMode && ws)
     link = split(
