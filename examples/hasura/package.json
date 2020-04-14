@@ -14,7 +14,7 @@
     "up": "vilicando-core up"
   },
   "dependencies": {
-    "knex": "^0.15.2",
+    "knex": "^0.20.14",
     "pg": "^7.4.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
