@@ -54,14 +54,6 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
       : [errorLink]
   );
 
-  const authMiddleware = new ApolloLink((operation, forward) => {
-    // add the authorization to the headers
-    operation.setContext({
-      headers: {
-        authorization: getToken()
-      }
-    });
-
   if (!ssrMode && ws)
     link = split(
       ({ query }) => {
