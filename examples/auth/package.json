@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "vilicando-example-auth",
+  "version": "1.0.0-alpha.16",
+  "license": "ISC",
+  "scripts": {
+    "build": "vilicando-core build",
+    "codegen": "vilicando-hasura codegen --watch",
+    "deploy": "npm run build && npm run export",
+    "dev": "yarn codegen & vilicando-core",
+    "export": "vilicando-core export",
+    "lambda": "vilicando-core lambda",
+    "start": "vilicando-core start",
+    "up": "vilicando-core up"
+  },
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.47",
+    "aws-lambda": "^1.0.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "vilicando-core": "1.0.0-alpha.16"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
+  }
+}

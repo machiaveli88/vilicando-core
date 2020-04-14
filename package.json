@@ -7,6 +7,7 @@
     "build:core": "cd packages/core && yarn build",
     "dev": "yarn build:core && lerna run build:watch --stream --parallel",
     "example:antd": "cd examples/antd && yarn dev",
+    "example:auth": "cd examples/auth && yarn dev",
     "example:basic": "cd examples/basic && yarn dev",
     "example:env": "cd examples/env && yarn dev",
     "example:fela": "cd examples/fela && yarn dev",

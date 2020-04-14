@@ -37,6 +37,7 @@ export default ({ ssr = true }: IWithHasura = {}) => (PageComponent: any) => {
       PageComponent.displayName || PageComponent.name || "Component"
     })`;
 
+  // todo: add auth-ssr-support like https://github.com/hasura/graphql-engine/blob/master/community/sample-apps/nextjs-8-serverless/with-apollo-jwt/app/utils/auth.js
   WithHasura.getInitialProps = getInitialProps(
     PageComponent.getInitialProps,
     ssr
