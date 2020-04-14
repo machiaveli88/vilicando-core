@@ -9,10 +9,11 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  uuid: any;
   timestamptz: any;
+  uuid: any;
 };
 
+/** expression to compare columns of type Boolean. All fields are combined with logical 'AND'. */
 export type TBooleanComparisonExp = {
   _eq?: Maybe<Scalars["Boolean"]>;
   _gt?: Maybe<Scalars["Boolean"]>;
@@ -25,411 +26,20 @@ export type TBooleanComparisonExp = {
   _nin?: Maybe<Array<Scalars["Boolean"]>>;
 };
 
-export type TGroup = {
-  __typename?: "group";
-  id: Scalars["uuid"];
-  name: Scalars["String"];
-  users: Array<TGroupUsers>;
-  users_aggregate: TGroupUsersAggregate;
+/** expression to compare columns of type Int. All fields are combined with logical 'AND'. */
+export type TIntComparisonExp = {
+  _eq?: Maybe<Scalars["Int"]>;
+  _gt?: Maybe<Scalars["Int"]>;
+  _gte?: Maybe<Scalars["Int"]>;
+  _in?: Maybe<Array<Scalars["Int"]>>;
+  _is_null?: Maybe<Scalars["Boolean"]>;
+  _lt?: Maybe<Scalars["Int"]>;
+  _lte?: Maybe<Scalars["Int"]>;
+  _neq?: Maybe<Scalars["Int"]>;
+  _nin?: Maybe<Array<Scalars["Int"]>>;
 };
 
-export type TGroupUsersArgs = {
-  distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupUsersOrderBy>>;
-  where?: Maybe<TGroupUsersBoolExp>;
-};
-
-export type TGroupUsersAggregateArgs = {
-  distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupUsersOrderBy>>;
-  where?: Maybe<TGroupUsersBoolExp>;
-};
-
-export type TGroupAggregate = {
-  __typename?: "group_aggregate";
-  aggregate?: Maybe<TGroupAggregateFields>;
-  nodes: Array<TGroup>;
-};
-
-export type TGroupAggregateFields = {
-  __typename?: "group_aggregate_fields";
-  count?: Maybe<Scalars["Int"]>;
-  max?: Maybe<TGroupMaxFields>;
-  min?: Maybe<TGroupMinFields>;
-};
-
-export type TGroupAggregateFieldsCountArgs = {
-  columns?: Maybe<Array<TGroupSelectColumn>>;
-  distinct?: Maybe<Scalars["Boolean"]>;
-};
-
-export type TGroupAggregateOrderBy = {
-  count?: Maybe<TOrderBy>;
-  max?: Maybe<TGroupMaxOrderBy>;
-  min?: Maybe<TGroupMinOrderBy>;
-};
-
-export type TGroupArrRelInsertInput = {
-  data: Array<TGroupInsertInput>;
-  on_conflict?: Maybe<TGroupOnConflict>;
-};
-
-export type TGroupBoolExp = {
-  _and?: Maybe<Array<Maybe<TGroupBoolExp>>>;
-  _not?: Maybe<TGroupBoolExp>;
-  _or?: Maybe<Array<Maybe<TGroupBoolExp>>>;
-  id?: Maybe<TUuidComparisonExp>;
-  name?: Maybe<TStringComparisonExp>;
-  users?: Maybe<TGroupUsersBoolExp>;
-};
-
-export enum TGroupConstraint {
-  GroupPkey = "group_pkey",
-}
-
-export type TGroupInsertInput = {
-  id?: Maybe<Scalars["uuid"]>;
-  name?: Maybe<Scalars["String"]>;
-  users?: Maybe<TGroupUsersArrRelInsertInput>;
-};
-
-export type TGroupMaxFields = {
-  __typename?: "group_max_fields";
-  name?: Maybe<Scalars["String"]>;
-};
-
-export type TGroupMaxOrderBy = {
-  name?: Maybe<TOrderBy>;
-};
-
-export type TGroupMinFields = {
-  __typename?: "group_min_fields";
-  name?: Maybe<Scalars["String"]>;
-};
-
-export type TGroupMinOrderBy = {
-  name?: Maybe<TOrderBy>;
-};
-
-export type TGroupMutationResponse = {
-  __typename?: "group_mutation_response";
-  affected_rows: Scalars["Int"];
-  returning: Array<TGroup>;
-};
-
-export type TGroupObjRelInsertInput = {
-  data: TGroupInsertInput;
-  on_conflict?: Maybe<TGroupOnConflict>;
-};
-
-export type TGroupOnConflict = {
-  constraint: TGroupConstraint;
-  update_columns: Array<TGroupUpdateColumn>;
-  where?: Maybe<TGroupBoolExp>;
-};
-
-export type TGroupOrderBy = {
-  id?: Maybe<TOrderBy>;
-  name?: Maybe<TOrderBy>;
-  users_aggregate?: Maybe<TGroupUsersAggregateOrderBy>;
-};
-
-export enum TGroupSelectColumn {
-  Id = "id",
-  Name = "name",
-}
-
-export type TGroupSetInput = {
-  id?: Maybe<Scalars["uuid"]>;
-  name?: Maybe<Scalars["String"]>;
-};
-
-export enum TGroupUpdateColumn {
-  Id = "id",
-  Name = "name",
-}
-
-export type TGroupUsers = {
-  __typename?: "group_users";
-  group: TGroup;
-  group_id: Scalars["uuid"];
-  id: Scalars["uuid"];
-  user: TUser;
-  user_id: Scalars["uuid"];
-};
-
-export type TGroupUsersAggregate = {
-  __typename?: "group_users_aggregate";
-  aggregate?: Maybe<TGroupUsersAggregateFields>;
-  nodes: Array<TGroupUsers>;
-};
-
-export type TGroupUsersAggregateFields = {
-  __typename?: "group_users_aggregate_fields";
-  count?: Maybe<Scalars["Int"]>;
-};
-
-export type TGroupUsersAggregateFieldsCountArgs = {
-  columns?: Maybe<Array<TGroupUsersSelectColumn>>;
-  distinct?: Maybe<Scalars["Boolean"]>;
-};
-
-export type TGroupUsersAggregateOrderBy = {
-  count?: Maybe<TOrderBy>;
-};
-
-export type TGroupUsersArrRelInsertInput = {
-  data: Array<TGroupUsersInsertInput>;
-  on_conflict?: Maybe<TGroupUsersOnConflict>;
-};
-
-export type TGroupUsersBoolExp = {
-  _and?: Maybe<Array<Maybe<TGroupUsersBoolExp>>>;
-  _not?: Maybe<TGroupUsersBoolExp>;
-  _or?: Maybe<Array<Maybe<TGroupUsersBoolExp>>>;
-  group?: Maybe<TGroupBoolExp>;
-  group_id?: Maybe<TUuidComparisonExp>;
-  id?: Maybe<TUuidComparisonExp>;
-  user?: Maybe<TUserBoolExp>;
-  user_id?: Maybe<TUuidComparisonExp>;
-};
-
-export enum TGroupUsersConstraint {
-  GroupUsersPkey = "group_users_pkey",
-}
-
-export type TGroupUsersInsertInput = {
-  group?: Maybe<TGroupObjRelInsertInput>;
-  group_id?: Maybe<Scalars["uuid"]>;
-  id?: Maybe<Scalars["uuid"]>;
-  user?: Maybe<TUserObjRelInsertInput>;
-  user_id?: Maybe<Scalars["uuid"]>;
-};
-
-export type TGroupUsersMutationResponse = {
-  __typename?: "group_users_mutation_response";
-  affected_rows: Scalars["Int"];
-  returning: Array<TGroupUsers>;
-};
-
-export type TGroupUsersObjRelInsertInput = {
-  data: TGroupUsersInsertInput;
-  on_conflict?: Maybe<TGroupUsersOnConflict>;
-};
-
-export type TGroupUsersOnConflict = {
-  constraint: TGroupUsersConstraint;
-  update_columns: Array<TGroupUsersUpdateColumn>;
-  where?: Maybe<TGroupUsersBoolExp>;
-};
-
-export type TGroupUsersOrderBy = {
-  group?: Maybe<TGroupOrderBy>;
-  group_id?: Maybe<TOrderBy>;
-  id?: Maybe<TOrderBy>;
-  user?: Maybe<TUserOrderBy>;
-  user_id?: Maybe<TOrderBy>;
-};
-
-export enum TGroupUsersSelectColumn {
-  GroupId = "group_id",
-  Id = "id",
-  UserId = "user_id",
-}
-
-export type TGroupUsersSetInput = {
-  group_id?: Maybe<Scalars["uuid"]>;
-  id?: Maybe<Scalars["uuid"]>;
-  user_id?: Maybe<Scalars["uuid"]>;
-};
-
-export enum TGroupUsersUpdateColumn {
-  GroupId = "group_id",
-  Id = "id",
-  UserId = "user_id",
-}
-
-export type TMutationRoot = {
-  __typename?: "mutation_root";
-  delete_group?: Maybe<TGroupMutationResponse>;
-  delete_group_users?: Maybe<TGroupUsersMutationResponse>;
-  delete_task?: Maybe<TTaskMutationResponse>;
-  delete_user?: Maybe<TUserMutationResponse>;
-  insert_group?: Maybe<TGroupMutationResponse>;
-  insert_group_users?: Maybe<TGroupUsersMutationResponse>;
-  insert_task?: Maybe<TTaskMutationResponse>;
-  insert_user?: Maybe<TUserMutationResponse>;
-  update_group?: Maybe<TGroupMutationResponse>;
-  update_group_users?: Maybe<TGroupUsersMutationResponse>;
-  update_task?: Maybe<TTaskMutationResponse>;
-  update_user?: Maybe<TUserMutationResponse>;
-};
-
-export type TMutationRootDeleteGroupArgs = {
-  where: TGroupBoolExp;
-};
-
-export type TMutationRootDeleteGroupUsersArgs = {
-  where: TGroupUsersBoolExp;
-};
-
-export type TMutationRootDeleteTaskArgs = {
-  where: TTaskBoolExp;
-};
-
-export type TMutationRootDeleteUserArgs = {
-  where: TUserBoolExp;
-};
-
-export type TMutationRootInsertGroupArgs = {
-  objects: Array<TGroupInsertInput>;
-  on_conflict?: Maybe<TGroupOnConflict>;
-};
-
-export type TMutationRootInsertGroupUsersArgs = {
-  objects: Array<TGroupUsersInsertInput>;
-  on_conflict?: Maybe<TGroupUsersOnConflict>;
-};
-
-export type TMutationRootInsertTaskArgs = {
-  objects: Array<TTaskInsertInput>;
-  on_conflict?: Maybe<TTaskOnConflict>;
-};
-
-export type TMutationRootInsertUserArgs = {
-  objects: Array<TUserInsertInput>;
-  on_conflict?: Maybe<TUserOnConflict>;
-};
-
-export type TMutationRootUpdateGroupArgs = {
-  _set?: Maybe<TGroupSetInput>;
-  where: TGroupBoolExp;
-};
-
-export type TMutationRootUpdateGroupUsersArgs = {
-  _set?: Maybe<TGroupUsersSetInput>;
-  where: TGroupUsersBoolExp;
-};
-
-export type TMutationRootUpdateTaskArgs = {
-  _set?: Maybe<TTaskSetInput>;
-  where: TTaskBoolExp;
-};
-
-export type TMutationRootUpdateUserArgs = {
-  _set?: Maybe<TUserSetInput>;
-  where: TUserBoolExp;
-};
-
-export enum TOrderBy {
-  Asc = "asc",
-  AscNullsFirst = "asc_nulls_first",
-  AscNullsLast = "asc_nulls_last",
-  Desc = "desc",
-  DescNullsFirst = "desc_nulls_first",
-  DescNullsLast = "desc_nulls_last",
-}
-
-export type TQueryRoot = {
-  __typename?: "query_root";
-  group: Array<TGroup>;
-  group_aggregate: TGroupAggregate;
-  group_by_pk?: Maybe<TGroup>;
-  group_users: Array<TGroupUsers>;
-  group_users_aggregate: TGroupUsersAggregate;
-  group_users_by_pk?: Maybe<TGroupUsers>;
-  task: Array<TTask>;
-  task_aggregate: TTaskAggregate;
-  task_by_pk?: Maybe<TTask>;
-  user: Array<TUser>;
-  user_aggregate: TUserAggregate;
-  user_by_pk?: Maybe<TUser>;
-};
-
-export type TQueryRootGroupArgs = {
-  distinct_on?: Maybe<Array<TGroupSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupOrderBy>>;
-  where?: Maybe<TGroupBoolExp>;
-};
-
-export type TQueryRootGroupAggregateArgs = {
-  distinct_on?: Maybe<Array<TGroupSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupOrderBy>>;
-  where?: Maybe<TGroupBoolExp>;
-};
-
-export type TQueryRootGroupByPkArgs = {
-  id: Scalars["uuid"];
-};
-
-export type TQueryRootGroupUsersArgs = {
-  distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupUsersOrderBy>>;
-  where?: Maybe<TGroupUsersBoolExp>;
-};
-
-export type TQueryRootGroupUsersAggregateArgs = {
-  distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupUsersOrderBy>>;
-  where?: Maybe<TGroupUsersBoolExp>;
-};
-
-export type TQueryRootGroupUsersByPkArgs = {
-  id: Scalars["uuid"];
-};
-
-export type TQueryRootTaskArgs = {
-  distinct_on?: Maybe<Array<TTaskSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TTaskOrderBy>>;
-  where?: Maybe<TTaskBoolExp>;
-};
-
-export type TQueryRootTaskAggregateArgs = {
-  distinct_on?: Maybe<Array<TTaskSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TTaskOrderBy>>;
-  where?: Maybe<TTaskBoolExp>;
-};
-
-export type TQueryRootTaskByPkArgs = {
-  id: Scalars["uuid"];
-};
-
-export type TQueryRootUserArgs = {
-  distinct_on?: Maybe<Array<TUserSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TUserOrderBy>>;
-  where?: Maybe<TUserBoolExp>;
-};
-
-export type TQueryRootUserAggregateArgs = {
-  distinct_on?: Maybe<Array<TUserSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TUserOrderBy>>;
-  where?: Maybe<TUserBoolExp>;
-};
-
-export type TQueryRootUserByPkArgs = {
-  id: Scalars["uuid"];
-};
-
+/** expression to compare columns of type String. All fields are combined with logical 'AND'. */
 export type TStringComparisonExp = {
   _eq?: Maybe<Scalars["String"]>;
   _gt?: Maybe<Scalars["String"]>;
@@ -448,82 +58,861 @@ export type TStringComparisonExp = {
   _similar?: Maybe<Scalars["String"]>;
 };
 
+/** columns and relationships of "article" */
+export type TArticle = {
+  __typename?: "article";
+  content: Scalars["String"];
+  created_at: Scalars["timestamptz"];
+  id: Scalars["Int"];
+  test?: Maybe<Scalars["String"]>;
+  title: Scalars["String"];
+  user_id: Scalars["uuid"];
+};
+
+/** aggregated selection of "article" */
+export type TArticleAggregate = {
+  __typename?: "article_aggregate";
+  aggregate?: Maybe<TArticleAggregateFields>;
+  nodes: Array<TArticle>;
+};
+
+/** aggregate fields of "article" */
+export type TArticleAggregateFields = {
+  __typename?: "article_aggregate_fields";
+  avg?: Maybe<TArticleAvgFields>;
+  count?: Maybe<Scalars["Int"]>;
+  max?: Maybe<TArticleMaxFields>;
+  min?: Maybe<TArticleMinFields>;
+  stddev?: Maybe<TArticleStddevFields>;
+  stddev_pop?: Maybe<TArticleStddevPopFields>;
+  stddev_samp?: Maybe<TArticleStddevSampFields>;
+  sum?: Maybe<TArticleSumFields>;
+  var_pop?: Maybe<TArticleVarPopFields>;
+  var_samp?: Maybe<TArticleVarSampFields>;
+  variance?: Maybe<TArticleVarianceFields>;
+};
+
+/** aggregate fields of "article" */
+export type TArticleAggregateFieldsCountArgs = {
+  columns?: Maybe<Array<TArticleSelectColumn>>;
+  distinct?: Maybe<Scalars["Boolean"]>;
+};
+
+/** order by aggregate values of table "article" */
+export type TArticleAggregateOrderBy = {
+  avg?: Maybe<TArticleAvgOrderBy>;
+  count?: Maybe<TOrderBy>;
+  max?: Maybe<TArticleMaxOrderBy>;
+  min?: Maybe<TArticleMinOrderBy>;
+  stddev?: Maybe<TArticleStddevOrderBy>;
+  stddev_pop?: Maybe<TArticleStddevPopOrderBy>;
+  stddev_samp?: Maybe<TArticleStddevSampOrderBy>;
+  sum?: Maybe<TArticleSumOrderBy>;
+  var_pop?: Maybe<TArticleVarPopOrderBy>;
+  var_samp?: Maybe<TArticleVarSampOrderBy>;
+  variance?: Maybe<TArticleVarianceOrderBy>;
+};
+
+/** input type for inserting array relation for remote table "article" */
+export type TArticleArrRelInsertInput = {
+  data: Array<TArticleInsertInput>;
+  on_conflict?: Maybe<TArticleOnConflict>;
+};
+
+/** aggregate avg on columns */
+export type TArticleAvgFields = {
+  __typename?: "article_avg_fields";
+  id?: Maybe<Scalars["Float"]>;
+};
+
+/** order by avg() on columns of table "article" */
+export type TArticleAvgOrderBy = {
+  id?: Maybe<TOrderBy>;
+};
+
+/** Boolean expression to filter rows from the table "article". All fields are combined with a logical 'AND'. */
+export type TArticleBoolExp = {
+  _and?: Maybe<Array<Maybe<TArticleBoolExp>>>;
+  _not?: Maybe<TArticleBoolExp>;
+  _or?: Maybe<Array<Maybe<TArticleBoolExp>>>;
+  content?: Maybe<TStringComparisonExp>;
+  created_at?: Maybe<TTimestamptzComparisonExp>;
+  id?: Maybe<TIntComparisonExp>;
+  test?: Maybe<TStringComparisonExp>;
+  title?: Maybe<TStringComparisonExp>;
+  user_id?: Maybe<TUuidComparisonExp>;
+};
+
+/** unique or primary key constraints on table "article" */
+export enum TArticleConstraint {
+  /** unique or primary key constraint */
+  ArticlesPkey = "articles_pkey",
+}
+
+/** input type for incrementing integer columne in table "article" */
+export type TArticleIncInput = {
+  id?: Maybe<Scalars["Int"]>;
+};
+
+/** input type for inserting data into table "article" */
+export type TArticleInsertInput = {
+  content?: Maybe<Scalars["String"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["Int"]>;
+  test?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  user_id?: Maybe<Scalars["uuid"]>;
+};
+
+/** aggregate max on columns */
+export type TArticleMaxFields = {
+  __typename?: "article_max_fields";
+  content?: Maybe<Scalars["String"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["Int"]>;
+  test?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  user_id?: Maybe<Scalars["uuid"]>;
+};
+
+/** order by max() on columns of table "article" */
+export type TArticleMaxOrderBy = {
+  content?: Maybe<TOrderBy>;
+  created_at?: Maybe<TOrderBy>;
+  id?: Maybe<TOrderBy>;
+  test?: Maybe<TOrderBy>;
+  title?: Maybe<TOrderBy>;
+  user_id?: Maybe<TOrderBy>;
+};
+
+/** aggregate min on columns */
+export type TArticleMinFields = {
+  __typename?: "article_min_fields";
+  content?: Maybe<Scalars["String"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["Int"]>;
+  test?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  user_id?: Maybe<Scalars["uuid"]>;
+};
+
+/** order by min() on columns of table "article" */
+export type TArticleMinOrderBy = {
+  content?: Maybe<TOrderBy>;
+  created_at?: Maybe<TOrderBy>;
+  id?: Maybe<TOrderBy>;
+  test?: Maybe<TOrderBy>;
+  title?: Maybe<TOrderBy>;
+  user_id?: Maybe<TOrderBy>;
+};
+
+/** response of any mutation on the table "article" */
+export type TArticleMutationResponse = {
+  __typename?: "article_mutation_response";
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars["Int"];
+  /** data of the affected rows by the mutation */
+  returning: Array<TArticle>;
+};
+
+/** input type for inserting object relation for remote table "article" */
+export type TArticleObjRelInsertInput = {
+  data: TArticleInsertInput;
+  on_conflict?: Maybe<TArticleOnConflict>;
+};
+
+/** on conflict condition type for table "article" */
+export type TArticleOnConflict = {
+  constraint: TArticleConstraint;
+  update_columns: Array<TArticleUpdateColumn>;
+  where?: Maybe<TArticleBoolExp>;
+};
+
+/** ordering options when selecting data from "article" */
+export type TArticleOrderBy = {
+  content?: Maybe<TOrderBy>;
+  created_at?: Maybe<TOrderBy>;
+  id?: Maybe<TOrderBy>;
+  test?: Maybe<TOrderBy>;
+  title?: Maybe<TOrderBy>;
+  user_id?: Maybe<TOrderBy>;
+};
+
+/** primary key columns input for table: "article" */
+export type TArticlePkColumnsInput = {
+  id: Scalars["Int"];
+};
+
+/** select columns of table "article" */
+export enum TArticleSelectColumn {
+  /** column name */
+  Content = "content",
+  /** column name */
+  CreatedAt = "created_at",
+  /** column name */
+  Id = "id",
+  /** column name */
+  Test = "test",
+  /** column name */
+  Title = "title",
+  /** column name */
+  UserId = "user_id",
+}
+
+/** input type for updating data in table "article" */
+export type TArticleSetInput = {
+  content?: Maybe<Scalars["String"]>;
+  created_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["Int"]>;
+  test?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  user_id?: Maybe<Scalars["uuid"]>;
+};
+
+/** aggregate stddev on columns */
+export type TArticleStddevFields = {
+  __typename?: "article_stddev_fields";
+  id?: Maybe<Scalars["Float"]>;
+};
+
+/** order by stddev() on columns of table "article" */
+export type TArticleStddevOrderBy = {
+  id?: Maybe<TOrderBy>;
+};
+
+/** aggregate stddev_pop on columns */
+export type TArticleStddevPopFields = {
+  __typename?: "article_stddev_pop_fields";
+  id?: Maybe<Scalars["Float"]>;
+};
+
+/** order by stddev_pop() on columns of table "article" */
+export type TArticleStddevPopOrderBy = {
+  id?: Maybe<TOrderBy>;
+};
+
+/** aggregate stddev_samp on columns */
+export type TArticleStddevSampFields = {
+  __typename?: "article_stddev_samp_fields";
+  id?: Maybe<Scalars["Float"]>;
+};
+
+/** order by stddev_samp() on columns of table "article" */
+export type TArticleStddevSampOrderBy = {
+  id?: Maybe<TOrderBy>;
+};
+
+/** aggregate sum on columns */
+export type TArticleSumFields = {
+  __typename?: "article_sum_fields";
+  id?: Maybe<Scalars["Int"]>;
+};
+
+/** order by sum() on columns of table "article" */
+export type TArticleSumOrderBy = {
+  id?: Maybe<TOrderBy>;
+};
+
+/** update columns of table "article" */
+export enum TArticleUpdateColumn {
+  /** column name */
+  Content = "content",
+  /** column name */
+  CreatedAt = "created_at",
+  /** column name */
+  Id = "id",
+  /** column name */
+  Test = "test",
+  /** column name */
+  Title = "title",
+  /** column name */
+  UserId = "user_id",
+}
+
+/** aggregate var_pop on columns */
+export type TArticleVarPopFields = {
+  __typename?: "article_var_pop_fields";
+  id?: Maybe<Scalars["Float"]>;
+};
+
+/** order by var_pop() on columns of table "article" */
+export type TArticleVarPopOrderBy = {
+  id?: Maybe<TOrderBy>;
+};
+
+/** aggregate var_samp on columns */
+export type TArticleVarSampFields = {
+  __typename?: "article_var_samp_fields";
+  id?: Maybe<Scalars["Float"]>;
+};
+
+/** order by var_samp() on columns of table "article" */
+export type TArticleVarSampOrderBy = {
+  id?: Maybe<TOrderBy>;
+};
+
+/** aggregate variance on columns */
+export type TArticleVarianceFields = {
+  __typename?: "article_variance_fields";
+  id?: Maybe<Scalars["Float"]>;
+};
+
+/** order by variance() on columns of table "article" */
+export type TArticleVarianceOrderBy = {
+  id?: Maybe<TOrderBy>;
+};
+
+/** mutation root */
+export type TMutationRoot = {
+  __typename?: "mutation_root";
+  /** delete data from the table: "article" */
+  delete_article?: Maybe<TArticleMutationResponse>;
+  /** delete single row from the table: "article" */
+  delete_article_by_pk?: Maybe<TArticle>;
+  /** delete data from the table: "role" */
+  delete_role?: Maybe<TRoleMutationResponse>;
+  /** delete single row from the table: "role" */
+  delete_role_by_pk?: Maybe<TRole>;
+  /** delete data from the table: "user" */
+  delete_user?: Maybe<TUserMutationResponse>;
+  /** delete single row from the table: "user" */
+  delete_user_by_pk?: Maybe<TUser>;
+  /** delete data from the table: "user_role" */
+  delete_user_role?: Maybe<TUserRoleMutationResponse>;
+  /** delete single row from the table: "user_role" */
+  delete_user_role_by_pk?: Maybe<TUserRole>;
+  /** insert data into the table: "article" */
+  insert_article?: Maybe<TArticleMutationResponse>;
+  /** insert a single row into the table: "article" */
+  insert_article_one?: Maybe<TArticle>;
+  /** insert data into the table: "role" */
+  insert_role?: Maybe<TRoleMutationResponse>;
+  /** insert a single row into the table: "role" */
+  insert_role_one?: Maybe<TRole>;
+  /** insert data into the table: "user" */
+  insert_user?: Maybe<TUserMutationResponse>;
+  /** insert a single row into the table: "user" */
+  insert_user_one?: Maybe<TUser>;
+  /** insert data into the table: "user_role" */
+  insert_user_role?: Maybe<TUserRoleMutationResponse>;
+  /** insert a single row into the table: "user_role" */
+  insert_user_role_one?: Maybe<TUserRole>;
+  /** update data of the table: "article" */
+  update_article?: Maybe<TArticleMutationResponse>;
+  /** update single row of the table: "article" */
+  update_article_by_pk?: Maybe<TArticle>;
+  /** update data of the table: "role" */
+  update_role?: Maybe<TRoleMutationResponse>;
+  /** update single row of the table: "role" */
+  update_role_by_pk?: Maybe<TRole>;
+  /** update data of the table: "user" */
+  update_user?: Maybe<TUserMutationResponse>;
+  /** update single row of the table: "user" */
+  update_user_by_pk?: Maybe<TUser>;
+  /** update data of the table: "user_role" */
+  update_user_role?: Maybe<TUserRoleMutationResponse>;
+  /** update single row of the table: "user_role" */
+  update_user_role_by_pk?: Maybe<TUserRole>;
+};
+
+/** mutation root */
+export type TMutationRootDeleteArticleArgs = {
+  where: TArticleBoolExp;
+};
+
+/** mutation root */
+export type TMutationRootDeleteArticleByPkArgs = {
+  id: Scalars["Int"];
+};
+
+/** mutation root */
+export type TMutationRootDeleteRoleArgs = {
+  where: TRoleBoolExp;
+};
+
+/** mutation root */
+export type TMutationRootDeleteRoleByPkArgs = {
+  id: Scalars["uuid"];
+};
+
+/** mutation root */
+export type TMutationRootDeleteUserArgs = {
+  where: TUserBoolExp;
+};
+
+/** mutation root */
+export type TMutationRootDeleteUserByPkArgs = {
+  id: Scalars["uuid"];
+};
+
+/** mutation root */
+export type TMutationRootDeleteUserRoleArgs = {
+  where: TUserRoleBoolExp;
+};
+
+/** mutation root */
+export type TMutationRootDeleteUserRoleByPkArgs = {
+  id: Scalars["uuid"];
+};
+
+/** mutation root */
+export type TMutationRootInsertArticleArgs = {
+  objects: Array<TArticleInsertInput>;
+  on_conflict?: Maybe<TArticleOnConflict>;
+};
+
+/** mutation root */
+export type TMutationRootInsertArticleOneArgs = {
+  object: TArticleInsertInput;
+  on_conflict?: Maybe<TArticleOnConflict>;
+};
+
+/** mutation root */
+export type TMutationRootInsertRoleArgs = {
+  objects: Array<TRoleInsertInput>;
+  on_conflict?: Maybe<TRoleOnConflict>;
+};
+
+/** mutation root */
+export type TMutationRootInsertRoleOneArgs = {
+  object: TRoleInsertInput;
+  on_conflict?: Maybe<TRoleOnConflict>;
+};
+
+/** mutation root */
+export type TMutationRootInsertUserArgs = {
+  objects: Array<TUserInsertInput>;
+  on_conflict?: Maybe<TUserOnConflict>;
+};
+
+/** mutation root */
+export type TMutationRootInsertUserOneArgs = {
+  object: TUserInsertInput;
+  on_conflict?: Maybe<TUserOnConflict>;
+};
+
+/** mutation root */
+export type TMutationRootInsertUserRoleArgs = {
+  objects: Array<TUserRoleInsertInput>;
+  on_conflict?: Maybe<TUserRoleOnConflict>;
+};
+
+/** mutation root */
+export type TMutationRootInsertUserRoleOneArgs = {
+  object: TUserRoleInsertInput;
+  on_conflict?: Maybe<TUserRoleOnConflict>;
+};
+
+/** mutation root */
+export type TMutationRootUpdateArticleArgs = {
+  _inc?: Maybe<TArticleIncInput>;
+  _set?: Maybe<TArticleSetInput>;
+  where: TArticleBoolExp;
+};
+
+/** mutation root */
+export type TMutationRootUpdateArticleByPkArgs = {
+  _inc?: Maybe<TArticleIncInput>;
+  _set?: Maybe<TArticleSetInput>;
+  pk_columns: TArticlePkColumnsInput;
+};
+
+/** mutation root */
+export type TMutationRootUpdateRoleArgs = {
+  _set?: Maybe<TRoleSetInput>;
+  where: TRoleBoolExp;
+};
+
+/** mutation root */
+export type TMutationRootUpdateRoleByPkArgs = {
+  _set?: Maybe<TRoleSetInput>;
+  pk_columns: TRolePkColumnsInput;
+};
+
+/** mutation root */
+export type TMutationRootUpdateUserArgs = {
+  _set?: Maybe<TUserSetInput>;
+  where: TUserBoolExp;
+};
+
+/** mutation root */
+export type TMutationRootUpdateUserByPkArgs = {
+  _set?: Maybe<TUserSetInput>;
+  pk_columns: TUserPkColumnsInput;
+};
+
+/** mutation root */
+export type TMutationRootUpdateUserRoleArgs = {
+  _set?: Maybe<TUserRoleSetInput>;
+  where: TUserRoleBoolExp;
+};
+
+/** mutation root */
+export type TMutationRootUpdateUserRoleByPkArgs = {
+  _set?: Maybe<TUserRoleSetInput>;
+  pk_columns: TUserRolePkColumnsInput;
+};
+
+/** column ordering options */
+export enum TOrderBy {
+  /** in the ascending order, nulls last */
+  Asc = "asc",
+  /** in the ascending order, nulls first */
+  AscNullsFirst = "asc_nulls_first",
+  /** in the ascending order, nulls last */
+  AscNullsLast = "asc_nulls_last",
+  /** in the descending order, nulls first */
+  Desc = "desc",
+  /** in the descending order, nulls first */
+  DescNullsFirst = "desc_nulls_first",
+  /** in the descending order, nulls last */
+  DescNullsLast = "desc_nulls_last",
+}
+
+/** query root */
+export type TQueryRoot = {
+  __typename?: "query_root";
+  /** fetch data from the table: "article" */
+  article: Array<TArticle>;
+  /** fetch aggregated fields from the table: "article" */
+  article_aggregate: TArticleAggregate;
+  /** fetch data from the table: "article" using primary key columns */
+  article_by_pk?: Maybe<TArticle>;
+  /** fetch data from the table: "role" */
+  role: Array<TRole>;
+  /** fetch aggregated fields from the table: "role" */
+  role_aggregate: TRoleAggregate;
+  /** fetch data from the table: "role" using primary key columns */
+  role_by_pk?: Maybe<TRole>;
+  /** fetch data from the table: "user" */
+  user: Array<TUser>;
+  /** fetch aggregated fields from the table: "user" */
+  user_aggregate: TUserAggregate;
+  /** fetch data from the table: "user" using primary key columns */
+  user_by_pk?: Maybe<TUser>;
+  /** fetch data from the table: "user_role" */
+  user_role: Array<TUserRole>;
+  /** fetch aggregated fields from the table: "user_role" */
+  user_role_aggregate: TUserRoleAggregate;
+  /** fetch data from the table: "user_role" using primary key columns */
+  user_role_by_pk?: Maybe<TUserRole>;
+};
+
+/** query root */
+export type TQueryRootArticleArgs = {
+  distinct_on?: Maybe<Array<TArticleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TArticleOrderBy>>;
+  where?: Maybe<TArticleBoolExp>;
+};
+
+/** query root */
+export type TQueryRootArticleAggregateArgs = {
+  distinct_on?: Maybe<Array<TArticleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TArticleOrderBy>>;
+  where?: Maybe<TArticleBoolExp>;
+};
+
+/** query root */
+export type TQueryRootArticleByPkArgs = {
+  id: Scalars["Int"];
+};
+
+/** query root */
+export type TQueryRootRoleArgs = {
+  distinct_on?: Maybe<Array<TRoleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TRoleOrderBy>>;
+  where?: Maybe<TRoleBoolExp>;
+};
+
+/** query root */
+export type TQueryRootRoleAggregateArgs = {
+  distinct_on?: Maybe<Array<TRoleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TRoleOrderBy>>;
+  where?: Maybe<TRoleBoolExp>;
+};
+
+/** query root */
+export type TQueryRootRoleByPkArgs = {
+  id: Scalars["uuid"];
+};
+
+/** query root */
+export type TQueryRootUserArgs = {
+  distinct_on?: Maybe<Array<TUserSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TUserOrderBy>>;
+  where?: Maybe<TUserBoolExp>;
+};
+
+/** query root */
+export type TQueryRootUserAggregateArgs = {
+  distinct_on?: Maybe<Array<TUserSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TUserOrderBy>>;
+  where?: Maybe<TUserBoolExp>;
+};
+
+/** query root */
+export type TQueryRootUserByPkArgs = {
+  id: Scalars["uuid"];
+};
+
+/** query root */
+export type TQueryRootUserRoleArgs = {
+  distinct_on?: Maybe<Array<TUserRoleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TUserRoleOrderBy>>;
+  where?: Maybe<TUserRoleBoolExp>;
+};
+
+/** query root */
+export type TQueryRootUserRoleAggregateArgs = {
+  distinct_on?: Maybe<Array<TUserRoleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TUserRoleOrderBy>>;
+  where?: Maybe<TUserRoleBoolExp>;
+};
+
+/** query root */
+export type TQueryRootUserRoleByPkArgs = {
+  id: Scalars["uuid"];
+};
+
+/** columns and relationships of "role" */
+export type TRole = {
+  __typename?: "role";
+  id: Scalars["uuid"];
+  name: Scalars["String"];
+};
+
+/** aggregated selection of "role" */
+export type TRoleAggregate = {
+  __typename?: "role_aggregate";
+  aggregate?: Maybe<TRoleAggregateFields>;
+  nodes: Array<TRole>;
+};
+
+/** aggregate fields of "role" */
+export type TRoleAggregateFields = {
+  __typename?: "role_aggregate_fields";
+  count?: Maybe<Scalars["Int"]>;
+  max?: Maybe<TRoleMaxFields>;
+  min?: Maybe<TRoleMinFields>;
+};
+
+/** aggregate fields of "role" */
+export type TRoleAggregateFieldsCountArgs = {
+  columns?: Maybe<Array<TRoleSelectColumn>>;
+  distinct?: Maybe<Scalars["Boolean"]>;
+};
+
+/** order by aggregate values of table "role" */
+export type TRoleAggregateOrderBy = {
+  count?: Maybe<TOrderBy>;
+  max?: Maybe<TRoleMaxOrderBy>;
+  min?: Maybe<TRoleMinOrderBy>;
+};
+
+/** input type for inserting array relation for remote table "role" */
+export type TRoleArrRelInsertInput = {
+  data: Array<TRoleInsertInput>;
+  on_conflict?: Maybe<TRoleOnConflict>;
+};
+
+/** Boolean expression to filter rows from the table "role". All fields are combined with a logical 'AND'. */
+export type TRoleBoolExp = {
+  _and?: Maybe<Array<Maybe<TRoleBoolExp>>>;
+  _not?: Maybe<TRoleBoolExp>;
+  _or?: Maybe<Array<Maybe<TRoleBoolExp>>>;
+  id?: Maybe<TUuidComparisonExp>;
+  name?: Maybe<TStringComparisonExp>;
+};
+
+/** unique or primary key constraints on table "role" */
+export enum TRoleConstraint {
+  /** unique or primary key constraint */
+  RoleIdUnique = "role_id_unique",
+  /** unique or primary key constraint */
+  RoleNameUnique = "role_name_unique",
+  /** unique or primary key constraint */
+  RolePkey = "role_pkey",
+}
+
+/** input type for inserting data into table "role" */
+export type TRoleInsertInput = {
+  id?: Maybe<Scalars["uuid"]>;
+  name?: Maybe<Scalars["String"]>;
+};
+
+/** aggregate max on columns */
+export type TRoleMaxFields = {
+  __typename?: "role_max_fields";
+  id?: Maybe<Scalars["uuid"]>;
+  name?: Maybe<Scalars["String"]>;
+};
+
+/** order by max() on columns of table "role" */
+export type TRoleMaxOrderBy = {
+  id?: Maybe<TOrderBy>;
+  name?: Maybe<TOrderBy>;
+};
+
+/** aggregate min on columns */
+export type TRoleMinFields = {
+  __typename?: "role_min_fields";
+  id?: Maybe<Scalars["uuid"]>;
+  name?: Maybe<Scalars["String"]>;
+};
+
+/** order by min() on columns of table "role" */
+export type TRoleMinOrderBy = {
+  id?: Maybe<TOrderBy>;
+  name?: Maybe<TOrderBy>;
+};
+
+/** response of any mutation on the table "role" */
+export type TRoleMutationResponse = {
+  __typename?: "role_mutation_response";
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars["Int"];
+  /** data of the affected rows by the mutation */
+  returning: Array<TRole>;
+};
+
+/** input type for inserting object relation for remote table "role" */
+export type TRoleObjRelInsertInput = {
+  data: TRoleInsertInput;
+  on_conflict?: Maybe<TRoleOnConflict>;
+};
+
+/** on conflict condition type for table "role" */
+export type TRoleOnConflict = {
+  constraint: TRoleConstraint;
+  update_columns: Array<TRoleUpdateColumn>;
+  where?: Maybe<TRoleBoolExp>;
+};
+
+/** ordering options when selecting data from "role" */
+export type TRoleOrderBy = {
+  id?: Maybe<TOrderBy>;
+  name?: Maybe<TOrderBy>;
+};
+
+/** primary key columns input for table: "role" */
+export type TRolePkColumnsInput = {
+  id: Scalars["uuid"];
+};
+
+/** select columns of table "role" */
+export enum TRoleSelectColumn {
+  /** column name */
+  Id = "id",
+  /** column name */
+  Name = "name",
+}
+
+/** input type for updating data in table "role" */
+export type TRoleSetInput = {
+  id?: Maybe<Scalars["uuid"]>;
+  name?: Maybe<Scalars["String"]>;
+};
+
+/** update columns of table "role" */
+export enum TRoleUpdateColumn {
+  /** column name */
+  Id = "id",
+  /** column name */
+  Name = "name",
+}
+
+/** subscription root */
 export type TSubscriptionRoot = {
   __typename?: "subscription_root";
-  group: Array<TGroup>;
-  group_aggregate: TGroupAggregate;
-  group_by_pk?: Maybe<TGroup>;
-  group_users: Array<TGroupUsers>;
-  group_users_aggregate: TGroupUsersAggregate;
-  group_users_by_pk?: Maybe<TGroupUsers>;
-  task: Array<TTask>;
-  task_aggregate: TTaskAggregate;
-  task_by_pk?: Maybe<TTask>;
+  /** fetch data from the table: "article" */
+  article: Array<TArticle>;
+  /** fetch aggregated fields from the table: "article" */
+  article_aggregate: TArticleAggregate;
+  /** fetch data from the table: "article" using primary key columns */
+  article_by_pk?: Maybe<TArticle>;
+  /** fetch data from the table: "role" */
+  role: Array<TRole>;
+  /** fetch aggregated fields from the table: "role" */
+  role_aggregate: TRoleAggregate;
+  /** fetch data from the table: "role" using primary key columns */
+  role_by_pk?: Maybe<TRole>;
+  /** fetch data from the table: "user" */
   user: Array<TUser>;
+  /** fetch aggregated fields from the table: "user" */
   user_aggregate: TUserAggregate;
+  /** fetch data from the table: "user" using primary key columns */
   user_by_pk?: Maybe<TUser>;
+  /** fetch data from the table: "user_role" */
+  user_role: Array<TUserRole>;
+  /** fetch aggregated fields from the table: "user_role" */
+  user_role_aggregate: TUserRoleAggregate;
+  /** fetch data from the table: "user_role" using primary key columns */
+  user_role_by_pk?: Maybe<TUserRole>;
 };
 
-export type TSubscriptionRootGroupArgs = {
-  distinct_on?: Maybe<Array<TGroupSelectColumn>>;
+/** subscription root */
+export type TSubscriptionRootArticleArgs = {
+  distinct_on?: Maybe<Array<TArticleSelectColumn>>;
   limit?: Maybe<Scalars["Int"]>;
   offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupOrderBy>>;
-  where?: Maybe<TGroupBoolExp>;
+  order_by?: Maybe<Array<TArticleOrderBy>>;
+  where?: Maybe<TArticleBoolExp>;
 };
 
-export type TSubscriptionRootGroupAggregateArgs = {
-  distinct_on?: Maybe<Array<TGroupSelectColumn>>;
+/** subscription root */
+export type TSubscriptionRootArticleAggregateArgs = {
+  distinct_on?: Maybe<Array<TArticleSelectColumn>>;
   limit?: Maybe<Scalars["Int"]>;
   offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupOrderBy>>;
-  where?: Maybe<TGroupBoolExp>;
+  order_by?: Maybe<Array<TArticleOrderBy>>;
+  where?: Maybe<TArticleBoolExp>;
 };
 
-export type TSubscriptionRootGroupByPkArgs = {
+/** subscription root */
+export type TSubscriptionRootArticleByPkArgs = {
+  id: Scalars["Int"];
+};
+
+/** subscription root */
+export type TSubscriptionRootRoleArgs = {
+  distinct_on?: Maybe<Array<TRoleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TRoleOrderBy>>;
+  where?: Maybe<TRoleBoolExp>;
+};
+
+/** subscription root */
+export type TSubscriptionRootRoleAggregateArgs = {
+  distinct_on?: Maybe<Array<TRoleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TRoleOrderBy>>;
+  where?: Maybe<TRoleBoolExp>;
+};
+
+/** subscription root */
+export type TSubscriptionRootRoleByPkArgs = {
   id: Scalars["uuid"];
 };
 
-export type TSubscriptionRootGroupUsersArgs = {
-  distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupUsersOrderBy>>;
-  where?: Maybe<TGroupUsersBoolExp>;
-};
-
-export type TSubscriptionRootGroupUsersAggregateArgs = {
-  distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupUsersOrderBy>>;
-  where?: Maybe<TGroupUsersBoolExp>;
-};
-
-export type TSubscriptionRootGroupUsersByPkArgs = {
-  id: Scalars["uuid"];
-};
-
-export type TSubscriptionRootTaskArgs = {
-  distinct_on?: Maybe<Array<TTaskSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TTaskOrderBy>>;
-  where?: Maybe<TTaskBoolExp>;
-};
-
-export type TSubscriptionRootTaskAggregateArgs = {
-  distinct_on?: Maybe<Array<TTaskSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TTaskOrderBy>>;
-  where?: Maybe<TTaskBoolExp>;
-};
-
-export type TSubscriptionRootTaskByPkArgs = {
-  id: Scalars["uuid"];
-};
-
+/** subscription root */
 export type TSubscriptionRootUserArgs = {
   distinct_on?: Maybe<Array<TUserSelectColumn>>;
   limit?: Maybe<Scalars["Int"]>;
@@ -532,6 +921,7 @@ export type TSubscriptionRootUserArgs = {
   where?: Maybe<TUserBoolExp>;
 };
 
+/** subscription root */
 export type TSubscriptionRootUserAggregateArgs = {
   distinct_on?: Maybe<Array<TUserSelectColumn>>;
   limit?: Maybe<Scalars["Int"]>;
@@ -540,161 +930,35 @@ export type TSubscriptionRootUserAggregateArgs = {
   where?: Maybe<TUserBoolExp>;
 };
 
+/** subscription root */
 export type TSubscriptionRootUserByPkArgs = {
   id: Scalars["uuid"];
 };
 
-export type TTask = {
-  __typename?: "task";
-  created_at: Scalars["timestamptz"];
-  finished_at?: Maybe<Scalars["timestamptz"]>;
+/** subscription root */
+export type TSubscriptionRootUserRoleArgs = {
+  distinct_on?: Maybe<Array<TUserRoleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TUserRoleOrderBy>>;
+  where?: Maybe<TUserRoleBoolExp>;
+};
+
+/** subscription root */
+export type TSubscriptionRootUserRoleAggregateArgs = {
+  distinct_on?: Maybe<Array<TUserRoleSelectColumn>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  order_by?: Maybe<Array<TUserRoleOrderBy>>;
+  where?: Maybe<TUserRoleBoolExp>;
+};
+
+/** subscription root */
+export type TSubscriptionRootUserRoleByPkArgs = {
   id: Scalars["uuid"];
-  note?: Maybe<Scalars["String"]>;
-  title?: Maybe<Scalars["String"]>;
-  updated_at: Scalars["timestamptz"];
 };
 
-export type TTaskAggregate = {
-  __typename?: "task_aggregate";
-  aggregate?: Maybe<TTaskAggregateFields>;
-  nodes: Array<TTask>;
-};
-
-export type TTaskAggregateFields = {
-  __typename?: "task_aggregate_fields";
-  count?: Maybe<Scalars["Int"]>;
-  max?: Maybe<TTaskMaxFields>;
-  min?: Maybe<TTaskMinFields>;
-};
-
-export type TTaskAggregateFieldsCountArgs = {
-  columns?: Maybe<Array<TTaskSelectColumn>>;
-  distinct?: Maybe<Scalars["Boolean"]>;
-};
-
-export type TTaskAggregateOrderBy = {
-  count?: Maybe<TOrderBy>;
-  max?: Maybe<TTaskMaxOrderBy>;
-  min?: Maybe<TTaskMinOrderBy>;
-};
-
-export type TTaskArrRelInsertInput = {
-  data: Array<TTaskInsertInput>;
-  on_conflict?: Maybe<TTaskOnConflict>;
-};
-
-export type TTaskBoolExp = {
-  _and?: Maybe<Array<Maybe<TTaskBoolExp>>>;
-  _not?: Maybe<TTaskBoolExp>;
-  _or?: Maybe<Array<Maybe<TTaskBoolExp>>>;
-  created_at?: Maybe<TTimestamptzComparisonExp>;
-  finished_at?: Maybe<TTimestamptzComparisonExp>;
-  id?: Maybe<TUuidComparisonExp>;
-  note?: Maybe<TStringComparisonExp>;
-  title?: Maybe<TStringComparisonExp>;
-  updated_at?: Maybe<TTimestamptzComparisonExp>;
-};
-
-export enum TTaskConstraint {
-  TaskPkey = "task_pkey",
-}
-
-export type TTaskInsertInput = {
-  created_at?: Maybe<Scalars["timestamptz"]>;
-  finished_at?: Maybe<Scalars["timestamptz"]>;
-  id?: Maybe<Scalars["uuid"]>;
-  note?: Maybe<Scalars["String"]>;
-  title?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]>;
-};
-
-export type TTaskMaxFields = {
-  __typename?: "task_max_fields";
-  created_at?: Maybe<Scalars["timestamptz"]>;
-  finished_at?: Maybe<Scalars["timestamptz"]>;
-  note?: Maybe<Scalars["String"]>;
-  title?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]>;
-};
-
-export type TTaskMaxOrderBy = {
-  created_at?: Maybe<TOrderBy>;
-  finished_at?: Maybe<TOrderBy>;
-  note?: Maybe<TOrderBy>;
-  title?: Maybe<TOrderBy>;
-  updated_at?: Maybe<TOrderBy>;
-};
-
-export type TTaskMinFields = {
-  __typename?: "task_min_fields";
-  created_at?: Maybe<Scalars["timestamptz"]>;
-  finished_at?: Maybe<Scalars["timestamptz"]>;
-  note?: Maybe<Scalars["String"]>;
-  title?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]>;
-};
-
-export type TTaskMinOrderBy = {
-  created_at?: Maybe<TOrderBy>;
-  finished_at?: Maybe<TOrderBy>;
-  note?: Maybe<TOrderBy>;
-  title?: Maybe<TOrderBy>;
-  updated_at?: Maybe<TOrderBy>;
-};
-
-export type TTaskMutationResponse = {
-  __typename?: "task_mutation_response";
-  affected_rows: Scalars["Int"];
-  returning: Array<TTask>;
-};
-
-export type TTaskObjRelInsertInput = {
-  data: TTaskInsertInput;
-  on_conflict?: Maybe<TTaskOnConflict>;
-};
-
-export type TTaskOnConflict = {
-  constraint: TTaskConstraint;
-  update_columns: Array<TTaskUpdateColumn>;
-  where?: Maybe<TTaskBoolExp>;
-};
-
-export type TTaskOrderBy = {
-  created_at?: Maybe<TOrderBy>;
-  finished_at?: Maybe<TOrderBy>;
-  id?: Maybe<TOrderBy>;
-  note?: Maybe<TOrderBy>;
-  title?: Maybe<TOrderBy>;
-  updated_at?: Maybe<TOrderBy>;
-};
-
-export enum TTaskSelectColumn {
-  CreatedAt = "created_at",
-  FinishedAt = "finished_at",
-  Id = "id",
-  Note = "note",
-  Title = "title",
-  UpdatedAt = "updated_at",
-}
-
-export type TTaskSetInput = {
-  created_at?: Maybe<Scalars["timestamptz"]>;
-  finished_at?: Maybe<Scalars["timestamptz"]>;
-  id?: Maybe<Scalars["uuid"]>;
-  note?: Maybe<Scalars["String"]>;
-  title?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]>;
-};
-
-export enum TTaskUpdateColumn {
-  CreatedAt = "created_at",
-  FinishedAt = "finished_at",
-  Id = "id",
-  Note = "note",
-  Title = "title",
-  UpdatedAt = "updated_at",
-}
-
+/** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
 export type TTimestamptzComparisonExp = {
   _eq?: Maybe<Scalars["timestamptz"]>;
   _gt?: Maybe<Scalars["timestamptz"]>;
@@ -707,39 +971,24 @@ export type TTimestamptzComparisonExp = {
   _nin?: Maybe<Array<Scalars["timestamptz"]>>;
 };
 
+/** columns and relationships of "user" */
 export type TUser = {
   __typename?: "user";
-  active: Scalars["Boolean"];
+  active?: Maybe<Scalars["Boolean"]>;
   created_at: Scalars["timestamptz"];
-  groups: Array<TGroupUsers>;
-  groups_aggregate: TGroupUsersAggregate;
   id: Scalars["uuid"];
-  name?: Maybe<Scalars["String"]>;
-  updated_at: Scalars["timestamptz"];
+  password: Scalars["String"];
+  username: Scalars["String"];
 };
 
-export type TUserGroupsArgs = {
-  distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupUsersOrderBy>>;
-  where?: Maybe<TGroupUsersBoolExp>;
-};
-
-export type TUserGroupsAggregateArgs = {
-  distinct_on?: Maybe<Array<TGroupUsersSelectColumn>>;
-  limit?: Maybe<Scalars["Int"]>;
-  offset?: Maybe<Scalars["Int"]>;
-  order_by?: Maybe<Array<TGroupUsersOrderBy>>;
-  where?: Maybe<TGroupUsersBoolExp>;
-};
-
+/** aggregated selection of "user" */
 export type TUserAggregate = {
   __typename?: "user_aggregate";
   aggregate?: Maybe<TUserAggregateFields>;
   nodes: Array<TUser>;
 };
 
+/** aggregate fields of "user" */
 export type TUserAggregateFields = {
   __typename?: "user_aggregate_fields";
   count?: Maybe<Scalars["Int"]>;
@@ -747,123 +996,322 @@ export type TUserAggregateFields = {
   min?: Maybe<TUserMinFields>;
 };
 
+/** aggregate fields of "user" */
 export type TUserAggregateFieldsCountArgs = {
   columns?: Maybe<Array<TUserSelectColumn>>;
   distinct?: Maybe<Scalars["Boolean"]>;
 };
 
+/** order by aggregate values of table "user" */
 export type TUserAggregateOrderBy = {
   count?: Maybe<TOrderBy>;
   max?: Maybe<TUserMaxOrderBy>;
   min?: Maybe<TUserMinOrderBy>;
 };
 
+/** input type for inserting array relation for remote table "user" */
 export type TUserArrRelInsertInput = {
   data: Array<TUserInsertInput>;
   on_conflict?: Maybe<TUserOnConflict>;
 };
 
+/** Boolean expression to filter rows from the table "user". All fields are combined with a logical 'AND'. */
 export type TUserBoolExp = {
   _and?: Maybe<Array<Maybe<TUserBoolExp>>>;
   _not?: Maybe<TUserBoolExp>;
   _or?: Maybe<Array<Maybe<TUserBoolExp>>>;
   active?: Maybe<TBooleanComparisonExp>;
   created_at?: Maybe<TTimestamptzComparisonExp>;
-  groups?: Maybe<TGroupUsersBoolExp>;
   id?: Maybe<TUuidComparisonExp>;
-  name?: Maybe<TStringComparisonExp>;
-  updated_at?: Maybe<TTimestamptzComparisonExp>;
+  password?: Maybe<TStringComparisonExp>;
+  username?: Maybe<TStringComparisonExp>;
 };
 
+/** unique or primary key constraints on table "user" */
 export enum TUserConstraint {
+  /** unique or primary key constraint */
+  UserIdUnique = "user_id_unique",
+  /** unique or primary key constraint */
   UserPkey = "user_pkey",
+  /** unique or primary key constraint */
+  UserUsernameUnique = "user_username_unique",
 }
 
+/** input type for inserting data into table "user" */
 export type TUserInsertInput = {
   active?: Maybe<Scalars["Boolean"]>;
   created_at?: Maybe<Scalars["timestamptz"]>;
-  groups?: Maybe<TGroupUsersArrRelInsertInput>;
   id?: Maybe<Scalars["uuid"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]>;
+  password?: Maybe<Scalars["String"]>;
+  username?: Maybe<Scalars["String"]>;
 };
 
+/** aggregate max on columns */
 export type TUserMaxFields = {
   __typename?: "user_max_fields";
   created_at?: Maybe<Scalars["timestamptz"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["uuid"]>;
+  password?: Maybe<Scalars["String"]>;
+  username?: Maybe<Scalars["String"]>;
 };
 
+/** order by max() on columns of table "user" */
 export type TUserMaxOrderBy = {
   created_at?: Maybe<TOrderBy>;
-  name?: Maybe<TOrderBy>;
-  updated_at?: Maybe<TOrderBy>;
+  id?: Maybe<TOrderBy>;
+  password?: Maybe<TOrderBy>;
+  username?: Maybe<TOrderBy>;
 };
 
+/** aggregate min on columns */
 export type TUserMinFields = {
   __typename?: "user_min_fields";
   created_at?: Maybe<Scalars["timestamptz"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]>;
+  id?: Maybe<Scalars["uuid"]>;
+  password?: Maybe<Scalars["String"]>;
+  username?: Maybe<Scalars["String"]>;
 };
 
+/** order by min() on columns of table "user" */
 export type TUserMinOrderBy = {
   created_at?: Maybe<TOrderBy>;
-  name?: Maybe<TOrderBy>;
-  updated_at?: Maybe<TOrderBy>;
+  id?: Maybe<TOrderBy>;
+  password?: Maybe<TOrderBy>;
+  username?: Maybe<TOrderBy>;
 };
 
+/** response of any mutation on the table "user" */
 export type TUserMutationResponse = {
   __typename?: "user_mutation_response";
+  /** number of affected rows by the mutation */
   affected_rows: Scalars["Int"];
+  /** data of the affected rows by the mutation */
   returning: Array<TUser>;
 };
 
+/** input type for inserting object relation for remote table "user" */
 export type TUserObjRelInsertInput = {
   data: TUserInsertInput;
   on_conflict?: Maybe<TUserOnConflict>;
 };
 
+/** on conflict condition type for table "user" */
 export type TUserOnConflict = {
   constraint: TUserConstraint;
   update_columns: Array<TUserUpdateColumn>;
   where?: Maybe<TUserBoolExp>;
 };
 
+/** ordering options when selecting data from "user" */
 export type TUserOrderBy = {
   active?: Maybe<TOrderBy>;
   created_at?: Maybe<TOrderBy>;
-  groups_aggregate?: Maybe<TGroupUsersAggregateOrderBy>;
   id?: Maybe<TOrderBy>;
-  name?: Maybe<TOrderBy>;
-  updated_at?: Maybe<TOrderBy>;
+  password?: Maybe<TOrderBy>;
+  username?: Maybe<TOrderBy>;
 };
 
-export enum TUserSelectColumn {
-  Active = "active",
-  CreatedAt = "created_at",
-  Id = "id",
-  Name = "name",
-  UpdatedAt = "updated_at",
+/** primary key columns input for table: "user" */
+export type TUserPkColumnsInput = {
+  id: Scalars["uuid"];
+};
+
+/** columns and relationships of "user_role" */
+export type TUserRole = {
+  __typename?: "user_role";
+  id: Scalars["uuid"];
+  role_id?: Maybe<Scalars["uuid"]>;
+  user_id?: Maybe<Scalars["uuid"]>;
+};
+
+/** aggregated selection of "user_role" */
+export type TUserRoleAggregate = {
+  __typename?: "user_role_aggregate";
+  aggregate?: Maybe<TUserRoleAggregateFields>;
+  nodes: Array<TUserRole>;
+};
+
+/** aggregate fields of "user_role" */
+export type TUserRoleAggregateFields = {
+  __typename?: "user_role_aggregate_fields";
+  count?: Maybe<Scalars["Int"]>;
+  max?: Maybe<TUserRoleMaxFields>;
+  min?: Maybe<TUserRoleMinFields>;
+};
+
+/** aggregate fields of "user_role" */
+export type TUserRoleAggregateFieldsCountArgs = {
+  columns?: Maybe<Array<TUserRoleSelectColumn>>;
+  distinct?: Maybe<Scalars["Boolean"]>;
+};
+
+/** order by aggregate values of table "user_role" */
+export type TUserRoleAggregateOrderBy = {
+  count?: Maybe<TOrderBy>;
+  max?: Maybe<TUserRoleMaxOrderBy>;
+  min?: Maybe<TUserRoleMinOrderBy>;
+};
+
+/** input type for inserting array relation for remote table "user_role" */
+export type TUserRoleArrRelInsertInput = {
+  data: Array<TUserRoleInsertInput>;
+  on_conflict?: Maybe<TUserRoleOnConflict>;
+};
+
+/** Boolean expression to filter rows from the table "user_role". All fields are combined with a logical 'AND'. */
+export type TUserRoleBoolExp = {
+  _and?: Maybe<Array<Maybe<TUserRoleBoolExp>>>;
+  _not?: Maybe<TUserRoleBoolExp>;
+  _or?: Maybe<Array<Maybe<TUserRoleBoolExp>>>;
+  id?: Maybe<TUuidComparisonExp>;
+  role_id?: Maybe<TUuidComparisonExp>;
+  user_id?: Maybe<TUuidComparisonExp>;
+};
+
+/** unique or primary key constraints on table "user_role" */
+export enum TUserRoleConstraint {
+  /** unique or primary key constraint */
+  UserRoleIdUnique = "user_role_id_unique",
+  /** unique or primary key constraint */
+  UserRolePkey = "user_role_pkey",
 }
 
+/** input type for inserting data into table "user_role" */
+export type TUserRoleInsertInput = {
+  id?: Maybe<Scalars["uuid"]>;
+  role_id?: Maybe<Scalars["uuid"]>;
+  user_id?: Maybe<Scalars["uuid"]>;
+};
+
+/** aggregate max on columns */
+export type TUserRoleMaxFields = {
+  __typename?: "user_role_max_fields";
+  id?: Maybe<Scalars["uuid"]>;
+  role_id?: Maybe<Scalars["uuid"]>;
+  user_id?: Maybe<Scalars["uuid"]>;
+};
+
+/** order by max() on columns of table "user_role" */
+export type TUserRoleMaxOrderBy = {
+  id?: Maybe<TOrderBy>;
+  role_id?: Maybe<TOrderBy>;
+  user_id?: Maybe<TOrderBy>;
+};
+
+/** aggregate min on columns */
+export type TUserRoleMinFields = {
+  __typename?: "user_role_min_fields";
+  id?: Maybe<Scalars["uuid"]>;
+  role_id?: Maybe<Scalars["uuid"]>;
+  user_id?: Maybe<Scalars["uuid"]>;
+};
+
+/** order by min() on columns of table "user_role" */
+export type TUserRoleMinOrderBy = {
+  id?: Maybe<TOrderBy>;
+  role_id?: Maybe<TOrderBy>;
+  user_id?: Maybe<TOrderBy>;
+};
+
+/** response of any mutation on the table "user_role" */
+export type TUserRoleMutationResponse = {
+  __typename?: "user_role_mutation_response";
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars["Int"];
+  /** data of the affected rows by the mutation */
+  returning: Array<TUserRole>;
+};
+
+/** input type for inserting object relation for remote table "user_role" */
+export type TUserRoleObjRelInsertInput = {
+  data: TUserRoleInsertInput;
+  on_conflict?: Maybe<TUserRoleOnConflict>;
+};
+
+/** on conflict condition type for table "user_role" */
+export type TUserRoleOnConflict = {
+  constraint: TUserRoleConstraint;
+  update_columns: Array<TUserRoleUpdateColumn>;
+  where?: Maybe<TUserRoleBoolExp>;
+};
+
+/** ordering options when selecting data from "user_role" */
+export type TUserRoleOrderBy = {
+  id?: Maybe<TOrderBy>;
+  role_id?: Maybe<TOrderBy>;
+  user_id?: Maybe<TOrderBy>;
+};
+
+/** primary key columns input for table: "user_role" */
+export type TUserRolePkColumnsInput = {
+  id: Scalars["uuid"];
+};
+
+/** select columns of table "user_role" */
+export enum TUserRoleSelectColumn {
+  /** column name */
+  Id = "id",
+  /** column name */
+  RoleId = "role_id",
+  /** column name */
+  UserId = "user_id",
+}
+
+/** input type for updating data in table "user_role" */
+export type TUserRoleSetInput = {
+  id?: Maybe<Scalars["uuid"]>;
+  role_id?: Maybe<Scalars["uuid"]>;
+  user_id?: Maybe<Scalars["uuid"]>;
+};
+
+/** update columns of table "user_role" */
+export enum TUserRoleUpdateColumn {
+  /** column name */
+  Id = "id",
+  /** column name */
+  RoleId = "role_id",
+  /** column name */
+  UserId = "user_id",
+}
+
+/** select columns of table "user" */
+export enum TUserSelectColumn {
+  /** column name */
+  Active = "active",
+  /** column name */
+  CreatedAt = "created_at",
+  /** column name */
+  Id = "id",
+  /** column name */
+  Password = "password",
+  /** column name */
+  Username = "username",
+}
+
+/** input type for updating data in table "user" */
 export type TUserSetInput = {
   active?: Maybe<Scalars["Boolean"]>;
   created_at?: Maybe<Scalars["timestamptz"]>;
   id?: Maybe<Scalars["uuid"]>;
-  name?: Maybe<Scalars["String"]>;
-  updated_at?: Maybe<Scalars["timestamptz"]>;
+  password?: Maybe<Scalars["String"]>;
+  username?: Maybe<Scalars["String"]>;
 };
 
+/** update columns of table "user" */
 export enum TUserUpdateColumn {
+  /** column name */
   Active = "active",
+  /** column name */
   CreatedAt = "created_at",
+  /** column name */
   Id = "id",
-  Name = "name",
-  UpdatedAt = "updated_at",
+  /** column name */
+  Password = "password",
+  /** column name */
+  Username = "username",
 }
 
+/** expression to compare columns of type uuid. All fields are combined with logical 'AND'. */
 export type TUuidComparisonExp = {
   _eq?: Maybe<Scalars["uuid"]>;
   _gt?: Maybe<Scalars["uuid"]>;
@@ -878,7 +1326,7 @@ export type TUuidComparisonExp = {
 
 export type TUserFragmentFragment = { __typename: "user" } & Pick<
   TUser,
-  "id" | "name" | "active" | "created_at" | "updated_at"
+  "id" | "username" | "active" | "created_at"
 >;
 
 export type TUsersQueryVariables = {};
@@ -892,16 +1340,16 @@ export type TUserQueryVariables = {
 };
 
 export type TUserQuery = { __typename?: "query_root" } & {
-  user_by_pk: Maybe<{ __typename?: "user" } & TUserFragmentFragment>;
+  user_by_pk?: Maybe<{ __typename?: "user" } & TUserFragmentFragment>;
 };
 
 export type TUpdateUserMutationVariables = {
   id: Scalars["uuid"];
-  name?: Maybe<Scalars["String"]>;
+  username?: Maybe<Scalars["String"]>;
 };
 
 export type TUpdateUserMutation = { __typename?: "mutation_root" } & {
-  update_user: Maybe<
+  update_user?: Maybe<
     { __typename?: "user_mutation_response" } & {
       returning: Array<{ __typename?: "user" } & TUserFragmentFragment>;
     }
@@ -909,11 +1357,11 @@ export type TUpdateUserMutation = { __typename?: "mutation_root" } & {
 };
 
 export type TUpdateAllUserMutationVariables = {
-  name?: Maybe<Scalars["String"]>;
+  username?: Maybe<Scalars["String"]>;
 };
 
 export type TUpdateAllUserMutation = { __typename?: "mutation_root" } & {
-  update_user: Maybe<
+  update_user?: Maybe<
     { __typename?: "user_mutation_response" } & {
       returning: Array<{ __typename?: "user" } & TUserFragmentFragment>;
     }
@@ -921,11 +1369,11 @@ export type TUpdateAllUserMutation = { __typename?: "mutation_root" } & {
 };
 
 export type TInsertUserMutationVariables = {
-  name: Scalars["String"];
+  username: Scalars["String"];
 };
 
 export type TInsertUserMutation = { __typename?: "mutation_root" } & {
-  insert_user: Maybe<
+  insert_user?: Maybe<
     { __typename?: "user_mutation_response" } & {
       returning: Array<{ __typename?: "user" } & TUserFragmentFragment>;
     }
@@ -937,7 +1385,7 @@ export type TDeleteUserMutationVariables = {
 };
 
 export type TDeleteUserMutation = { __typename?: "mutation_root" } & {
-  delete_user: Maybe<
+  delete_user?: Maybe<
     { __typename?: "user_mutation_response" } & {
       returning: Array<{ __typename?: "user" } & TUserFragmentFragment>;
     }
@@ -948,10 +1396,9 @@ export const UserFragmentFragmentDoc = gql`
   fragment UserFragment on user {
     __typename
     id
-    name
+    username
     active
     created_at
-    updated_at
   }
 `;
 export const UsersDocument = gql`
@@ -1062,8 +1509,8 @@ export type UserQueryResult = ApolloReactCommon.QueryResult<
   TUserQueryVariables
 >;
 export const UpdateUserDocument = gql`
-  mutation updateUser($id: uuid!, $name: String) {
-    update_user(_set: { name: $name }, where: { id: { _eq: $id } }) {
+  mutation updateUser($id: uuid!, $username: String) {
+    update_user(_set: { username: $username }, where: { id: { _eq: $id } }) {
       returning {
         ...UserFragment
       }
@@ -1090,7 +1537,7 @@ export type TUpdateUserMutationFn = ApolloReactCommon.MutationFunction<
  * const [updateUserMutation, { data, loading, error }] = useUpdateUserMutation({
  *   variables: {
  *      id: // value for 'id'
- *      name: // value for 'name'
+ *      username: // value for 'username'
  *   },
  * });
  */
@@ -1116,8 +1563,8 @@ export type UpdateUserMutationOptions = ApolloReactCommon.BaseMutationOptions<
   TUpdateUserMutationVariables
 >;
 export const UpdateAllUserDocument = gql`
-  mutation updateAllUser($name: String) {
-    update_user(_set: { name: $name }, where: {}) {
+  mutation updateAllUser($username: String) {
+    update_user(_set: { username: $username }, where: {}) {
       returning {
         ...UserFragment
       }
@@ -1143,7 +1590,7 @@ export type TUpdateAllUserMutationFn = ApolloReactCommon.MutationFunction<
  * @example
  * const [updateAllUserMutation, { data, loading, error }] = useUpdateAllUserMutation({
  *   variables: {
- *      name: // value for 'name'
+ *      username: // value for 'username'
  *   },
  * });
  */
@@ -1169,8 +1616,8 @@ export type UpdateAllUserMutationOptions = ApolloReactCommon.BaseMutationOptions
   TUpdateAllUserMutationVariables
 >;
 export const InsertUserDocument = gql`
-  mutation insertUser($name: String!) {
-    insert_user(objects: { name: $name }) {
+  mutation insertUser($username: String!) {
+    insert_user(objects: { username: $username }) {
       returning {
         ...UserFragment
       }
@@ -1196,7 +1643,7 @@ export type TInsertUserMutationFn = ApolloReactCommon.MutationFunction<
  * @example
  * const [insertUserMutation, { data, loading, error }] = useInsertUserMutation({
  *   variables: {
- *      name: // value for 'name'
+ *      username: // value for 'username'
  *   },
  * });
  */

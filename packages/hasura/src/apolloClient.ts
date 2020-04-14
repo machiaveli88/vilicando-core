@@ -7,6 +7,7 @@ import { RetryLink } from "apollo-link-retry";
 import { onError } from "apollo-link-error";
 import { WebSocketLink } from "apollo-link-ws";
 import fetch from "isomorphic-unfetch";
+import cookie from "js-cookie";
 import initCache from "./initCache";
 import { IContext } from "./initContext";
 
@@ -16,11 +17,13 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
   // The `ctx` (NextPageContext) will only be present on the server.
   // use it to extract auth headers (ctx.req) or similar.
   const ssrMode = ctx ? Boolean(ctx) : typeof window === "undefined"; // Disables forceFetch on the server (so queries are only run once)
-  const headers = process.env.HASURA_SECRET
-    ? {
-        "x-hasura-admin-secret": process.env.HASURA_SECRET,
-      }
-    : {};
+
+  const token = !ssrMode ? cookie.get("token") : null;
+  const headers: HttpLink.Options["headers"] = {};
+  if (token) headers.authorization = `Bearer ${cookie.get("token")}`;
+  if (process.env.HASURA_CLIENT_AS_ADMIN)
+    headers["x-hasura-admin-secret"] = process.env.HASURA_SECRET;
+
   const http = !!process.env.HASURA_HTTP && {
     uri: process.env.HASURA_HTTP,
     headers,

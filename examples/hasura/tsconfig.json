@@ -1,13 +1,7 @@
 {
   "extends": "vilicando-core/tsconfig.extern.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@components": ["components"],
-      "@graphql": ["graphql"],
-      "@pages": ["pages"],
-      "@theme": ["theme"]
-    }
+    "baseUrl": "."
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

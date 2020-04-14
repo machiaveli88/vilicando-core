@@ -4,10 +4,9 @@ const FRAGMENT_USER = gql`
   fragment UserFragment on user {
     __typename
     id
-    name
+    username
     active
     created_at
-    updated_at
   }
 `;
 
@@ -29,8 +28,8 @@ export const QUERY_USER = gql`
   ${FRAGMENT_USER}
 `;
 export const UPDATE_USER = gql`
-  mutation updateUser($id: uuid!, $name: String) {
-    update_user(_set: { name: $name }, where: { id: { _eq: $id } }) {
+  mutation updateUser($id: uuid!, $username: String) {
+    update_user(_set: { username: $username }, where: { id: { _eq: $id } }) {
       returning {
         ...UserFragment
       }
@@ -39,8 +38,8 @@ export const UPDATE_USER = gql`
   ${FRAGMENT_USER}
 `;
 export const UPDATE_ALL_USER = gql`
-  mutation updateAllUser($name: String) {
-    update_user(_set: { name: $name }, where: {}) {
+  mutation updateAllUser($username: String) {
+    update_user(_set: { username: $username }, where: {}) {
       returning {
         ...UserFragment
       }
@@ -49,8 +48,8 @@ export const UPDATE_ALL_USER = gql`
   ${FRAGMENT_USER}
 `;
 export const INSERT_USER = gql`
-  mutation insertUser($name: String!) {
-    insert_user(objects: { name: $name }) {
+  mutation insertUser($username: String!) {
+    insert_user(objects: { username: $username }) {
       returning {
         ...UserFragment
       }

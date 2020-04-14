@@ -27,9 +27,9 @@ function StartPage() {
           {users.map((user) => (
             <li key={user.id}>
               <input
-                value={user.name}
+                value={user.username}
                 onChange={(e) =>
-                  updateUser({ ...user, name: e.currentTarget.value })
+                  updateUser({ ...user, username: e.currentTarget.value })
                 }
               />
               &nbsp;

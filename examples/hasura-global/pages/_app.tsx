@@ -5,7 +5,7 @@ import { Layout } from "@components";
 import { ThemeProvider } from "@theme";
 import config from "../config.json";
 
-class CustomApp extends App {
+export default class CustomApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
@@ -22,5 +22,3 @@ class CustomApp extends App {
     );
   }
 }
-
-export default CustomApp;
