@@ -31,6 +31,7 @@ export default function useAuth() {
       console.error("Error while logout", error);
     }
   }, [client]);
+  const hasToken = React.useCallback(() => !!cookie.get("token"), [client]);
 
-  return { login, logout };
+  return { login, logout, hasToken };
 }
