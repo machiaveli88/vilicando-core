@@ -11,7 +11,7 @@ export default function Logout() {
     e.preventDefault();
 
     logout().then(() => {
-      console.log("Successfully logged out!");
+      console.info("Successfully logged out!");
       push("/");
     });
   }, []);
