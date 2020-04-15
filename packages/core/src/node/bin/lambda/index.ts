@@ -23,9 +23,7 @@ const getError = (err: ExecException) => {
 };
 
 // build up on https://github.com/netlify/netlify-lambda
-
 // todo: schauen ob netlify.toml => Vars daraus nehmen
-// todo: env-Vars ermöglichen!
 
 export const lambda = async ({
   "--src": srcDir = LAMBDA_SRC || "functions",
