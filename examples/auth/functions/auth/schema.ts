@@ -5,9 +5,6 @@ import { join } from "path";
 import { readFileSync } from "fs";
 import { Model } from "objection";
 import "pg";
-import { config } from "dotenv";
-
-config();
 
 const rsaPath = join(__dirname, "private.pem");
 

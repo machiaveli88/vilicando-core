@@ -4,9 +4,6 @@ import express from "express";
 import expressValidator from "express-validator";
 import passport from "./passport";
 import serverless from "serverless-http";
-import { config } from "dotenv";
-
-config();
 
 const base = process.env.LAMBDA_URL || ".netlify/functions";
 const endpoint = `/${base}/${process.env.LAMBDA_AUTH_ENDPOINT || "auth"}`;

@@ -7,6 +7,11 @@ import queryString from "querystring";
 import { join } from "path";
 import { existsSync } from "fs";
 import chalk from "chalk";
+import { getEnv } from "../../utils";
+
+// load .env
+const env = getEnv();
+for (const k in env) process.env[k] = env[k];
 
 function handleErr(err: any, response: any) {
   response.statusCode = 500;

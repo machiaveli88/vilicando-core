@@ -14,6 +14,7 @@
     "up": "vilicando-core up"
   },
   "dependencies": {
+    "dotenv": "8.2.0",
     "knex": "^0.15.2",
     "pg": "^7.4.3",
     "react": "16.13.1",
