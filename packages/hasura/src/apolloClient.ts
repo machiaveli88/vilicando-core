@@ -10,6 +10,7 @@ import fetch from "isomorphic-unfetch";
 import cookie from "js-cookie";
 import initCache from "./initCache";
 import { IContext } from "./initContext";
+import { setContext } from "apollo-link-context";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> = null;
 
@@ -18,9 +19,7 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
   // use it to extract auth headers (ctx.req) or similar.
   const ssrMode = ctx ? Boolean(ctx) : typeof window === "undefined"; // Disables forceFetch on the server (so queries are only run once)
 
-  const token = !ssrMode ? cookie.get("token") : null;
   const headers: HttpLink.Options["headers"] = {};
-  if (token) headers.authorization = `Bearer ${cookie.get("token")}`;
   if (process.env.HASURA_CLIENT_AS_ADMIN)
     headers["x-hasura-admin-secret"] = process.env.HASURA_SECRET;
 
@@ -38,6 +37,14 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
     },
   };
 
+  const authLink = setContext((_, { headers: _headers }) => {
+    const headers = _headers || {};
+    const token = !ssrMode ? cookie.get("token") : null;
+    if (token) headers.authorization = `Bearer ${token}`;
+
+    return { headers };
+  });
+
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors)
       graphQLErrors.map((err) =>
@@ -51,6 +58,7 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
     http
       ? [
           errorLink,
+          authLink,
           new RetryLink({ attempts: { max: Infinity } }),
           new HttpLink({ credentials: "same-origin", fetch, ...http }),
         ]

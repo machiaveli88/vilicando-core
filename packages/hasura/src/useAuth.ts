@@ -24,7 +24,8 @@ export default function useAuth() {
     });
 
     try {
-      await client.clearStore();
+      // await client.resetStore(); // clears only login
+      await client.clearStore(); // clears also the cache!
       await persistor.purge();
       cookie.remove("token");
     } catch (error) {
