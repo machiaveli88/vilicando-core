@@ -70,7 +70,6 @@ export class User extends Model {
     return jwt.sign(
       {
         name: this.username,
-        // // iat: Math.floor(Date.now() / 1000),
         "https://hasura.io/jwt/claims": {
           "x-hasura-allowed-roles": this.getRoles(),
           "x-hasura-default-role": "user",

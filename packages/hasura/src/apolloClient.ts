@@ -7,7 +7,6 @@ import { RetryLink } from "apollo-link-retry";
 import { onError } from "apollo-link-error";
 import { WebSocketLink } from "apollo-link-ws";
 import fetch from "isomorphic-unfetch";
-import cookie from "js-cookie";
 import initCache from "./initCache";
 import { IContext } from "./initContext";
 import { setContext } from "apollo-link-context";
@@ -39,7 +38,8 @@ function createApolloClient(state: NormalizedCacheObject, ctx: IContext) {
 
   const authLink = setContext((_, { headers: _headers }) => {
     const headers = _headers || {};
-    const token = !ssrMode ? cookie.get("token") : null;
+    // todo: check expire date and clear localStorage if expired OR renew token
+    const token = !ssrMode ? localStorage.getItem("token") : null;
     if (token) headers.authorization = `Bearer ${token}`;
 
     return { headers };

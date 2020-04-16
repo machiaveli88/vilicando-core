@@ -9,7 +9,7 @@ export default function initCache(state: NormalizedCacheObject = {}) {
   if (typeof window !== "undefined")
     persistCache({
       cache,
-      storage: window.localStorage as PersistentStorage<
+      storage: localStorage as PersistentStorage<
         PersistedData<NormalizedCacheObject>
       >,
     });

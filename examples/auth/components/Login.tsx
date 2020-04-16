@@ -2,11 +2,12 @@ import React from "react";
 import { useTheme } from "@theme";
 import { useAuth } from "vilicando-hasura";
 import Button from "./Button";
+import Logout from "./Logout";
 import { useRouter } from "vilicando-core";
 
 export default function Login() {
   const theme = useTheme();
-  const { login } = useAuth();
+  const { login, session } = useAuth();
   const { push } = useRouter();
 
   const onSubmit = React.useCallback(async (e: React.FormEvent) => {
@@ -49,10 +50,15 @@ export default function Login() {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <input id="username" name="username" placeholder="username" />
+        <input
+          id="username"
+          name="username"
+          placeholder="username"
+          disabled={!!session.name}
+          value={session.name}
+        />
         <input id="password" name="password" placeholder="password" />
-
-        <Button type="submit">Login</Button>
+        <Button type="submit">Login</Button> {!session.expired && <Logout />}
       </form>
 
       <style jsx>
