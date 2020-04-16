@@ -6,23 +6,33 @@ import jwt from "jsonwebtoken";
 
 export default function useAuth() {
   const client = useApolloClient();
-  const session = React.useMemo(() => {
+  const session = React.useMemo<{
+    name?: string;
+    iat?: number;
+    sub?: string;
+    exp?: number;
+    expired?: boolean;
+    id?: string;
+    defaultRole?: string;
+    allowedRoles?: Array<string>;
+    isAdmin?: boolean;
+    [k: string]: any;
+  }>(() => {
     const token =
       typeof window !== "undefined" ? localStorage.getItem("token") : null;
-    const { name, "https://hasura.io/jwt/claims": hasura, iat, exp, sub } =
+    const { "https://hasura.io/jwt/claims": hasura, exp, ...rest } =
       jwt.decode(token, { json: true }) || {};
 
     return {
-      name,
-      iat,
+      ...rest,
       exp,
       expired: !exp || exp < Date.now() / 1000,
-      sub,
       id: hasura?.["x-hasura-user-id"],
       defaultRole: hasura?.["x-hasura-default-role"],
       allowedRoles: hasura?.["x-hasura-allowed-roles"],
+      isAdmin: (hasura?.["x-hasura-allowed-roles"] || []).includes("admin"),
     };
-  }, []);
+  }, [localStorage.getItem("token")]);
 
   React.useEffect(() => {
     if (session.expired) logout();
