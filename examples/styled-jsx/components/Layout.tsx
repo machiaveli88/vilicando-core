@@ -23,7 +23,7 @@ function Header({ children }: IComponentWithChildren) {
             width: 100%;
           }
           h2 {
-            color: ${theme.text};
+            color: ${theme.white};
             margin: 0;
           }
         `}

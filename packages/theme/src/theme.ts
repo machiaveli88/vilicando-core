@@ -20,7 +20,6 @@ const baseColors = {
     "9": "#c62828",
     "10": "#b71c1c",
     base: "#f44336",
-    text: baseTextColors.white,
   },
   secondary: {
     "1": "#fff8e1",
@@ -34,7 +33,6 @@ const baseColors = {
     "9": "#ff8f00",
     "10": "#ff6f00",
     base: "#ffc107",
-    text: baseTextColors.white,
   },
   success: {
     "1": "#e8f5e9",
@@ -48,7 +46,6 @@ const baseColors = {
     "9": "#2e7d32",
     "10": "#1b5e20",
     base: "#4caf50",
-    text: baseTextColors.white,
   },
   error: {
     "1": "#ffebee",
@@ -62,7 +59,6 @@ const baseColors = {
     "9": "#c62828",
     "10": "#b71c1c",
     base: "#f44336",
-    text: baseTextColors.white,
   },
   info: {
     "1": "#e3f2fd",
@@ -76,7 +72,6 @@ const baseColors = {
     "9": "#1565c0",
     "10": "#0d47a1",
     base: "#2196f3",
-    text: baseTextColors.white,
   },
   warning: {
     "1": "#fff8e1",
@@ -90,7 +85,6 @@ const baseColors = {
     "9": "#ff8f00",
     "10": "#ff6f00",
     base: "#ffc107",
-    text: baseTextColors.white,
   },
   grey: {
     "1": "#f8f9fa",
@@ -104,7 +98,6 @@ const baseColors = {
     "9": "#343a40",
     "10": "#212529",
     base: "#adb5bd",
-    text: baseTextColors.white,
   },
   blue: {
     "1": "#e3f2fd",
@@ -118,7 +111,6 @@ const baseColors = {
     "9": "#1565c0",
     "10": "#0d47a1",
     base: "#2196f3",
-    text: baseTextColors.white,
   },
   purple: {
     "1": "#f3e5f5",
@@ -132,7 +124,6 @@ const baseColors = {
     "9": "#6a1b9a",
     "10": "#4a148c",
     base: "#9c27b0",
-    text: baseTextColors.white,
   },
   cyan: {
     "1": "#e0f7fa",
@@ -146,7 +137,6 @@ const baseColors = {
     "9": "#00838f",
     "10": "#006064",
     base: "#00bcd4",
-    text: baseTextColors.white,
   },
   green: {
     "1": "#e8f5e9",
@@ -160,7 +150,6 @@ const baseColors = {
     "9": "#2e7d32",
     "10": "#1b5e20",
     base: "#4caf50",
-    text: baseTextColors.white,
   },
   magenta: {
     "1": "#fce4ec",
@@ -174,7 +163,6 @@ const baseColors = {
     "9": "#ad1457",
     "10": "#880e4f",
     base: "#e91e63",
-    text: baseTextColors.white,
   },
   pink: {
     "1": "#fce4ec",
@@ -188,7 +176,6 @@ const baseColors = {
     "9": "#ad1457",
     "10": "#880e4f",
     base: "#e91e63",
-    text: baseTextColors.white,
   },
   red: {
     "1": "#ffebee",
@@ -202,7 +189,6 @@ const baseColors = {
     "9": "#c62828",
     "10": "#b71c1c",
     base: "#f44336",
-    text: baseTextColors.white,
   },
   orange: {
     "1": "#fff3e0",
@@ -216,7 +202,6 @@ const baseColors = {
     "9": "#ef6c00",
     "10": "#e65100",
     base: "#ff9800",
-    text: baseTextColors.white,
   },
   yellow: {
     "1": "#fffde7",
@@ -230,7 +215,6 @@ const baseColors = {
     "9": "#f9a825",
     "10": "#f57f17",
     base: "#ffeb3b",
-    text: baseTextColors.white,
   },
   volcano: {
     "1": "#fbe9e7",
@@ -244,7 +228,6 @@ const baseColors = {
     "9": "#d84315",
     "10": "#bf360c",
     base: "#ff5722",
-    text: baseTextColors.white,
   },
   geekblue: {
     "1": "#e8eaf6",
@@ -258,7 +241,6 @@ const baseColors = {
     "9": "#283593",
     "10": "#1a237e",
     base: "#3f51b5",
-    text: baseTextColors.white,
   },
   lime: {
     "1": "#f9fbe7",
@@ -272,7 +254,6 @@ const baseColors = {
     "9": "#9e9d24",
     "10": "#827717",
     base: "#cddc39",
-    text: baseTextColors.white,
   },
   gold: {
     "1": "#fff8e1",
@@ -286,7 +267,6 @@ const baseColors = {
     "9": "#ff8f00",
     "10": "#ff6f00",
     base: "#ffc107",
-    text: baseTextColors.white,
   },
 };
 const baseShadow = {

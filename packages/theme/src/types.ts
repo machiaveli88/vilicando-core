@@ -43,7 +43,6 @@ export type TBorder = {
 
 type TColor = {
   base?: string;
-  text?: string;
   "1"?: string;
   "2"?: string;
   "3"?: string;

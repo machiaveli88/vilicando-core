@@ -53,7 +53,7 @@ function StartPage() {
               right: 0;
               background-color: ${theme.palette.primary.base};
               border-color: ${theme.palette.primary.base};
-              color: ${theme.palette.primary.text};
+              color: ${theme.white};
             }
           `}
         </style>
