@@ -6,6 +6,8 @@ import jwt from "jsonwebtoken";
 
 export default function useAuth() {
   const client = useApolloClient();
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const session = React.useMemo<{
     name?: string;
     iat?: number;
@@ -32,7 +34,7 @@ export default function useAuth() {
       allowedRoles: hasura?.["x-hasura-allowed-roles"],
       isAdmin: (hasura?.["x-hasura-allowed-roles"] || []).includes("admin"),
     };
-  }, [localStorage.getItem("token")]);
+  }, [token]);
 
   React.useEffect(() => {
     if (session.expired) logout();
