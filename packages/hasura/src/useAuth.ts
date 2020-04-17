@@ -13,7 +13,7 @@ export default function useAuth() {
     iat?: number;
     sub?: string;
     exp?: number;
-    expired?: boolean;
+    isExpired?: boolean;
     id?: string;
     defaultRole?: string;
     allowedRoles?: Array<string>;
@@ -28,7 +28,7 @@ export default function useAuth() {
     return {
       ...rest,
       exp,
-      expired: !exp || exp < Date.now() / 1000,
+      isExpired: !exp || exp < Date.now() / 1000,
       id: hasura?.["x-hasura-user-id"],
       defaultRole: hasura?.["x-hasura-default-role"],
       allowedRoles: hasura?.["x-hasura-allowed-roles"],
@@ -37,8 +37,8 @@ export default function useAuth() {
   }, [token]);
 
   React.useEffect(() => {
-    if (session.expired) logout();
-  }, [session.expired]);
+    if (session.isExpired) logout();
+  }, [session.isExpired]);
 
   const login = React.useCallback(async (token: string) => {
     try {

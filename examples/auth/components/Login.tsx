@@ -58,7 +58,7 @@ export default function Login() {
           value={session.name}
         />
         <input id="password" name="password" placeholder="password" />
-        <Button type="submit">Login</Button> {!session.expired && <Logout />}
+        <Button type="submit">Login</Button> {!session.isExpired && <Logout />}
       </form>
 
       <style jsx>
