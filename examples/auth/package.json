@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "vilicando-example-auth",
-  "version": "1.0.0-alpha.24",
+  "version": "1.0.0-alpha.25",
   "license": "ISC",
   "scripts": {
     "build": "vilicando-core build",
@@ -18,7 +18,7 @@
     "aws-lambda": "^1.0.6",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "vilicando-core": "1.0.0-alpha.21"
+    "vilicando-core": "1.0.0-alpha.25"
   },
   "devDependencies": {
     "typescript": "3.8.3"
