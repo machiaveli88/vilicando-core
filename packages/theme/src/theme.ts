@@ -298,6 +298,9 @@ const baseHeading = {
   color: baseColors.primary.base,
   fontWeight: "500",
   fontSize: getBase(14 / 8),
+  lineHeight: 1.5,
+  marginTop: 0,
+  marginBottom: getBase(14 / 16),
 } as const;
 const baseLink = {
   ...baseFont,
@@ -374,12 +377,28 @@ const theme: TThemeOut = {
 
   heading: {
     base: baseHeading,
-    "1": { ...baseHeading, fontSize: getBase(16 / 8) },
+    "1": {
+      ...baseHeading,
+      fontSize: getBase(16 / 8),
+      marginBottom: getBase(16 / 16),
+    },
     "2": baseHeading,
-    "3": { ...baseHeading, fontSize: getBase(12 / 8) },
-    "4": { ...baseHeading, fontSize: getBase(10 / 8) },
-    "5": { ...baseHeading, fontSize: getBase(9 / 8) },
-    "6": { ...baseHeading, fontSize: baseSize },
+    "3": {
+      ...baseHeading,
+      fontSize: getBase(12 / 8),
+      marginBottom: getBase(12 / 16),
+    },
+    "4": {
+      ...baseHeading,
+      fontSize: getBase(10 / 8),
+      marginBottom: getBase(10 / 16),
+    },
+    "5": {
+      ...baseHeading,
+      fontSize: getBase(9 / 8),
+      marginBottom: getBase(9 / 16),
+    },
+    "6": { ...baseHeading, fontSize: baseSize, marginBottom: getBase(8 / 16) },
   },
 
   link: {

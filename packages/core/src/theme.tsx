@@ -2,6 +2,7 @@ import React from "react";
 import {
   themeController as _themeController,
   TFont,
+  THeading,
   TThemeIn,
   IThemeController,
   IThemeProvider,
@@ -26,6 +27,11 @@ const getFont = (font: TFont) => `
   text-transform: ${font.textTransform};
   letter-spacing: ${parsePx(font.letterSpacing)};
   line-height: ${font.lineHeight};
+`;
+const getHeading = ({ marginTop, marginBottom, ...font }: THeading) => `
+  ${getFont(font)}
+  margin-top: ${parsePx(marginTop)};
+  margin-bottom: ${parsePx(marginBottom)};
 `;
 
 export function themeController<T>(
@@ -74,23 +80,27 @@ export function themeController<T>(
                 #__next > * {
                   flex-grow: 1;
                 }
+                p {
+                  margin-top: 0;
+                  margin-bottom: ${parsePx(themeVars.spacing.md)};
+                }
                 h1 {
-                  ${getFont(themeVars.heading[1])}
+                  ${getHeading(themeVars.heading[1])}
                 }
                 h2 {
-                  ${getFont(themeVars.heading[2])}
+                  ${getHeading(themeVars.heading[2])}
                 }
                 h3 {
-                  ${getFont(themeVars.heading[3])}
+                  ${getHeading(themeVars.heading[3])}
                 }
                 h4 {
-                  ${getFont(themeVars.heading[4])}
+                  ${getHeading(themeVars.heading[4])}
                 }
                 h5 {
-                  ${getFont(themeVars.heading[5])}
+                  ${getHeading(themeVars.heading[5])}
                 }
                 h6 {
-                  ${getFont(themeVars.heading[6])}
+                  ${getHeading(themeVars.heading[6])}
                 }
                 a {
                   ${getFont(themeVars.link.base)}

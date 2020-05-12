@@ -94,6 +94,10 @@ export type TFont = {
   lineHeight?: TextStyle["lineHeight"];
   textTransform?: TextStyle["textTransform"];
 };
+export type THeading = TFont & {
+  marginTop?: FlexStyle["padding"];
+  marginBottom?: FlexStyle["padding"];
+};
 
 // export type TInput = {
 //   height?: number;
@@ -162,14 +166,14 @@ export interface ITheme {
 
   /* HTML-Elements */
   heading?: {
-    base?: TFont;
-    1?: TFont;
-    2?: TFont;
-    3?: TFont;
-    4?: TFont;
-    5?: TFont;
-    6?: TFont;
-    [k: string]: TFont;
+    base?: THeading;
+    1?: THeading;
+    2?: THeading;
+    3?: THeading;
+    4?: THeading;
+    5?: THeading;
+    6?: THeading;
+    [k: string]: THeading;
   };
   link?: {
     base?: TFont;
