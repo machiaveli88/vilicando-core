@@ -21,7 +21,7 @@ function getThemeValues<T>(
   const _values = {};
 
   Object.keys(merge({}, values, defaultValues)).forEach((key) => {
-    _values[key] = merge({}, defaultValues?.[key], values?.[key]);
+    _values[key] = merge({}, defaultValues?.[key], values?.base, values?.[key]);
     if (toString) _values[key].toString = () => toString(_values[key]);
   });
 

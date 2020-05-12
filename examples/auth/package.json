@@ -14,8 +14,8 @@
     "up": "vilicando-core up"
   },
   "dependencies": {
-    "@types/aws-lambda": "^8.10.49",
-    "aws-lambda": "^1.0.5",
+    "@types/aws-lambda": "^8.10.51",
+    "aws-lambda": "^1.0.6",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "vilicando-core": "1.0.0-alpha.21"

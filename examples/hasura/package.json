@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "dotenv": "8.2.0",
-    "knex": "^0.15.2",
-    "pg": "^7.4.3",
+    "knex": "^0.21.1",
+    "pg": "^8.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "vilicando-core": "1.0.0-alpha.21",

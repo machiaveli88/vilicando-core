@@ -14,13 +14,10 @@
     "up": "yarn upgrade-interactive --latest && yarn check"
   },
   "dependencies": {
-    "@types/lodash": "4.14.149",
+    "@types/lodash": "4.14.150",
     "@types/tinycolor2": "1.4.2",
     "lodash": "4.17.15",
     "tinycolor2": "1.4.1"
-  },
-  "devDependencies": {
-    "@types/react-native": "0.62.2"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",

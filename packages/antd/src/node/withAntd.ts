@@ -10,7 +10,7 @@ import { TThemeOut } from "vilicando-core";
 const resolveColor = (o: object, theme: ITheme, color: string) => {
   o[`${color}-color`] = theme.palette[color]?.base;
 
-  for (let i = 1; i <= 10; i++) o[`${color}-${i}`] = theme[color]?.[i];
+  for (let i = 1; i <= 10; i++) o[`${color}-${i}`] = theme.palette[color]?.[i];
 };
 
 module.exports = (modifyVars: any, nextConfig: any) => {
